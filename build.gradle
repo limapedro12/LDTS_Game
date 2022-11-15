@@ -1,9 +1,10 @@
 plugins {
     id 'java'
     id 'application'
+    id 'info.solidsoft.pitest' version '1.6.0'
 }
 
-group 'org.example'
+group 'spaceinvaders'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -22,5 +23,9 @@ test {
 }
 
 application {
-    mainClass.set("Application")
+    mainClass.set("spaceinvaders/Application")
+}
+
+pitest {
+    junit5PluginVersion = '0.12'
 }
