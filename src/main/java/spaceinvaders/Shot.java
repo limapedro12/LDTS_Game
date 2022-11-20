@@ -23,7 +23,6 @@ public class Shot extends Element {
     }
 
     public void update() {
-        System.out.print("Shot.update() to Y: "); System.out.println(floatY);
         if (direction)
             floatY -= speed;
         else
@@ -40,11 +39,10 @@ public class Shot extends Element {
     }
 
     public boolean collideWith(Element element) {
-        System.out.printf("X: %d < %d < %d\n", element.getX(), position.getX(), element.getX() + element.getWidth());
-        System.out.printf("Y: %d < %d < %d\n\n", element.getY(), position.getY(), element.getY() + element.getHeight());
-        if (position.getX() >= element.getX() && position.getX() <= element.getX() + element.getWidth() &&
-                position.getY() >= element.getY() && position.getY() <= element.getY() + element.getHeight()) {
-            element.damage();
+//        System.out.printf("X: %d < %d < %d\n", element.getX(), position.getX(), element.getX() + element.getWidth());
+//        System.out.printf("Y: %d < %d < %d\n\n", element.getY(), position.getY(), element.getY() + element.getHeight());
+        if (position.getX() >= element.getX() && position.getX() <= element.getX() + element.getWidth() - 1 &&
+                position.getY() >= element.getY() && position.getY() <= element.getY() + element.getHeight() - 1) {
             return true;
         }
         return false;

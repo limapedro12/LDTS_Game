@@ -32,8 +32,8 @@ public class Protection extends Element {
     private void drawNumber(TextGraphics graphics) {
         int firstDigitLife = life / 10;
         int secondDigitLife = life % 10;
-        graphics.setCharacter(position.getX() + width/2 - 1, position.getY() - 1, TextCharacter.fromCharacter((char) ((char) firstDigitLife + '0'))[0]);
-        graphics.setCharacter(position.getX() + width/2, position.getY() - 1, TextCharacter.fromCharacter((char) ((char) secondDigitLife + '0'))[0]);
+        graphics.setCharacter(position.getX() + width/2 - 1, position.getY() + 1, TextCharacter.fromCharacter((char) ((char) firstDigitLife + '0'))[0]);
+        graphics.setCharacter(position.getX() + width/2, position.getY() + 1, TextCharacter.fromCharacter((char) ((char) secondDigitLife + '0'))[0]);
     }
 
     @Override
@@ -43,5 +43,7 @@ public class Protection extends Element {
     public int getHeight() { return height; }
 
     @Override
-    public void damage() { life--; }
+    public void damage() {
+        life--;
+    }
 }

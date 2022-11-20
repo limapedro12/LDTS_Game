@@ -10,10 +10,11 @@ public class Arena {
     public Arena() {
         elements = new java.util.ArrayList<>();
         shots = new java.util.ArrayList<>();
-        elements.add(new Protection(new Position(50, 35), 30));
-        elements.add(new Protection(new Position(25, 35), 30));
-        elements.add(new Protection(new Position(75, 35), 30));
+        elements.add(new Protection(new Position(48, 35), 30));
+        elements.add(new Protection(new Position(22, 35), 30));
+        elements.add(new Protection(new Position(72, 35), 30));
         shots.add(new ShipShot(new Position(54, 45)));
+        shots.add(new AlienShot(new Position(25, 5)));
     }
 
     public void draw(TextGraphics graphics) {
@@ -31,6 +32,7 @@ public class Arena {
         for (Element element : elements) {
             for (Shot shot : shots) {
                 if (shot.collideWith(element)) {
+                    System.out.println("Lost Life!");
                     element.damage();
                     collided.add(shot);
                 }
