@@ -1,5 +1,7 @@
 package spaceinvaders;
 
+import com.googlecode.lanterna.TerminalPosition;
+import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
@@ -17,15 +19,17 @@ public class Protection extends Element {
     @Override
     public void draw(TextGraphics graphics) {
 
-        for (int i = 1; i < height; i++) {
-            graphics.setCharacter(position.getX(), position.getY() + i, TextCharacter.fromCharacter('|')[0]);
-            graphics.setCharacter(position.getX() + width - 1, position.getY() + i, TextCharacter.fromCharacter('|')[0]);
-        }
-        for (int i = 0; i < width; i++) {
-            graphics.setCharacter(position.getX() + i, position.getY(), TextCharacter.fromCharacter('_')[0]);
-        }
+//        for (int i = 1; i < height; i++) {
+//            graphics.setCharacter(position.getX(), position.getY() + i, TextCharacter.fromCharacter('|')[0]);
+//            graphics.setCharacter(position.getX() + width - 1, position.getY() + i, TextCharacter.fromCharacter('|')[0]);
+//        }
+//        for (int i = 0; i < width; i++) {
+//            graphics.setCharacter(position.getX() + i, position.getY(), TextCharacter.fromCharacter('-')[0]);
+//        }
 
 
+        graphics.drawRectangle(new TerminalPosition(position.getX(), position.getY()), new TerminalSize(width, height), TextCharacter.fromCharacter('#')[0]);
+        graphics.drawRectangle(new TerminalPosition(position.getX() + 1, position.getY() + height - 1), new TerminalSize(width-2, 1), TextCharacter.fromCharacter('\'')[0]);
         drawNumber(graphics);
     }
 
