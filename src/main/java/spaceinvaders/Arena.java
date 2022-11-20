@@ -18,9 +18,12 @@ public class Arena {
     }
 
     public void draw(TextGraphics graphics) {
+        List<Element> died = new java.util.ArrayList<>();
         for (Element element : elements) {
             element.draw(graphics);
+            if(!element.isAlive()) died.add(element);
         }
+        elments.removeAll(died);
         for (Shot shot : shots) {
             shot.draw(graphics);
             shot.update();
