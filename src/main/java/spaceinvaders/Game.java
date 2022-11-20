@@ -12,7 +12,7 @@ import com.googlecode.lanterna.terminal.Terminal;
 import java.io.IOException;
 public class Game {
     private int x = 10;
-    private int y = 10;
+    private int y = 40;
     private Screen screen;
     public Game() {
         try {
@@ -21,9 +21,6 @@ public class Game {
             screen.setCursorPosition(null);
             screen.startScreen();
             screen.doResizeIfNecessary();
-            TerminalSize terminalSize = new TerminalSize(40, 20);
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -47,6 +44,13 @@ public class Game {
     }
 
     private void processKey(com.googlecode.lanterna.input.KeyStroke key) {
-        System.out.println(key);
+        if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'a')
+            x -= 10;
+        if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'd')
+            x += 10;
+        if (key.getKeyType() == KeyType.ArrowLeft)
+            x -= 10;
+        if (key.getKeyType() == KeyType.ArrowRight)
+            x += 10;
     }
 }
