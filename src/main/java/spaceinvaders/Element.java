@@ -1,7 +1,7 @@
 package spaceinvaders;
 
 public abstract class Element {
-    private Position position;
+    protected Position position;
 
     public Element(Position position) {
         this.position = position;
