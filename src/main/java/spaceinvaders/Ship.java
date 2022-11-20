@@ -26,7 +26,7 @@ public class Ship extends Element{
             screen.setCharacter(getX(), i, TextCharacter.fromCharacter('S')[0]);
         }
     }
-    private boolean canIMove(int direction) {
+    public boolean canIMove(int direction) {
         switch (direction) {
             case -1:
                 return leftBound > 1;
