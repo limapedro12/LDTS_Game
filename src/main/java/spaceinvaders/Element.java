@@ -1,13 +1,15 @@
 package spaceinvaders;
 
+import com.googlecode.lanterna.graphics.TextGraphics;
+
 public abstract class Element {
-    private Position position;
+    protected Position position;
 
     public Element(Position position) {
         this.position = position;
     }
 
-    public abstract void draw();
+    public abstract void draw(TextGraphics graphics);
 
     public int getX() {
         return position.getX();

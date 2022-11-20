@@ -14,6 +14,7 @@ public class Game {
     private int x = 10;
     private int y = 40;
     private Screen screen;
+    private Arena arena;
     public Game() {
         try {
             Terminal terminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(100, 50)).createTerminal();
@@ -21,6 +22,7 @@ public class Game {
             screen.setCursorPosition(null);
             screen.startScreen();
             screen.doResizeIfNecessary();
+            arena = new Arena();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -29,6 +31,7 @@ public class Game {
     private void draw() throws IOException {
         screen.clear();
         screen.setCharacter(x, y, TextCharacter.fromCharacter('X')[0]);
+        arena.draw(screen.newTextGraphics());
         screen.refresh();
     }
 
