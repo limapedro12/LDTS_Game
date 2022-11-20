@@ -22,4 +22,10 @@ public abstract class Element {
     public Position getPosition() {
         return position;
     }
+
+    public int getWidth() { return 1; }
+
+    public int getHeight() { return 1; }
+
+    public void damage() {};
 }

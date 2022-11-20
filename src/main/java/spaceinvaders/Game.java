@@ -38,6 +38,7 @@ public class Game {
     public void run() throws IOException {
         while(true) {
             draw();
+            arena.checkCollisions();
             KeyStroke key = screen.readInput();
             processKey(key);
             if (key.getKeyType() == KeyType.EOF) break;
@@ -48,12 +49,12 @@ public class Game {
 
     private void processKey(com.googlecode.lanterna.input.KeyStroke key) {
         if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'a')
-            x -= 10;
+            x -= 2;
         if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'd')
-            x += 10;
+            x += 2;
         if (key.getKeyType() == KeyType.ArrowLeft)
-            x -= 10;
+            x -= 2;
         if (key.getKeyType() == KeyType.ArrowRight)
-            x += 10;
+            x += 2;
     }
 }
