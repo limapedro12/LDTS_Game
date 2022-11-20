@@ -28,4 +28,6 @@ public abstract class Element {
     public int getHeight() { return 1; }
 
     public void damage() {};
+
+    public abstract boolean isAlive();
 }

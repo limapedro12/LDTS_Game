@@ -46,4 +46,9 @@ public class Protection extends Element {
     public void damage() {
         life--;
     }
+
+    @Override
+    public boolean isAlive() {
+        return life > 0;
+    }
 }

@@ -47,4 +47,8 @@ public class Shot extends Element {
         }
         return false;
     }
+
+    public boolean isAlive() {
+        return false;
+    }
 }
