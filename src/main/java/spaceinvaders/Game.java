@@ -10,10 +10,14 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Game {
     private int x = 10;
     private int y = 40;
     private Ship ship;
+    private List<Alien> aliens;
     private Screen screen;
     public Game() {
         try {
@@ -23,14 +27,27 @@ public class Game {
             screen.startScreen();
             screen.doResizeIfNecessary();
             ship = new Ship();
+            createAliens();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    private void createAliens() {
+        aliens = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 10; j++) {
+                Alien a = new Alien(new Position(13 + 8 * j, 5 + 4 * i));
+                aliens.add(a);
+            }
+        }
+    }
     private void draw() throws IOException {
         screen.clear();
         ship.draw(this.screen);
+        for (Alien a :aliens){
+            a.draw(screen);
+        }
         screen.refresh();
     }
 
