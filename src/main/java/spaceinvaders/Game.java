@@ -19,6 +19,7 @@ public class Game {
     private Ship ship;
     private List<Alien> aliens;
     private Screen screen;
+    private Arena arena;
     public Game() {
         try {
             Terminal terminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(100, 50)).createTerminal();
@@ -28,6 +29,7 @@ public class Game {
             screen.doResizeIfNecessary();
             ship = new Ship();
             createAliens();
+            arena = new Arena();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -48,17 +50,31 @@ public class Game {
         for (Alien a :aliens){
             a.draw(screen);
         }
+        screen.setCharacter(x, y, TextCharacter.fromCharacter('X')[0]);
+        arena.draw(screen.newTextGraphics());
         screen.refresh();
     }
 
     public void run() throws IOException {
         while(true) {
             draw();
+            arena.checkCollisions();
             KeyStroke key = screen.readInput();
             if (key.getKeyType() == KeyType.EOF) break;
             if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
                 screen.stopScreen();
             ship.processKey(key, screen);
         }
+    }
+
+    private void processKey(com.googlecode.lanterna.input.KeyStroke key) {
+        if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'a')
+            x -= 2;
+        if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'd')
+            x += 2;
+        if (key.getKeyType() == KeyType.ArrowLeft)
+            x -= 2;
+        if (key.getKeyType() == KeyType.ArrowRight)
+            x += 2;
     }
 }

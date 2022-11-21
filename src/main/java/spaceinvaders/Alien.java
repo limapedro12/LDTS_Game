@@ -31,6 +31,10 @@ public class Alien extends Element{
         this.position.setX(position.getX()+direction.getX());
         this.position.setY(position.getY()+direction.getY());
     }
+
+    public boolean isAlive() {
+        return true;
     }
+}
 
 

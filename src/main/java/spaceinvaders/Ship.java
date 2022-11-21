@@ -71,4 +71,8 @@ public class Ship extends Element{
     private void fire(Screen screen) {
         return;
     }
+
+    public boolean isAlive() {
+        return true;
+    }
 }
