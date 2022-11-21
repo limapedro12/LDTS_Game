@@ -14,13 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    private int x = 10;
-    private int y = 40;
+    int width = 100;
+    int height = 50;
     private Screen screen;
     private Arena arena;
     public Game() {
         try {
-            Terminal terminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(100, 50)).createTerminal();
+            Terminal terminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height)).createTerminal();
             screen = new TerminalScreen(terminal);
             screen.setCursorPosition(null);
             screen.startScreen();
@@ -33,7 +33,6 @@ public class Game {
 
     private void draw() throws IOException {
         screen.clear();
-        screen.setCharacter(x, y, TextCharacter.fromCharacter('X')[0]);
         arena.draw(screen.newTextGraphics(), screen);
         screen.refresh();
     }

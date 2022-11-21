@@ -75,6 +75,14 @@ public class Ship extends Element{
         return;
     }
 
+    public int getWidth() {
+        return rightBound - leftBound + 1;
+    }
+
+    public int getHeight() {
+        return lowerBound - upperBound + 1;
+    }
+
     public boolean isAlive() {
         return true;
     }
