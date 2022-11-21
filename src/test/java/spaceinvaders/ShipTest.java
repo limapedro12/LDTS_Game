@@ -15,6 +15,6 @@ public class ShipTest {
     }
     @Test
     public void canIMoveTest() {
-        Assertions.assertEquals(true, ship.canIMove(-1));
+        Assertions.assertEquals(true, ship.canIMove(true));
     }
 }

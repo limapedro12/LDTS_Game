@@ -13,7 +13,7 @@ public class Ship extends Element{
     private int rightBound;
     private final int upperBound = 39;
     private final int lowerBound = 43;
-    public Ship () {
+    public Ship() {
         super(new Position(50, 40));
         this.leftBound = 45;
         this.rightBound = 55;
@@ -26,26 +26,24 @@ public class Ship extends Element{
             screen.setCharacter(getX(), i, TextCharacter.fromCharacter('S')[0]);
         }
     }
-    public boolean canIMove(int direction) {
-        switch (direction) {
-            case -1:
-                return leftBound > 1;
-            case 1:
-                return rightBound < 98;
+    public boolean canIMove(boolean goingLeft) {
+        if (goingLeft) {
+            return leftBound > 1;
+        } else {
+            return rightBound < 98;
         }
-        return false;
     }
     public void processKey(KeyStroke key, Screen screen) {
         if (key.getKeyType() == KeyType.Character) {
             switch (key.getCharacter()) {
                 case 'a':
-                    if (!canIMove(-1)) return;
+                    if (!canIMove(true)) return;
                     this.position.setY(this.position.getX() - 1);
                     leftBound--;
                     rightBound--;
                     break;
                 case 'd':
-                    if (!canIMove(1)) return;
+                    if (!canIMove(false)) return;
                     this.position.setY(this.position.getX() + 1);
                     leftBound++;
                     rightBound++;
@@ -55,13 +53,13 @@ public class Ship extends Element{
             KeyType keyType = key.getKeyType();
             switch (keyType) {
                 case ArrowLeft:
-                    if (!canIMove(-1)) return;
+                    if (!canIMove(true)) return;
                     this.position.setX(this.position.getX() - 1);
                     leftBound--;
                     rightBound--;
                     break;
                 case ArrowRight:
-                    if (!canIMove(1)) return;
+                    if (!canIMove(false)) return;
                     this.position.setX(this.position.getX() + 1);
                     leftBound++;
                     rightBound++;
