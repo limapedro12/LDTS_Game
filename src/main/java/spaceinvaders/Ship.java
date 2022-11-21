@@ -1,6 +1,7 @@
 package spaceinvaders;
 
 import com.googlecode.lanterna.TextCharacter;
+import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
@@ -18,12 +19,14 @@ public class Ship extends Element{
         this.leftBound = 45;
         this.rightBound = 55;
     }
-    public void draw(Screen screen) {
+
+    @Override
+    public void draw(TextGraphics graphics) {
         for (int i = leftBound; i <= rightBound; i++) {
-            screen.setCharacter(i, lowerBound, TextCharacter.fromCharacter('S')[0]);
+            graphics.setCharacter(i, lowerBound, TextCharacter.fromCharacter('S')[0]);
         }
         for (int i = lowerBound; i >= upperBound; i--) {
-            screen.setCharacter(getX(), i, TextCharacter.fromCharacter('S')[0]);
+            graphics.setCharacter(getX(), i, TextCharacter.fromCharacter('S')[0]);
         }
     }
     public boolean canIMove(boolean goingLeft) {

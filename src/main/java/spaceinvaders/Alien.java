@@ -12,20 +12,18 @@ import javax.swing.ImageIcon;
 import javax.swing.*;
 
 public class Alien extends Element{
+    private final String alien = "imagens/kisspng-emoji-alien-iphone-monster-space-invaders-5ac4f1fae15e76.0256511115228564429231.png";
 
+    public Alien(Position position){
+        super(position);
+    }
 
-        private TextGraphics graphics;
-        private final String alien = "imagens/kisspng-emoji-alien-iphone-monster-space-invaders-5ac4f1fae15e76.0256511115228564429231.png";
-
-        public Alien(Position position){
-            super(position);
-        }
-
-        public void draw(Screen screen) {
-             /*ImageIcon image = new (this.getClass().getResource(alien));
-            setImage(image.getImage());*/
-            screen.setCharacter(new TerminalPosition(position.getX(), position.getY()), TextCharacter.fromCharacter('Y')[0]);
-        }
+    @Override
+    public void draw(TextGraphics graphics){
+         /*ImageIcon image = new (this.getClass().getResource(alien));
+        setImage(image.getImage());*/
+        graphics.setCharacter(new TerminalPosition(position.getX(), position.getY()), TextCharacter.fromCharacter('Y')[0]);
+    }
     public void move(Position direction) {
 
         this.position.setX(position.getX()+direction.getX());

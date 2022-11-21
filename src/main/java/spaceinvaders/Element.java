@@ -10,8 +10,7 @@ public abstract class Element {
         this.position = position;
     }
 
-    public void draw(Screen screen) {}
-    public void draw(TextGraphics graphics) {}
+    public abstract void draw(TextGraphics graphics);
 
     public int getX() {
         return position.getX();

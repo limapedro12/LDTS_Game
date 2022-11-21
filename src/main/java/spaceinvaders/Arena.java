@@ -14,10 +14,10 @@ public class Arena {
     private List<Shot> shots;
     public Arena() {
         ship = new Ship();
-        createAliens();
-
         elements = new java.util.ArrayList<>();
         shots = new java.util.ArrayList<>();
+        createAliens();
+        elements.add(ship);
         elements.add(new Protection(new Position(48, 35),  1));
         elements.add(new Protection(new Position(22, 35), 1));
         elements.add(new Protection(new Position(72, 35), 30));
@@ -31,15 +31,12 @@ public class Arena {
             for (int j = 0; j < 10; j++) {
                 Alien a = new Alien(new Position(13 + 8 * j, 5 + 4 * i));
                 aliens.add(a);
+                elements.add(a);
             }
         }
     }
 
     public void draw(TextGraphics graphics, Screen screen) {
-        ship.draw(screen);
-        for (Alien a :aliens){
-            a.draw(screen);
-        }
         List<Element> dead = new java.util.ArrayList<>();
         for (Element element : elements) {
             element.draw(graphics);
