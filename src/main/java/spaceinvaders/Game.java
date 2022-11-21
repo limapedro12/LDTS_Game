@@ -16,8 +16,6 @@ import java.util.List;
 public class Game {
     private int x = 10;
     private int y = 40;
-    private Ship ship;
-    private List<Alien> aliens;
     private Screen screen;
     private Arena arena;
     public Game() {
@@ -27,31 +25,16 @@ public class Game {
             screen.setCursorPosition(null);
             screen.startScreen();
             screen.doResizeIfNecessary();
-            ship = new Ship();
-            createAliens();
             arena = new Arena();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void createAliens() {
-        aliens = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 10; j++) {
-                Alien a = new Alien(new Position(13 + 8 * j, 5 + 4 * i));
-                aliens.add(a);
-            }
-        }
-    }
     private void draw() throws IOException {
         screen.clear();
-        ship.draw(this.screen);
-        for (Alien a :aliens){
-            a.draw(screen);
-        }
         screen.setCharacter(x, y, TextCharacter.fromCharacter('X')[0]);
-        arena.draw(screen.newTextGraphics());
+        arena.draw(screen.newTextGraphics(), screen);
         screen.refresh();
     }
 
@@ -59,22 +42,16 @@ public class Game {
         while(true) {
             draw();
             arena.checkCollisions();
-            KeyStroke key = screen.readInput();
-            if (key.getKeyType() == KeyType.EOF) break;
-            if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
-                screen.stopScreen();
-            ship.processKey(key, screen);
+            if(!processKey()) break;
         }
     }
 
-    private void processKey(com.googlecode.lanterna.input.KeyStroke key) {
-        if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'a')
-            x -= 2;
-        if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'd')
-            x += 2;
-        if (key.getKeyType() == KeyType.ArrowLeft)
-            x -= 2;
-        if (key.getKeyType() == KeyType.ArrowRight)
-            x += 2;
+    private boolean processKey() throws IOException {
+        KeyStroke key = screen.readInput();
+        if (key.getKeyType() == KeyType.EOF) return false;
+        if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
+            screen.stopScreen();
+        arena.processKey(key, screen);
+        return true;
     }
 }
