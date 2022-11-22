@@ -32,12 +32,14 @@ public class Arena implements ShotObserver{
 
     private void createAliens() {
         aliens = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 10; j++) {
-                Alien a = new Alien(new Position(13 + 8 * j, 5 + 4 * i));
-                aliens.add(a);
-                elements.add(a);
-            }
+        for (int j = 0; j < 10; j++) {
+            Alien a = new Alien(new Position(13 + 8 * j, 9), '&');
+            Alien b = new Alien(new Position(13 + 8 * j, 11), 'Y');
+            Alien c = new Alien(new Position(13 + 8 * j, 13), 'Y');
+            Alien d = new Alien(new Position(13 + 8 * j, 15), 'X');
+            Alien e = new Alien(new Position(13 + 8 * j, 17), 'X');
+            aliens.add(a); aliens.add(b); aliens.add(c); aliens.add(d); aliens.add(e);
+            elements.add(a); elements.add(b); elements.add(c); elements.add(d); elements.add(e);
         }
     }
 

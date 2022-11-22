@@ -14,16 +14,18 @@ import javax.swing.*;
 public class Alien extends Element{
     boolean alive = true;
     private final String alien = "imagens/kisspng-emoji-alien-iphone-monster-space-invaders-5ac4f1fae15e76.0256511115228564429231.png";
+    protected char symbol;
 
-    public Alien(Position position){
+    public Alien(Position position, char symbol) {
         super(position);
+        this.symbol = symbol;
     }
 
     @Override
     public void draw(TextGraphics graphics){
          /*ImageIcon image = new (this.getClass().getResource(alien));
         setImage(image.getImage());*/
-        graphics.setCharacter(new TerminalPosition(position.getX(), position.getY()), TextCharacter.fromCharacter('Y')[0]);
+        graphics.setCharacter(new TerminalPosition(position.getX(), position.getY()), TextCharacter.fromCharacter(symbol)[0]);
     }
     public void move(Position direction) {
 
