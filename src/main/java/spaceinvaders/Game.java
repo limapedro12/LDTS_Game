@@ -38,15 +38,29 @@ public class Game {
     }
 
     public void run() throws IOException {
-        while(true) {
+        int FPS = 10;
+        int frameTime = 1000 / FPS;
+
+        while (true) {
+            long startTime = System.currentTimeMillis();
+
             draw();
             arena.checkCollisions();
             if(!processKey()) break;
+
+            long elapsedTime = System.currentTimeMillis() - startTime;
+            long sleepTime = frameTime - elapsedTime;
+
+            try {
+                if (sleepTime > 0) Thread.sleep(sleepTime);
+            } catch (InterruptedException e) {
+            }
         }
     }
 
     private boolean processKey() throws IOException {
-        KeyStroke key = screen.readInput();
+        KeyStroke key = screen.pollInput();
+        if (key == null) return true;
         if (key.getKeyType() == KeyType.EOF) return false;
         if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
             screen.stopScreen();
