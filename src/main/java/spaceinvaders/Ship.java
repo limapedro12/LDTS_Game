@@ -57,13 +57,13 @@ public class Ship extends Element implements ShotSubject {
             switch (key.getCharacter()) {
                 case 'a':
                     if (!canIMove(true)) return;
-                    this.position.setY(this.position.getX() - 1);
+                    this.position.setX(this.position.getX() - 1);
                     leftBound--;
                     rightBound--;
                     break;
                 case 'd':
                     if (!canIMove(false)) return;
-                    this.position.setY(this.position.getX() + 1);
+                    this.position.setX(this.position.getX() + 1);
                     leftBound++;
                     rightBound++;
                     break;
