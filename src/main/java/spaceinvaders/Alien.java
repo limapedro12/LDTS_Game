@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.*;
 
 public class Alien extends Element{
+    boolean alive = true;
     private final String alien = "imagens/kisspng-emoji-alien-iphone-monster-space-invaders-5ac4f1fae15e76.0256511115228564429231.png";
 
     public Alien(Position position){
@@ -30,8 +31,11 @@ public class Alien extends Element{
         this.position.setY(position.getY()+direction.getY());
     }
 
+    public void damage() {
+        alive = false;
+    }
     public boolean isAlive() {
-        return true;
+        return alive;
     }
 }
 

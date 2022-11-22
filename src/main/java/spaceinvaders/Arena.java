@@ -7,13 +7,14 @@ import com.googlecode.lanterna.input.KeyStroke;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Arena {
+public class Arena implements ShotObserver{
     private Ship ship;
     private List<Alien> aliens;
     private List<Element> elements;
     private List<Shot> shots;
     public Arena() {
         ship = new Ship();
+        ship.addObserver(this);
         elements = new java.util.ArrayList<>();
         shots = new java.util.ArrayList<>();
         createAliens();
@@ -21,8 +22,12 @@ public class Arena {
         elements.add(new Protection(new Position(48, 35),  1));
         elements.add(new Protection(new Position(22, 35), 1));
         elements.add(new Protection(new Position(72, 35), 30));
-        shots.add(new ShipShot(new Position(54, 45)));
-        shots.add(new AlienShot(new Position(25, 5)));
+        // shots.add(new ShipShot(new Position(54, 45)));
+        // shots.add(new AlienShot(new Position(25, 5)));
+    }
+
+    public void update(Shot shot) {
+        shots.add(shot);
     }
 
     private void createAliens() {
@@ -54,7 +59,6 @@ public class Arena {
         for (Element element : elements) {
             for (Shot shot : shots) {
                 if (shot.collideWith(element)) {
-                    System.out.println("Lost Life!");
                     element.damage();
                     collided.add(shot);
                 }
