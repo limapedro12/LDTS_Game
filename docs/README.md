@@ -13,10 +13,33 @@ This project was developed by *João Tomás Teixeira* (*up202108738*@edu.fe.up.p
 
 > This section should contain a list of implemented features and their descriptions. In the end of the section, include two or three screenshots that illustrate the most important features.
 
-**Examples**:
+**Arena**:
 
-- **Jumping** - The game character will jump when the space bar key is pressed.
-- **Getting hidden coins** - When the game character hits a platform from below (by jumping beneath it) it will smash that segment of the platform and will get any coins that may exist hidden there.
+- **CreateAliens** - Creates three different types of aliens arrange by five rows of ten aliens.
+- **CheckCollisions** - Checks if a shot hit an element.
+- **ProcessKey** - Receives an input from the user, if it is the "q" key the game screen closes.
+
+**Element**:
+
+- **Draw** - Draws the arena where the game will be played as well as specific draw methods to all its elements including the aliens, the ship, the shots and the protections.
+- **Damage and isAlive method** - Takes some amount of life from the element and subsequently checks if it is still alive.
+
+**Position**:
+
+- **Position methods** - Several methods to set and get a position of an element.
+
+**Ship**:
+
+- **UpdateShots** - Updates the list where the shots are stored whenever the ship fires.
+- **canIMove** - Verifies if an element can move or if it already hit the walls (his limits).
+- **ShipShot** - Creates a new shot fired by the ship.
+- **ProcessKey** - Receives an input from the user. If it is the right arrow the ship moves to the right and the opposite for the left arrow and finally when the up arrow is pressed the ship shoots.
+
+
+**Protection**:
+
+- **DrawNumber** - Draws the life of the protections.
+
 
 ### PLANNED FEATURES
 
