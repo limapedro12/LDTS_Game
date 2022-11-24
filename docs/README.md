@@ -47,7 +47,11 @@ by anyone (the ship or an alien, although the aliens are not firing yet). They d
 - **DrawNumber** - Draws the life of the protections.
 
 
-![img](https://i.ibb.co/Zf0KwrD/Start.png)
+![start](https://i.ibb.co/Zf0KwrD/Start.png=10x10)
+<p align = "center">Fig.1 - Beginning of the Game</p>
+
+![middle](https://i.ibb.co/NSJTJXf/Middle.png=10x10)
+<p align = "center">Fig.2 - Middle of the Game</p>
 
 ### PLANNED FEATURES
 
@@ -87,8 +91,6 @@ We have applied the **State** pattern. This pattern allows you to represent diff
 **Implementation**
 
 The following figure shows how the pattern’s roles were mapped to the application classes.
-
-![img](https://www.fe.up.pt/~arestivo/page/img/examples/lpoo/state.svg)
 
 These classes can be found in the following files:
 
