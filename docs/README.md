@@ -46,10 +46,10 @@ by anyone (the ship or an alien, although the aliens are not firing yet). They d
 
 - **DrawNumber** - Draws the life of the protections.
 
-<img src="https://i.ibb.co/Zf0KwrD/Start.png" height="400" />
+<img alt="start" src="https://i.ibb.co/Zf0KwrD/Start.png" height="400" />
 <p>Fig.1 - Beginning of the Game</p>
 
-<img src="https://i.ibb.co/NSJTJXf/Middle.png" height="400" />
+<img alt="middle" src="https://i.ibb.co/NSJTJXf/Middle.png" height="400" />
 <p>Fig.2 - Middle of the Game</p>
 
 ### PLANNED FEATURES
@@ -68,12 +68,13 @@ the screen. If they reach it, the player shall lose.
 
 > This section should be organized in different subsections, each describing a different design problem that you had to solve during the project. Each subsection should be organized in four different parts:
 
-- **Problem in Context.** The description of the design context and the concrete problem that motivated the instantiation of the pattern. Someone else other than the original developer should be able to read and understand all the motivations for the decisions made. When refering to the implementation before the pattern was applied, don’t forget to [link to the relevant lines of code](https://help.github.com/en/articles/creating-a-permanent-link-to-a-code-snippet) in the appropriate version.
-- **The Pattern.** Identify the design pattern to be applied, why it was selected and how it is a good fit considering the existing design context and the problem at hand.
-- **Implementation.** Show how the pattern roles, operations and associations were mapped to the concrete design classes. Illustrate it with a UML class diagram, and refer to the corresponding source code with links to the relevant lines (these should be [relative links](https://help.github.com/en/articles/about-readmes#relative-links-and-image-paths-in-readme-files). When doing this, always point to the latest version of the code.
-- **Consequences.** Benefits and liabilities of the design after the pattern instantiation, eventually comparing these consequences with those of alternative solutions.
+- **Problem in Context.** - We needed a way to communicate to [arena](../src/main/java/spaceinvaders/Arena.java) that the [ship has fired a shot](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/70c3ae42ed8ec87b2767c2d0a6b8ab4207517a21/src/main/java/spaceinvaders/Ship.java#L93-L95), so [arena](../src/main/java/spaceinvaders/Arena.java) could draw it.
+- **The Pattern** - Observer Pattern
+- **Implementation.** - The [ship](../src/main/java/spaceinvaders/Ship.java) is the subject, so it implements the [ShotSubject](../src/main/java/spaceinvaders/ShotSubject.java) interface, and the [arena](../src/main/java/spaceinvaders/Arena.java) is the observer, so it implements the [ShotObserver](../src/main/java/spaceinvaders/ShotObserver.java) interface. The ShotSubject, and subsequently the [ship](../src/main/java/spaceinvaders/Ship.java), has a [list of observers](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/70c3ae42ed8ec87b2767c2d0a6b8ab4207517a21/src/main/java/spaceinvaders/ShotSubject.java#L6) and whenever it fires a shot, it notifies all the [observers](../src/main/java/spaceinvaders/ShotObserver.java), including [arena](../src/main/java/spaceinvaders/Arena.java). You can see this in the following UML.
+- **Consequences.** - The consequence of this design is that the [ship](../src/main/java/spaceinvaders/Ship.java) doesn't need to know anything about the [arena](../src/main/java/spaceinvaders/Arena.java), and the [arena](../src/main/java/spaceinvaders/Arena.java) doesn't need to know anything about the [ship](../src/main/java/spaceinvaders/Ship.java). This is a good design because it makes the code more modular and easier to understand.
 
-**Example of one of such subsections**:
+<img alt="Observer UML" src="../UMLs/Observer.png" height="400" />
+<p>Fig.3 - Observer Pattern UML</p>
 
 ------
 
