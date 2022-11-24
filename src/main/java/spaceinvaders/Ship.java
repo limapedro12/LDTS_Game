@@ -7,6 +7,8 @@ import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 
+import java.util.List;
+
 public class Ship extends Element implements ShotSubject {
     private int leftBound;
     private int rightBound;
@@ -28,6 +30,10 @@ public class Ship extends Element implements ShotSubject {
         for(ShotObserver observer : observers){
             observer.update(shot);
         }
+    }
+
+    public List<ShotObserver> getObservers(){
+        return observers;
     }
 
     @Override

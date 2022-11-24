@@ -6,9 +6,9 @@ import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class Protection extends Element {
-    int life;
-    int height = 3;
-    int width = 8;
+    private int life;
+    private int height = 3;
+    private int width = 8;
 
     public Protection(Position position, int life) {
         super(position);
@@ -45,6 +45,8 @@ public class Protection extends Element {
 
     @Override
     public int getHeight() { return height; }
+
+    public int getLife() { return life; }
 
     @Override
     public void damage() {

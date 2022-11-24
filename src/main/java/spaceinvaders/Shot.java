@@ -51,4 +51,8 @@ public class Shot extends Element {
     public boolean isAlive() {
         return false;
     }
+
+    public float getSpeed() {
+        return speed;
+    }
 }
