@@ -1,7 +1,5 @@
 ## LDTS_l01g06 - Space Invaders
 
-> Include here one or two paragraphs explaining the main idea of the project, followed by a sentence identifying who the authors are.
-
 Space Invaders is a fixed shooter in which the player moves a laser cannon horizontally across the bottom of the screen and fires at aliens overhead.
 The aliens progressively move towards the bottom of screen.
 The goal is to eliminate all the aliens by shooting them. While the player has three lives, the game ends immediately if the invaders reach the bottom of the screen.
@@ -13,15 +11,23 @@ This project was developed by *João Tomás Teixeira* (*up202108738*@edu.fe.up.p
 
 > This section should contain a list of implemented features and their descriptions. In the end of the section, include two or three screenshots that illustrate the most important features.
 
+The player controls the ship and only the ship.
+We have implemented the ship's capacity to move itself to the right or to the left (within the limits of the window/arena) in the bottom of the window and to fire shots.
+The player can move the ship left pressing the 'A' key or the left arrow key, move the ship right pressing the 'D' key or the right arrow key and fire a shot
+pressing space or the up arrow key.
+In the top of the window, our game draws 50 aliens (shown as the chars X, Y and &). Each alien dies (and disappears) when it's hit by a shot fired by the ship.
+We have also implemented three protections that will act as a shield of the ship. They have their own number of lives, which is decremented when hit by a shot fired
+by anyone (the ship or an alien, although the aliens are not firing yet). They disappear when their lives reach 0. This feature can be tested by shooting at them.
+
 **Arena**:
 
-- **CreateAliens** - Creates three different types of aliens arrange by five rows of ten aliens.
+- **CreateAliens** - Creates three different types of aliens arranged by five rows of ten aliens.
 - **CheckCollisions** - Checks if a shot hit an element.
 - **ProcessKey** - Receives an input from the user, if it is the "q" key the game screen closes.
 
 **Element**:
 
-- **Draw** - Draws the arena where the game will be played as well as specific draw methods to all its elements including the aliens, the ship, the shots and the protections.
+- **Draw** - Draws the arena where the game will be played and calls specific draw methods to all its elements including the aliens, the ship, the shots and the protections.
 - **Damage and isAlive method** - Takes some amount of life from the element and subsequently checks if it is still alive.
 
 **Position**:
@@ -41,9 +47,19 @@ This project was developed by *João Tomás Teixeira* (*up202108738*@edu.fe.up.p
 - **DrawNumber** - Draws the life of the protections.
 
 
+![img](https://i.ibb.co/Zf0KwrD/Start.png)
+
 ### PLANNED FEATURES
 
 > This section is similar to the previous one but should list the features that are not yet implemented. Instead of screenshots you should include GUI mock-ups for the planned features.
+
+- **Moving aliens** - The aliens shall move together to one side of the screen (continuously, one side or the other) and slowly be moving towards the bottom of 
+the screen. If they reach it, the player shall lose.
+- **Shooting aliens** - The aliens shall fire shots at the ship randomly.
+- **Score** - The game shall count the player's score and store it in a file which will be read when the user wants to view the highest scores.
+- **User Menu** - When the game starts, the user shall be presented a menu with the option to play, to view the highest scores and to quit the game.
+- **Lives** - The ship shall have 3 lives and lose one whenever it's hit by an alien's shot. The player shall lose the game when the ship's lives reach 0.
+- **Make the user always press a key to move the ship** - The player shall be forced to always press a key to make the ship move one position, instead of pressing it continuously to move the ship in the same direction.
 
 ### DESIGN
 
