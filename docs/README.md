@@ -54,8 +54,6 @@ by anyone (the ship or an alien, although the aliens are not firing yet). They d
 
 ### PLANNED FEATURES
 
-> This section is similar to the previous one but should list the features that are not yet implemented. Instead of screenshots you should include GUI mock-ups for the planned features.
-
 - **Moving aliens** - The aliens shall move together to one side of the screen (continuously, one side or the other) and slowly be moving towards the bottom of 
 the screen. If they reach it, the player shall lose.
 - **Shooting aliens** - The aliens shall fire shots at the ship randomly.
@@ -63,6 +61,15 @@ the screen. If they reach it, the player shall lose.
 - **User Menu** - When the game starts, the user shall be presented a menu with the option to play, to view the highest scores and to quit the game.
 - **Lives** - The ship shall have 3 lives and lose one whenever it's hit by an alien's shot. The player shall lose the game when the ship's lives reach 0.
 - **Make the user always press a key to move the ship** - The player shall be forced to always press a key to make the ship move one position, instead of pressing it continuously to move the ship in the same direction.
+
+<img src="https://i.ibb.co/fDGpTGB/menu-mockup.png" height="400" />
+<p>Fig. 3 - Main Menu mockup</p>
+
+<img src="https://i.ibb.co/M6tv8Qz/ingame-mockup.png" height="400" />
+<p>Fig. 4 - Mockup of the in-game lives and score features</p>
+
+<img src="https://i.ibb.co/0cfHy7m/scores-mockup.png" height="400" />
+<p>Fig. 5 - Mockup of the highest scores feature.</p>
 
 ### DESIGN
 
