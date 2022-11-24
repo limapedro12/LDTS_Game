@@ -142,3 +142,7 @@ A way to improve the code would be to move the `isPlatformSegmentSolid()` method
 
 - John Doe: 40%
 - Jane Doe: 60%
+
+### UML DIAGRAM
+
+![UML Geral](../UMLs/project-l01gr06.png)
