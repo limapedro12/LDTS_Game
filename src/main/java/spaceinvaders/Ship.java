@@ -19,6 +19,23 @@ public class Ship extends Element implements ShotSubject {
         this.leftBound = 46;
         this.rightBound = 54;
     }
+    public Ship(int x) {
+        super(new Position(x, 40));
+        this.leftBound = x-4;
+        this.rightBound = x+4;
+    }
+    public int getX() {
+        return position.getX();
+    }
+    public int getY() {
+        return 40;
+    }
+    public int getLeftBound() {
+        return leftBound;
+    }
+    public int getRightBound() {
+        return rightBound;
+    }
 
     public void addObserver(ShotObserver observer){
         observers.add(observer);
@@ -96,7 +113,7 @@ public class Ship extends Element implements ShotSubject {
             }
         }
     }
-    private void fire() {
+    public void fire() {
         notifyObservers(new ShipShot(new Position(getX(), getY() - 2)));
     }
 
