@@ -77,13 +77,15 @@ the screen. If they reach it, the player shall lose.
 - **Consequences.** - The consequence of this design is that the [ship](../src/main/java/spaceinvaders/Ship.java) doesn't need to know anything about the [arena](../src/main/java/spaceinvaders/Arena.java), and the [arena](../src/main/java/spaceinvaders/Arena.java) doesn't need to know anything about the [ship](../src/main/java/spaceinvaders/Ship.java). This is a good design because it makes the code more modular and easier to understand.
 
 <img alt="Observer UML" src="../UMLs/Observer.png" height="400" />
-<p>Fig.3 - Observer Pattern UML</p>
+<p>Fig. 6 - Observer Pattern UML</p>
 
 ------
 
 ### TESTING
 
-- Screenshot of coverage report.
+![Coverage Report](../UMLs/Coverage_report.png)
+<p>Fig. 7 - Coverage Report</p>
+
 - Link to mutation testing report.
 
 ### SELF-EVALUATION
