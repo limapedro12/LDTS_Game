@@ -86,14 +86,13 @@ the screen. If they reach it, the player shall lose.
 ![Coverage Report](../UMLs/Coverage_report.png)
 <p>Fig. 7 - Coverage Report</p>
 
-- Link to mutation testing report.
+[Mutation Testing Report](../build/reports/pitest/202211251157/index.html)
 
 ### SELF-EVALUATION
 
-> In this section describe how the work regarding the project was divided between the students. In the event that members of the group do not agree on a work distribution, the group should send an email to the teacher explaining the disagreement.
-
-- John Doe: 40%
-- Jane Doe: 60%
+- João Tomás Teixeira: 30%
+- Pedro Lima: 40%
+- Pedro Januário: 30%
 
 ### UML DIAGRAM
 
