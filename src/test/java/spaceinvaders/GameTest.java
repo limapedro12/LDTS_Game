@@ -25,11 +25,13 @@ public class GameTest {
     }
 
     @Test
-    private void draw() throws IOException {
+    public void draw() throws IOException {
+        arena = Mockito.mock(Arena.class);
+        screen = Mockito.mock(Screen.class);
         screen.clear();
-       arena.draw(screen.newTextGraphics(), screen);
+        arena.draw(screen.newTextGraphics());
         screen.refresh();
-        Mockito.verify(arena,Mockito.times(1)).draw(screen.newTextGraphics(), screen);
+        Mockito.verify(arena,Mockito.times(1)).draw(screen.newTextGraphics());
     }
 
 
