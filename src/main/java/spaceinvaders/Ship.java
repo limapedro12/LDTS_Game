@@ -75,7 +75,7 @@ public class Ship extends Element implements ShotSubject {
             return rightBound < 98;
         }
     }
-    public void processKey(KeyStroke key, Screen screen) {
+    public void processKey(KeyStroke key) {
         if (key.getKeyType() == KeyType.Character) {
             switch (key.getCharacter()) {
                 case 'a':

@@ -33,7 +33,7 @@ public class Game {
 
     private void draw() throws IOException {
         screen.clear();
-        arena.draw(screen.newTextGraphics(), screen);
+        arena.draw(screen.newTextGraphics());
         screen.refresh();
     }
 
@@ -64,7 +64,7 @@ public class Game {
         if (key.getKeyType() == KeyType.EOF) return false;
         if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
             screen.stopScreen();
-        arena.processKey(key, screen);
+        arena.processKey(key);
         return true;
     }
 }
