@@ -33,7 +33,6 @@ public class Shot extends Element {
     static public boolean up = true;
     static public boolean down = false;
 
-    public void draw(){}
     public void draw(TextGraphics graphics) {
         graphics.setCharacter(position.getX(), position.getY(), TextCharacter.fromCharacter(character)[0]);
     }

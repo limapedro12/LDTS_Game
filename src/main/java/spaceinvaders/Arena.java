@@ -1,7 +1,6 @@
 package spaceinvaders;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.input.KeyStroke;
 
 import java.util.ArrayList;
@@ -15,8 +14,9 @@ public class Arena implements ShotObserver{
     public Arena() {
         ship = new Ship();
         ship.addObserver(this);
-        elements = new java.util.ArrayList<>();
-        shots = new java.util.ArrayList<>();
+        elements = new ArrayList<>();
+        shots = new ArrayList<>();
+        aliens = new ArrayList<>();
         createAliens();
         elements.add(ship);
         elements.add(new Protection(new Position(48, 35),  1));
@@ -30,8 +30,7 @@ public class Arena implements ShotObserver{
         shots.add(shot);
     }
 
-    private void createAliens() {
-        aliens = new ArrayList<>();
+    public void createAliens() {
         for (int j = 0; j < 10; j++) {
             Alien a = new Alien(new Position(13 + 8 * j, 9), '&');
             Alien b = new Alien(new Position(13 + 8 * j, 11), 'Y');
@@ -43,7 +42,7 @@ public class Arena implements ShotObserver{
         }
     }
 
-    public void draw(TextGraphics graphics, Screen screen) {
+    public void draw(TextGraphics graphics) {
         List<Element> dead = new java.util.ArrayList<>();
         for (Element element : elements) {
             element.draw(graphics);
@@ -71,5 +70,21 @@ public class Arena implements ShotObserver{
 
     public void processKey(KeyStroke key) {
         ship.processKey(key);
+    }
+
+    public List<Shot> getShots() {
+        return shots;
+    }
+
+    public List<Element> getElements() {
+        return elements;
+    }
+
+    public List<Alien> getAliens() {
+        return aliens;
+    }
+
+    public Ship getShip() {
+        return ship;
     }
 }
