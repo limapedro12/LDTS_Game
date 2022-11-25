@@ -114,7 +114,8 @@ public class Ship extends Element implements ShotSubject {
         }
     }
     public void fire() {
-        notifyObservers(new ShipShot(new Position(getX(), getY() - 2)));
+        ShipShot shot = new ShipShot(new Position(getX(), getY() - 2));
+        notifyObservers(shot);
     }
 
     public int getWidth() {

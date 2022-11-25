@@ -14,6 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
+    public static void main(String[] args) throws IOException {
+        Game game = new Game();
+        game.run();
+    }
     int width = 100;
     int height = 50;
     private Screen screen;
