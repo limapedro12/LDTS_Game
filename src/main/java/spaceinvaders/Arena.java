@@ -69,7 +69,7 @@ public class Arena implements ShotObserver{
         shots.removeAll(collided);
     }
 
-    public void processKey(KeyStroke key, Screen screen) {
-        ship.processKey(key, screen);
+    public void processKey(KeyStroke key) {
+        ship.processKey(key);
     }
 }

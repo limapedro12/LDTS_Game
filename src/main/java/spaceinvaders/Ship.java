@@ -75,7 +75,7 @@ public class Ship extends Element implements ShotSubject {
             return rightBound < 98;
         }
     }
-    public void processKey(KeyStroke key, Screen screen) {
+    public void processKey(KeyStroke key) {
         if (key.getKeyType() == KeyType.Character) {
             switch (key.getCharacter()) {
                 case 'a':
@@ -114,7 +114,8 @@ public class Ship extends Element implements ShotSubject {
         }
     }
     public void fire() {
-        notifyObservers(new ShipShot(new Position(getX(), getY() - 2)));
+        ShipShot shot = new ShipShot(new Position(getX(), getY() - 2));
+        notifyObservers(shot);
     }
 
     public int getWidth() {
