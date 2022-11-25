@@ -28,15 +28,16 @@ public class AlienTest {
     }
 
     @Test
-    public void move(){
-        this.position.setX(position.getX()+1);
-        this.position.setY(position.getY()+1);
-        assertEquals(21,position.getX());
-        assertEquals(10,position.getY());
-        this.position.setX(position.getX()-2);
-        this.position.setY(position.getY()-2);
-        assertEquals(19,position.getX());
-        assertEquals(8,position.getY());
+    public void move1(){
+        alien.move(new Position(1, 1));
+        assertEquals(21,alien.getPosition().getX());
+        assertEquals(10,alien.getPosition().getY());
+    }
+    @Test
+    public void move2(){
+        alien.move(new Position(-1, -1));
+        assertEquals(19,alien.getPosition().getX());
+        assertEquals(8,alien.getPosition().getY());
     }
     @Test
     public void damage() {
@@ -52,4 +53,13 @@ public class AlienTest {
 
     }
 
+    @Test
+    public void getWidth() {
+        assertEquals(1,alien.getWidth());
+    }
+
+    @Test
+    public void getHeight() {
+        assertEquals(1,alien.getHeight());
+    }
 }

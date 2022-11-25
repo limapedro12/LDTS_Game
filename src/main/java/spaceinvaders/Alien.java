@@ -40,5 +40,3 @@ public class Alien extends Element{
         return alive;
     }
 }
-
-
