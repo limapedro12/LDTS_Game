@@ -8,49 +8,46 @@ import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
+import spaceinvaders.controller.GameController;
+import spaceinvaders.model.GameModel;
+import spaceinvaders.view.GameViewer;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
+    static private GameModel model;
+    static private GameController controller;
+    static private GameViewer viewer;
+    static private Screen screen;
+    static private int width = 100;
+    static private int height = 50;
+
     public static void main(String[] args) throws IOException {
-        Game game = new Game();
-        game.run();
-    }
-    int width = 100;
-    int height = 50;
-    private Screen screen;
-    private Arena arena;
-    public Game() {
-        try {
-            Terminal terminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height)).createTerminal();
-            screen = new TerminalScreen(terminal);
-            screen.setCursorPosition(null);
-            screen.startScreen();
-            screen.doResizeIfNecessary();
-            arena = new Arena();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Terminal terminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height)).createTerminal();
+        screen = new TerminalScreen(terminal);
+        screen.setCursorPosition(null);
+        screen.startScreen();
+        screen.doResizeIfNecessary();
+
+        model = new GameModel();
+        controller = new GameController(model, screen);
+        viewer = new GameViewer(model, screen);
+
+        run();
     }
 
-    private void draw() throws IOException {
-        screen.clear();
-        arena.draw(screen.newTextGraphics());
-        screen.refresh();
-    }
-
-    public void run() throws IOException {
+    static public void run() throws IOException {
         int FPS = 10;
         int frameTime = 1000 / FPS;
 
         while (true) {
             long startTime = System.currentTimeMillis();
 
-            draw();
-            arena.checkCollisions();
-            if(!processKey()) break;
+            model.run();
+            viewer.draw();
+            if (!controller.processKey()) break;
 
             long elapsedTime = System.currentTimeMillis() - startTime;
             long sleepTime = frameTime - elapsedTime;
@@ -60,15 +57,5 @@ public class Game {
             } catch (InterruptedException e) {
             }
         }
-    }
-
-    private boolean processKey() throws IOException {
-        KeyStroke key = screen.pollInput();
-        if (key == null) return true;
-        if (key.getKeyType() == KeyType.EOF) return false;
-        if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
-            screen.stopScreen();
-        arena.processKey(key);
-        return true;
     }
 }

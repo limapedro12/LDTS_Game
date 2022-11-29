@@ -3,10 +3,7 @@ package spaceinvaders.view;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import spaceinvaders.model.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class ArenaViewer {
+public class ArenaViewer implements Viewer{
     private ArenaModel model;
 
     public ArenaViewer(ArenaModel model) {

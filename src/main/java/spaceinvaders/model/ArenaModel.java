@@ -2,16 +2,21 @@ package spaceinvaders.model;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
+import spaceinvaders.view.ArenaViewer;
+import spaceinvaders.view.Viewer;
 
+import javax.swing.text.View;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ArenaModel implements ShotObserverModel {
+    private Viewer viewer;
     private ShipModel ship;
     private List<AlienModel> aliens;
     private List<ElementModel> elements;
     private List<ShotModel> shots;
     public ArenaModel() {
+        viewer = new ArenaViewer(this);
         ship = new ShipModel();
         ship.addObserver(this);
         elements = new ArrayList<>();
@@ -89,5 +94,9 @@ public class ArenaModel implements ShotObserverModel {
 
     public ShipModel getShip() {
         return ship;
+    }
+
+    public Viewer getViewer() {
+        return viewer;
     }
 }
