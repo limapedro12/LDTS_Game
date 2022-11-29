@@ -13,12 +13,6 @@ public class AlienModel extends ElementModel {
         this.symbol = symbol;
     }
 
-    @Override
-    public void draw(TextGraphics graphics){
-         /*ImageIcon image = new (this.getClass().getResource(alien));
-        setImage(image.getImage());*/
-        graphics.setCharacter(new TerminalPosition(position.getX(), position.getY()), TextCharacter.fromCharacter(symbol)[0]);
-    }
     public void move(PositionModel direction) {
 
         this.position.setX(position.getX()+direction.getX());
@@ -31,4 +25,5 @@ public class AlienModel extends ElementModel {
     public boolean isAlive() {
         return alive;
     }
+    public char getSymbol(){return symbol;}
 }

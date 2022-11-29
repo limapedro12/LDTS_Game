@@ -6,7 +6,6 @@ import spaceinvaders.model.*;
 
 public class ShotView implements ElementView {
     ShotModel model;
-
     public ShotView(ShotModel model){
         this.model = model;
     }
