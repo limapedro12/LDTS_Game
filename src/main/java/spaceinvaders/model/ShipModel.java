@@ -4,6 +4,7 @@ import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
+import spaceinvaders.view.ShipViewer;
 
 import java.util.List;
 
@@ -16,11 +17,13 @@ public class ShipModel extends ElementModel implements ShotSubjectModel {
         super(new PositionModel(50, 40));
         this.leftBound = 46;
         this.rightBound = 54;
+        this.viewer = new ShipViewer(this);
     }
     public ShipModel(int x) {
         super(new PositionModel(x, 40));
         this.leftBound = x-4;
         this.rightBound = x+4;
+        this.viewer = new ShipViewer(this);
     }
     public int getX() {
         return position.getX();

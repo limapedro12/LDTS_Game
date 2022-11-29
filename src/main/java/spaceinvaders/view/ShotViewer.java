@@ -4,9 +4,9 @@ import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import spaceinvaders.model.*;
 
-public class ShotView implements ElementView {
+public class ShotViewer implements ElementViewer {
     ShotModel model;
-    public ShotView(ShotModel model){
+    public ShotViewer(ShotModel model){
         this.model = model;
     }
 

@@ -42,12 +42,21 @@ public class ArenaModel implements ShotObserverModel {
         }
     }
 
-    public void run(TextGraphics graphics) {
+    public void run() {
+        checkDead();
+        checkShot();
+        checkCollisions();
+    }
+
+    public void checkDead() {
         List<ElementModel> dead = new ArrayList<>();
         for (ElementModel element : elements) {
             if(!element.isAlive()) dead.add(element);
         }
         elements.removeAll(dead);
+    }
+
+    public void checkShot() {
         for (ShotModel shot : shots) {
             shot.update();
         }
@@ -64,10 +73,6 @@ public class ArenaModel implements ShotObserverModel {
             }
         }
         shots.removeAll(collided);
-    }
-
-    public void processKey(KeyStroke key) {
-        ship.processKey(key);
     }
 
     public List<ShotModel> getShots() {

@@ -4,9 +4,9 @@ import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import spaceinvaders.model.*;
 
-public class ShipView {
+public class ShipViewer implements ElementViewer {
     private ShipModel ship;
-    public ShipView(ShipModel ship) {
+    public ShipViewer(ShipModel ship) {
         this.ship = ship;
     }
     public void draw(TextGraphics graphics) {
@@ -22,5 +22,10 @@ public class ShipView {
         graphics.setCharacter(ship.getX(), ship.getY(), TextCharacter.fromCharacter('U')[0]);
         graphics.setCharacter(ship.getX() - 1, 43, TextCharacter.fromCharacter('S')[0]);
         graphics.setCharacter(ship.getX() + 1, 43, TextCharacter.fromCharacter('S')[0]);
+    }
+
+    @Override
+    public ElementModel getModel() {
+        return ship;
     }
 }

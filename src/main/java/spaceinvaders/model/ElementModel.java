@@ -1,9 +1,11 @@
 package spaceinvaders.model;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
+import spaceinvaders.view.ElementViewer;
 
 public abstract class ElementModel {
     protected PositionModel position;
+    protected ElementViewer viewer;
 
     public ElementModel(PositionModel position) {
         this.position = position;
@@ -28,4 +30,7 @@ public abstract class ElementModel {
     public void damage() {};
 
     public abstract boolean isAlive();
+    public ElementViewer getViewer() {
+        return viewer;
+    }
 }

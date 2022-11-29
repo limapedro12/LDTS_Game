@@ -4,6 +4,7 @@ import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import spaceinvaders.view.ProtectionViewer;
 
 public class ProtectionModel extends ElementModel {
     private int life;
@@ -13,6 +14,7 @@ public class ProtectionModel extends ElementModel {
     public ProtectionModel(PositionModel position, int life) {
         super(position);
         this.life = life;
+        this.viewer = new ProtectionViewer(this);
     }
 
     public void draw() {}

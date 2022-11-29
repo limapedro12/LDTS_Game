@@ -2,8 +2,8 @@ package spaceinvaders.view;
 
 import spaceinvaders.model.ShipShotModel;
 
-public class ShipShotView extends ShotView {
-    public ShipShotView(ShipShotModel model){
+public class ShipShotViewer extends ShotViewer {
+    public ShipShotViewer(ShipShotModel model){
         super(model);
     }
 }

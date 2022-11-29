@@ -2,6 +2,7 @@ package spaceinvaders.model;
 
 import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import spaceinvaders.view.ShotViewer;
 
 public class ShotModel extends ElementModel {
     float floatY;
@@ -16,6 +17,7 @@ public class ShotModel extends ElementModel {
         this.direction = direction;
         this.character = character;
         this.floatY = position.getY();
+        this.viewer = new ShotViewer(this);
     }
 
     public PositionModel getPosition() {
