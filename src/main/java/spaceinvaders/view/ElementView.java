@@ -1,7 +1,9 @@
 package spaceinvaders.view;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
+import spaceinvaders.model.ElementModel;
 
 public interface ElementView {
-    public abstract void draw(TextGraphics graphics);
+    public void draw(TextGraphics graphics);
+    public ElementModel getModel();
 }

@@ -42,15 +42,13 @@ public class ArenaModel implements ShotObserverModel {
         }
     }
 
-    public void draw(TextGraphics graphics) {
+    public void run(TextGraphics graphics) {
         List<ElementModel> dead = new ArrayList<>();
         for (ElementModel element : elements) {
-            element.draw(graphics);
             if(!element.isAlive()) dead.add(element);
         }
         elements.removeAll(dead);
         for (ShotModel shot : shots) {
-            shot.draw(graphics);
             shot.update();
         }
     }

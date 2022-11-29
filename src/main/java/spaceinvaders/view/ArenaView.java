@@ -7,14 +7,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ArenaView {
-    ArenaModel arena;
+    ArenaModel model;
     private ShipView ship;
     private List<AlienView> aliens;
     private List<ElementView> elements;
     private List<ShotView> shots;
 
-    public ArenaView(ArenaModel arena) {
-        this.arena = arena;
+    public ArenaView(ArenaModel model) {
+        this.model = Model;
+        ship = new ShipView(arena.getShip());
+        createAlienViews();
+        createElementViews();
+    }
+
+    public void createAlienViews() {
+        aliens = new ArrayList<>();
+        for (AlienModel alien : model.getAliens()) {
+            aliens.add(new AlienView(alien));
+        }
+    }
+
+    public void createElementViews() {
+        elements = new ArrayList<>();
+        for (ElementModel element : model.getElements()) {
+            elements.add(new ElementView(element));
+        }
     }
 
     public void draw(TextGraphics graphics) {

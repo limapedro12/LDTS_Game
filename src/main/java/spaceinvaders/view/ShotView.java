@@ -14,4 +14,8 @@ public class ShotView implements ElementView {
     public void draw(TextGraphics graphics) {
         graphics.setCharacter(model.getPosition().getX(), model.getPosition().getY(), TextCharacter.fromCharacter(model.getCharacter())[0]);
     }
+
+    public ShotModel getModel(){
+        return model;
+    }
 }
