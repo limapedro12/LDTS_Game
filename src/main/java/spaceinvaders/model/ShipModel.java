@@ -28,13 +28,24 @@ public class ShipModel extends ElementModel implements ShotSubjectModel {
     public int getY() {
         return 40;
     }
+    public void setX(int x) {
+        position.setX(x);
+    }
+    public void setY(int y) {
+        position.setY(y);
+    }
     public int getLeftBound() {
         return leftBound;
     }
     public int getRightBound() {
         return rightBound;
     }
-
+    public void setLeftBound(int leftBound) {
+        this.leftBound = leftBound;
+    }
+    public void setRightBound(int rightBound) {
+        this.rightBound = rightBound;
+    }
     public void addObserver(ShotObserverModel observer){
         observers.add(observer);
     }
@@ -50,65 +61,11 @@ public class ShipModel extends ElementModel implements ShotSubjectModel {
     public List<ShotObserverModel> getObservers(){
         return observers;
     }
-
-    @Override
-    public void draw(TextGraphics graphics) {
-        for (int i = leftBound; i <= rightBound; i++) {
-            graphics.setCharacter(i, lowerBound - 1, TextCharacter.fromCharacter('#')[0]);
-        }
-        graphics.setCharacter(getX() - 1, lowerBound - 2, TextCharacter.fromCharacter('#')[0]);
-        graphics.setCharacter(getX() + 1, lowerBound - 2, TextCharacter.fromCharacter('#')[0]);
-        graphics.setCharacter(getX(), getY(), TextCharacter.fromCharacter('+')[0]);
-        for (int i = lowerBound; i >= upperBound; i--) {
-            graphics.setCharacter(getX(), i, TextCharacter.fromCharacter('S')[0]);
-        }
-        graphics.setCharacter(getX(), getY(), TextCharacter.fromCharacter('U')[0]);
-        graphics.setCharacter(getX() - 1, lowerBound, TextCharacter.fromCharacter('S')[0]);
-        graphics.setCharacter(getX() + 1, lowerBound, TextCharacter.fromCharacter('S')[0]);
-    }
     public boolean canIMove(boolean goingLeft) {
         if (goingLeft) {
             return leftBound > 1;
         } else {
             return rightBound < 98;
-        }
-    }
-    public void processKey(KeyStroke key) {
-        if (key.getKeyType() == KeyType.Character) {
-            switch (key.getCharacter()) {
-                case 'a':
-                    if (!canIMove(true)) return;
-                    this.position.setX(this.position.getX() - 1);
-                    leftBound--;
-                    rightBound--;
-                    break;
-                case 'd':
-                    if (!canIMove(false)) return;
-                    this.position.setX(this.position.getX() + 1);
-                    leftBound++;
-                    rightBound++;
-                    break;
-                case ' ':
-                    fire();
-                    break;
-            }
-        } else {
-            KeyType keyType = key.getKeyType();
-            switch (keyType) {
-                case ArrowLeft:
-                    if (!canIMove(true)) return;
-                    this.position.setX(this.position.getX() - 1);
-                    leftBound--;
-                    rightBound--;
-                    break;
-                case ArrowRight:
-                    if (!canIMove(false)) return;
-                    this.position.setX(this.position.getX() + 1);
-                    leftBound++;
-                    rightBound++;
-                    break;
-                case ArrowUp: fire(); break;
-            }
         }
     }
     public void fire() {
