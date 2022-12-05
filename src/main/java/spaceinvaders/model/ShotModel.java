@@ -36,9 +36,7 @@ public class ShotModel extends ElementModel {
     static public boolean down = false;
 
     public boolean collideWith(ElementModel element) {
-//        System.out.printf("X: %d < %d < %d\n", element.getX(), position.getX(), element.getX() + element.getWidth());
-//        System.out.printf("Y: %d < %d < %d\n\n", element.getY(), position.getY(), element.getY() + element.getHeight());
-        if (position.getX() >= element.getX() && position.getX() <= element.getX() + element.getWidth() - 1 &&
+        if (element.isTangible() && position.getX() >= element.getX() && position.getX() <= element.getX() + element.getWidth() - 1 &&
                 position.getY() >= element.getY() && position.getY() <= element.getY() + element.getHeight() - 1) {
             return true;
         }
@@ -55,5 +53,8 @@ public class ShotModel extends ElementModel {
 
     public char getCharacter() {
         return character;
+    }
+    public boolean isTangible(){
+        return false;
     }
 }

@@ -36,4 +36,7 @@ public abstract class ElementModel {
     public void setViewer(ElementViewer viewer) {
         this.viewer = viewer;
     }
+    public boolean isTangible() {
+        return true;
+    }
 }
