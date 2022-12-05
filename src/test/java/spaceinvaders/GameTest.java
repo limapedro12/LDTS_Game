@@ -1,4 +1,4 @@
-package spaceinvaders;
+/*package spaceinvaders;
 
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.input.KeyType;
@@ -34,6 +34,5 @@ public class GameTest {
         screen.refresh();
         Mockito.verify(arena,Mockito.times(1)).getViewer().draw(screen.newTextGraphics());
     }
-
-
 }
+*/
