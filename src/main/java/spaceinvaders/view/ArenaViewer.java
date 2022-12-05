@@ -14,5 +14,7 @@ public class ArenaViewer implements Viewer{
         for (ElementModel element : model.getElements()) {
             element.getViewer().draw(graphics);
         }
+        for (ShotModel shot : model.getShots())
+            shot.getViewer().draw(graphics);
     }
 }

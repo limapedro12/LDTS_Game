@@ -12,12 +12,11 @@ public class GameViewer {
 
     public GameViewer(GameModel model, Screen screen) {
         this.model = model;
+        this.screen = screen;
     }
 
     public void draw() throws IOException {
-        System.out.println("Piu!");
         screen.clear();
-        System.out.println("Piu!");
         model.getArenaModel().getViewer().draw(screen.newTextGraphics());
         screen.refresh();
     }
