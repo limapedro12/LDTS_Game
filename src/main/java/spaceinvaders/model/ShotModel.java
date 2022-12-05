@@ -43,6 +43,15 @@ public class ShotModel extends ElementModel {
         return false;
     }
 
+    public boolean collideWith(AlienGroupModel alienGroup) {
+        for (AlienModel alien : alienGroup.getAliens()) {
+            if (collideWith(alien)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public boolean isAlive() {
         return false;
     }

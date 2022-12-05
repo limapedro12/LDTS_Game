@@ -34,13 +34,13 @@ public class ArenaTest {
         assertEquals(model.getShots().size(), 1);
     }
     
-    @Test
-    public void createAliens(){
-        assertEquals(50, model.getAliens().size());
-        model.createAliens();
-        assertEquals(100, model.getAliens().size());
-        assertEquals(104, model.getElements().size());
-    }
+//    @Test
+//    public void createAliens(){
+//        assertEquals(50, model.getAliens().size());
+//        model.createAliens();
+//        assertEquals(100, model.getAliens().size());
+//        assertEquals(104, model.getElements().size());
+//    }
     
     @Test
     public void draw1(){

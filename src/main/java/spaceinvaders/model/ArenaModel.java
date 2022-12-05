@@ -12,7 +12,7 @@ import java.util.List;
 public class ArenaModel implements ShotObserverModel {
     private Viewer viewer;
     private ShipModel ship;
-    private List<AlienModel> aliens;
+    private AlienGroupModel aliens;
     private List<ElementModel> elements;
     private List<ShotModel> shots;
     public ArenaModel() {
@@ -21,8 +21,8 @@ public class ArenaModel implements ShotObserverModel {
         ship.addObserver(this);
         elements = new ArrayList<>();
         shots = new ArrayList<>();
-        aliens = new ArrayList<>();
-        createAliens();
+        aliens = new AlienGroupModel();
+        elements.add(aliens);
         elements.add(ship);
         elements.add(new ProtectionModel(new PositionModel(48, 35),  1));
         elements.add(new ProtectionModel(new PositionModel(22, 35), 1));
@@ -33,18 +33,6 @@ public class ArenaModel implements ShotObserverModel {
 
     public void update(ShotModel shot) {
         shots.add(shot);
-    }
-
-    public void createAliens() {
-        for (int j = 0; j < 10; j++) {
-            AlienModel a = new AlienModel(new PositionModel(13 + 8 * j, 9), '&');
-            AlienModel b = new AlienModel(new PositionModel(13 + 8 * j, 11), 'Y');
-            AlienModel c = new AlienModel(new PositionModel(13 + 8 * j, 13), 'Y');
-            AlienModel d = new AlienModel(new PositionModel(13 + 8 * j, 15), 'X');
-            AlienModel e = new AlienModel(new PositionModel(13 + 8 * j, 17), 'X');
-            aliens.add(a); aliens.add(b); aliens.add(c); aliens.add(d); aliens.add(e);
-            elements.add(a); elements.add(b); elements.add(c); elements.add(d); elements.add(e);
-        }
     }
 
     public void run() {
@@ -89,7 +77,7 @@ public class ArenaModel implements ShotObserverModel {
     }
 
     public List<AlienModel> getAliens() {
-        return aliens;
+        return aliens.getAliens();
     }
 
     public ShipModel getShip() {
