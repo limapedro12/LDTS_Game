@@ -36,6 +36,7 @@ public class Game {
         viewer = new GameViewer(model, screen);
 
         run();
+
     }
 
     static public void run() throws IOException {
