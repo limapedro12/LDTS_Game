@@ -35,10 +35,6 @@ public class ShotModel extends ElementModel {
     static public boolean up = true;
     static public boolean down = false;
 
-    public void draw(TextGraphics graphics) {
-        graphics.setCharacter(position.getX(), position.getY(), TextCharacter.fromCharacter(character)[0]);
-    }
-
     public boolean collideWith(ElementModel element) {
 //        System.out.printf("X: %d < %d < %d\n", element.getX(), position.getX(), element.getX() + element.getWidth());
 //        System.out.printf("Y: %d < %d < %d\n\n", element.getY(), position.getY(), element.getY() + element.getHeight());
