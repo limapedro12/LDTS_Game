@@ -46,7 +46,7 @@ public class ShotModel extends ElementModel {
     public boolean collideWith(AlienGroupModel alienGroup) {
         for (AlienModel alien : alienGroup.getAliens()) {
             if (collideWith(alien)) {
-                alien.damage()
+                alien.damage();
                 return true;
             }
         }
