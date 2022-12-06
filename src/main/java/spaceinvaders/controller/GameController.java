@@ -17,7 +17,7 @@ public class GameController {
         this.screen = screen;
         this.model = model;
         arena = new ArenaController(model.getArenaModel());
-        strategy = new ArenaStrategyController(model.getStrategy().getController());
+        strategy = new RunStrategyController(model.getStrategy().getController());
     }
 
     public boolean processKey() throws IOException {
