@@ -1,6 +1,7 @@
 package spaceinvaders.model;
 
 import spaceinvaders.controller.Controller;
+import spaceinvaders.controller.HighScoreMenuController;
 import spaceinvaders.controller.MainMenuController;
 import spaceinvaders.controller.NullController;
 import spaceinvaders.view.HighScoreMenuViewer;
@@ -23,6 +24,6 @@ public class HighScoreMenuStrategy implements RunStrategyModel{
 
     @Override
     public Controller getController() {
-        return new NullController();
+        return HighScoreMenuController.getInstance(model);
     }
 }

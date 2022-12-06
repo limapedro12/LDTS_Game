@@ -4,16 +4,17 @@ import spaceinvaders.view.HighScoreMenuViewer;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.TreeSet;
 
 public class HighScoreMenuModel extends MenuModel{
     private static HighScoreMenuModel instance = null;
     private GameModel gameModel;
     private List<Integer> scores;
+    private Command exitCommand;
     private HighScoreMenuModel(GameModel gameModel){
         this.gameModel = gameModel;
         this.viewer = HighScoreMenuViewer.getInstance(this);
         scores = new ArrayList<>();
+        exitCommand = new ExitToMenuCommand(gameModel);
         scores.add(100);
         scores.add(200);
         scores.add(300);
@@ -26,5 +27,8 @@ public class HighScoreMenuModel extends MenuModel{
     }
     public List<Integer> getScores(){
         return scores;
+    }
+    public Command getExitCommand(){
+        return exitCommand;
     }
 }
