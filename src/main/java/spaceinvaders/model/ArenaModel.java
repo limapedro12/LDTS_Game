@@ -59,7 +59,7 @@ public class ArenaModel implements ShotObserverModel {
         List<ShotModel> collided = new ArrayList<>();
         for (ElementModel element : elements) {
             for (ShotModel shot : shots) {
-                if (shot.collideWith(element)) {
+                if (element.collideWith(shot)) {
                     element.damage();
                     collided.add(shot);
                 }

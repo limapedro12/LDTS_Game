@@ -34,25 +34,6 @@ public class ShotModel extends ElementModel {
 
     static public boolean up = true;
     static public boolean down = false;
-
-    public boolean collideWith(ElementModel element) {
-        if (element.isTangible() && position.getX() >= element.getX() && position.getX() <= element.getX() + element.getWidth() - 1 &&
-                position.getY() >= element.getY() && position.getY() <= element.getY() + element.getHeight() - 1) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean collideWith(AlienGroupModel alienGroup) {
-        for (AlienModel alien : alienGroup.getAliens()) {
-            if (collideWith(alien)) {
-                alien.damage();
-                return true;
-            }
-        }
-        return false;
-    }
-
     public boolean isAlive() {
         return false;
     }

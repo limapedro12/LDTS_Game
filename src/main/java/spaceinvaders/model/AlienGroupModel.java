@@ -46,4 +46,16 @@ public class AlienGroupModel extends ElementModel{
     public boolean isTangible() {
         return false;
     }
+
+    @Override
+    public boolean collideWith(ElementModel element) {
+        for (AlienModel alien : aliens) {
+            if (alien.collideWith(element)) {
+                System.out.println("AU");
+                alien.damage();
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -39,4 +39,11 @@ public abstract class ElementModel {
     public boolean isTangible() {
         return true;
     }
+    public boolean collideWith(ElementModel element){
+        return isTangible() && (
+                (position.getX() >= element.getX() && position.getX() <= element.getX() + element.getWidth() - 1 &&
+                position.getY() >= element.getY() && position.getY() <= element.getY() + element.getHeight() - 1) ||
+                (element.getX() >= position.getX() && element.getX() <= position.getX() + getWidth() - 1 &&
+                element.getY() >= position.getY() && element.getY() <= position.getY() + getHeight() - 1));
+    }
 }
