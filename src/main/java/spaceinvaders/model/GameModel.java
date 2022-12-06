@@ -8,7 +8,10 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class GameModel {
     private ArenaModel arena;
@@ -18,6 +21,8 @@ public class GameModel {
 
     public void run() throws IOException {
         arena.run();
+
+
     }
 
     public ArenaModel getArenaModel() {
