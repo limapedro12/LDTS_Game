@@ -1,13 +1,14 @@
 package spaceinvaders.model;
 
 import spaceinvaders.controller.Controller;
+import spaceinvaders.controller.MainMenuController;
 import spaceinvaders.view.MenuStrategyViewer;
 import spaceinvaders.view.RunStrategyViewer;
 
-public class MenuStrategyModel implements RunStrategyModel{
-    private MenuModel model;
+public class MainMenuStrategyModel implements RunStrategyModel{
+    private MainMenuModel model;
     private MenuStrategyViewer viewer;
-    public MenuStrategyModel(MenuModel model){
+    public MainMenuStrategyModel(MainMenuModel model){
         this.model = model;
         this.viewer = new MenuStrategyViewer(model.getViewer());
     }
@@ -20,6 +21,6 @@ public class MenuStrategyModel implements RunStrategyModel{
 
     @Override
     public Controller getController() {
-        return null;
+        return MainMenuController.getInstance(model);
     }
 }

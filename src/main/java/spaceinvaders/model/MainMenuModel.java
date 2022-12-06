@@ -1,5 +1,7 @@
 package spaceinvaders.model;
 
+import spaceinvaders.controller.Controller;
+import spaceinvaders.controller.MainMenuController;
 import spaceinvaders.view.MainMenuViewer;
 import spaceinvaders.view.MenuViewer;
 
@@ -12,9 +14,9 @@ public class MainMenuModel extends MenuModel {
         this.gameModel = gameModel;
         this.viewer = MainMenuViewer.getInstance(this);
         commands = new Command[3];
-        commands[0] = new StartCommand(gameModel.getArenaModel(), gameModel);
-        commands[1] = new StartCommand(gameModel.getArenaModel(), gameModel);
-        commands[2] = new StartCommand(gameModel.getArenaModel(), gameModel);
+        commands[0] = new StartCommand(gameModel);
+        commands[1] = new StartCommand(gameModel);
+        commands[2] = new StartCommand(gameModel);
 
     }
     public static MainMenuModel getInstance(GameModel gameModel){
@@ -34,6 +36,9 @@ public class MainMenuModel extends MenuModel {
     }
     public int getSelectedCommand(){
         return selectedCommand;
+    }
+    public void setSelectedCommand(int selectedCommand){
+        this.selectedCommand = selectedCommand;
     }
 
 }

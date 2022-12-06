@@ -16,9 +16,9 @@ public class GameModel {
     private ArenaModel arena;
     public GameModel() {
         menu = MainMenuModel.getInstance(this);
-        arena = new ArenaModel();
-        //strategy = new MenuStrategyModel(menu);
-        strategy = new ArenaStrategyModel(arena);
+        //arena = new ArenaModel();
+        strategy = new MainMenuStrategyModel((MainMenuModel) menu);
+        //strategy = new ArenaStrategyModel(arena);
     }
 
     public void run() throws IOException {
@@ -30,7 +30,7 @@ public class GameModel {
     public RunStrategyModel getStrategy() {
         return strategy;
     }
-    public ArenaModel getArenaModel() {
-        return arena;
-    }
+    //public ArenaModel getArenaModel() {
+//        return arena;
+//    }
 }

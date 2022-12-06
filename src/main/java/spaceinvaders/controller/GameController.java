@@ -10,13 +10,12 @@ import java.io.IOException;
 public class GameController {
     private Screen screen;
     private GameModel model;
-    private ArenaController arena;
+
     private RunStrategyController strategy;
 
     public GameController(GameModel model, Screen screen) {
         this.screen = screen;
         this.model = model;
-        arena = new ArenaController(model.getArenaModel());
         strategy = new RunStrategyController(model.getStrategy().getController());
     }
 
