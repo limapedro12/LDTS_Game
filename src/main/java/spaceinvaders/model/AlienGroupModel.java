@@ -51,8 +51,8 @@ public class AlienGroupModel extends ElementModel{
     public boolean collideWith(ElementModel element) {
         for (AlienModel alien : aliens) {
             if (alien.collideWith(element)) {
-                System.out.println("AU");
                 alien.damage();
+                aliens.remove(alien);
                 return true;
             }
         }
