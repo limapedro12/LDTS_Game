@@ -26,13 +26,13 @@ public class MainMenuController implements Controller{
     @Override
     public void processKey(KeyStroke key) {
         if(key.getKeyType() == ArrowUp){
-            model.setSelectedCommand(model.getSelectedCommand() - 1);
+            model.upSelectedCommand();
         }
         else if (key.getKeyType() == ArrowDown){
-            model.setSelectedCommand(model.getSelectedCommand() + 1);
+            model.downSelectedCommand();
         }
         else if (key.getKeyType() == KeyType.Enter){
-            model.getCommands()[model.getSelectedCommand()].execute();
+            model.getSelectedCommand().execute();
         }
     }
 }

@@ -5,18 +5,25 @@ import spaceinvaders.controller.MainMenuController;
 import spaceinvaders.view.MainMenuViewer;
 import spaceinvaders.view.MenuViewer;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static java.lang.Math.abs;
+
 public class MainMenuModel extends MenuModel {
     private static MainMenuModel instance = null;
     private GameModel gameModel;
-    private Command[] commands;
+    private List<Command> commands;
     private int selectedCommand = 0;
     private MainMenuModel(GameModel gameModel){
         this.gameModel = gameModel;
         this.viewer = MainMenuViewer.getInstance(this);
-        commands = new Command[3];
-        commands[0] = new StartCommand(gameModel);
-        commands[1] = new StartCommand(gameModel);
-        commands[2] = new StartCommand(gameModel);
+        commands = new ArrayList<>();
+        commands.add(new StartCommand(gameModel));
+        commands.add(new StartCommand(gameModel));
+        commands.add(new StartCommand(gameModel));
+        commands.add(new StartCommand(gameModel));
+        commands.add(new ExitCommand());
 
     }
     public static MainMenuModel getInstance(GameModel gameModel){
@@ -25,20 +32,24 @@ public class MainMenuModel extends MenuModel {
         }
         return instance;
     }
-    public Command[] getCommands(){
+    public List<Command> getCommands(){
         return commands;
     }
-    public void addCommand(Command command, int index){
-        commands[index] = command;
-    }
-    public void removeCommand(int index){
-        commands[index] = null;
-    }
-    public int getSelectedCommand(){
+    public int getSelectedCommandInt(){
         return selectedCommand;
     }
-    public void setSelectedCommand(int selectedCommand){
-        this.selectedCommand = selectedCommand;
+    public Command getSelectedCommand(){
+        return commands.get(selectedCommand);
+    }
+    public void upSelectedCommand(){
+        if (selectedCommand > 0){
+            selectedCommand--;
+        } else {
+            selectedCommand = commands.size() - 1;
+        }
+    }
+    public void downSelectedCommand(){
+        selectedCommand = (selectedCommand + 1) % commands.size();
     }
 
 }

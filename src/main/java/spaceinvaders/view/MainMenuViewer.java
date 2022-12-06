@@ -23,14 +23,14 @@ public class MainMenuViewer implements MenuViewer {
     public void draw(TextGraphics graphics){
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFC300"));
         graphics.putString(20, 18, "Space Invaders");
-        for(int i = 0; i < model.getCommands().length; i++){
-            if(model.getCommands()[i] != null){
-                if(i == model.getSelectedCommand()){
+        for(int i = 0; i < model.getCommands().size(); i++){
+            if(model.getCommands().get(i) != null){
+                if(i == model.getSelectedCommandInt()){
                     graphics.setForegroundColor(TextColor.Factory.fromString("#FFC300"));
-                    graphics.putString(10, 20 + i, "> " + model.getCommands()[i].getTitle());
+                    graphics.putString(10, 20 + i, "> " + model.getCommands().get(i).getTitle());
                 }else{
                     graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
-                    graphics.putString(10, 20 + i, model.getCommands()[i].getTitle());
+                    graphics.putString(10, 20 + i, model.getCommands().get(i).getTitle());
                 }
             }
         }
