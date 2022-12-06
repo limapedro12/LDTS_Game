@@ -16,10 +16,15 @@ public class ArenaModel implements ShotObserverModel {
     private List<ElementModel> elements;
     private List<ShotModel> shots;
 
+
     private List<LifeModel> lives;
 
     private int lifes;
+
+    private int score;
+
     public ArenaModel() {
+        score =0;
         viewer = new ArenaViewer(this);
         ship = new ShipModel();
         ship.addObserver(this);
@@ -80,11 +85,16 @@ public class ArenaModel implements ShotObserverModel {
         for (ElementModel element : elements) {
             for (ShotModel shot : shots) {
                 if (shot.collideWith(element)) {
+                    if (element instanceof AlienModel){
+                        score +=10;
+                    }
+
                     element.damage();
                     collided.add(shot);
                 }
             }
         }
+
         shots.removeAll(collided);
     }
 
@@ -110,7 +120,11 @@ public class ArenaModel implements ShotObserverModel {
         return viewer;
     }
 
+
     public int getLifes(){
         return lifes;
     }
+
+    public int getScore(){return score;}
+
 }

@@ -12,7 +12,10 @@ import spaceinvaders.controller.GameController;
 import spaceinvaders.model.GameModel;
 import spaceinvaders.view.GameViewer;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +39,25 @@ public class Game {
         viewer = new GameViewer(model, screen);
 
         run();
+        System.out.println("Piu");
+        PrintWriter pw = null;
+
+        try {
+            File file = new File("Highscores.csv");
+            FileWriter fw = new FileWriter(file, true);
+            pw = new PrintWriter(fw);
+            pw.println(model.getArenaModel().getScore()+"%n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (pw != null) {
+                pw.close();
+            }
+        }
+
+
+
+
     }
 
     static public void run() throws IOException {
@@ -57,5 +79,6 @@ public class Game {
             } catch (InterruptedException e) {
             }
         }
+
     }
 }
