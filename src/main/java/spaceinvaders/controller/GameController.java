@@ -25,6 +25,10 @@ public class GameController {
         if (key.getKeyType() == KeyType.EOF) return false;
         if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
             screen.stopScreen();
+
+        if(strategy.getController() != model.getStrategy().getController()){
+            strategy = new RunStrategyController(model.getStrategy().getController());
+        }
         strategy.processKey(key);
         return true;
     }

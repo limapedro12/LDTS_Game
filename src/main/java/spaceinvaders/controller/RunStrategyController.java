@@ -13,4 +13,7 @@ public class RunStrategyController {
     public void processKey(KeyStroke key){
         controller.processKey(key);
     }
+    public Controller getController(){
+        return controller;
+    }
 }

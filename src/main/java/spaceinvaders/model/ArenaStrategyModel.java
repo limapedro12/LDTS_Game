@@ -1,7 +1,6 @@
 package spaceinvaders.model;
 
 import spaceinvaders.controller.ArenaController;
-import spaceinvaders.controller.ArenaStrategyController;
 import spaceinvaders.controller.Controller;
 import spaceinvaders.view.ArenaStrategyViewer;
 
