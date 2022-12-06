@@ -4,7 +4,7 @@ public class StartCommand implements Command{
     ArenaModel arena;
     GameModel gameModel;
     public StartCommand(GameModel gameModel){
-        this.arena = new ArenaModel();
+        this.arena = new ArenaModel(gameModel);
         this.gameModel = gameModel;
     }
     public void execute(){

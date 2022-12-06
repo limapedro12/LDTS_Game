@@ -7,22 +7,26 @@ import spaceinvaders.model.HighScoreMenuModel;
 public class HighScoreMenuController implements Controller {
     private HighScoreMenuModel model;
     private static HighScoreMenuController instance = null;
-    private HighScoreMenuController(HighScoreMenuModel model){
+
+    private HighScoreMenuController(HighScoreMenuModel model) {
         this.model = model;
     }
-    public static HighScoreMenuController getInstance(HighScoreMenuModel model){
-        if(instance == null){
+
+    public static HighScoreMenuController getInstance(HighScoreMenuModel model) {
+        if (instance == null) {
             instance = new HighScoreMenuController(model);
         }
         return instance;
     }
-    public static HighScoreMenuController getInstance(){
+
+    public static HighScoreMenuController getInstance() {
         return instance;
     }
 
     @Override
     public void processKey(KeyStroke key) {
-        if (key.getKeyType() == KeyType.Enter){
+        if ((key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') ||
+                key.getKeyType() == KeyType.Escape || key.getKeyType() == KeyType.Enter) {
             model.getExitCommand().execute();
         }
     }

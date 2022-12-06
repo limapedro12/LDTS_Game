@@ -15,7 +15,9 @@ public class ArenaModel implements ShotObserverModel {
     private AlienGroupModel aliens;
     private List<ElementModel> elements;
     private List<ShotModel> shots;
-    public ArenaModel() {
+    private Command exitCommand;
+    public ArenaModel(GameModel gameModel){
+        this.exitCommand = new ExitToMenuCommand(gameModel);
         viewer = new ArenaViewer(this);
         ship = new ShipModel();
         ship.addObserver(this);
@@ -29,6 +31,9 @@ public class ArenaModel implements ShotObserverModel {
         elements.add(new ProtectionModel(new PositionModel(72, 35), 30));
         // shots.add(new ShipShot(new Position(54, 45)));
         // shots.add(new AlienShot(new Position(25, 5)));
+    }
+    public Command getExitCommand(){
+        return exitCommand;
     }
 
     public void update(ShotModel shot) {

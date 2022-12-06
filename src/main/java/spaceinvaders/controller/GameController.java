@@ -23,8 +23,6 @@ public class GameController {
         KeyStroke key = screen.pollInput();
         if (key == null) return true;
         if (key.getKeyType() == KeyType.EOF) return false;
-        if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
-            screen.stopScreen();
 
         if(strategy.getController() != model.getStrategy().getController()){
             strategy = new RunStrategyController(model.getStrategy().getController());
