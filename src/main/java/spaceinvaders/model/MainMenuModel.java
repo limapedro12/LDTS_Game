@@ -22,7 +22,7 @@ public class MainMenuModel extends MenuModel {
         commands.add(new StartCommand(gameModel));
         commands.add(new StartCommand(gameModel));
         commands.add(new StartCommand(gameModel));
-        commands.add(new StartCommand(gameModel));
+        commands.add(new HighScoreCommand(gameModel));
         commands.add(new ExitCommand());
 
     }
