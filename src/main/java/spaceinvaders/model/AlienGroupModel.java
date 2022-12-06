@@ -4,8 +4,9 @@ import spaceinvaders.view.AlienGroupViewer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
-public class AlienGroupModel extends ElementModel{
+public class AlienGroupModel extends ElementModel {
     private List<AlienModel> aliens;
     public AlienGroupModel() {
         super(new PositionModel(0, 0));
@@ -67,5 +68,9 @@ public class AlienGroupModel extends ElementModel{
                 break;
         }
         for (AlienModel alien : aliens) alien.move(direction);
+    }
+    public void fire(float level) {
+        int random = ThreadLocalRandom.current().nextInt(0,  2*aliens.size());
+        if (random < aliens.size()) aliens.get(random).fire(level);
     }
 }

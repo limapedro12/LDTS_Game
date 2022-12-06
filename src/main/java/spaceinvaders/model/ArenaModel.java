@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ArenaModel implements ShotObserverModel {
-    private Viewer viewer;
+    private final Viewer viewer;
     private ShipModel ship;
     private AlienGroupModel aliens;
     private List<ElementModel> elements;
@@ -19,7 +19,7 @@ public class ArenaModel implements ShotObserverModel {
     private long elapsedTime;
     private long targetTime;
     private int lastAlienDirection;
-    private int alienSpeed;
+    private int level;
     public ArenaModel() {
         viewer = new ArenaViewer(this);
         ship = new ShipModel();
@@ -27,10 +27,11 @@ public class ArenaModel implements ShotObserverModel {
         elements = new ArrayList<>();
         shots = new ArrayList<>();
         aliens = new AlienGroupModel();
+        aliens.addObserver(this);
         startTime = System.currentTimeMillis();
         elapsedTime = 0;
         lastAlienDirection = 0;
-        alienSpeed = 1;
+        level = 1;
         elements.add(aliens);
         elements.add(ship);
         elements.add(new ProtectionModel(new PositionModel(48, 35),  1));
@@ -48,32 +49,51 @@ public class ArenaModel implements ShotObserverModel {
         checkDead();
         checkShot();
         checkCollisions();
-        moveAliens();
-    }
-    public void moveAliens() {
         elapsedTime = System.currentTimeMillis() - startTime;
         if (elapsedTime >= targetTime) {
-            if (lastAlienDirection == 0) {
-                if (aliens.canIMove(true)) aliens.move(0);
-                else if (!aliens.canIMove(true)) {
-                    aliens.move(2);
-                    aliens.move(1);
-                    lastAlienDirection = 1;
-                }
-            } else if (lastAlienDirection == 1) {
-                if (aliens.canIMove(false)) aliens.move(1);
-                else if (!aliens.canIMove(false)) {
-                    aliens.move(2);
-                    aliens.move(0);
-                    lastAlienDirection = 0;
-                }
-            }
-            targetTime = elapsedTime + (1000/alienSpeed);
-            return;
+            moveAliens();
+            aliens.fire((float) (0.5*level));
+            targetTime = elapsedTime + (1000/level);
         }
     }
-    public void incrementAlienSpeed() {
-        alienSpeed++;
+    public void moveAliens() {
+        if (lastAlienDirection == 0) {
+            if (aliens.canIMove(true)) aliens.move(0);
+            else if (!aliens.canIMove(true)) {
+                aliens.move(2);
+                aliens.move(1);
+                lastAlienDirection = 1;
+            }
+        } else if (lastAlienDirection == 1) {
+            if (aliens.canIMove(false)) aliens.move(1);
+            else if (!aliens.canIMove(false)) {
+                aliens.move(2);
+                aliens.move(0);
+                lastAlienDirection = 0;
+            }
+        }
+        //targetTime = elapsedTime + (1000/level);
+    }
+    /*public void randomAlienShoots() {
+        elapsedTime = System.currentTimeMillis() - startTime;
+        if (elapsedTime >= 2*targetTime) {
+            aliens.fire(level);
+            targetTime = elapsedTime + (1000/level);
+        }
+    }*/
+    public void incrementLevel() {
+        level++;
+        ship = new ShipModel();
+        ship.addObserver(this);
+        elements = new ArrayList<>();
+        shots = new ArrayList<>();
+        aliens = new AlienGroupModel();
+        aliens.addObserver(this);
+        elements.add(aliens);
+        elements.add(ship);
+        elements.add(new ProtectionModel(new PositionModel(48, 35),  1));
+        elements.add(new ProtectionModel(new PositionModel(22, 35), 1));
+        elements.add(new ProtectionModel(new PositionModel(72, 35), 30));
     }
     public void checkDead() {
         List<ElementModel> dead = new ArrayList<>();
@@ -84,9 +104,7 @@ public class ArenaModel implements ShotObserverModel {
     }
 
     public void checkShot() {
-        for (ShotModel shot : shots) {
-            shot.update();
-        }
+        for (ShotModel shot : shots) shot.update();
     }
 
     public void checkCollisions() {

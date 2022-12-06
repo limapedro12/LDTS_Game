@@ -3,7 +3,9 @@ package spaceinvaders.model;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import spaceinvaders.view.ElementViewer;
 
-public abstract class ElementModel {
+import java.util.List;
+
+public abstract class ElementModel implements ShotSubjectModel {
     protected PositionModel position;
     protected ElementViewer viewer;
 
@@ -58,5 +60,23 @@ public abstract class ElementModel {
                 this.position.setY(this.position.getY()+1);
                 break;
         }
+    }
+    /*public void fire() {
+        ShotModel shot = new ShipShotModel(new PositionModel(getX(), getY() - 2));
+        notifyObservers(shot);
+    }*/
+    public void addObserver(ShotObserverModel observer){
+        observers.add(observer);
+    }
+    public void removeObserver(ShotObserverModel observer){
+        observers.remove(observer);
+    }
+    public void notifyObservers(ShotModel shot){
+        for(ShotObserverModel observer : observers){
+            observer.update(shot);
+        }
+    }
+    public List<ShotObserverModel> getObservers(){
+        return observers;
     }
 }

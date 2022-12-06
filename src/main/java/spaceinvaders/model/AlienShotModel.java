@@ -1,7 +1,7 @@
 package spaceinvaders.model;
 
 public class AlienShotModel extends ShotModel {
-    public AlienShotModel(PositionModel position) {
-        super(position, 1F, down, 'v');
+    public AlienShotModel(PositionModel position, float level) {
+        super(position, level, down, 'v');
     }
 }

@@ -20,5 +20,11 @@ public class AlienModel extends ElementModel {
     public boolean isAlive() {
         return alive;
     }
-    public char getSymbol(){return symbol;}
+    public char getSymbol(){
+        return symbol;
+    }
+    public void fire(float level) {
+        AlienShotModel shot = new AlienShotModel(new PositionModel(getX(), getY() + 1), level);
+        notifyObservers(shot);
+    }
 }

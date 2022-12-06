@@ -17,9 +17,6 @@ public class ProtectionModel extends ElementModel {
         this.viewer = new ProtectionViewer(this);
     }
 
-    public void draw() {}
-
-
     @Override
     public int getWidth() { return width; }
 
