@@ -27,7 +27,7 @@ public class ArenaModel implements ShotObserverModel {
         shots = new ArrayList<>();
         aliens = new AlienGroupModel();
         lives = new ArrayList<>();
-        lifes = 0;
+        lifes = 3;
         elements.add(aliens);
         elements.add(ship);
         elements.add(new ProtectionModel(new PositionModel(48, 35),  1));
@@ -108,5 +108,9 @@ public class ArenaModel implements ShotObserverModel {
 
     public Viewer getViewer() {
         return viewer;
+    }
+
+    public int getLifes(){
+        return lifes;
     }
 }
