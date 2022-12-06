@@ -29,7 +29,7 @@ public class AlienTest {
         Mockito.verify(graphics, Mockito.times(1)).setCharacter(new TerminalPosition(20, 9), TextCharacter.fromCharacter('&')[0]);
     }
 
-    @Test
+    /*@Test
     public void move1(){
         alien.move(new PositionModel(1, 1));
         assertEquals(21,alien.getPosition().getX());
@@ -40,7 +40,7 @@ public class AlienTest {
         alien.move(new PositionModel(-1, -1));
         assertEquals(19,alien.getPosition().getX());
         assertEquals(8,alien.getPosition().getY());
-    }
+    }*/
     @Test
     public void damage() {
         alien.damage();

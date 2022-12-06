@@ -39,4 +39,24 @@ public abstract class ElementModel {
     public boolean isTangible() {
         return true;
     }
+    public boolean canIMove(boolean goingLeft) {
+        if (goingLeft) {
+            return this.getX() > 1;
+        } else {
+            return this.getX() < 98;
+        }
+    }
+    public void move(int direction) {
+        switch (direction) {
+            case 0: // left
+                this.position.setX(this.position.getX()-1);
+                break;
+            case 1: // right
+                this.position.setX(this.position.getX()+1);
+                break;
+            case 2: // down
+                this.position.setY(this.position.getY()+1);
+                break;
+        }
+    }
 }

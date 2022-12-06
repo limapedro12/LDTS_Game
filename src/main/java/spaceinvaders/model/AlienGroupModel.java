@@ -46,4 +46,26 @@ public class AlienGroupModel extends ElementModel{
     public boolean isTangible() {
         return false;
     }
+    @Override
+    public boolean canIMove(boolean goingLeft) {
+        for (AlienModel alien : aliens) {
+            if (!alien.canIMove(goingLeft)) return false;
+        }
+        return true;
+    }
+    @Override
+    public void move(int direction) {
+        switch (direction) {
+            case 0: // left
+                this.position.setX(this.position.getX()-1);
+                break;
+            case 1: // right
+                this.position.setX(this.position.getX()+1);
+                break;
+            case 2: // down
+                this.position.setY(this.position.getY()+1);
+                break;
+        }
+        for (AlienModel alien : aliens) alien.move(direction);
+    }
 }

@@ -41,7 +41,6 @@ public class Game {
     static public void run() throws IOException {
         int FPS = 10;
         int frameTime = 1000 / FPS;
-
         while (true) {
             long startTime = System.currentTimeMillis();
 

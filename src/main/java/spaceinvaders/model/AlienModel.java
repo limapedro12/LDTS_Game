@@ -14,13 +14,6 @@ public class AlienModel extends ElementModel {
         this.symbol = symbol;
         this.viewer = new AlienViewer(this);
     }
-
-    public void move(PositionModel direction) {
-
-        this.position.setX(position.getX()+direction.getX());
-        this.position.setY(position.getY()+direction.getY());
-    }
-
     public void damage() {
         alive = false;
     }

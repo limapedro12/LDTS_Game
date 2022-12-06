@@ -64,6 +64,7 @@ public class ShipModel extends ElementModel implements ShotSubjectModel {
     public List<ShotObserverModel> getObservers(){
         return observers;
     }
+    @Override
     public boolean canIMove(boolean goingLeft) {
         if (goingLeft) {
             return leftBound > 1;
