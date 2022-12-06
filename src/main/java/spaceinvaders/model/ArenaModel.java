@@ -70,6 +70,9 @@ public class ArenaModel implements ShotObserverModel {
             aliens.fire((float) (0.5 * level));
             targetTime = elapsedTime + (1000 / level);
         }
+        if(aliens.getAliens().size()==0){
+            incrementLevel();
+        }
     }
 
     public void moveAliens() {
@@ -155,7 +158,7 @@ public class ArenaModel implements ShotObserverModel {
         for (ElementModel element : elements) {
             for (ShotModel shot : shots) {
                 if (element.collideWith(shot)) {
-                    if (element instanceof AlienModel) {
+                    if ((element instanceof AlienModel) && (shot instanceof ShipShotModel) ){
                         score += 10;
                     }
                     element.damage();
