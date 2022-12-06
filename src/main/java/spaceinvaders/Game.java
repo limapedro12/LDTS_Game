@@ -12,7 +12,10 @@ import spaceinvaders.controller.GameController;
 import spaceinvaders.model.GameModel;
 import spaceinvaders.view.GameViewer;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +39,8 @@ public class Game {
         viewer = new GameViewer(model, screen);
 
         run();
+
+
     }
 
     static public void run() throws IOException {
@@ -56,5 +61,6 @@ public class Game {
             } catch (InterruptedException e) {
             }
         }
+
     }
 }

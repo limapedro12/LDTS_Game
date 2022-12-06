@@ -6,6 +6,10 @@ import spaceinvaders.view.ArenaViewer;
 import spaceinvaders.view.Viewer;
 
 import javax.swing.text.View;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +24,12 @@ public class ArenaModel implements ShotObserverModel {
     private long targetTime;
     private int lastAlienDirection;
     private int level;
+    private List<LifeModel> lives;
+
+    private int lifes;
+    private int score;
     public ArenaModel() {
+        score =0;
         viewer = new ArenaViewer(this);
         ship = new ShipModel();
         ship.addObserver(this);
@@ -32,11 +41,16 @@ public class ArenaModel implements ShotObserverModel {
         elapsedTime = 0;
         lastAlienDirection = 0;
         level = 1;
+        lives = new ArrayList<>();
+        lifes = 3;
         elements.add(aliens);
         elements.add(ship);
         elements.add(new ProtectionModel(new PositionModel(48, 35),  1));
         elements.add(new ProtectionModel(new PositionModel(22, 35), 1));
         elements.add(new ProtectionModel(new PositionModel(72, 35), 30));
+        lives.add(new LifeModel(new PositionModel(10,50)));
+        lives.add(new LifeModel(new PositionModel(12,50)));
+        lives.add(new LifeModel(new PositionModel(14,50)));
         // shots.add(new ShipShot(new Position(54, 45)));
         // shots.add(new AlienShot(new Position(25, 5)));
     }
@@ -98,7 +112,32 @@ public class ArenaModel implements ShotObserverModel {
     public void checkDead() {
         List<ElementModel> dead = new ArrayList<>();
         for (ElementModel element : elements) {
-            if(!element.isAlive()) dead.add(element);
+            if (!element.isAlive()) {
+                if (element instanceof ShipModel) {
+                    lifes--;
+                    if (lifes == 0) {
+                        dead.add(element);
+                        PrintWriter pw = null;
+
+                        try {
+                            File file = new File("Highscores.csv");
+                            FileWriter fw = new FileWriter(file, true);
+                            pw = new PrintWriter(fw);
+                            pw.println(score+"%n");
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } finally {
+                            if (pw != null) {
+                                pw.close();
+                            }
+                        }
+                    }
+                } else {
+                    dead.add(element);
+                }
+
+            }
+
         }
         elements.removeAll(dead);
     }
@@ -112,11 +151,16 @@ public class ArenaModel implements ShotObserverModel {
         for (ElementModel element : elements) {
             for (ShotModel shot : shots) {
                 if (shot.collideWith(element)) {
+                    if (element instanceof AlienModel){
+                        score +=10;
+                    }
+
                     element.damage();
                     collided.add(shot);
                 }
             }
         }
+
         shots.removeAll(collided);
     }
 
@@ -127,6 +171,8 @@ public class ArenaModel implements ShotObserverModel {
     public List<ElementModel> getElements() {
         return elements;
     }
+
+    public List<LifeModel> getLives(){ return lives;}
 
     public List<AlienModel> getAliens() {
         return aliens.getAliens();
@@ -139,4 +185,12 @@ public class ArenaModel implements ShotObserverModel {
     public Viewer getViewer() {
         return viewer;
     }
+
+
+    public int getLifes(){
+        return lifes;
+    }
+
+    public int getScore(){return score;}
+
 }
