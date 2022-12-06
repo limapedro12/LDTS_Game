@@ -11,24 +11,24 @@ import com.googlecode.lanterna.terminal.Terminal;
 import java.io.IOException;
 
 public class GameModel {
-    private RunStrategyModel strategy;
+    private RunStateModel state;
     private MenuModel menu;
     private ArenaModel arena;
     public GameModel() {
         menu = MainMenuModel.getInstance(this);
         //arena = new ArenaModel();
-        strategy = new MainMenuStrategyModel((MainMenuModel) menu);
-        //strategy = new ArenaStrategyModel(arena);
+        state = new MainMenuStateModel((MainMenuModel) menu);
+        //state = new ArenaStateModel(arena);
     }
 
     public void run() throws IOException {
-        strategy.run();
+        state.run();
     }
-    public void setStrategy(RunStrategyModel strategy) {
-        this.strategy = strategy;
+    public void setState(RunStateModel state) {
+        this.state = state;
     }
-    public RunStrategyModel getStrategy() {
-        return strategy;
+    public RunStateModel getState() {
+        return state;
     }
     //public ArenaModel getArenaModel() {
 //        return arena;

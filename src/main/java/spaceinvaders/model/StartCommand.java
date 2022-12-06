@@ -8,7 +8,7 @@ public class StartCommand implements Command{
         this.gameModel = gameModel;
     }
     public void execute(){
-        gameModel.setStrategy(new ArenaStrategyModel(arena));
+        gameModel.setState(new ArenaStateModel(arena));
     }
     public String getTitle(){
         return "Start";

@@ -6,7 +6,7 @@ public class HighScoreCommand implements Command{
         this.gameModel = gameModel;
     }
     public void execute(){
-        gameModel.setStrategy(new HighScoreMenuStrategy(HighScoreMenuModel.getInstance(gameModel)));
+        gameModel.setState(new HighScoreMenuState(HighScoreMenuModel.getInstance(gameModel)));
     }
     public String getTitle(){
         return "HighScores";

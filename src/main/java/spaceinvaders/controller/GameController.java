@@ -11,12 +11,12 @@ public class GameController {
     private Screen screen;
     private GameModel model;
 
-    private RunStrategyController strategy;
+    private RunStateController state;
 
     public GameController(GameModel model, Screen screen) {
         this.screen = screen;
         this.model = model;
-        strategy = new RunStrategyController(model.getStrategy().getController());
+        state = new RunStateController(model.getState().getController());
     }
 
     public boolean processKey() throws IOException {
@@ -24,10 +24,10 @@ public class GameController {
         if (key == null) return true;
         if (key.getKeyType() == KeyType.EOF) return false;
 
-        if(strategy.getController() != model.getStrategy().getController()){
-            strategy = new RunStrategyController(model.getStrategy().getController());
+        if(state.getController() != model.getState().getController()){
+            state = new RunStateController(model.getState().getController());
         }
-        strategy.processKey(key);
+        state.processKey(key);
         return true;
     }
 }

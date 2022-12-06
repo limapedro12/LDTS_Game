@@ -2,6 +2,6 @@ package spaceinvaders.view;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
 
-public interface RunStrategyViewer {
+public interface RunStateViewer {
     public void draw(TextGraphics graphics);
 }

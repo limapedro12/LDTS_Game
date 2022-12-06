@@ -18,7 +18,7 @@ public class GameViewer {
     public void draw() throws IOException {
         screen.clear();
         //model.getMenuModel().getViewer().draw(screen.newTextGraphics());
-        model.getStrategy().getViewer().draw(screen.newTextGraphics());
+        model.getState().getViewer().draw(screen.newTextGraphics());
         screen.refresh();
     }
 }

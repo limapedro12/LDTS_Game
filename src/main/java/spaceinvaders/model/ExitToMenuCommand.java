@@ -6,7 +6,7 @@ public class ExitToMenuCommand implements Command {
         this.gameModel = gameModel;
     }
     public void execute(){
-        gameModel.setStrategy(new MainMenuStrategyModel(MainMenuModel.getInstance(gameModel)));
+        gameModel.setState(new MainMenuStateModel(MainMenuModel.getInstance(gameModel)));
     }
     public String getTitle(){
         return "Exit to Menu";

@@ -2,19 +2,19 @@ package spaceinvaders.model;
 
 import spaceinvaders.controller.ArenaController;
 import spaceinvaders.controller.Controller;
-import spaceinvaders.view.ArenaStrategyViewer;
+import spaceinvaders.view.ArenaStateViewer;
 
-public class ArenaStrategyModel implements RunStrategyModel{
+public class ArenaStateModel implements RunStateModel{
     private ArenaModel model;
-    private ArenaStrategyViewer viewer;
-    public ArenaStrategyModel(ArenaModel model){
+    private ArenaStateViewer viewer;
+    public ArenaStateModel(ArenaModel model){
         this.model = model;
-        this.viewer = new ArenaStrategyViewer(model.getViewer());
+        this.viewer = new ArenaStateViewer(model.getViewer());
     }
     public void run(){
         model.run();
     }
-    public ArenaStrategyViewer getViewer(){
+    public ArenaStateViewer getViewer(){
         return viewer;
     }
     public Controller getController(){

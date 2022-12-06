@@ -2,10 +2,10 @@ package spaceinvaders.view;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
 
-public class MenuStrategyViewer implements RunStrategyViewer {
+public class MenuStateViewer implements RunStateViewer {
     private MenuViewer menuViewer;
 
-    public MenuStrategyViewer(MenuViewer menuViewer){
+    public MenuStateViewer(MenuViewer menuViewer){
         this.menuViewer = menuViewer;
     }
 

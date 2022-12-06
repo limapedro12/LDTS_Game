@@ -3,10 +3,10 @@ package spaceinvaders.controller;
 
 import com.googlecode.lanterna.input.KeyStroke;
 
-public class RunStrategyController {
+public class RunStateController {
     private Controller controller;
 
-    public RunStrategyController(Controller controller){
+    public RunStateController(Controller controller){
         this.controller = controller;
     }
 
