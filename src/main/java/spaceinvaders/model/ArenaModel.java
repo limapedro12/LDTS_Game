@@ -6,6 +6,10 @@ import spaceinvaders.view.ArenaViewer;
 import spaceinvaders.view.Viewer;
 
 import javax.swing.text.View;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,6 +67,20 @@ public class ArenaModel implements ShotObserverModel {
                     lifes--;
                     if (lifes == 0) {
                         dead.add(element);
+                        PrintWriter pw = null;
+
+                        try {
+                            File file = new File("Highscores.csv");
+                            FileWriter fw = new FileWriter(file, true);
+                            pw = new PrintWriter(fw);
+                            pw.println(score+"%n");
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } finally {
+                            if (pw != null) {
+                                pw.close();
+                            }
+                        }
                     }
                 } else {
                     dead.add(element);

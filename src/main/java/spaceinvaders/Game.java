@@ -39,23 +39,6 @@ public class Game {
         viewer = new GameViewer(model, screen);
 
         run();
-        System.out.println("Piu");
-        PrintWriter pw = null;
-
-        try {
-            File file = new File("Highscores.csv");
-            FileWriter fw = new FileWriter(file, true);
-            pw = new PrintWriter(fw);
-            pw.println(model.getArenaModel().getScore()+"%n");
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (pw != null) {
-                pw.close();
-            }
-        }
-
-
 
 
     }
