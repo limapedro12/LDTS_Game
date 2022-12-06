@@ -17,6 +17,8 @@ public class ArenaModel implements ShotObserverModel {
     private List<ShotModel> shots;
 
     private List<LifeModel> lives;
+
+    private int lifes;
     public ArenaModel() {
         viewer = new ArenaViewer(this);
         ship = new ShipModel();
@@ -25,14 +27,15 @@ public class ArenaModel implements ShotObserverModel {
         shots = new ArrayList<>();
         aliens = new AlienGroupModel();
         lives = new ArrayList<>();
+        lifes = 0;
         elements.add(aliens);
         elements.add(ship);
         elements.add(new ProtectionModel(new PositionModel(48, 35),  1));
         elements.add(new ProtectionModel(new PositionModel(22, 35), 1));
         elements.add(new ProtectionModel(new PositionModel(72, 35), 30));
-        elements.add(new LifeModel(new PositionModel(10,80)));
-        elements.add(new LifeModel(new PositionModel(12,80)));
-        elements.add(new LifeModel(new PositionModel(14,80)));
+        lives.add(new LifeModel(new PositionModel(10,50)));
+        lives.add(new LifeModel(new PositionModel(12,50)));
+        lives.add(new LifeModel(new PositionModel(14,50)));
         // shots.add(new ShipShot(new Position(54, 45)));
         // shots.add(new AlienShot(new Position(25, 5)));
     }
@@ -50,7 +53,18 @@ public class ArenaModel implements ShotObserverModel {
     public void checkDead() {
         List<ElementModel> dead = new ArrayList<>();
         for (ElementModel element : elements) {
-            if(!element.isAlive()) dead.add(element);
+            if (!element.isAlive()) {
+                if (element instanceof ShipModel) {
+                    lifes--;
+                    if (lifes == 0) {
+                        dead.add(element);
+                    }
+                } else {
+                    dead.add(element);
+                }
+
+            }
+
         }
         elements.removeAll(dead);
     }

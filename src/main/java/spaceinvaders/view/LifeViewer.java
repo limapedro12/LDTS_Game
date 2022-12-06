@@ -15,7 +15,7 @@ public class LifeViewer implements ElementViewer{
     }
 
     public void draw(TextGraphics graphics){
-        graphics.setCharacter(new TerminalPosition(model.getX(), model.getY()), TextCharacter.fromCharacter('?')[0]);
+        graphics.setCharacter(model.getPosition().getX(), model.getPosition().getY(), TextCharacter.fromCharacter('?')[0]);
 
     }
 
