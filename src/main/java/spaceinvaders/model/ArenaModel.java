@@ -19,6 +19,7 @@ public class ArenaModel implements ShotObserverModel {
     private long elapsedTime;
     private long targetTime;
     private int lastAlienDirection;
+    private int alienSpeed;
     public ArenaModel() {
         viewer = new ArenaViewer(this);
         ship = new ShipModel();
@@ -29,6 +30,7 @@ public class ArenaModel implements ShotObserverModel {
         startTime = System.currentTimeMillis();
         elapsedTime = 0;
         lastAlienDirection = 0;
+        alienSpeed = 1;
         elements.add(aliens);
         elements.add(ship);
         elements.add(new ProtectionModel(new PositionModel(48, 35),  1));
@@ -66,9 +68,12 @@ public class ArenaModel implements ShotObserverModel {
                     lastAlienDirection = 0;
                 }
             }
-            targetTime = elapsedTime + 1000;
+            targetTime = elapsedTime + (1000/alienSpeed);
             return;
         }
+    }
+    public void incrementAlienSpeed() {
+        alienSpeed++;
     }
     public void checkDead() {
         List<ElementModel> dead = new ArrayList<>();
