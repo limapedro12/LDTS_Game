@@ -73,4 +73,15 @@ public class AlienGroupModel extends ElementModel {
         int random = ThreadLocalRandom.current().nextInt(0,  2*aliens.size());
         if (random < aliens.size()) aliens.get(random).fire(level);
     }
+    @Override
+    public boolean collideWith(ElementModel element) {
+        for (AlienModel alien : aliens) {
+            if (alien.collideWith(element)) {
+                alien.damage();
+                aliens.remove(alien);
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -28,8 +28,9 @@ public class ArenaModel implements ShotObserverModel {
 
     private int lifes;
     private int score;
+
     public ArenaModel() {
-        score =0;
+        score = 0;
         viewer = new ArenaViewer(this);
         ship = new ShipModel();
         ship.addObserver(this);
@@ -45,12 +46,12 @@ public class ArenaModel implements ShotObserverModel {
         lifes = 3;
         elements.add(aliens);
         elements.add(ship);
-        elements.add(new ProtectionModel(new PositionModel(48, 35),  1));
+        elements.add(new ProtectionModel(new PositionModel(48, 35), 1));
         elements.add(new ProtectionModel(new PositionModel(22, 35), 1));
         elements.add(new ProtectionModel(new PositionModel(72, 35), 30));
-        lives.add(new LifeModel(new PositionModel(10,50)));
-        lives.add(new LifeModel(new PositionModel(12,50)));
-        lives.add(new LifeModel(new PositionModel(14,50)));
+        lives.add(new LifeModel(new PositionModel(10, 50)));
+        lives.add(new LifeModel(new PositionModel(12, 50)));
+        lives.add(new LifeModel(new PositionModel(14, 50)));
         // shots.add(new ShipShot(new Position(54, 45)));
         // shots.add(new AlienShot(new Position(25, 5)));
     }
@@ -66,10 +67,11 @@ public class ArenaModel implements ShotObserverModel {
         elapsedTime = System.currentTimeMillis() - startTime;
         if (elapsedTime >= targetTime) {
             moveAliens();
-            aliens.fire((float) (0.5*level));
-            targetTime = elapsedTime + (1000/level);
+            aliens.fire((float) (0.5 * level));
+            targetTime = elapsedTime + (1000 / level);
         }
     }
+
     public void moveAliens() {
         if (lastAlienDirection == 0) {
             if (aliens.canIMove(true)) aliens.move(0);
@@ -88,6 +90,7 @@ public class ArenaModel implements ShotObserverModel {
         }
         //targetTime = elapsedTime + (1000/level);
     }
+
     /*public void randomAlienShoots() {
         elapsedTime = System.currentTimeMillis() - startTime;
         if (elapsedTime >= 2*targetTime) {
@@ -105,10 +108,11 @@ public class ArenaModel implements ShotObserverModel {
         aliens.addObserver(this);
         elements.add(aliens);
         elements.add(ship);
-        elements.add(new ProtectionModel(new PositionModel(48, 35),  1));
+        elements.add(new ProtectionModel(new PositionModel(48, 35), 1));
         elements.add(new ProtectionModel(new PositionModel(22, 35), 1));
         elements.add(new ProtectionModel(new PositionModel(72, 35), 30));
     }
+
     public void checkDead() {
         List<ElementModel> dead = new ArrayList<>();
         for (ElementModel element : elements) {
@@ -123,7 +127,7 @@ public class ArenaModel implements ShotObserverModel {
                             File file = new File("Highscores.csv");
                             FileWriter fw = new FileWriter(file, true);
                             pw = new PrintWriter(fw);
-                            pw.println(score+"%n");
+                            pw.println(score + "%n");
                         } catch (IOException e) {
                             e.printStackTrace();
                         } finally {
@@ -150,20 +154,17 @@ public class ArenaModel implements ShotObserverModel {
         List<ShotModel> collided = new ArrayList<>();
         for (ElementModel element : elements) {
             for (ShotModel shot : shots) {
-                if (shot.collideWith(element)) {
-                    if (element instanceof AlienModel){
-                        score +=10;
+                if (element.collideWith(shot)) {
+                    if (element instanceof AlienModel) {
+                        score += 10;
                     }
-
                     element.damage();
                     collided.add(shot);
                 }
             }
         }
-
         shots.removeAll(collided);
     }
-
     public List<ShotModel> getShots() {
         return shots;
     }
