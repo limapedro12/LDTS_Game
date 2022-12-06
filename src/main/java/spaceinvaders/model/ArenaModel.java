@@ -63,7 +63,10 @@ public class ArenaModel implements ShotObserverModel {
         for (ElementModel element : elements) {
             for (ShotModel shot : shots) {
                 if (shot.collideWith(element)) {
-                    score +=10;
+                    if (element instanceof AlienModel){
+                        score +=10;
+                    }
+
                     element.damage();
                     collided.add(shot);
                 }
