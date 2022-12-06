@@ -17,8 +17,8 @@ public class GameModel {
     public GameModel() {
         menu = MainMenuModel.getInstance(this);
         arena = new ArenaModel();
-        strategy = new MenuStrategyModel(menu);
-        //strategy = new ArenaStrategyModel(arena);
+        //strategy = new MenuStrategyModel(menu);
+        strategy = new ArenaStrategyModel(arena);
     }
 
     public void run() throws IOException {

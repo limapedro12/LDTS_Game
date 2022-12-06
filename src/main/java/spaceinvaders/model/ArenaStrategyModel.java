@@ -1,5 +1,8 @@
 package spaceinvaders.model;
 
+import spaceinvaders.controller.ArenaController;
+import spaceinvaders.controller.ArenaStrategyController;
+import spaceinvaders.controller.Controller;
 import spaceinvaders.view.ArenaStrategyViewer;
 
 public class ArenaStrategyModel implements RunStrategyModel{
@@ -14,5 +17,8 @@ public class ArenaStrategyModel implements RunStrategyModel{
     }
     public ArenaStrategyViewer getViewer(){
         return viewer;
+    }
+    public Controller getController(){
+        return new ArenaController(model);
     }
 }

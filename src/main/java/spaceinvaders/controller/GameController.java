@@ -11,11 +11,13 @@ public class GameController {
     private Screen screen;
     private GameModel model;
     private ArenaController arena;
+    private RunStrategyController strategy;
 
     public GameController(GameModel model, Screen screen) {
         this.screen = screen;
         this.model = model;
         arena = new ArenaController(model.getArenaModel());
+        strategy = new ArenaStrategyController(model.getStrategy().getController());
     }
 
     public boolean processKey() throws IOException {
@@ -24,7 +26,7 @@ public class GameController {
         if (key.getKeyType() == KeyType.EOF) return false;
         if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
             screen.stopScreen();
-        arena.processKey(key);
+        strategy.processKey(key);
         return true;
     }
 }

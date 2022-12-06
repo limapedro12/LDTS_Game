@@ -1,5 +1,6 @@
 package spaceinvaders.model;
 
+import spaceinvaders.controller.Controller;
 import spaceinvaders.view.MenuStrategyViewer;
 import spaceinvaders.view.RunStrategyViewer;
 
@@ -15,5 +16,10 @@ public class MenuStrategyModel implements RunStrategyModel{
     @Override
     public RunStrategyViewer getViewer() {
         return viewer;
+    }
+
+    @Override
+    public Controller getController() {
+        return null;
     }
 }

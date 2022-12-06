@@ -3,7 +3,7 @@ package spaceinvaders.controller;
 import com.googlecode.lanterna.input.KeyStroke;
 import spaceinvaders.model.ArenaModel;
 
-public class ArenaController {
+public class ArenaController implements Controller{
     private ShipController ship;
 
     public ArenaController (ArenaModel model) {
