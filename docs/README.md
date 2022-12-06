@@ -79,6 +79,16 @@ the screen. If they reach it, the player shall lose.
 <img alt="Observer UML" src="../UMLs/Observer.png" height="400" />
 <p>Fig. 6 - Observer Pattern UML</p>
 
+### REFACTORING(anotations)
+- Large Class -> Extract Class
+In the intermediary delivery we haven't implemented MVC, so we needed to extract a class viewer and a class controller from each class, then renamed the original class to class model.
+The class Element, Alien, AlienShot, ShipShot, Shot and Protection generated a Model and a Viewer.
+The class Ship, Arena and Game generated a Model, a Viewer and a Controller.
+The rest didn't need to be refactored.
+
+- Large Class -> Extract Class
+We extracted the method createAliens from the class ArenaModel to the class AlienGroupModel.
+
 ------
 
 ### TESTING
