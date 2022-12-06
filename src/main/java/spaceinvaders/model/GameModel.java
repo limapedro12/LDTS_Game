@@ -15,19 +15,22 @@ public class GameModel {
     private MenuModel menu;
     private ArenaModel arena;
     public GameModel() {
-        menu = MainMenuModel.getInstance();
+        menu = MainMenuModel.getInstance(this);
         arena = new ArenaModel();
-        strategy = new ArenaStrategyModel(arena);
+        strategy = new MenuStrategyModel(menu);
+        //strategy = new ArenaStrategyModel(arena);
     }
 
     public void run() throws IOException {
         strategy.run();
     }
-
+    public void setStrategy(RunStrategyModel strategy) {
+        this.strategy = strategy;
+    }
+    public RunStrategyModel getStrategy() {
+        return strategy;
+    }
     public ArenaModel getArenaModel() {
         return arena;
-    }
-    public MenuModel getMenuModel() {
-        return menu;
     }
 }

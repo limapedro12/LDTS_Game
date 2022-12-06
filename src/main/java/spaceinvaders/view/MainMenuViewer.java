@@ -1,5 +1,6 @@
 package spaceinvaders.view;
 
+import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import spaceinvaders.model.MainMenuModel;
 import spaceinvaders.model.MenuModel;
@@ -20,8 +21,18 @@ public class MainMenuViewer implements MenuViewer {
         return instance;
     }
     public void draw(TextGraphics graphics){
+        graphics.setForegroundColor(TextColor.Factory.fromString("#FFC300"));
+        graphics.putString(20, 18, "Space Invaders");
         for(int i = 0; i < model.getCommands().length; i++){
-            graphics.putString(0, 10 + i, model.getCommands()[i].getTitle());
+            if(model.getCommands()[i] != null){
+                if(i == model.getSelectedCommand()){
+                    graphics.setForegroundColor(TextColor.Factory.fromString("#FFC300"));
+                    graphics.putString(10, 20 + i, "> " + model.getCommands()[i].getTitle());
+                }else{
+                    graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
+                    graphics.putString(10, 20 + i, model.getCommands()[i].getTitle());
+                }
+            }
         }
     }
 }

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ArenaModel implements ShotObserverModel {
-    private Viewer viewer;
+    private ArenaViewer viewer;
     private ShipModel ship;
     private AlienGroupModel aliens;
     private List<ElementModel> elements;
@@ -84,7 +84,7 @@ public class ArenaModel implements ShotObserverModel {
         return ship;
     }
 
-    public Viewer getViewer() {
+    public ArenaViewer getViewer() {
         return viewer;
     }
 }
