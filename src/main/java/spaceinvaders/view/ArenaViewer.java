@@ -29,9 +29,7 @@ public class ArenaViewer implements Viewer{
 
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         graphics.enableModifiers(SGR.BOLD);
-        graphics.putString(10,3,"Life: "+model.getLifes());
-
-
+        graphics.putString(10,3,"Life: "+model.getShip().getLives());
         graphics.putString(80,3,"Score: "+model.getScore());
 
     }

@@ -26,7 +26,7 @@ public class ArenaModel implements ShotObserverModel {
     private int level;
     private List<LifeModel> lives;
 
-    private int lifes;
+
     private int score;
 
     public ArenaModel() {
@@ -43,7 +43,6 @@ public class ArenaModel implements ShotObserverModel {
         lastAlienDirection = 0;
         level = 1;
         lives = new ArrayList<>();
-        lifes = 3;
         elements.add(aliens);
         elements.add(ship);
         elements.add(new ProtectionModel(new PositionModel(48, 35), 1));
@@ -121,8 +120,8 @@ public class ArenaModel implements ShotObserverModel {
         for (ElementModel element : elements) {
             if (!element.isAlive()) {
                 if (element instanceof ShipModel) {
-                    lifes--;
-                    if (lifes == 0) {
+                    ship.decrementLives();
+                    if (ship.getLives() == 0) {
                         dead.add(element);
                         PrintWriter pw = null;
 
@@ -190,10 +189,6 @@ public class ArenaModel implements ShotObserverModel {
         return viewer;
     }
 
-
-    public int getLifes(){
-        return lifes;
-    }
 
     public int getScore(){return score;}
 

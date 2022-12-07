@@ -13,6 +13,8 @@ public class ShipModel extends ElementModel {
     private int rightBound;
     private final int upperBound = 39;
     private final int lowerBound = 43;
+
+    private int lives = 3;
     public ShipModel() {
         super(new PositionModel(50, 40));
         this.leftBound = 46;
@@ -61,5 +63,12 @@ public class ShipModel extends ElementModel {
     public void fire() {
         ShipShotModel shot = new ShipShotModel(new PositionModel(getX(), getY() - 2));
         notifyObservers(shot);
+    }
+    public int getLives(){
+        return lives;
+    }
+
+    public void decrementLives(){
+        lives--;
     }
 }
