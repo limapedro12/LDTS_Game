@@ -45,8 +45,8 @@ public class ArenaModel implements ShotObserverModel {
         lives = new ArrayList<>();
         elements.add(aliens);
         elements.add(ship);
-        elements.add(new ProtectionModel(new PositionModel(48, 35), 1));
-        elements.add(new ProtectionModel(new PositionModel(22, 35), 1));
+        elements.add(new ProtectionModel(new PositionModel(48, 35), 30));
+        elements.add(new ProtectionModel(new PositionModel(22, 35), 30));
         elements.add(new ProtectionModel(new PositionModel(72, 35), 30));
         lives.add(new LifeModel(new PositionModel(10, 50)));
         lives.add(new LifeModel(new PositionModel(12, 50)));
@@ -110,8 +110,8 @@ public class ArenaModel implements ShotObserverModel {
         aliens.addObserver(this);
         elements.add(aliens);
         elements.add(ship);
-        elements.add(new ProtectionModel(new PositionModel(48, 35), 1));
-        elements.add(new ProtectionModel(new PositionModel(22, 35), 1));
+        elements.add(new ProtectionModel(new PositionModel(48, 35), 30));
+        elements.add(new ProtectionModel(new PositionModel(22, 35), 30));
         elements.add(new ProtectionModel(new PositionModel(72, 35), 30));
     }
 
@@ -129,7 +129,7 @@ public class ArenaModel implements ShotObserverModel {
                 File file = new File("Highscores.csv");
                 FileWriter fw = new FileWriter(file, true);
                 pw = new PrintWriter(fw);
-                pw.println(score + "\n");
+                pw.println(score + "%n");
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {

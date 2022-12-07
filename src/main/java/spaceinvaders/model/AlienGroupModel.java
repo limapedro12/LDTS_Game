@@ -73,18 +73,6 @@ public class AlienGroupModel extends ElementModel {
     public void fire(float level) {
         int random = ThreadLocalRandom.current().nextInt(0,  2*aliens.size());
         if (random < aliens.size()) aliens.get(random).fire(level);
-        random = ThreadLocalRandom.current().nextInt(0,  2*aliens.size());
-        if (random < aliens.size()) aliens.get(random).fire(level);
-        random = ThreadLocalRandom.current().nextInt(0,  2*aliens.size());
-        if (random < aliens.size()) aliens.get(random).fire(level);
-        random = ThreadLocalRandom.current().nextInt(0,  2*aliens.size());
-        if (random < aliens.size()) aliens.get(random).fire(level);
-        random = ThreadLocalRandom.current().nextInt(0,  2*aliens.size());
-        if (random < aliens.size()) aliens.get(random).fire(level);
-        random = ThreadLocalRandom.current().nextInt(0,  2*aliens.size());
-        if (random < aliens.size()) aliens.get(random).fire(level);
-        random = ThreadLocalRandom.current().nextInt(0,  2*aliens.size());
-        if (random < aliens.size()) aliens.get(random).fire(level);
     }
     @Override
     public boolean collideWith(ShotModel shot) {
