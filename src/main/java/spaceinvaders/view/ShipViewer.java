@@ -10,8 +10,6 @@ public class ShipViewer implements ElementViewer {
         this.ship = ship;
     }
     public void draw(TextGraphics graphics) {
-        // yBoundaries = 42 -> 39
-        // xBoundaries = 46 -> 54
         graphics.setCharacter(ship.getX(), 39, TextCharacter.fromCharacter('"')[0]);
         graphics.setCharacter(ship.getX()-1, 40, TextCharacter.fromCharacter(')')[0]);
         graphics.setCharacter(ship.getX(), 40, TextCharacter.fromCharacter('=')[0]);
