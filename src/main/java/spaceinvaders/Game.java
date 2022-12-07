@@ -48,7 +48,7 @@ public class Game {
     }
 
     public AWTTerminalFontConfiguration loadFont() throws FontFormatException, IOException {
-        File fontFile = new File("resources/SpaceInv_semShip_MONO.ttf");
+        File fontFile = new File("resources/fonts/SpaceInv_MONO.ttf");
         Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(font);

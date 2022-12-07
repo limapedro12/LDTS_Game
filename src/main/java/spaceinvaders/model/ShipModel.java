@@ -12,7 +12,7 @@ public class ShipModel extends ElementModel {
     private int leftBound;
     private int rightBound;
     private final int upperBound = 39;
-    private final int lowerBound = 43;
+    private final int lowerBound = 42;
     public ShipModel() {
         super(new PositionModel(50, 40));
         this.leftBound = 46;
