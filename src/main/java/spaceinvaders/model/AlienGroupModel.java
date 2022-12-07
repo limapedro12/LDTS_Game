@@ -74,9 +74,9 @@ public class AlienGroupModel extends ElementModel {
         if (random < aliens.size()) aliens.get(random).fire(level);
     }
     @Override
-    public boolean collideWith(ElementModel element) {
+    public boolean collideWith(ShotModel shot) {
         for (AlienModel alien : aliens) {
-            if (alien.collideWith(element)) {
+            if (alien.collideWith(shot)) {
                 alien.damage();
                 aliens.remove(alien);
                 return true;

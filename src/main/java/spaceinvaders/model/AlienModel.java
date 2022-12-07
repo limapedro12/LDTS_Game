@@ -6,7 +6,6 @@ import spaceinvaders.view.AlienViewer;
 
 public class AlienModel extends ElementModel {
     boolean alive = true;
-    private final String alien = "imagens/kisspng-emoji-alien-iphone-monster-space-invaders-5ac4f1fae15e76.0256511115228564429231.png";
     protected char symbol;
 
     public AlienModel(PositionModel position, char symbol) {
@@ -26,5 +25,14 @@ public class AlienModel extends ElementModel {
     public void fire(float level) {
         AlienShotModel shot = new AlienShotModel(new PositionModel(getX(), getY() + 1), level);
         notifyObservers(shot);
+    }
+    @Override
+    public boolean collideWith(ShotModel shot){
+        return !(shot instanceof AlienShotModel) && super.collideWith(shot);
+//                isTangible() && (
+//                (position.getX() >= shot.getX() && position.getX() <= shot.getX() + shot.getWidth() - 1 &&
+//                position.getY() >= shot.getY() && position.getY() <= shot.getY() + shot.getHeight() - 1) ||
+//                (shot.getX() >= position.getX() && shot.getX() <= position.getX() + getWidth() - 1 &&
+//                shot.getY() >= position.getY() && shot.getY() <= position.getY() + getHeight() - 1));
     }
 }

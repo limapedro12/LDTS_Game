@@ -16,11 +16,10 @@ public class ArenaViewer implements Viewer{
     }
 
     public void draw(TextGraphics graphics) {
-        for (ElementModel element : model.getElements()) {
-            element.getViewer().draw(graphics);
-        }
         for (ShotModel shot : model.getShots())
             shot.getViewer().draw(graphics);
+        for (ElementModel element : model.getElements())
+            element.getViewer().draw(graphics);
 
 
         for (LifeModel life: model.getLives()){
