@@ -5,6 +5,9 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 import spaceinvaders.model.MainMenuModel;
 import spaceinvaders.model.MenuModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainMenuViewer implements MenuViewer {
     private MainMenuModel model;
     private static MenuViewer instance = null;
@@ -22,7 +25,14 @@ public class MainMenuViewer implements MenuViewer {
     }
     public void draw(TextGraphics graphics){
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFC300"));
-        graphics.putString(20, 18, "Space Invaders");
+        List<String> spaceInvaders = new ArrayList<>();
+        spaceInvaders.add(" ####         ");
+        spaceInvaders.add("#            ");
+        spaceInvaders.add(" ###         ");
+        spaceInvaders.add("    #         ");
+        spaceInvaders.add("####         ");
+        spaceInvaders.add("            ");
+        spaceInvaders.add("             ");
         for(int i = 0; i < model.getCommands().size(); i++){
             if(model.getCommands().get(i) != null){
                 if(i == model.getSelectedCommandInt()){
