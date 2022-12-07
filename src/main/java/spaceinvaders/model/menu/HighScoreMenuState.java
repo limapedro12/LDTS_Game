@@ -3,7 +3,7 @@ package spaceinvaders.model.menu;
 import spaceinvaders.controller.Controller;
 import spaceinvaders.controller.menu.HighScoreMenuController;
 import spaceinvaders.model.RunStateModel;
-import spaceinvaders.view.MenuStateViewer;
+import spaceinvaders.view.menu.MenuStateViewer;
 import spaceinvaders.view.RunStateViewer;
 
 public class HighScoreMenuState implements RunStateModel {

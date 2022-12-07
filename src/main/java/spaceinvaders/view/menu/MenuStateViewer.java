@@ -1,6 +1,8 @@
-package spaceinvaders.view;
+package spaceinvaders.view.menu;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
+import spaceinvaders.view.MenuViewer;
+import spaceinvaders.view.RunStateViewer;
 
 public class MenuStateViewer implements RunStateViewer {
     private MenuViewer menuViewer;

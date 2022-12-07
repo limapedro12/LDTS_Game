@@ -1,8 +1,9 @@
 package spaceinvaders.model;
 
+import spaceinvaders.controller.menu.MainMenuController;
 import spaceinvaders.model.menu.MainMenuModel;
-import spaceinvaders.model.menu.MainMenuStateModel;
 import spaceinvaders.model.menu.MenuModel;
+import spaceinvaders.model.menu.MenuStateModel;
 
 import java.io.IOException;
 
@@ -13,7 +14,8 @@ public class GameModel {
     public GameModel() {
         menu = MainMenuModel.getInstance(this);
         //arena = new ArenaModel();
-        state = new MainMenuStateModel((MainMenuModel) menu);
+        MainMenuModel model = MainMenuModel.getInstance(this);
+        state = new MenuStateModel(model, MainMenuController.getInstance(model));
         //state = new ArenaStateModel(arena);
     }
 

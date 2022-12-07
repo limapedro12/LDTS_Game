@@ -1,16 +1,19 @@
 package spaceinvaders.model.menu;
 
 import spaceinvaders.controller.Controller;
-import spaceinvaders.controller.menu.OptionsMenuController;
 import spaceinvaders.model.RunStateModel;
-import spaceinvaders.view.MenuStateViewer;
 import spaceinvaders.view.RunStateViewer;
+import spaceinvaders.view.menu.MenuStateViewer;
 
-public class OptionsMenuState implements RunStateModel {
-    private OptionsMenuModel model;
+import java.awt.*;
+
+public class MenuStateModel implements RunStateModel {
+    private MenuModel model;
+    private Controller controller;
     private MenuStateViewer viewer;
-    public OptionsMenuState(OptionsMenuModel model){
+    public MenuStateModel(MenuModel model, Controller controller){
         this.model = model;
+        this.controller = controller;
         this.viewer = new MenuStateViewer(model.getViewer());
     }
     public void run(){}
@@ -22,6 +25,6 @@ public class OptionsMenuState implements RunStateModel {
 
     @Override
     public Controller getController() {
-        return OptionsMenuController.getInstance(model);
+        return controller;
     }
 }

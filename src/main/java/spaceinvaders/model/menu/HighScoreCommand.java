@@ -1,5 +1,6 @@
 package spaceinvaders.model.menu;
 
+import spaceinvaders.controller.menu.HighScoreMenuController;
 import spaceinvaders.model.Command;
 import spaceinvaders.model.GameModel;
 
@@ -9,8 +10,9 @@ public class HighScoreCommand implements Command {
         this.gameModel = gameModel;
     }
     public void execute(){
-        gameModel.setState(new HighScoreMenuState(HighScoreMenuModel.getInstance(gameModel)));
-    }
+        HighScoreMenuModel model = HighScoreMenuModel.getInstance(gameModel);
+        gameModel.setState(new MenuStateModel(model, HighScoreMenuController.getInstance(model)));
+}
     public String getTitle(){
         return "HighScores";
     }
