@@ -12,18 +12,20 @@ import static java.lang.Math.abs;
 
 public class MainMenuModel extends MenuModel {
     private static MainMenuModel instance = null;
-    private GameModel gameModel;
-    private List<Command> commands;
-    private int selectedCommand = 0;
-    private MainMenuModel(GameModel gameModel){
+    protected GameModel gameModel;
+    protected List<Command> commands;
+    protected int selectedCommand = 0;
+    protected MainMenuModel(GameModel gameModel){
         this.gameModel = gameModel;
         this.viewer = MainMenuViewer.getInstance(this);
         commands = new ArrayList<>();
+        addCommands();
+    }
+    protected void addCommands(){
         commands.add(new StartCommand(gameModel));
         commands.add(new HighScoreCommand(gameModel));
         commands.add(new OptionsCommand(gameModel));
         commands.add(new ExitCommand());
-
     }
     public static MainMenuModel getInstance(GameModel gameModel){
         if(instance == null){

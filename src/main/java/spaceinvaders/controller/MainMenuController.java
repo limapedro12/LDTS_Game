@@ -8,9 +8,9 @@ import static com.googlecode.lanterna.input.KeyType.ArrowDown;
 import static com.googlecode.lanterna.input.KeyType.ArrowUp;
 
 public class MainMenuController implements Controller{
-    private MainMenuModel model;
-    private static MainMenuController instance = null;
-    private MainMenuController(MainMenuModel model){
+    protected MainMenuModel model;
+    protected static MainMenuController instance = null;
+    protected MainMenuController(MainMenuModel model){
         this.model = model;
     }
     public static MainMenuController getInstance(MainMenuModel model){
