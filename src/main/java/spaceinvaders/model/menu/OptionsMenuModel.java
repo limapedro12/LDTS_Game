@@ -26,7 +26,7 @@ public class OptionsMenuModel extends MenuModel{
     }
     protected void addCommands(){
         commands.add(new ControlsCommand(gameModel));
-        commands.add(new DummyCommand("Info"));
+        commands.add(new InfoCommand(gameModel));
         commands.add(exitCommand);
     }
     public static OptionsMenuModel getInstance(GameModel gameModel){
