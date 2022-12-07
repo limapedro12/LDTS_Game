@@ -11,14 +11,18 @@ import java.util.List;
 public class ShipModel extends ElementModel {
     private int leftBound;
     private int rightBound;
-    private final int upperBound = 39;
-    private final int lowerBound = 43;
+    private int upperBound;
+    private int lowerBound;
+    private final int wingLength = 4;
+    private final int length = 4;
 
     private int lives = 3;
     public ShipModel() {
-        super(new PositionModel(50, 40));
-        this.leftBound = 46;
-        this.rightBound = 54;
+        super(new PositionModel(50, 39));
+        this.upperBound = position.getY();
+        this.lowerBound = position.getY() + length;
+        this.leftBound = position.getX() - wingLength;
+        this.rightBound = position.getX() + wingLength;
         this.viewer = new ShipViewer(this);
     }
     public ShipModel(int x) {
@@ -39,6 +43,12 @@ public class ShipModel extends ElementModel {
     public void setY(int y) {
         position.setY(y);
     }
+    public int getUpperBound() {
+        return upperBound;
+    }
+    public int getLowerBound() {
+        return lowerBound;
+    }
     public int getLeftBound() {
         return leftBound;
     }
@@ -58,7 +68,7 @@ public class ShipModel extends ElementModel {
         return lowerBound - upperBound + 1;
     }
     public boolean isAlive() {
-        return true;
+        return lives > 0;
     }
     public void fire() {
         ShipShotModel shot = new ShipShotModel(new PositionModel(getX(), getY() - 2));
@@ -68,7 +78,14 @@ public class ShipModel extends ElementModel {
         return lives;
     }
 
-    public void decrementLives(){
+    public void damage(){
         lives--;
+    }
+    @Override
+    public boolean collideWith(ShotModel shot) {
+        if (shot.getX() >= leftBound && shot.getX() <= rightBound && shot.getY() >= upperBound && shot.getY() <= lowerBound) {
+            return true;
+        }
+        return false;
     }
 }

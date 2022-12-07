@@ -29,7 +29,7 @@ public abstract class ElementModel implements ShotSubjectModel {
 
     public int getHeight() { return 1; }
 
-    public void damage() {};
+    public abstract void damage();
 
     public abstract boolean isAlive();
     public ElementViewer getViewer() {

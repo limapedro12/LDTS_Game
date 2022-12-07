@@ -22,6 +22,10 @@ public class ShotModel extends ElementModel {
     public PositionModel getPosition() {
         return position;
     }
+
+    @Override
+    public void damage() {}
+
     public void update() {
         if (direction)
             floatY -= speed;

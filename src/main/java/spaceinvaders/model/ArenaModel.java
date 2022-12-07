@@ -117,39 +117,38 @@ public class ArenaModel implements ShotObserverModel {
 
     public void checkDead() {
         List<ElementModel> dead = new ArrayList<>();
-        for (ElementModel element : elements) {
-            if (!element.isAlive()) {
-                if (element instanceof ShipModel) {
-                    ship.decrementLives();
-                    if (ship.getLives() == 0) {
-                        dead.add(element);
-                        PrintWriter pw = null;
-
-                        try {
-                            File file = new File("Highscores.csv");
-                            FileWriter fw = new FileWriter(file, true);
-                            pw = new PrintWriter(fw);
-                            pw.println(score + "%n");
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } finally {
-                            if (pw != null) {
-                                pw.close();
-                            }
-                        }
-                    }
-                } else {
-                    dead.add(element);
-                }
-
-            }
-
-        }
+        for (ElementModel element : elements)
+            if(!element.isAlive())
+                dead.add(element);
         elements.removeAll(dead);
+
+        if (!ship.isAlive()) {
+            PrintWriter pw = null;
+
+            try {
+                File file = new File("Highscores.csv");
+                FileWriter fw = new FileWriter(file, true);
+                pw = new PrintWriter(fw);
+                pw.println(score + "\n");
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (pw != null) {
+                    pw.close();
+                }
+            }
+        }
     }
 
     public void checkShot() {
-        for (ShotModel shot : shots) shot.update();
+        List<ShotModel> outOfScreen = new ArrayList<>();
+        for (ShotModel shot : shots) {
+            shot.update();
+            if(shot.getX() < 0 || shot.getX() > 100 || shot.getY() < 0 || shot.getY() > 50) {
+                outOfScreen.add(shot);
+            }
+        }
+        shots.removeAll(outOfScreen);
     }
 
     public void checkCollisions() {

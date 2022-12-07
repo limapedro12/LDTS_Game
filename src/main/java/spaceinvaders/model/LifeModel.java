@@ -12,10 +12,14 @@ public class LifeModel extends ElementModel{
         this.viewer = new LifeViewer(this);
     }
 
+    @Override
+    public void damage() {}
+
+    public boolean isTangible(){
+        return false;
+    }
 
     public boolean isAlive(){
         return alive;
     }
-
-
 }

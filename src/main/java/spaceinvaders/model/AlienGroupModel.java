@@ -47,6 +47,7 @@ public class AlienGroupModel extends ElementModel {
     public boolean isTangible() {
         return false;
     }
+    public void damage() {}
     @Override
     public boolean canIMove(boolean goingLeft) {
         for (AlienModel alien : aliens) {
@@ -71,6 +72,18 @@ public class AlienGroupModel extends ElementModel {
     }
     public void fire(float level) {
         int random = ThreadLocalRandom.current().nextInt(0,  2*aliens.size());
+        if (random < aliens.size()) aliens.get(random).fire(level);
+        random = ThreadLocalRandom.current().nextInt(0,  2*aliens.size());
+        if (random < aliens.size()) aliens.get(random).fire(level);
+        random = ThreadLocalRandom.current().nextInt(0,  2*aliens.size());
+        if (random < aliens.size()) aliens.get(random).fire(level);
+        random = ThreadLocalRandom.current().nextInt(0,  2*aliens.size());
+        if (random < aliens.size()) aliens.get(random).fire(level);
+        random = ThreadLocalRandom.current().nextInt(0,  2*aliens.size());
+        if (random < aliens.size()) aliens.get(random).fire(level);
+        random = ThreadLocalRandom.current().nextInt(0,  2*aliens.size());
+        if (random < aliens.size()) aliens.get(random).fire(level);
+        random = ThreadLocalRandom.current().nextInt(0,  2*aliens.size());
         if (random < aliens.size()) aliens.get(random).fire(level);
     }
     @Override
