@@ -1,4 +1,7 @@
-package spaceinvaders.model;
+package spaceinvaders.model.menu;
+
+import spaceinvaders.model.Command;
+import spaceinvaders.model.GameModel;
 
 public class ExitToMenuCommand implements Command {
     GameModel gameModel;

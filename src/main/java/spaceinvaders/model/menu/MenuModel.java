@@ -1,4 +1,4 @@
-package spaceinvaders.model;
+package spaceinvaders.model.menu;
 
 import spaceinvaders.view.MenuViewer;
 

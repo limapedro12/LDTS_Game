@@ -1,12 +1,8 @@
 package spaceinvaders.model;
 
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
-import com.googlecode.lanterna.screen.Screen;
-import com.googlecode.lanterna.screen.TerminalScreen;
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-import com.googlecode.lanterna.terminal.Terminal;
+import spaceinvaders.model.menu.MainMenuModel;
+import spaceinvaders.model.menu.MainMenuStateModel;
+import spaceinvaders.model.menu.MenuModel;
 
 import java.io.IOException;
 

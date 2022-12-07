@@ -1,6 +1,9 @@
-package spaceinvaders.model;
+package spaceinvaders.model.menu;
 
-public class HighScoreCommand implements Command{
+import spaceinvaders.model.Command;
+import spaceinvaders.model.GameModel;
+
+public class HighScoreCommand implements Command {
     GameModel gameModel;
     public HighScoreCommand(GameModel gameModel){
         this.gameModel = gameModel;

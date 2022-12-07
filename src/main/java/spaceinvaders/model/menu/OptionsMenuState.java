@@ -1,14 +1,15 @@
-package spaceinvaders.model;
+package spaceinvaders.model.menu;
 
 import spaceinvaders.controller.Controller;
-import spaceinvaders.controller.HighScoreMenuController;
+import spaceinvaders.controller.menu.OptionsMenuController;
+import spaceinvaders.model.RunStateModel;
 import spaceinvaders.view.MenuStateViewer;
 import spaceinvaders.view.RunStateViewer;
 
-public class HighScoreMenuState implements RunStateModel{
-    private HighScoreMenuModel model;
+public class OptionsMenuState implements RunStateModel {
+    private OptionsMenuModel model;
     private MenuStateViewer viewer;
-    public HighScoreMenuState(HighScoreMenuModel model){
+    public OptionsMenuState(OptionsMenuModel model){
         this.model = model;
         this.viewer = new MenuStateViewer(model.getViewer());
     }
@@ -21,6 +22,6 @@ public class HighScoreMenuState implements RunStateModel{
 
     @Override
     public Controller getController() {
-        return HighScoreMenuController.getInstance(model);
+        return OptionsMenuController.getInstance(model);
     }
 }

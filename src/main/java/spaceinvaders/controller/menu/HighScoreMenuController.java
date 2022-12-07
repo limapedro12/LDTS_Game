@@ -1,8 +1,9 @@
-package spaceinvaders.controller;
+package spaceinvaders.controller.menu;
 
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
-import spaceinvaders.model.HighScoreMenuModel;
+import spaceinvaders.controller.Controller;
+import spaceinvaders.model.menu.HighScoreMenuModel;
 
 public class HighScoreMenuController implements Controller {
     private HighScoreMenuModel model;

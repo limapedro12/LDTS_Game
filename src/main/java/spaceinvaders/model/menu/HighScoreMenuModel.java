@@ -1,6 +1,8 @@
-package spaceinvaders.model;
+package spaceinvaders.model.menu;
 
-import spaceinvaders.view.HighScoreMenuViewer;
+import spaceinvaders.model.Command;
+import spaceinvaders.model.GameModel;
+import spaceinvaders.view.menu.HighScoreMenuViewer;
 
 import java.util.ArrayList;
 import java.util.List;
