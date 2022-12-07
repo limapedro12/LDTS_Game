@@ -1,33 +1,34 @@
-package spaceinvaders.model;
+package spaceinvaders.model.menu;
 
-import spaceinvaders.view.OptionsMenuViewer;
+import spaceinvaders.model.Command;
+import spaceinvaders.model.GameModel;
+import spaceinvaders.view.menu.MainMenuViewer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class OptionsMenuModel extends MenuModel{
-    private static OptionsMenuModel instance = null;
-    private GameModel gameModel;
+import static java.lang.Math.abs;
+
+public class MainMenuModel extends MenuModel {
+    private static MainMenuModel instance = null;
+    protected GameModel gameModel;
     protected List<Command> commands;
     protected int selectedCommand = 0;
-    private Command exitCommand;
-    private OptionsMenuModel(GameModel gameModel){
+    protected MainMenuModel(GameModel gameModel){
         this.gameModel = gameModel;
-        this.viewer = OptionsMenuViewer.getInstance(this);
+        this.viewer = MainMenuViewer.getInstance(this);
         commands = new ArrayList<>();
         addCommands();
-        exitCommand = new ExitToMenuCommand(gameModel);
-    }
-    public Command getExitCommand(){
-        return exitCommand;
     }
     protected void addCommands(){
-        commands.add(new DummyCommand("Commands"));
-        commands.add(new DummyCommand("Info"));
+        commands.add(new StartCommand(gameModel));
+        commands.add(new HighScoreCommand(gameModel));
+        commands.add(new OptionsCommand(gameModel));
+        commands.add(new ExitCommand());
     }
-    public static OptionsMenuModel getInstance(GameModel gameModel){
+    public static MainMenuModel getInstance(GameModel gameModel){
         if(instance == null){
-            instance = new OptionsMenuModel(gameModel);
+            instance = new MainMenuModel(gameModel);
         }
         return instance;
     }

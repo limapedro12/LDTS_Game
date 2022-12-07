@@ -1,11 +1,12 @@
-package spaceinvaders.model;
+package spaceinvaders.model.menu;
 
 import spaceinvaders.controller.Controller;
-import spaceinvaders.controller.MainMenuController;
+import spaceinvaders.controller.menu.MainMenuController;
+import spaceinvaders.model.RunStateModel;
 import spaceinvaders.view.MenuStateViewer;
 import spaceinvaders.view.RunStateViewer;
 
-public class MainMenuStateModel implements RunStateModel{
+public class MainMenuStateModel implements RunStateModel {
     private MainMenuModel model;
     private MenuStateViewer viewer;
     public MainMenuStateModel(MainMenuModel model){

@@ -1,6 +1,8 @@
-package spaceinvaders.model;
+package spaceinvaders.model.menu;
 
-public class ExitCommand implements Command{
+import spaceinvaders.model.Command;
+
+public class ExitCommand implements Command {
     public void execute(){
         System.exit(0);
     }

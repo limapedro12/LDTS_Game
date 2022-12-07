@@ -1,6 +1,9 @@
-package spaceinvaders.model;
+package spaceinvaders.model.menu;
 
-public class OptionsCommand implements Command{
+import spaceinvaders.model.Command;
+import spaceinvaders.model.GameModel;
+
+public class OptionsCommand implements Command {
     GameModel gameModel;
     public OptionsCommand(GameModel gameModel){
         this.gameModel = gameModel;

@@ -1,11 +1,8 @@
 package spaceinvaders.model;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.input.KeyStroke;
+import spaceinvaders.model.menu.ExitToMenuCommand;
 import spaceinvaders.view.ArenaViewer;
-import spaceinvaders.view.Viewer;
 
-import javax.swing.text.View;
 import java.util.ArrayList;
 import java.util.List;
 

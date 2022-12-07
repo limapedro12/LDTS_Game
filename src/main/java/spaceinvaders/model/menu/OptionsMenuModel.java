@@ -1,35 +1,37 @@
-package spaceinvaders.model;
+package spaceinvaders.model.menu;
 
-import spaceinvaders.controller.Controller;
-import spaceinvaders.controller.MainMenuController;
-import spaceinvaders.view.MainMenuViewer;
-import spaceinvaders.view.MenuViewer;
+import spaceinvaders.model.Command;
+import spaceinvaders.model.DummyCommand;
+import spaceinvaders.model.GameModel;
+import spaceinvaders.view.menu.OptionsMenuViewer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.lang.Math.abs;
-
-public class MainMenuModel extends MenuModel {
-    private static MainMenuModel instance = null;
-    protected GameModel gameModel;
+public class OptionsMenuModel extends MenuModel{
+    private static OptionsMenuModel instance = null;
+    private GameModel gameModel;
     protected List<Command> commands;
     protected int selectedCommand = 0;
-    protected MainMenuModel(GameModel gameModel){
+    private Command exitCommand;
+    private OptionsMenuModel(GameModel gameModel){
         this.gameModel = gameModel;
-        this.viewer = MainMenuViewer.getInstance(this);
+        this.viewer = OptionsMenuViewer.getInstance(this);
         commands = new ArrayList<>();
+        exitCommand = new ExitToMenuCommand(gameModel);
         addCommands();
     }
-    protected void addCommands(){
-        commands.add(new StartCommand(gameModel));
-        commands.add(new HighScoreCommand(gameModel));
-        commands.add(new OptionsCommand(gameModel));
-        commands.add(new ExitCommand());
+    public Command getExitCommand(){
+        return exitCommand;
     }
-    public static MainMenuModel getInstance(GameModel gameModel){
+    protected void addCommands(){
+        commands.add(new DummyCommand("Commands"));
+        commands.add(new DummyCommand("Info"));
+        commands.add(exitCommand);
+    }
+    public static OptionsMenuModel getInstance(GameModel gameModel){
         if(instance == null){
-            instance = new MainMenuModel(gameModel);
+            instance = new OptionsMenuModel(gameModel);
         }
         return instance;
     }

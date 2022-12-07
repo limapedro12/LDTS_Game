@@ -1,15 +1,14 @@
-package spaceinvaders.controller;
+package spaceinvaders.controller.menu;
 
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
-import spaceinvaders.model.HighScoreMenuModel;
-import spaceinvaders.model.OptionsMenuModel;
-import spaceinvaders.model.OptionsMenuModel;
+import spaceinvaders.controller.Controller;
+import spaceinvaders.model.menu.OptionsMenuModel;
 
 import static com.googlecode.lanterna.input.KeyType.ArrowDown;
 import static com.googlecode.lanterna.input.KeyType.ArrowUp;
 
-public class OptionsMenuController implements Controller{
+public class OptionsMenuController implements Controller {
     private OptionsMenuModel model;
     private static OptionsMenuController instance = null;
 

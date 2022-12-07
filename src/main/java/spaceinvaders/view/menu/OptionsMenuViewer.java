@@ -1,8 +1,9 @@
-package spaceinvaders.view;
+package spaceinvaders.view.menu;
 
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import spaceinvaders.model.OptionsMenuModel;
+import spaceinvaders.model.menu.OptionsMenuModel;
+import spaceinvaders.view.MenuViewer;
 
 public class OptionsMenuViewer implements MenuViewer {
     private static OptionsMenuViewer instance = null;
