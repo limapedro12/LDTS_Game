@@ -25,7 +25,7 @@ public class OptionsMenuModel extends MenuModel{
         return exitCommand;
     }
     protected void addCommands(){
-        commands.add(new DummyCommand("Commands"));
+        commands.add(new ControlsCommand(gameModel));
         commands.add(new DummyCommand("Info"));
         commands.add(exitCommand);
     }

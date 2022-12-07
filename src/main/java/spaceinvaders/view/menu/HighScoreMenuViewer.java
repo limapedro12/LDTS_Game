@@ -3,7 +3,6 @@ package spaceinvaders.view.menu;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import spaceinvaders.model.menu.HighScoreMenuModel;
-import spaceinvaders.view.MenuViewer;
 
 public class HighScoreMenuViewer implements MenuViewer {
     private static HighScoreMenuViewer instance = null;

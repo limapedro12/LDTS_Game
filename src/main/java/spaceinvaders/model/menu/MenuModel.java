@@ -1,6 +1,6 @@
 package spaceinvaders.model.menu;
 
-import spaceinvaders.view.MenuViewer;
+import spaceinvaders.view.menu.MenuViewer;
 
 public abstract class MenuModel {
     protected MenuViewer viewer;

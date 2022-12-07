@@ -3,7 +3,6 @@ package spaceinvaders.view.menu;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import spaceinvaders.model.menu.MainMenuModel;
-import spaceinvaders.view.MenuViewer;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -12,7 +12,7 @@ public class HighScoreCommand implements Command {
     public void execute(){
         HighScoreMenuModel model = HighScoreMenuModel.getInstance(gameModel);
         gameModel.setState(new MenuStateModel(model, HighScoreMenuController.getInstance(model)));
-}
+    }
     public String getTitle(){
         return "HighScores";
     }
