@@ -15,6 +15,7 @@ import spaceinvaders.model.*;
 import spaceinvaders.view.ShipViewer;
 
 import javax.swing.*;
+import java.util.HashSet;
 import java.util.List;
 
 import static com.googlecode.lanterna.input.KeyType.ArrowLeft;
@@ -49,7 +50,7 @@ public class ShipTest {
     public void addObserverTest() {
         ShipModel ship = new ShipModel();
         ShotObserverModel observer = Mockito.mock(ShotObserverModel.class);
-        List<ShotObserverModel> expected = ship.getObservers();
+        HashSet<ShotObserverModel> expected = ship.getObservers();
         expected.add(observer);
         ship.addObserver(observer);
         assertEquals(expected.size(), ship.getObservers().size());
@@ -59,7 +60,7 @@ public class ShipTest {
         ShipModel ship = new ShipModel();
         ShotObserverModel observer = Mockito.mock(ShotObserverModel.class);
         ship.addObserver(observer);
-        List<ShotObserverModel> expected = ship.getObservers();
+        HashSet<ShotObserverModel> expected = ship.getObservers();
         expected.remove(observer);
         ship.removeObserver(observer);
         assertEquals(expected.size(), ship.getObservers().size());
@@ -132,6 +133,39 @@ public class ShipTest {
     public void getHeightTest() {
         ShipModel ship = new ShipModel();
         assertEquals(5, ship.getHeight());
+    }
+    @Test
+    public void collideWith1() {
+        ShipModel ship = new ShipModel();
+        AlienShotModel alienShot = Mockito.mock(AlienShotModel.class);
+        ship.collideWith(alienShot);
+        Mockito.when(ship.getX()).thenReturn(alienShot.getX());
+        Mockito.when(ship.getY()).thenReturn(alienShot.getY());
+        Mockito.when(ship.getWidth()).thenReturn(1);
+        Mockito.when(ship.getHeight()).thenReturn(1);
+        assertTrue(ship.collideWith(alienShot));
+    }
+
+    @Test
+    public void collideWith2() {
+        ShipModel ship = new ShipModel();
+        AlienShotModel alienShot = Mockito.mock(AlienShotModel.class);
+        Mockito.when(ship.getX()).thenReturn(alienShot.getX() + 1);
+        Mockito.when(ship.getY()).thenReturn(alienShot.getY());
+        Mockito.when(ship.getWidth()).thenReturn(1);
+        Mockito.when(ship.getHeight()).thenReturn(1);
+        assertFalse(ship.collideWith(alienShot));
+    }
+
+    @Test
+    public void collideWith3() {
+        ShipModel ship = new ShipModel();
+        AlienShotModel alienShot = Mockito.mock(AlienShotModel.class);
+        Mockito.when(ship.getX()).thenReturn(alienShot.getX());
+        Mockito.when(ship.getY()).thenReturn(alienShot.getY() + 1);
+        Mockito.when(ship.getWidth()).thenReturn(1);
+        Mockito.when(ship.getHeight()).thenReturn(1);
+        assertFalse(ship.collideWith(alienShot));
     }
     @Test
     public void processAKeyTest() {
