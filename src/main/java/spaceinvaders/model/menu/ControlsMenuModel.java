@@ -1,11 +1,7 @@
 package spaceinvaders.model.menu;
 
-import spaceinvaders.model.Command;
 import spaceinvaders.model.GameModel;
 import spaceinvaders.view.menu.ControlsMenuViewer;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ControlsMenuModel extends MenuModel{
     private static ControlsMenuModel instance = null;

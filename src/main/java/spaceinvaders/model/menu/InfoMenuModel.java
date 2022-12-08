@@ -1,6 +1,5 @@
 package spaceinvaders.model.menu;
 
-import spaceinvaders.model.Command;
 import spaceinvaders.model.GameModel;
 import spaceinvaders.view.menu.InfoMenuViewer;
 

@@ -2,7 +2,6 @@ package spaceinvaders.model.menu;
 
 import spaceinvaders.model.ArenaModel;
 import spaceinvaders.model.ArenaStateModel;
-import spaceinvaders.model.Command;
 import spaceinvaders.model.GameModel;
 
 public class StartCommand extends Command {

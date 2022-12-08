@@ -1,8 +1,6 @@
 package spaceinvaders.model.menu;
 
-import spaceinvaders.controller.menu.MainMenuController;
 import spaceinvaders.controller.menu.OptionsMenuController;
-import spaceinvaders.model.Command;
 import spaceinvaders.model.GameModel;
 
 public class OptionsCommand extends Command {

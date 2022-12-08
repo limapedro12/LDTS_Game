@@ -1,7 +1,6 @@
 package spaceinvaders.model.menu;
 
 import spaceinvaders.controller.menu.MainMenuController;
-import spaceinvaders.model.Command;
 import spaceinvaders.model.GameModel;
 
 public class ExitToMenuCommand extends Command {

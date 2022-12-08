@@ -1,4 +1,4 @@
-package spaceinvaders.model;
+package spaceinvaders.model.menu;
 
 public abstract class Command {
     protected String title;

@@ -1,6 +1,6 @@
 package spaceinvaders.model;
 
-import spaceinvaders.Game;
+import spaceinvaders.model.menu.Command;
 import spaceinvaders.model.menu.ExitToMenuCommand;
 import spaceinvaders.view.ArenaViewer;
 
