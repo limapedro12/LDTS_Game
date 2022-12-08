@@ -17,7 +17,6 @@ public class ShipModel extends ElementModel {
     private int lowerBound;
     private final int wingLength = 4;
     private final int length = 4;
-
     private int lives = 3;
     public ShipModel() {
         super(new PositionModel(50, 39));

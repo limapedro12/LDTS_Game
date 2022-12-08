@@ -15,7 +15,6 @@ public class AlienViewer implements ElementViewer {
 
     public void draw(TextGraphics graphics){
         graphics.setCharacter(new TerminalPosition(model.getX(), model.getY()), TextCharacter.fromCharacter(model.getSymbol())[0]);
-
     }
 
     @Override

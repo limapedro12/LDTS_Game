@@ -15,9 +15,8 @@ public class ProtectionViewer implements ElementViewer {
     }
 
     public void draw(TextGraphics graphics) {
-
-        graphics.drawRectangle(new TerminalPosition(model.getX(), model.getY()), new TerminalSize(model.getWidth(), model.getHeight()), TextCharacter.fromCharacter('#')[0]);
-        graphics.drawRectangle(new TerminalPosition(model.getX() + 1, model.getY() + model.getHeight() - 1), new TerminalSize(model.getWidth() - 2, 1), TextCharacter.fromCharacter('\'')[0]);
+        graphics.drawRectangle(new TerminalPosition(model.getX(), model.getY()), new TerminalSize(model.getWidth(), model.getHeight()), TextCharacter.fromCharacter('=')[0]);
+        graphics.drawRectangle(new TerminalPosition(model.getX() + 1, model.getY() + model.getHeight() - 1), new TerminalSize(model.getWidth() - 2, 1), TextCharacter.fromCharacter(' ')[0]);
         drawNumber(graphics);
     }
 
