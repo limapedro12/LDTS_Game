@@ -31,11 +31,11 @@ public class MainMenuViewer implements MenuViewer {
         spaceInvaders.add("    #  #      #######  #   #  #     ");
         spaceInvaders.add("####   #     #       #  ###   ##### ");
         spaceInvaders.add("                                    ");
-        spaceInvaders.add("                ###                  ");
-        spaceInvaders.add("                 #                   ");
-        spaceInvaders.add("                 #                   ");
-        spaceInvaders.add("                 #                   ");
-        spaceInvaders.add("                ###                  ");
+        spaceInvaders.add("###  #     #  #       #    #      # #     #####  ####   ####         ");
+        spaceInvaders.add(" #   # #   #   #     #    # #     #   #   #      #   # #           ");
+        spaceInvaders.add(" #   #  #  #    #   #    #   #    #    #  #####  ####   ###         ");
+        spaceInvaders.add(" #   #   # #     # #    #######   #   #   #      # #       #         ");
+        spaceInvaders.add("###  #     #      #    #       #  # #     #####  #  #  ####            ");
         for(int i = 0; i < spaceInvaders.size(); i++){
             graphics.putString(10, 5 + i, spaceInvaders.get(i));
         }
