@@ -9,13 +9,11 @@ import java.io.IOException;
 
 public class GameModel {
     private RunStateModel state;
-    private MenuModel menu;
-    private ArenaModel arena;
+    private boolean hasEnteredArena;
     public GameModel() {
-        menu = MainMenuModel.getInstance(this);
-        //arena = new ArenaModel();
-        MainMenuModel model = MainMenuModel.getInstance(this);
-        state = new MenuStateModel(model, MainMenuController.getInstance(model));
+        MainMenuModel menu = MainMenuModel.getInstance(this);
+        state = new MenuStateModel(menu, MainMenuController.getInstance(menu));
+        hasEnteredArena = false;
         //state = new ArenaStateModel(arena);
     }
 
@@ -27,6 +25,12 @@ public class GameModel {
     }
     public RunStateModel getState() {
         return state;
+    }
+    public boolean getHasEnteredArena(){
+        return hasEnteredArena;
+    }
+    public void setHasEnteredArena(boolean start_or_continue){
+        this.hasEnteredArena = start_or_continue;
     }
     //public ArenaModel getArenaModel() {
 //        return arena;

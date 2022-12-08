@@ -1,16 +1,9 @@
 package spaceinvaders.model;
 
-public class DummyCommand implements Command{
-    private String name;
+public class DummyCommand extends Command{
     public DummyCommand(String name){
-        this.name = name;
+        this.title = name;
     }
     @Override
     public void execute() {}
-
-    @Override
-    public String getTitle() {
-        return name;
-    }
-
 }

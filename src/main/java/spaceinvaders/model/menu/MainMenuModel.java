@@ -13,12 +13,14 @@ public class MainMenuModel extends MenuModel {
     private static MainMenuModel instance = null;
     protected GameModel gameModel;
     protected List<Command> commands;
+    protected boolean continueEnabled;
     protected int selectedCommand = 0;
     protected MainMenuModel(GameModel gameModel){
         this.gameModel = gameModel;
         this.viewer = MainMenuViewer.getInstance(this);
         commands = new ArrayList<>();
         addCommands();
+        continueEnabled = false;
     }
     protected void addCommands(){
         commands.add(new StartCommand(gameModel));
@@ -30,7 +32,15 @@ public class MainMenuModel extends MenuModel {
         if(instance == null){
             instance = new MainMenuModel(gameModel);
         }
+        if(instance.getGameModel().getHasEnteredArena() && !instance.isContinueEnabled()){
+            instance.addContinueCommand();
+            instance.setContinueEnabled(true);
+        }
         return instance;
+    }
+    public void addContinueCommand(){
+        commands.get(0).setTitle("Continue Game");
+        commands.add(1, new RestartCommand((StartCommand) commands.get(0)));
     }
     public List<Command> getCommands(){
         return commands;
@@ -50,6 +60,15 @@ public class MainMenuModel extends MenuModel {
     }
     public void downSelectedCommand(){
         selectedCommand = (selectedCommand + 1) % commands.size();
+    }
+    public GameModel getGameModel(){
+        return gameModel;
+    }
+    public boolean isContinueEnabled(){
+        return continueEnabled;
+    }
+    public void setContinueEnabled(boolean continueEnabled){
+        this.continueEnabled = continueEnabled;
     }
 
 }
