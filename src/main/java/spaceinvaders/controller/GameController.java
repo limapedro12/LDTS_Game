@@ -10,21 +10,24 @@ import java.io.IOException;
 public class GameController {
     private Screen screen;
     private GameModel model;
-    private ArenaController arena;
+
+    private RunStateController state;
 
     public GameController(GameModel model, Screen screen) {
         this.screen = screen;
         this.model = model;
-        arena = new ArenaController(model.getArenaModel());
+        state = new RunStateController(model.getState().getController());
     }
 
     public boolean processKey() throws IOException {
         KeyStroke key = screen.pollInput();
         if (key == null) return true;
         if (key.getKeyType() == KeyType.EOF) return false;
-        if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q')
-            screen.stopScreen();
-        arena.processKey(key);
+
+        if(state.getController() != model.getState().getController()){
+            state = new RunStateController(model.getState().getController());
+        }
+        state.processKey(key);
         return true;
     }
 }

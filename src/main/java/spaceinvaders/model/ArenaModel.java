@@ -1,21 +1,17 @@
 package spaceinvaders.model;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.input.KeyStroke;
+import spaceinvaders.model.menu.ExitToMenuCommand;
 import spaceinvaders.view.ArenaViewer;
-import spaceinvaders.view.Viewer;
 
-import javax.swing.text.View;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class ArenaModel implements ShotObserverModel {
-    private final Viewer viewer;
+    private ArenaViewer viewer;
     private ShipModel ship;
     private AlienGroupModel aliens;
     private List<ElementModel> elements;
@@ -26,9 +22,10 @@ public class ArenaModel implements ShotObserverModel {
     private int lastAlienDirection;
     private int level;
     private List<LifeModel> lives;
+    private Command exitCommand;
 
-
-    public ArenaModel() {
+    public ArenaModel(GameModel gameModel){
+        this.exitCommand = new ExitToMenuCommand(gameModel);
         viewer = new ArenaViewer(this);
         ship = new ShipModel();
         ship.addObserver(this);
@@ -51,6 +48,9 @@ public class ArenaModel implements ShotObserverModel {
         lives.add(new LifeModel(new PositionModel(14, 50)));
         // shots.add(new ShipShot(new Position(54, 45)));
         // shots.add(new AlienShot(new Position(25, 5)));
+    }
+    public Command getExitCommand(){
+        return exitCommand;
     }
 
     public void update(ShotModel shot) {
@@ -128,7 +128,7 @@ public class ArenaModel implements ShotObserverModel {
                 File file = new File("Highscores.csv");
                 FileWriter fw = new FileWriter(file, true);
                 pw = new PrintWriter(fw);
-                pw.println(aliens.getScore() + "%n");
+                pw.println(aliens.getScore());
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
@@ -180,7 +180,7 @@ public class ArenaModel implements ShotObserverModel {
         return ship;
     }
 
-    public Viewer getViewer() {
+    public ArenaViewer getViewer() {
         return viewer;
     }
 

@@ -1,12 +1,9 @@
 package spaceinvaders.model;
 
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
-import com.googlecode.lanterna.screen.Screen;
-import com.googlecode.lanterna.screen.TerminalScreen;
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-import com.googlecode.lanterna.terminal.Terminal;
+import spaceinvaders.controller.menu.MainMenuController;
+import spaceinvaders.model.menu.MainMenuModel;
+import spaceinvaders.model.menu.MenuModel;
+import spaceinvaders.model.menu.MenuStateModel;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -14,18 +11,31 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class GameModel {
-    private ArenaModel arena;
+    private RunStateModel state;
+    private boolean hasEnteredArena;
     public GameModel() {
-        arena = new ArenaModel();
+        MainMenuModel menu = MainMenuModel.getInstance(this);
+        state = new MenuStateModel(menu, MainMenuController.getInstance(menu));
+        hasEnteredArena = false;
+        //state = new ArenaStateModel(arena);
     }
 
     public void run() throws IOException {
-        arena.run();
-
-
+        state.run();
     }
-
-    public ArenaModel getArenaModel() {
-        return arena;
+    public void setState(RunStateModel state) {
+        this.state = state;
     }
+    public RunStateModel getState() {
+        return state;
+    }
+    public boolean getHasEnteredArena(){
+        return hasEnteredArena;
+    }
+    public void setHasEnteredArena(boolean start_or_continue){
+        this.hasEnteredArena = start_or_continue;
+    }
+    //public ArenaModel getArenaModel() {
+//        return arena;
+//    }
 }
