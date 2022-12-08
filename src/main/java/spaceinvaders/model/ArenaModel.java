@@ -1,5 +1,6 @@
 package spaceinvaders.model;
 
+import spaceinvaders.Game;
 import spaceinvaders.model.menu.ExitToMenuCommand;
 import spaceinvaders.view.ArenaViewer;
 
@@ -12,6 +13,7 @@ import java.util.List;
 
 public class ArenaModel implements ShotObserverModel {
     private ArenaViewer viewer;
+    private GameModel gameModel;
     private ShipModel ship;
     private AlienGroupModel aliens;
     private List<ElementModel> elements;
@@ -26,6 +28,7 @@ public class ArenaModel implements ShotObserverModel {
     private long youWonTime;
 
     public ArenaModel(GameModel gameModel){
+        this.gameModel = gameModel;
         this.exitCommand = new ExitToMenuCommand(gameModel);
         viewer = new ArenaViewer(this);
         ship = new ShipModel();
@@ -73,6 +76,9 @@ public class ArenaModel implements ShotObserverModel {
         checkDead();
         checkShot();
         checkCollisions();
+        if(!ship.isAlive()){
+            new ExitToMenuCommand(gameModel).execute();
+        }
     }
 
     public void moveAliens() {
@@ -189,5 +195,6 @@ public class ArenaModel implements ShotObserverModel {
     public int getScore(){return aliens.getScore();}
     public boolean getYouWon(){return youWon; }
     public int getLevel(){return level;}
+    public boolean isLost(){return ship.isAlive();}
 
 }

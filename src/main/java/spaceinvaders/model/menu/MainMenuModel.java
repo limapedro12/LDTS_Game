@@ -15,7 +15,9 @@ public class MainMenuModel extends MenuModel {
     protected List<Command> commands;
     protected boolean continueEnabled;
     protected int selectedCommand = 0;
+    protected StartCommand startCommand;
     protected MainMenuModel(GameModel gameModel){
+        this.startCommand = new StartCommand(gameModel);
         this.gameModel = gameModel;
         this.viewer = MainMenuViewer.getInstance(this);
         commands = new ArrayList<>();
@@ -23,7 +25,7 @@ public class MainMenuModel extends MenuModel {
         continueEnabled = false;
     }
     protected void addCommands(){
-        commands.add(new StartCommand(gameModel));
+        commands.add(startCommand);
         commands.add(new HighScoreCommand(gameModel));
         commands.add(new OptionsCommand(gameModel));
         commands.add(new ExitCommand());
@@ -32,15 +34,25 @@ public class MainMenuModel extends MenuModel {
         if(instance == null){
             instance = new MainMenuModel(gameModel);
         }
-        if(instance.getGameModel().getHasEnteredArena() && !instance.isContinueEnabled()){
+        if(instance.getStartCommand().getArena().isLost() && instance.getGameModel().getHasEnteredArena() && !instance.isContinueEnabled()){
             instance.addContinueCommand();
             instance.setContinueEnabled(true);
+        } else if(!instance.getStartCommand().getArena().isLost()){
+            instance.removeContinueCommand();
+            instance.setContinueEnabled(false);
         }
+
         return instance;
     }
     public void addContinueCommand(){
-        commands.get(0).setTitle("Continue Game");
-        commands.add(1, new RestartCommand((StartCommand) commands.get(0)));
+        startCommand.setTitle("Continue Game");
+        commands.add(1, new RestartCommand(startCommand));
+    }
+    public void removeContinueCommand(){
+        startCommand.setTitle("Start Game");
+        startCommand.restartArena();
+        if(isContinueEnabled())
+            commands.remove(1);
     }
     public List<Command> getCommands(){
         return commands;
@@ -69,6 +81,9 @@ public class MainMenuModel extends MenuModel {
     }
     public void setContinueEnabled(boolean continueEnabled){
         this.continueEnabled = continueEnabled;
+    }
+    public StartCommand getStartCommand(){
+        return startCommand;
     }
 
 }

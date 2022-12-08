@@ -20,4 +20,7 @@ public class StartCommand extends Command {
     public void restartArena(){
         this.arena = new ArenaModel(gameModel);
     }
+    public ArenaModel getArena(){
+        return arena;
+    }
 }
