@@ -36,4 +36,7 @@ public class MainMenuController implements Controller {
             model.getSelectedCommand().execute();
         }
     }
+    public static void reset(){
+        instance = null;
+    }
 }
