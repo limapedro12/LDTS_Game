@@ -21,8 +21,9 @@ public class ArenaModel implements ShotObserverModel {
     private long targetTime;
     private int lastAlienDirection;
     private int level;
-    private List<LifeModel> lives;
     private Command exitCommand;
+    private boolean youWon;
+    private long youWonTime;
 
     public ArenaModel(GameModel gameModel){
         this.exitCommand = new ExitToMenuCommand(gameModel);
@@ -34,18 +35,15 @@ public class ArenaModel implements ShotObserverModel {
         aliens = new AlienGroupModel();
         aliens.addObserver(this);
         startTime = System.currentTimeMillis();
+        youWon = false;
         elapsedTime = 0;
         lastAlienDirection = 0;
         level = 1;
-        lives = new ArrayList<>();
         elements.add(aliens);
         elements.add(ship);
         elements.add(new ProtectionModel(new PositionModel(48, 35), 30));
         elements.add(new ProtectionModel(new PositionModel(22, 35), 30));
         elements.add(new ProtectionModel(new PositionModel(72, 35), 30));
-        lives.add(new LifeModel(new PositionModel(10, 50)));
-        lives.add(new LifeModel(new PositionModel(12, 50)));
-        lives.add(new LifeModel(new PositionModel(14, 50)));
         // shots.add(new ShipShot(new Position(54, 45)));
         // shots.add(new AlienShot(new Position(25, 5)));
     }
@@ -58,9 +56,6 @@ public class ArenaModel implements ShotObserverModel {
     }
 
     public void run() {
-        checkDead();
-        checkShot();
-        checkCollisions();
         elapsedTime = System.currentTimeMillis() - startTime;
         if (elapsedTime >= targetTime) {
             moveAliens();
@@ -68,8 +63,16 @@ public class ArenaModel implements ShotObserverModel {
             targetTime = elapsedTime + (1000 / level);
         }
         if(aliens.getAliens().size()==0){
+            youWon = true;
             incrementLevel();
+            youWonTime = elapsedTime + 2000;
         }
+        if(youWon && elapsedTime >= youWonTime) {
+            youWon = false;
+        }
+        checkDead();
+        checkShot();
+        checkCollisions();
     }
 
     public void moveAliens() {
@@ -170,8 +173,6 @@ public class ArenaModel implements ShotObserverModel {
         return elements;
     }
 
-    public List<LifeModel> getLives(){ return lives;}
-
     public List<AlienModel> getAliens() {
         return aliens.getAliens();
     }
@@ -186,5 +187,7 @@ public class ArenaModel implements ShotObserverModel {
 
 
     public int getScore(){return aliens.getScore();}
+    public boolean getYouWon(){return youWon; }
+    public int getLevel(){return level;}
 
 }

@@ -21,15 +21,13 @@ public class ArenaViewer implements Viewer{
         for (ElementModel element : model.getElements())
             element.getViewer().draw(graphics);
 
-
-        for (LifeModel life: model.getLives()){
-            life.getViewer().draw(graphics);
-        }
-
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         graphics.enableModifiers(SGR.BOLD);
-        graphics.putString(10,3,"Life: "+model.getShip().getLives());
-        graphics.putString(80,3,"Score: "+model.getScore());
+        graphics.putString(10,3,"Life: " + model.getShip().getLives());
+        graphics.putString(80,3,"Score: " + model.getScore());
+        if(model.getYouWon()) {
+            graphics.putString(40, 20, "Level " + model.getLevel());
+        }
 
     }
 }
