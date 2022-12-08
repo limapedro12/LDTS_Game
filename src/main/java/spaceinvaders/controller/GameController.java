@@ -10,8 +10,8 @@ import java.io.IOException;
 public class GameController {
     private Screen screen;
     private GameModel model;
-
     private RunStateController state;
+    private KeyStroke lastKey;
 
     public GameController(GameModel model, Screen screen) {
         this.screen = screen;
@@ -21,6 +21,9 @@ public class GameController {
 
     public boolean processKey() throws IOException {
         KeyStroke key = screen.pollInput();
+        while(key != null && lastKey != null && key.getKeyType() == lastKey.getKeyType() && key.getCharacter() == lastKey.getCharacter())
+            key = screen.pollInput();
+        lastKey = key;
         if (key == null) return true;
         if (key.getKeyType() == KeyType.EOF) return false;
 
