@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class ArenaModel implements ShotObserverModel {
     private final Viewer viewer;
@@ -27,10 +28,7 @@ public class ArenaModel implements ShotObserverModel {
     private List<LifeModel> lives;
 
 
-    private int score;
-
     public ArenaModel() {
-        score = 0;
         viewer = new ArenaViewer(this);
         ship = new ShipModel();
         ship.addObserver(this);
@@ -123,13 +121,14 @@ public class ArenaModel implements ShotObserverModel {
         elements.removeAll(dead);
 
         if (!ship.isAlive()) {
+
             PrintWriter pw = null;
 
             try {
                 File file = new File("Highscores.csv");
                 FileWriter fw = new FileWriter(file, true);
                 pw = new PrintWriter(fw);
-                pw.println(score + "%n");
+                pw.println(aliens.getScore() + "%n");
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
@@ -156,9 +155,6 @@ public class ArenaModel implements ShotObserverModel {
         for (ElementModel element : elements) {
             for (ShotModel shot : shots) {
                 if (element.collideWith(shot)) {
-                    if ((element instanceof AlienModel)){
-                        score += 10;
-                    }
                     element.damage();
                     collided.add(shot);
                 }
@@ -189,6 +185,6 @@ public class ArenaModel implements ShotObserverModel {
     }
 
 
-    public int getScore(){return score;}
+    public int getScore(){return aliens.getScore();}
 
 }

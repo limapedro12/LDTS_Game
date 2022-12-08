@@ -8,6 +8,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class AlienGroupModel extends ElementModel {
     private List<AlienModel> aliens;
+
+    private int score =0;
     public AlienGroupModel() {
         super(new PositionModel(0, 0));
         aliens = new ArrayList<AlienModel>();
@@ -42,6 +44,8 @@ public class AlienGroupModel extends ElementModel {
     public int getHeight() {
         return 0;
     }
+
+    public int getScore() { return score;}
 
     @Override
     public boolean isTangible() {
@@ -80,6 +84,15 @@ public class AlienGroupModel extends ElementModel {
     public boolean collideWith(ShotModel shot) {
         for (AlienModel alien : aliens) {
             if (alien.collideWith(shot)) {
+                if (alien.getSymbol() == 'X'){
+                    score+=10;
+                }
+                else if (alien.getSymbol() == 'Y'){
+                    score+=20;
+                }
+                else if (alien.getSymbol() == '&'){
+                    score+=30;
+                }
                 alien.damage();
                 aliens.remove(alien);
                 return true;
