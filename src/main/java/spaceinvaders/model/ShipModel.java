@@ -104,4 +104,7 @@ public class ShipModel extends ElementModel {
     public void addDrawnPosition(PositionModel position) {
         drawnPositions.add(position);
     }
+    public void resetDrawnPositions() {
+        drawnPositions = new ArrayList<>();
+    }
 }

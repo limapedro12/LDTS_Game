@@ -11,6 +11,7 @@ public class ShipViewer implements ElementViewer {
         this.ship = ship;
     }
     public void draw(TextGraphics graphics) {
+        ship.resetDrawnPositions();
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFC300"));
         graphics.setCharacter(ship.getX(), ship.getUpperBound(), TextCharacter.fromCharacter('"')[0]);
         ship.addDrawnPosition(new PositionModel(ship.getX(), ship.getUpperBound()));

@@ -24,6 +24,7 @@ public class ArenaModel implements ShotObserverModel {
     private Command exitCommand;
     private boolean youWon;
     private long youWonTime;
+    private int score;
 
     public ArenaModel(GameModel gameModel){
         this.exitCommand = new ExitToMenuCommand(gameModel);
@@ -32,7 +33,7 @@ public class ArenaModel implements ShotObserverModel {
         ship.addObserver(this);
         elements = new ArrayList<>();
         shots = new ArrayList<>();
-        aliens = new AlienGroupModel();
+        aliens = new AlienGroupModel(this);
         aliens.addObserver(this);
         startTime = System.currentTimeMillis();
         youWon = false;
@@ -107,7 +108,7 @@ public class ArenaModel implements ShotObserverModel {
         ship.addObserver(this);
         elements = new ArrayList<>();
         shots = new ArrayList<>();
-        aliens = new AlienGroupModel();
+        aliens = new AlienGroupModel(this);
         aliens.addObserver(this);
         elements.add(aliens);
         elements.add(ship);
@@ -131,7 +132,7 @@ public class ArenaModel implements ShotObserverModel {
                 File file = new File("Highscores.csv");
                 FileWriter fw = new FileWriter(file, true);
                 pw = new PrintWriter(fw);
-                pw.println(aliens.getScore());
+                pw.println(score);
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
@@ -185,9 +186,16 @@ public class ArenaModel implements ShotObserverModel {
         return viewer;
     }
 
-
-    public int getScore(){return aliens.getScore();}
-    public boolean getYouWon(){return youWon; }
-    public int getLevel(){return level;}
-
+    public int getScore(){
+        return score;
+    }
+    public boolean getYouWon(){
+        return youWon;
+    }
+    public int getLevel(){
+        return level;
+    }
+    public void addScore(int points) {
+        this.score += points;
+    }
 }
