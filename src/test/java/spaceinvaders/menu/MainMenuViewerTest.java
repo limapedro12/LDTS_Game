@@ -47,7 +47,7 @@ public class MainMenuViewerTest {
     }
     @Test
     public void resetTest(){
-        MainMenuController.reset();
-        assertEquals(null, MainMenuController.getInstance());
+        MainMenuViewer.reset();
+        assertEquals(null, MainMenuViewer.getInstance());
     }
 }

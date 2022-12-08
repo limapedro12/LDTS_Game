@@ -26,10 +26,22 @@ public class HighScoreMenuModel extends MenuModel{
         }
         return instance;
     }
+
+    public static void reset() {
+        instance = null;
+    }
+
     public List<Integer> getScores(){
         return scores;
     }
     public Command getExitCommand(){
         return exitCommand;
     }
+    public void setScores(List<Integer> scores){
+        this.scores = scores;
+    }
+    public void setExitCommand(Command exitCommand){
+        this.exitCommand = exitCommand;
+    }
 }
+

@@ -7,6 +7,7 @@ import spaceinvaders.model.ArenaModel;
 import spaceinvaders.model.GameModel;
 import spaceinvaders.model.menu.MainMenuModel;
 import spaceinvaders.model.menu.StartCommand;
+import spaceinvaders.view.menu.MainMenuViewer;
 
 import static org.junit.jupiter.api.Assertions.*;
 
