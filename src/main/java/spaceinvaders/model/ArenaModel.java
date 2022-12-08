@@ -224,17 +224,19 @@ public class ArenaModel implements ShotObserverModel {
     }
 
     public boolean isLost(){
-        if(!ship.isAlive()) {
+        if(!ship.isAlive()) return checkScore();
+        for(AlienModel alien : aliens.getAliens())
+            if(alien.getY() == ship.getUpperBound()) return checkScore();
+        return false;
+    }
+
+    private boolean checkScore() {
+        if (score > 0) {
             TreeSet<PlayerScore> scores = PlayerScore.loadScores();
             String name = System.getProperty("user.name");
             scores.add(new PlayerScore(name, score));
-            System.out.println("You lost");
             PlayerScore.storeScores(scores);
-            return true;
         }
-        for(AlienModel alien : aliens.getAliens()){
-            if(alien.getY() == ship.getUpperBound()) return true;
-        }
-        return false;
+        return true;
     }
 }

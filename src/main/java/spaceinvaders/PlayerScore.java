@@ -14,14 +14,14 @@ public class PlayerScore implements Comparable<PlayerScore>{
         this.score = score;
     }
     public int compareTo(PlayerScore playerScore) {
-        return this.score - playerScore.score;
+        return playerScore.score - this.score;
     }
     public static TreeSet<PlayerScore> loadScores() {
         TreeSet<PlayerScore> r = new TreeSet<>();
         String line = "";
         String splitBy = ",";
         try {
-            BufferedReader br = new BufferedReader(new FileReader("../resources/highscores.csv"));
+            BufferedReader br = new BufferedReader(new FileReader("resources/highscores.csv"));
             while ((line = br.readLine()) != null) {
                 String[] arr = line.split(splitBy);
                 PlayerScore playerScore = new PlayerScore(arr[0], Integer.parseInt(arr[1]));
@@ -36,7 +36,6 @@ public class PlayerScore implements Comparable<PlayerScore>{
         while (scores.size() > 10) scores.pollLast();
         PrintWriter writer = null;
         try {
-            System.out.println("here");
             writer = new PrintWriter("resources/highscores.csv");
             writer.print("");
             for (PlayerScore score : scores) {
