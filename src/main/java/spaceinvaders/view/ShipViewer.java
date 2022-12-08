@@ -25,8 +25,8 @@ public class ShipViewer implements ElementViewer {
         graphics.setCharacter(ship.getRightBound(), ship.getUpperBound()+2, TextCharacter.fromCharacter(',')[0]);
         ship.addDrawnPosition(new PositionModel(ship.getRightBound(), ship.getUpperBound()+2));
         for (int i = ship.getLeftBound()+1; i <= ship.getRightBound()-1; i++) {
-            graphics.setCharacter(i, ship.getUpperBound()+3, TextCharacter.fromCharacter('=')[0]);
-            ship.addDrawnPosition(new PositionModel(i, ship.getUpperBound()+3));
+            graphics.setCharacter(i, ship.getUpperBound()+2, TextCharacter.fromCharacter('=')[0]);
+            ship.addDrawnPosition(new PositionModel(i, ship.getUpperBound()+2));
         }
         for (int i = ship.getLeftBound(); i <= ship.getRightBound(); i++) {
             graphics.setCharacter(i, ship.getUpperBound()+3, TextCharacter.fromCharacter('=')[0]);

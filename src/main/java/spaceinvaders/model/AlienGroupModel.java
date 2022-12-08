@@ -84,14 +84,17 @@ public class AlienGroupModel extends ElementModel {
     public boolean collideWith(ShotModel shot) {
         for (AlienModel alien : aliens) {
             if (alien.collideWith(shot)) {
-                if (alien.getSymbol() == 'X'){
+                if (alien.getSymbol() == '*'){
                     score+=10;
                 }
-                else if (alien.getSymbol() == 'Y'){
+                else if (alien.getSymbol() == '/'){
                     score+=20;
                 }
-                else if (alien.getSymbol() == '&'){
+                else if (alien.getSymbol() == '-'){
                     score+=30;
+                }
+                else if (alien.getSymbol() == '.'){
+                    score += 40;
                 }
                 alien.damage();
                 aliens.remove(alien);
