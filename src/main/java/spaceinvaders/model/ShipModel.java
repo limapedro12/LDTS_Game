@@ -6,9 +6,11 @@ import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import spaceinvaders.view.ShipViewer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShipModel extends ElementModel {
+    private List<PositionModel> drawnPositions;
     private int leftBound;
     private int rightBound;
     private int upperBound;
@@ -24,6 +26,7 @@ public class ShipModel extends ElementModel {
         this.leftBound = position.getX() - wingLength;
         this.rightBound = position.getX() + wingLength;
         this.viewer = new ShipViewer(this);
+        this.drawnPositions = new ArrayList<>();
     }
     public ShipModel(int x) {
         super(new PositionModel(x, 40));
@@ -83,9 +86,18 @@ public class ShipModel extends ElementModel {
     }
     @Override
     public boolean collideWith(ShotModel shot) {
-        if (shot.getX() >= leftBound && shot.getX() <= rightBound && shot.getY() >= upperBound && shot.getY() <= lowerBound) {
-            return true;
+        for(PositionModel drawnPosition : drawnPositions) {
+            if(drawnPosition.getX() == shot.getX() && drawnPosition.getY() == shot.getY()) {
+                return true;
+            }
         }
         return false;
+//        if (shot.getX() >= leftBound && shot.getX() <= rightBound && shot.getY() >= upperBound && shot.getY() <= lowerBound) {
+//            return true;
+//        }
+//        return false;
+    }
+    public void addDrawnPosition(PositionModel position) {
+        drawnPositions.add(position);
     }
 }
