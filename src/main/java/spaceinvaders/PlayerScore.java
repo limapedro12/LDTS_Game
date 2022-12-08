@@ -36,7 +36,8 @@ public class PlayerScore implements Comparable<PlayerScore>{
         while (scores.size() > 10) scores.pollLast();
         PrintWriter writer = null;
         try {
-            writer = new PrintWriter("../resources.highscores.csv");
+            System.out.println("here");
+            writer = new PrintWriter("resources/highscores.csv");
             writer.print("");
             for (PlayerScore score : scores) {
                 writer.print(score.player + "," +  score.score + "\n");

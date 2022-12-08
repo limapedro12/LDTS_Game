@@ -20,9 +20,10 @@ public class HighScoreMenuViewer implements MenuViewer {
     public void draw(TextGraphics graphics){
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         graphics.putString(40, 18, "HighScores");
+        /*
         for(int i = 0; i < model.getScores().size(); i++){
             graphics.putString(40, 20 + i, model.getScores().get(i).toString());
-        }
+        }*/
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFC300"));
         graphics.putString(40, 40, "> Exit");
     }

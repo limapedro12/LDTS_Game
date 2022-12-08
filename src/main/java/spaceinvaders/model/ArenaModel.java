@@ -95,10 +95,6 @@ public class ArenaModel implements ShotObserverModel {
         checkShot();
         checkCollisions();
         if(!ship.isAlive()){
-            TreeSet<PlayerScore> scores = PlayerScore.loadScores();
-            String name = System.getProperty("user.name");
-            scores.add(new PlayerScore(name, score));
-            PlayerScore.storeScores(scores);
             new ExitToMenuCommand(gameModel).execute();
         }
     }
@@ -228,7 +224,14 @@ public class ArenaModel implements ShotObserverModel {
     }
 
     public boolean isLost(){
-        if(!ship.isAlive()) return true;
+        if(!ship.isAlive()) {
+            TreeSet<PlayerScore> scores = PlayerScore.loadScores();
+            String name = System.getProperty("user.name");
+            scores.add(new PlayerScore(name, score));
+            System.out.println("You lost");
+            PlayerScore.storeScores(scores);
+            return true;
+        }
         for(AlienModel alien : aliens.getAliens()){
             if(alien.getY() == ship.getUpperBound()) return true;
         }
