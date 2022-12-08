@@ -34,10 +34,10 @@ public class MainMenuModel extends MenuModel {
         if(instance == null){
             instance = new MainMenuModel(gameModel);
         }
-        if(instance.getStartCommand().getArena().isLost() && instance.getGameModel().getHasEnteredArena() && !instance.isContinueEnabled()){
+        if(!instance.getStartCommand().getArena().isLost() && instance.getGameModel().getHasEnteredArena() && !instance.isContinueEnabled()){
             instance.addContinueCommand();
             instance.setContinueEnabled(true);
-        } else if(!instance.getStartCommand().getArena().isLost()){
+        } else if(instance.getStartCommand().getArena().isLost()){
             instance.removeContinueCommand();
             instance.setContinueEnabled(false);
         }

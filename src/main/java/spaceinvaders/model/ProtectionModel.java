@@ -34,4 +34,7 @@ public class ProtectionModel extends ElementModel {
     public boolean isAlive() {
         return life > 0;
     }
+    public void kill() {
+        life = 0;
+    }
 }

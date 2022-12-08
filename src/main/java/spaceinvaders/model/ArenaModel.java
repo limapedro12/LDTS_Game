@@ -18,6 +18,7 @@ public class ArenaModel implements ShotObserverModel {
     private AlienGroupModel aliens;
     private List<ElementModel> elements;
     private List<ShotModel> shots;
+    private List<ProtectionModel> protections;
     private long startTime;
     private long elapsedTime;
     private long targetTime;
@@ -45,9 +46,16 @@ public class ArenaModel implements ShotObserverModel {
         level = 1;
         elements.add(aliens);
         elements.add(ship);
-        elements.add(new ProtectionModel(new PositionModel(48, 35), 30));
-        elements.add(new ProtectionModel(new PositionModel(22, 35), 30));
-        elements.add(new ProtectionModel(new PositionModel(72, 35), 30));
+        this.protections = new ArrayList<>();
+        ProtectionModel p1 = new ProtectionModel(new PositionModel(48, 35), 30);
+        elements.add(p1);
+        protections.add(p1);
+        ProtectionModel p2 = new ProtectionModel(new PositionModel(22, 35), 30);
+        elements.add(p2);
+        protections.add(p2);
+        ProtectionModel p3 = new ProtectionModel(new PositionModel(72, 35), 30);
+        elements.add(p3);
+        protections.add(p3);
         // shots.add(new ShipShot(new Position(54, 45)));
         // shots.add(new AlienShot(new Position(25, 5)));
     }
@@ -73,6 +81,13 @@ public class ArenaModel implements ShotObserverModel {
         }
         if(youWon && elapsedTime >= youWonTime) {
             youWon = false;
+        }
+        for(AlienModel alien : aliens.getAliens()){
+            for(ProtectionModel protection : protections){
+                if(alien.getPosition().getY() >= protection.getY()){
+                    protection.kill();
+                }
+            }
         }
         checkDead();
         checkShot();
@@ -206,6 +221,10 @@ public class ArenaModel implements ShotObserverModel {
     }
 
     public boolean isLost(){
-        return ship.isAlive();
+        if(!ship.isAlive()) return true;
+        for(AlienModel alien : aliens.getAliens()){
+            if(alien.getY() == ship.getUpperBound()) return true;
+        }
+        return false;
     }
 }
