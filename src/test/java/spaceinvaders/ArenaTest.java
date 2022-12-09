@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import spaceinvaders.controller.ArenaController;
 import spaceinvaders.model.*;
+import spaceinvaders.model.menu.Command;
+import spaceinvaders.model.menu.ExitToMenuCommand;
 import spaceinvaders.view.ArenaViewer;
 import spaceinvaders.view.ElementViewer;
 
@@ -19,12 +21,18 @@ public class ArenaTest {
     ArenaModel model;
     ArenaViewer viewer;
     ArenaController controller;
+
+    private GameModel gameModel;
+
+
     @BeforeEach
     public void helper() {
-        model = new ArenaModel();
+        model = new ArenaModel(gameModel);
         viewer = new ArenaViewer(model);
         controller = new ArenaController(model);
+
     }
+
 
     @Test
     public void update(){
