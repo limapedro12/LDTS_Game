@@ -1,9 +1,6 @@
 package spaceinvaders;
 
 import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextCharacter;
-import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
@@ -19,55 +16,30 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.*;
 import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.TreeSet;
 
 public class Game {
     static private GameModel model;
     static private GameController controller;
     static private GameViewer viewer;
-    static private Screen screen;
-    static private int width = 100;
-    static private int height = 50;
-    private final TreeSet<PlayerScore> highScores = new TreeSet<>();
+    static private int width = 76;
+    static private int height = 39;
 
-    public static void main(String[] args) throws IOException, URISyntaxException, FontFormatException {
-        /*
-        Terminal terminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height)).createTerminal();
-        screen = new TerminalScreen(terminal);
-        screen.setCursorPosition(null);
-        screen.startScreen();
-        screen.doResizeIfNecessary();
-        */
-
+    public static void main(String[] args) throws IOException, FontFormatException {
         new Game().run();
-
     }
 
-    public AWTTerminalFontConfiguration loadFont() throws FontFormatException, IOException {
+    private AWTTerminalFontConfiguration loadFont() throws FontFormatException, IOException {
         File fontFile = new File("resources/fonts/SpaceInv_MONO.ttf");
         Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(font);
-        Font loadedFont = font.deriveFont(Font.PLAIN, 14);
+        Font loadedFont = font.deriveFont(Font.PLAIN, 20);
         return AWTTerminalFontConfiguration.newInstance(loadedFont);
     }
 
-    public void run() throws IOException, URISyntaxException, FontFormatException {
-        /*
-        URL resource = getClass().getClassLoader().getResource("SpaceInv_semShip.ttf");
-        File fontFile = new File(resource.toURI());
-        Font font =  Font.createFont(Font.TRUETYPE_FONT, fontFile);
-
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        ge.registerFont(font);*/
-
+    public void run() throws IOException, FontFormatException {
         DefaultTerminalFactory factory = new DefaultTerminalFactory();
 
-        //Font loadedFont = font.deriveFont(Font.PLAIN, 25);
         AWTTerminalFontConfiguration fontConfig = loadFont();
         factory.setTerminalEmulatorFontConfiguration(fontConfig);
         factory.setForceAWTOverSwing(true);
@@ -81,8 +53,8 @@ public class Game {
         });
 
         Screen screen = new TerminalScreen(terminal);
-        screen.setCursorPosition(null);   // we don't need a cursor
-        screen.startScreen();             // screens must be started
+        screen.setCursorPosition(null);
+        screen.startScreen();
         screen.doResizeIfNecessary();
 
         model = new GameModel();
@@ -106,6 +78,5 @@ public class Game {
             } catch (InterruptedException e) {
             }
         }
-
     }
 }
