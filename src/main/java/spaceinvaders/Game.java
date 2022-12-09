@@ -21,8 +21,8 @@ public class Game {
     static private GameModel model;
     static private GameController controller;
     static private GameViewer viewer;
-    static private int width = 76;
-    static private int height = 39;
+    static private int width = 51;
+    static private int height = 26;
 
     public static void main(String[] args) throws IOException, FontFormatException {
         new Game().run();
@@ -33,7 +33,7 @@ public class Game {
         Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(font);
-        Font loadedFont = font.deriveFont(Font.PLAIN, 20);
+        Font loadedFont = font.deriveFont(Font.PLAIN, 30);
         return AWTTerminalFontConfiguration.newInstance(loadedFont);
     }
 

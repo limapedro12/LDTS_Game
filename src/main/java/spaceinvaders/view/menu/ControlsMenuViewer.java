@@ -19,11 +19,12 @@ public class ControlsMenuViewer implements MenuViewer {
 
     public void draw(TextGraphics graphics){
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
-        graphics.putString(40, 18, "Controls");
-        graphics.putString(30, 20, "Move left: A or Left Arrow");
-        graphics.putString(30, 21, "Move right: D or Right Arrow");
-        graphics.putString(30, 22, "Shoot: Space or Up Arrow");
+        graphics.putString(20, 13, "Controls");
+        graphics.putString(13, 15, "Move left: A or Left Arrow");
+        graphics.putString(13, 16, "Move right: D or Right Arrow");
+        graphics.putString(13, 17, "Shoot: Space or Up Arrow");
+        graphics.putString(13, 18, "Back: Q or ESC key");
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFC300"));
-        graphics.putString(40, 40, "> Exit");
+        graphics.putString(13, 25, "> Exit");
     }
 }
