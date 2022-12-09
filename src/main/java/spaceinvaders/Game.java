@@ -17,14 +17,13 @@ import spaceinvaders.view.GameViewer;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+import java.util.TreeSet;
 
 public class Game {
     static private GameModel model;
@@ -33,6 +32,7 @@ public class Game {
     static private Screen screen;
     static private int width = 100;
     static private int height = 50;
+    private final TreeSet<PlayerScore> highScores = new TreeSet<>();
 
     public static void main(String[] args) throws IOException, URISyntaxException, FontFormatException {
         /*

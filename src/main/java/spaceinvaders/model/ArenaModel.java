@@ -1,6 +1,8 @@
 package spaceinvaders.model;
 
 import spaceinvaders.model.menu.Command;
+import spaceinvaders.Game;
+import spaceinvaders.PlayerScore;
 import spaceinvaders.model.menu.ExitToMenuCommand;
 import spaceinvaders.view.ArenaViewer;
 
@@ -10,6 +12,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
 public class ArenaModel implements ShotObserverModel {
     private ArenaViewer viewer;
@@ -27,7 +30,7 @@ public class ArenaModel implements ShotObserverModel {
     private Command exitCommand;
     private boolean youWon;
     private long youWonTime;
-    private int score;
+    private int score = 0;
 
     public ArenaModel(GameModel gameModel){
         this.gameModel = gameModel;
@@ -145,6 +148,7 @@ public class ArenaModel implements ShotObserverModel {
                 dead.add(element);
         elements.removeAll(dead);
 
+        /*
         if (!ship.isAlive()) {
 
             PrintWriter pw = null;
@@ -161,7 +165,7 @@ public class ArenaModel implements ShotObserverModel {
                     pw.close();
                 }
             }
-        }
+        }*/
     }
 
     public void checkShot() {
@@ -221,10 +225,19 @@ public class ArenaModel implements ShotObserverModel {
     }
 
     public boolean isLost(){
-        if(!ship.isAlive()) return true;
-        for(AlienModel alien : aliens.getAliens()){
-            if(alien.getY() == ship.getUpperBound()) return true;
-        }
+        if(!ship.isAlive()) return checkScore();
+        for(AlienModel alien : aliens.getAliens())
+            if(alien.getY() == ship.getUpperBound()) return checkScore();
         return false;
+    }
+
+    private boolean checkScore() {
+        if (score > 0) {
+            TreeSet<PlayerScore> scores = PlayerScore.loadScores();
+            String name = System.getProperty("user.name");
+            scores.add(new PlayerScore(name, score));
+            PlayerScore.storeScores(scores);
+        }
+        return true;
     }
 }
