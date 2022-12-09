@@ -50,13 +50,13 @@ public class ArenaModel implements ShotObserverModel {
         elements.add(aliens);
         elements.add(ship);
         this.protections = new ArrayList<>();
-        ProtectionModel p1 = new ProtectionModel(new PositionModel(14, 25), 30);
+        ProtectionModel p1 = new ProtectionModel(new PositionModel(1, 19), 30);
         elements.add(p1);
         protections.add(p1);
-        ProtectionModel p2 = new ProtectionModel(new PositionModel(35, 25), 30);
+        ProtectionModel p2 = new ProtectionModel(new PositionModel(21, 19), 30);
         elements.add(p2);
         protections.add(p2);
-        ProtectionModel p3 = new ProtectionModel(new PositionModel(55, 25), 30);
+        ProtectionModel p3 = new ProtectionModel(new PositionModel(42, 19), 30);
         elements.add(p3);
         protections.add(p3);
     }

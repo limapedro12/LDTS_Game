@@ -28,7 +28,7 @@ public class Game {
         new Game().run();
     }
 
-    private AWTTerminalFontConfiguration loadFont() throws FontFormatException, IOException {
+    public AWTTerminalFontConfiguration loadFont() throws FontFormatException, IOException {
         File fontFile = new File("resources/fonts/SpaceInv_MONO.ttf");
         Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
