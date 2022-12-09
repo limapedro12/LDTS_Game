@@ -17,8 +17,7 @@ public class ArenaViewer implements Viewer{
     }
 
     public void draw(TextGraphics graphics) {
-        //graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
-        //graphics.enableModifiers(SGR.BOLD);
+        graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
 
         for (ElementModel element : model.getElements()) {
             element.getViewer().draw(graphics);
@@ -26,37 +25,33 @@ public class ArenaViewer implements Viewer{
         for (ShotModel shot : model.getShots())
             shot.getViewer().draw(graphics);
 
-        /*
-        for (LifeModel life: model.getLives()){
-            life.getViewer().draw(graphics);
-        }*/
-        //graphics.putString(10,3,"Life: "+model.getLifes());
         graphics.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
         drawLives(graphics);
-        //graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
-        graphics.putString(80,3,"Score: "+model.getScore());
+        graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
+        graphics.putString(38, 1,"Score: "+ model.getScore());
+
         if(model.getYouWon()) {
-            graphics.putString(40, 20, "Level " + model.getLevel());
+            graphics.putString(22, 13, "Level " + model.getLevel());
         }
     }
     private void drawLives(TextGraphics graphics) {
-        graphics.putString(10, 3, "Lives: ");
-        graphics.putString(18,3,"&");
+        graphics.putString(1, 1, "Lives: ");
+        graphics.putString(8,1,"&");
         int lives = model.getShip().getLives();
         switch (lives) {
             case 1:
                 graphics.setForegroundColor(TextColor.Factory.fromString("#660000"));
-                graphics.putString(19,3,"&");
-                graphics.putString(20,3,"&");
+                graphics.putString(9,1,"&");
+                graphics.putString(10,1,"&");
                 break;
             case 2:
-                graphics.putString(19,3,"&");
+                graphics.putString(9,1,"&");
                 graphics.setForegroundColor(TextColor.Factory.fromString("#660000"));
-                graphics.putString(20,3,"&");
+                graphics.putString(10,1,"&");
                 break;
             case 3:
-                graphics.putString(19,3,"&");
-                graphics.putString(20,3,"&");
+                graphics.putString(9,1,"&");
+                graphics.putString(10,1,"&");
         }
     }
 }

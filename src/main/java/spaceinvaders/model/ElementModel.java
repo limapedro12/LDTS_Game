@@ -47,7 +47,7 @@ public abstract class ElementModel implements ShotSubjectModel {
         if (goingLeft) {
             return this.getX() > 0;
         } else {
-            return this.getX() < 75;
+            return this.getX() < 51;
         }
     }
     public void move(int direction) {

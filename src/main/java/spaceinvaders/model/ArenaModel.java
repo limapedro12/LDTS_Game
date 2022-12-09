@@ -73,7 +73,7 @@ public class ArenaModel implements ShotObserverModel {
         if (elapsedTime >= targetTime) {
             moveAliens();
             aliens.fire((float) (0.5 * level));
-            targetTime = elapsedTime + (1000 / level);
+            targetTime = elapsedTime + (2000 / level);
         }
         if(aliens.getAliens().size()==0){
             youWon = true;
@@ -140,13 +140,13 @@ public class ArenaModel implements ShotObserverModel {
         elements.add(aliens);
         elements.add(ship);
         this.protections = new ArrayList<>();
-        ProtectionModel p1 = new ProtectionModel(new PositionModel(14, 25), 30);
+        ProtectionModel p1 = new ProtectionModel(new PositionModel(1, 19), 30);
         elements.add(p1);
         protections.add(p1);
-        ProtectionModel p2 = new ProtectionModel(new PositionModel(35, 25), 30);
+        ProtectionModel p2 = new ProtectionModel(new PositionModel(21, 19), 30);
         elements.add(p2);
         protections.add(p2);
-        ProtectionModel p3 = new ProtectionModel(new PositionModel(55, 25), 30);
+        ProtectionModel p3 = new ProtectionModel(new PositionModel(42, 19), 30);
         elements.add(p3);
         protections.add(p3);
     }
@@ -182,7 +182,7 @@ public class ArenaModel implements ShotObserverModel {
         List<ShotModel> outOfScreen = new ArrayList<>();
         for (ShotModel shot : shots) {
             shot.update();
-            if(shot.getX() < 0 || shot.getX() > 76 || shot.getY() < 0 || shot.getY() > 39) {
+            if(shot.getX() < 0 || shot.getX() > 51 || shot.getY() < 0 || shot.getY() > 26) {
                 outOfScreen.add(shot);
             }
         }

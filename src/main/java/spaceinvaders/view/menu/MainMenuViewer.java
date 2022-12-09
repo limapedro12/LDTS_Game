@@ -25,28 +25,28 @@ public class MainMenuViewer implements MenuViewer {
     public void draw(TextGraphics graphics){
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFC300"));
         List<String> spaceInvaders = new ArrayList<>();
-        spaceInvaders.add(" ####  ####      #      ###   #####");
-        spaceInvaders.add("#      #   #    # #    #   #  #    ");
-        spaceInvaders.add(" ###   ####    #   #   #      ##### ");
-        spaceInvaders.add("    #  #      #######  #   #  #     ");
-        spaceInvaders.add("####   #     #       #  ###   ##### ");
-        spaceInvaders.add("                                    ");
-        spaceInvaders.add("###  #     #  #       #    #      # #     #####  ####   ####         ");
-        spaceInvaders.add(" #   # #   #   #     #    # #     #   #   #      #   # #           ");
-        spaceInvaders.add(" #   #  #  #    #   #    #   #    #    #  #####  ####   ###         ");
-        spaceInvaders.add(" #   #   # #     # #    #######   #   #   #      # #       #         ");
-        spaceInvaders.add("###  #     #      #    #       #  # #     #####  #  #  ####            ");
+        spaceInvaders.add(" #### ####    #     ###  #####");
+        spaceInvaders.add("#     #   #  # #   #   # #    ");
+        spaceInvaders.add(" ###  ####  #   #  #     ##### ");
+        spaceInvaders.add("    # #    ####### #   # #     ");
+        spaceInvaders.add("####  #   #       # ###  ##### ");
+        spaceInvaders.add("");
+        spaceInvaders.add("### #     ##       #  #     ##    ##### ####   #### ");
+        spaceInvaders.add(" #  # #   # #     #  # #    #  #  #     #   # #");
+        spaceInvaders.add(" #  #  #  #  #   #  #   #   #   # ##### ####   ###");
+        spaceInvaders.add(" #  #   # #   # #  #######  #  #  #     # #       #");
+        spaceInvaders.add("### #     #    #  #       # ##    ##### #   # ####");
         for(int i = 0; i < spaceInvaders.size(); i++){
-            graphics.putString(10, 5 + i, spaceInvaders.get(i));
+            graphics.putString(0, 1 + i, spaceInvaders.get(i));
         }
         for(int i = 0; i < model.getCommands().size(); i++){
             if(model.getCommands().get(i) != null){
                 if(i == model.getSelectedCommandInt()){
                     graphics.setForegroundColor(TextColor.Factory.fromString("#FFC300"));
-                    graphics.putString(10, 20 + i, "> " + model.getCommands().get(i).getTitle());
+                    graphics.putString(5, 18 + i, "> " + model.getCommands().get(i).getTitle());
                 }else{
                     graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
-                    graphics.putString(10, 20 + i, model.getCommands().get(i).getTitle());
+                    graphics.putString(5, 18 + i, model.getCommands().get(i).getTitle());
                 }
             }
         }

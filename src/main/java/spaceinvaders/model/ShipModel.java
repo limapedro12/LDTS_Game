@@ -17,7 +17,7 @@ public class ShipModel extends ElementModel {
     private int lowerBound;
     private int lives = 3;
     public ShipModel() {
-        super(new PositionModel(38, 33));
+        super(new PositionModel(25, 22));
         this.upperBound = position.getY();
         this.lowerBound = position.getY() + 4;
         this.leftBound = position.getX() - 4;
@@ -26,7 +26,7 @@ public class ShipModel extends ElementModel {
         this.drawnPositions = new ArrayList<>();
     }
     public ShipModel(int x) {
-        super(new PositionModel(x, 33));
+        super(new PositionModel(x, 22));
         this.leftBound = x-4;
         this.rightBound = x+4;
         this.viewer = new ShipViewer(this);
@@ -71,19 +71,11 @@ public class ShipModel extends ElementModel {
         return lives > 0;
     }
     public void fire() {
-        ShipShotModel shot = new ShipShotModel(new PositionModel(getX(), getY() - 2));
+        ShipShotModel shot = new ShipShotModel(new PositionModel(getX(), upperBound - 1));
         notifyObservers(shot);
     }
     public int getLives(){
         return lives;
-    }
-    @Override
-    public boolean canIMove(boolean goingLeft) {
-        if (goingLeft) {
-            return this.getLeftBound() > 0;
-        } else {
-            return this.getRightBound() < 75;
-        }
     }
     public void damage(){
         lives--;

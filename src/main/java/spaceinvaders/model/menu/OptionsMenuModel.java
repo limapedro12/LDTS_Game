@@ -52,5 +52,4 @@ public class OptionsMenuModel extends MenuModel{
     public void downSelectedCommand(){
         selectedCommand = (selectedCommand + 1) % commands.size();
     }
-
 }
