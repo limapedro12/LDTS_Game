@@ -21,4 +21,7 @@ public class ControlsMenuModel extends MenuModel{
     public Command getExitCommand(){
         return exitCommand;
     }
+    public static void reset(){
+        instance = null;
+    }
 }

@@ -31,4 +31,7 @@ public class ControlsMenuController implements Controller {
             model.getExitCommand().execute();
         }
     }
+    public static void reset(){
+        instance = null;
+    }
 }

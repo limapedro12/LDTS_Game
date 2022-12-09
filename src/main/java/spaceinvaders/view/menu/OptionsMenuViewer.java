@@ -34,4 +34,7 @@ public class OptionsMenuViewer implements MenuViewer {
             }
         }
     }
+    public static void reset() {
+        instance = null;
+    }
 }

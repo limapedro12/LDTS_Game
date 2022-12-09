@@ -53,4 +53,7 @@ public class OptionsMenuModel extends MenuModel{
         selectedCommand = (selectedCommand + 1) % commands.size();
     }
 
+    public static void reset(){
+        instance = null;
+    }
 }

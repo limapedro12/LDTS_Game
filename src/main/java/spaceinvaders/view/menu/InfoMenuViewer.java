@@ -27,4 +27,8 @@ public class InfoMenuViewer implements MenuViewer {
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFC300"));
         graphics.putString(40, 40, "> Exit");
     }
+
+    public static void reset() {
+        instance = null;
+    }
 }
