@@ -21,6 +21,9 @@ public class InfoMenuModel extends MenuModel{
     public Command getExitCommand(){
         return exitCommand;
     }
+    public void setExitCommand(Command exitCommand){
+        this.exitCommand = exitCommand;
+    }
     public static void reset(){
         instance = null;
     }
