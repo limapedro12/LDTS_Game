@@ -19,11 +19,11 @@ public class AlienGroupModel extends ElementModel {
 
     private void createAliens() {
         for (int j = 0; j < 10; j++) {
-            AlienModel a = new AlienModel(new PositionModel(13 + 8 * j, 9), '*');
-            AlienModel b = new AlienModel(new PositionModel(13 + 8 * j, 11), '/');
-            AlienModel c = new AlienModel(new PositionModel(13 + 8 * j, 13), '-');
-            AlienModel d = new AlienModel(new PositionModel(13 + 8 * j, 15), '.');
-            AlienModel e = new AlienModel(new PositionModel(13 + 8 * j, 17), '.');
+            AlienModel a = new AlienModel(new PositionModel(13 + 6 * j, 9), '*');
+            AlienModel b = new AlienModel(new PositionModel(13 + 6 * j, 11), '/');
+            AlienModel c = new AlienModel(new PositionModel(13 + 6 * j, 13), '-');
+            AlienModel d = new AlienModel(new PositionModel(13 + 6 * j, 15), '.');
+            AlienModel e = new AlienModel(new PositionModel(13 + 6 * j, 17), '.');
             aliens.add(a); aliens.add(b); aliens.add(c); aliens.add(d); aliens.add(e);
         }
     }

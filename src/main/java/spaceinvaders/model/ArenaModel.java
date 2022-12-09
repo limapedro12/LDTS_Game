@@ -50,17 +50,15 @@ public class ArenaModel implements ShotObserverModel {
         elements.add(aliens);
         elements.add(ship);
         this.protections = new ArrayList<>();
-        ProtectionModel p1 = new ProtectionModel(new PositionModel(48, 35), 30);
+        ProtectionModel p1 = new ProtectionModel(new PositionModel(14, 25), 30);
         elements.add(p1);
         protections.add(p1);
-        ProtectionModel p2 = new ProtectionModel(new PositionModel(22, 35), 30);
+        ProtectionModel p2 = new ProtectionModel(new PositionModel(35, 25), 30);
         elements.add(p2);
         protections.add(p2);
-        ProtectionModel p3 = new ProtectionModel(new PositionModel(72, 35), 30);
+        ProtectionModel p3 = new ProtectionModel(new PositionModel(55, 25), 30);
         elements.add(p3);
         protections.add(p3);
-        // shots.add(new ShipShot(new Position(54, 45)));
-        // shots.add(new AlienShot(new Position(25, 5)));
     }
     public Command getExitCommand(){
         return exitCommand;
@@ -134,11 +132,23 @@ public class ArenaModel implements ShotObserverModel {
         shots = new ArrayList<>();
         aliens = new AlienGroupModel(this);
         aliens.addObserver(this);
+        startTime = System.currentTimeMillis();
+        youWon = false;
+        elapsedTime = 0;
+        lastAlienDirection = 0;
+        level = 1;
         elements.add(aliens);
         elements.add(ship);
-        elements.add(new ProtectionModel(new PositionModel(48, 35), 30));
-        elements.add(new ProtectionModel(new PositionModel(22, 35), 30));
-        elements.add(new ProtectionModel(new PositionModel(72, 35), 30));
+        this.protections = new ArrayList<>();
+        ProtectionModel p1 = new ProtectionModel(new PositionModel(14, 25), 30);
+        elements.add(p1);
+        protections.add(p1);
+        ProtectionModel p2 = new ProtectionModel(new PositionModel(35, 25), 30);
+        elements.add(p2);
+        protections.add(p2);
+        ProtectionModel p3 = new ProtectionModel(new PositionModel(55, 25), 30);
+        elements.add(p3);
+        protections.add(p3);
     }
 
     public void checkDead() {
@@ -172,7 +182,7 @@ public class ArenaModel implements ShotObserverModel {
         List<ShotModel> outOfScreen = new ArrayList<>();
         for (ShotModel shot : shots) {
             shot.update();
-            if(shot.getX() < 0 || shot.getX() > 100 || shot.getY() < 0 || shot.getY() > 50) {
+            if(shot.getX() < 0 || shot.getX() > 76 || shot.getY() < 0 || shot.getY() > 39) {
                 outOfScreen.add(shot);
             }
         }
