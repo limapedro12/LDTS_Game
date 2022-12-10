@@ -22,4 +22,7 @@ public class StartCommand extends Command {
     public ArenaModel getArena(){
         return arena;
     }
+    public GameModel getGameModel(){
+        return gameModel;
+    }
 }
