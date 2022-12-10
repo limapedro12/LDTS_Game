@@ -23,10 +23,15 @@ public class ProtectionTest {
     public void draw() {
         TextGraphics graphics = Mockito.mock(TextGraphics.class);
         protection.getViewer().draw(graphics);
-        Mockito.verify(graphics, Mockito.times(1)).drawRectangle(new TerminalPosition(2, 2), new TerminalSize(8, 3), TextCharacter.fromCharacter('#')[0]);
-        Mockito.verify(graphics, Mockito.times(1)).drawRectangle(new TerminalPosition(2 + 1, 2 + 3 - 1), new TerminalSize(8-2, 1), TextCharacter.fromCharacter('\'')[0]);
+        Mockito.verify(graphics, Mockito.times(1)).drawRectangle(new TerminalPosition(2, 2), new TerminalSize(8, 3), TextCharacter.fromCharacter('=')[0]);
+        Mockito.verify(graphics, Mockito.times(1)).drawRectangle(new TerminalPosition(2 + 1, 2 + 3 - 1), new TerminalSize(8-2, 1), TextCharacter.fromCharacter(' ')[0]);
         Mockito.verify(graphics, Mockito.times(1)).setCharacter(2 + 8/2 - 1, 2 + 1, TextCharacter.fromCharacter((char) ((char) 2 / 10 + '0'))[0]);
         Mockito.verify(graphics, Mockito.times(1)).setCharacter(2 + 8/2, 2 + 1, TextCharacter.fromCharacter((char) ((char) 2 % 10 + '0'))[0]);
+    }
+
+    @Test
+    public void getModelTest() {
+        assertEquals(protection, protection.getViewer().getModel());
     }
 
     @Test
