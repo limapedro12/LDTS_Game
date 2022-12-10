@@ -27,4 +27,10 @@ public class MenuStateModel implements RunStateModel {
     public Controller getController() {
         return controller;
     }
+
+    public MenuModel getModel(){
+        return model;
+    }
+
+
 }

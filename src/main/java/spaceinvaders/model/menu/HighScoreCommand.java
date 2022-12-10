@@ -13,4 +13,10 @@ public class HighScoreCommand extends Command {
         HighScoreMenuModel model = HighScoreMenuModel.getInstance(gameModel);
         gameModel.setState(new MenuStateModel(model, HighScoreMenuController.getInstance(model)));
     }
+    public GameModel getGameModel() {
+        return gameModel;
+    }
+    public void setGameModel(GameModel gameModel) {
+        this.gameModel = gameModel;
+    }
 }

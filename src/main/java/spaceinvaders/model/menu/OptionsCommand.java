@@ -13,4 +13,11 @@ public class OptionsCommand extends Command {
         OptionsMenuModel model = OptionsMenuModel.getInstance(gameModel);
         gameModel.setState(new MenuStateModel(model, OptionsMenuController.getInstance(model)));
     }
+
+    public GameModel getGameModel() {
+        return gameModel;
+    }
+    public void setGameModel(GameModel gameModel) {
+        this.gameModel = gameModel;
+    }
 }

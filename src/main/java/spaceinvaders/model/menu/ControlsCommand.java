@@ -13,4 +13,10 @@ public class ControlsCommand extends Command {
         ControlsMenuModel model = ControlsMenuModel.getInstance(gameModel);
         gameModel.setState(new MenuStateModel(model, ControlsMenuController.getInstance(model)));
     }
+    public GameModel getGameModel() {
+        return gameModel;
+    }
+    public void setGameModel(GameModel gameModel) {
+        this.gameModel = gameModel;
+    }
 }
