@@ -19,18 +19,17 @@ public class GameController {
         state = new RunStateController(model.getState().getController());
     }
 
-    public boolean processKey() throws IOException {
+    public void processKey() throws IOException {
         KeyStroke key = screen.pollInput();
         while(key != null && lastKey != null && key.getKeyType() == lastKey.getKeyType() && key.getCharacter() == lastKey.getCharacter())
             key = screen.pollInput();
         lastKey = key;
-        if (key == null) return true;
-        if (key.getKeyType() == KeyType.EOF) return false;
+        if (key == null) return;
+        if (key.getKeyType() == KeyType.EOF) System.exit(0);
 
         if(state.getController() != model.getState().getController()){
             state = new RunStateController(model.getState().getController());
         }
         state.processKey(key);
-        return true;
     }
 }

@@ -96,7 +96,7 @@ public class Game {
 
             model.run();
             viewer.draw();
-            if (!controller.processKey()) break;
+            controller.processKey();
 
             long elapsedTime = System.currentTimeMillis() - startTime;
             long sleepTime = frameTime - elapsedTime;

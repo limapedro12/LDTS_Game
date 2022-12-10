@@ -67,7 +67,7 @@ goto fail
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\SpaceInvaders-1.0-SNAPSHOT.jar;%APP_HOME%\lib\lanterna-3.1.1.jar
+set CLASSPATH=%APP_HOME%\lib\SpaceInvaders-1.0-SNAPSHOT.jar;%APP_HOME%\lib\lanterna-3.1.1.jar;%APP_HOME%\lib\testng-7.1.0.jar;%APP_HOME%\lib\jcommander-1.72.jar;%APP_HOME%\lib\guice-4.1.0-no_aop.jar;%APP_HOME%\lib\snakeyaml-1.21.jar;%APP_HOME%\lib\javax.inject-1.jar;%APP_HOME%\lib\aopalliance-1.0.jar;%APP_HOME%\lib\guava-19.0.jar
 
 
 @rem Execute SpaceInvaders
