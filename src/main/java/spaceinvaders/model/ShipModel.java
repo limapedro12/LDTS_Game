@@ -17,7 +17,7 @@ public class ShipModel extends ElementModel {
     private int lowerBound;
     private int lives = 3;
     public ShipModel() {
-        super(new PositionModel(50, 39));
+        super(new PositionModel(50, 40));
         this.upperBound = position.getY();
         this.lowerBound = position.getY() + 4;
         this.leftBound = position.getX() - 4;
