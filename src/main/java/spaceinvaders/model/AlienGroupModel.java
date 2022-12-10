@@ -19,11 +19,11 @@ public class AlienGroupModel extends ElementModel {
 
     private void createAliens() {
         for (int j = 0; j < 10; j++) {
-            AlienModel a = new AlienModel(new PositionModel(2 + 5 * j, 3), '*');
-            AlienModel b = new AlienModel(new PositionModel(2 + 5 * j, 5), '/');
-            AlienModel c = new AlienModel(new PositionModel(2 + 5 * j, 7), '-');
-            AlienModel d = new AlienModel(new PositionModel(2 + 5 * j, 9), '.');
-            AlienModel e = new AlienModel(new PositionModel(2 + 5 * j, 11), '.');
+            AlienModel a = new AlienModel(new PositionModel(2 + 5 * j, 3), "*", "#08F121");
+            AlienModel b = new AlienModel(new PositionModel(2 + 5 * j, 5), "/", "#0876F1");
+            AlienModel c = new AlienModel(new PositionModel(2 + 5 * j, 7), "-", "#DCFF00");
+            AlienModel d = new AlienModel(new PositionModel(2 + 5 * j, 9), ".", "#FF0000");
+            AlienModel e = new AlienModel(new PositionModel(2 + 5 * j, 11), ".", "#FFFFFF");
             aliens.add(a); aliens.add(b); aliens.add(c); aliens.add(d); aliens.add(e);
         }
     }
@@ -83,16 +83,16 @@ public class AlienGroupModel extends ElementModel {
     public boolean collideWith(ShotModel shot) {
         for (AlienModel alien : aliens) {
             if (alien.collideWith(shot)) {
-                if (alien.getSymbol() == '*'){
+                if (alien.getSymbol() == "*"){
                     arena.addScore(40);
                 }
-                else if (alien.getSymbol() == '/'){
+                else if (alien.getSymbol() == "/"){
                     arena.addScore(30);
                 }
-                else if (alien.getSymbol() == '-'){
+                else if (alien.getSymbol() == "-"){
                     arena.addScore(20);
                 }
-                else if (alien.getSymbol() == '.'){
+                else if (alien.getSymbol() == "."){
                     arena.addScore(10);
                 }
                 alien.damage();

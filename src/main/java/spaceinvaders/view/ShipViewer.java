@@ -13,24 +13,24 @@ public class ShipViewer implements ElementViewer {
     public void draw(TextGraphics graphics) {
         ship.resetDrawnPositions();
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFC300"));
-        graphics.setCharacter(ship.getX(), ship.getUpperBound(), TextCharacter.fromCharacter('"')[0]);
+        graphics.putString(ship.getX(), ship.getUpperBound(), "\"");
         ship.addDrawnPosition(new PositionModel(ship.getX(), ship.getUpperBound()));
-        graphics.setCharacter(ship.getX()-1, ship.getUpperBound()+1, TextCharacter.fromCharacter(')')[0]);
+        graphics.putString(ship.getX()-1, ship.getUpperBound()+1, ")");
         ship.addDrawnPosition(new PositionModel(ship.getX()-1, ship.getUpperBound()+1));
-        graphics.setCharacter(ship.getX(), ship.getUpperBound()+1, TextCharacter.fromCharacter('=')[0]);
+        graphics.putString(ship.getX(), ship.getUpperBound()+1, "=");
         ship.addDrawnPosition(new PositionModel(ship.getX(), ship.getUpperBound()+1));
-        graphics.setCharacter(ship.getX()+1, ship.getUpperBound()+1, TextCharacter.fromCharacter('(')[0]);
+        graphics.putString(ship.getX()+1, ship.getUpperBound()+1, "(");
         ship.addDrawnPosition(new PositionModel(ship.getX()+1, ship.getUpperBound()+1));
-        graphics.setCharacter(ship.getLeftBound(), ship.getUpperBound()+2, TextCharacter.fromCharacter('+')[0]);
+        graphics.putString(ship.getLeftBound(), ship.getUpperBound()+2, "+");
         ship.addDrawnPosition(new PositionModel(ship.getLeftBound(), ship.getUpperBound()+2));
-        graphics.setCharacter(ship.getRightBound(), ship.getUpperBound()+2, TextCharacter.fromCharacter(',')[0]);
+        graphics.putString(ship.getRightBound(), ship.getUpperBound()+2, ",");
         ship.addDrawnPosition(new PositionModel(ship.getRightBound(), ship.getUpperBound()+2));
         for (int i = ship.getLeftBound()+1; i <= ship.getRightBound()-1; i++) {
-            graphics.setCharacter(i, ship.getUpperBound()+2, TextCharacter.fromCharacter('=')[0]);
+            graphics.putString(i, ship.getUpperBound()+2, "=");
             ship.addDrawnPosition(new PositionModel(i, ship.getUpperBound()+2));
         }
         for (int i = ship.getLeftBound(); i <= ship.getRightBound(); i++) {
-            graphics.setCharacter(i, ship.getUpperBound()+3, TextCharacter.fromCharacter('=')[0]);
+            graphics.putString(i, ship.getUpperBound()+3, "=");
             ship.addDrawnPosition(new PositionModel(i, ship.getUpperBound()+3));
         }
 

@@ -99,4 +99,12 @@ public class ShipModel extends ElementModel {
     public void resetDrawnPositions() {
         drawnPositions = new ArrayList<>();
     }
+    @Override
+    public boolean canIMove(boolean goingLeft) {
+        if (goingLeft) {
+            return leftBound > 0;
+        } else {
+            return rightBound < 50;
+        }
+    }
 }

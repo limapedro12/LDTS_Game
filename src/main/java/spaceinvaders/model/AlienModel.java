@@ -6,11 +6,13 @@ import spaceinvaders.view.AlienViewer;
 
 public class AlienModel extends ElementModel {
     boolean alive = true;
-    protected char symbol;
+    private String symbol;
+    private String color;
 
-    public AlienModel(PositionModel position, char symbol) {
+    public AlienModel(PositionModel position, String symbol, String color) {
         super(position);
         this.symbol = symbol;
+        this.color = color;
         this.viewer = new AlienViewer(this);
     }
     public void damage() {
@@ -19,8 +21,11 @@ public class AlienModel extends ElementModel {
     public boolean isAlive() {
         return alive;
     }
-    public char getSymbol(){
+    public String getSymbol(){
         return symbol;
+    }
+    public String getColor() {
+        return color;
     }
     public void fire(float level) {
         AlienShotModel shot = new AlienShotModel(new PositionModel(getX(), getY() + 1), level);

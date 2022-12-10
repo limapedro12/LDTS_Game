@@ -2,6 +2,7 @@ package spaceinvaders.view;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextCharacter;
+import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import spaceinvaders.model.AlienModel;
 import spaceinvaders.model.ElementModel;
@@ -14,7 +15,8 @@ public class AlienViewer implements ElementViewer {
     }
 
     public void draw(TextGraphics graphics){
-        graphics.setCharacter(new TerminalPosition(model.getX(), model.getY()), TextCharacter.fromCharacter(model.getSymbol())[0]);
+        graphics.setForegroundColor(TextColor.Factory.fromString(model.getColor()));
+        graphics.putString(new TerminalPosition(model.getX(), model.getY()), model.getSymbol());
     }
 
     @Override
