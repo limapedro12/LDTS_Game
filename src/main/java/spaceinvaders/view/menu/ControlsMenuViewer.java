@@ -16,6 +16,9 @@ public class ControlsMenuViewer implements MenuViewer {
         }
         return instance;
     }
+    public static ControlsMenuViewer getInstance(){
+        return instance;
+    }
 
     public void draw(TextGraphics graphics){
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));

@@ -16,6 +16,9 @@ public class InfoMenuViewer implements MenuViewer {
         }
         return instance;
     }
+    public static InfoMenuViewer getInstance(){
+        return instance;
+    }
 
     public void draw(TextGraphics graphics){
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
