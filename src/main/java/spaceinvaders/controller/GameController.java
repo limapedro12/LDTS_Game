@@ -32,4 +32,12 @@ public class GameController {
         }
         state.processKey(key);
     }
+
+    public void setState(RunStateController state) {
+        this.state = state;
+    }
+
+    public RunStateController getState() {
+        return state;
+    }
 }
