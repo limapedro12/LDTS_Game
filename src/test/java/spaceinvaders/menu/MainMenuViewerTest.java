@@ -43,7 +43,7 @@ public class MainMenuViewerTest {
         viewer.draw(graphicsMock);
         Mockito.verify(graphicsMock, Mockito.times(2)).setForegroundColor(TextColor.Factory.fromString("#FFC300"));
         Mockito.verify(graphicsMock, Mockito.atLeast(4)).putString(Mockito.anyInt(), Mockito.anyInt(), Mockito.anyString());
-        Mockito.verify(graphicsMock, Mockito.times(3)).setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
+        Mockito.verify(graphicsMock, Mockito.times(4)).setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
     }
     @Test
     public void resetTest(){

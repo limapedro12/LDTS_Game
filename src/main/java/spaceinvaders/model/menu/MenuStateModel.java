@@ -22,6 +22,9 @@ public class MenuStateModel implements RunStateModel {
     public RunStateViewer getViewer() {
         return viewer;
     }
+    public void setViewer(MenuStateViewer viewer){
+        this.viewer = viewer;
+    }
 
     @Override
     public Controller getController() {
