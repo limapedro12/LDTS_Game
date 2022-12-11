@@ -21,7 +21,7 @@ public class Game {
     static private GameModel model;
     static private GameController controller;
     static private GameViewer viewer;
-    static private int width = 51;
+    static private int width = 50;
     static private int height = 26;
 
     public static void main(String[] args) throws IOException, FontFormatException {

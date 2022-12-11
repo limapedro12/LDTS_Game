@@ -8,8 +8,8 @@ import spaceinvaders.view.ProtectionViewer;
 
 public class ProtectionModel extends ElementModel {
     private int life;
-    private int height = 3;
-    private int width = 8;
+    private int height = 2;
+    private int width = 4;
 
     public ProtectionModel(PositionModel position, int life) {
         super(position);

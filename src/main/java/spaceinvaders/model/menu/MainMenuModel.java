@@ -27,6 +27,7 @@ public class MainMenuModel extends MenuModel {
         commands.add(startCommand);
         commands.add(new HighScoreCommand(gameModel));
         commands.add(new OptionsCommand(gameModel));
+        commands.add(new StartInLevelMenuCommand(gameModel));
         commands.add(new ExitCommand());
     }
     public static MainMenuModel getInstance(GameModel gameModel){

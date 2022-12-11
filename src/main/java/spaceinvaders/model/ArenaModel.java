@@ -1,18 +1,15 @@
 package spaceinvaders.model;
 
 import spaceinvaders.model.menu.Command;
-import spaceinvaders.Game;
 import spaceinvaders.PlayerScore;
 import spaceinvaders.model.menu.ExitToMenuCommand;
 import spaceinvaders.view.ArenaViewer;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
+
+import static java.lang.Math.max;
 
 public class ArenaModel implements ShotObserverModel {
     private ArenaViewer viewer;
@@ -50,15 +47,19 @@ public class ArenaModel implements ShotObserverModel {
         elements.add(aliens);
         elements.add(ship);
         this.protections = new ArrayList<>();
-        ProtectionModel p1 = new ProtectionModel(new PositionModel(1, 19), 30);
+        ProtectionModel p1 = new ProtectionModel(new PositionModel(8, 19), 30);
         elements.add(p1);
         protections.add(p1);
-        ProtectionModel p2 = new ProtectionModel(new PositionModel(21, 19), 30);
+        ProtectionModel p2 = new ProtectionModel(new PositionModel(23, 19), 30);
         elements.add(p2);
         protections.add(p2);
-        ProtectionModel p3 = new ProtectionModel(new PositionModel(42, 19), 30);
+        ProtectionModel p3 = new ProtectionModel(new PositionModel(38, 19), 30);
         elements.add(p3);
         protections.add(p3);
+    }
+    public ArenaModel(GameModel gameModel, int level) {
+        this(gameModel);
+        for (int i = 2; i <= level; i++) incrementLevel();
     }
     public Command getExitCommand(){
         return exitCommand;
@@ -74,6 +75,7 @@ public class ArenaModel implements ShotObserverModel {
             moveAliens();
             aliens.fire((float) (0.5 * level));
             targetTime = elapsedTime + (2000 / level);
+            System.out.println(level);
         }
         if(aliens.getAliens().size()==0){
             youWon = true;
@@ -93,7 +95,7 @@ public class ArenaModel implements ShotObserverModel {
         checkDead();
         checkShot();
         checkCollisions();
-        if(!ship.isAlive()){
+        if(isLost()){
             new ExitToMenuCommand(gameModel).execute();
         }
     }
@@ -116,16 +118,9 @@ public class ArenaModel implements ShotObserverModel {
         }
         //targetTime = elapsedTime + (1000/level);
     }
-
-    /*public void randomAlienShoots() {
-        elapsedTime = System.currentTimeMillis() - startTime;
-        if (elapsedTime >= 2*targetTime) {
-            aliens.fire(level);
-            targetTime = elapsedTime + (1000/level);
-        }
-    }*/
     public void incrementLevel() {
-        level++;
+        this.level++;
+        System.out.println(this.level);
         ship = new ShipModel();
         ship.addObserver(this);
         elements = new ArrayList<>();
@@ -136,17 +131,16 @@ public class ArenaModel implements ShotObserverModel {
         youWon = false;
         elapsedTime = 0;
         lastAlienDirection = 0;
-        level = 1;
         elements.add(aliens);
         elements.add(ship);
         this.protections = new ArrayList<>();
-        ProtectionModel p1 = new ProtectionModel(new PositionModel(1, 19), 30);
+        ProtectionModel p1 = new ProtectionModel(new PositionModel(8, 19), max(31-level, 5));
         elements.add(p1);
         protections.add(p1);
-        ProtectionModel p2 = new ProtectionModel(new PositionModel(21, 19), 30);
+        ProtectionModel p2 = new ProtectionModel(new PositionModel(23, 19), max(31-level, 5));
         elements.add(p2);
         protections.add(p2);
-        ProtectionModel p3 = new ProtectionModel(new PositionModel(42, 19), 30);
+        ProtectionModel p3 = new ProtectionModel(new PositionModel(38, 19), max(31-level, 5));
         elements.add(p3);
         protections.add(p3);
     }
