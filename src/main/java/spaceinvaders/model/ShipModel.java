@@ -105,7 +105,7 @@ public class ShipModel extends ElementModel {
         if (goingLeft) {
             return leftBound > 0;
         } else {
-            return rightBound < 50;
+            return rightBound < 49;
         }
     }
     private void shotSound() {

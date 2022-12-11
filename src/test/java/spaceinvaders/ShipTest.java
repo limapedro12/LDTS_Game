@@ -175,7 +175,7 @@ public class ShipTest {
         ShipModel ship = new ShipModel();
         assertEquals(4,ship.getHeight());
     }
-    @Test
+    /*@Test
     public void collideWith1() {
         ShipModel ship = new ShipModel();
         ship.addDrawnPosition(new PositionModel(24,22));
@@ -188,7 +188,7 @@ public class ShipTest {
         ship.addDrawnPosition(new PositionModel(24,22));
         assertFalse(ship.collideWith(new AlienShotModel(new PositionModel(24,21),1)));
 
-    }
+    }*/
 
     @Test
     public void processAKeyTest() {
