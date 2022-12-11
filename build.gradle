@@ -2,7 +2,7 @@ plugins {
     id 'java'
     id 'application'
     id 'info.solidsoft.pitest' version '1.6.0'
-    id("net.ltgt.errorprone") version "3.0.1"
+//    id "net.ltgt.errorprone" version "3.0.1"
 }
 
 group 'spaceinvaders'
@@ -24,7 +24,7 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
     testImplementation 'org.mockito:mockito-core:3.7.7'
     testImplementation 'com.github.stefanbirkner:system-lambda:1.2.1'
-    errorprone("com.google.errorprone:error_prone_core:3.0.1")
+    // errorprone "com.google.errorprone:error_prone_core:3.0.1"
 }
 
 test {
