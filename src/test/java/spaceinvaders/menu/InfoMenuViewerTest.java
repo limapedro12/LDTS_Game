@@ -40,9 +40,9 @@ public class InfoMenuViewerTest {
         TextGraphics graphicsMock = Mockito.mock(TextGraphics.class);
         viewer.draw(graphicsMock);
         Mockito.verify(graphicsMock, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
-        Mockito.verify(graphicsMock, Mockito.times(6)).putString(Mockito.anyInt(), Mockito.anyInt(), Mockito.anyString());
+        Mockito.verify(graphicsMock, Mockito.times(7)).putString(Mockito.anyInt(), Mockito.anyInt(), Mockito.anyString());
         Mockito.verify(graphicsMock, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#FFC300"));
-        Mockito.verify(graphicsMock, Mockito.times(1)).putString(40, 40, "> Exit");
+        Mockito.verify(graphicsMock, Mockito.times(1)).putString(6, 20, "> Exit");
     }
     @Test
     public void resetTest(){

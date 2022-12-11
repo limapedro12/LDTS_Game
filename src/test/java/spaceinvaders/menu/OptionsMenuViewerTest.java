@@ -39,7 +39,7 @@ public class OptionsMenuViewerTest {
     public void draw(){
         TextGraphics graphicsMock = Mockito.mock(TextGraphics.class);
         viewer.draw(graphicsMock);
-        Mockito.verify(graphicsMock, Mockito.times(1)).putString(20, 18, "Options");
+        Mockito.verify(graphicsMock, Mockito.times(1)).putString(8, 8, "Options");
         Mockito.verify(graphicsMock, Mockito.atLeast(1)).setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         Mockito.verify(graphicsMock, Mockito.atLeast(4)).putString(Mockito.anyInt(), Mockito.anyInt(), Mockito.anyString());
         Mockito.verify(graphicsMock, Mockito.atLeast(1)).setForegroundColor(TextColor.Factory.fromString("#FFC300"));

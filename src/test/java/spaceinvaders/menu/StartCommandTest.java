@@ -41,4 +41,10 @@ public class StartCommandTest {
         startCommand.execute();
         Mockito.verify(gameModel, Mockito.times(1)).setState(Mockito.any());
     }
+
+    @Test
+    public void setLevelTest() {
+        startCommand.setLevel(2);
+        assertEquals(startCommand.getArena().getLevel(), 2);
+    }
 }

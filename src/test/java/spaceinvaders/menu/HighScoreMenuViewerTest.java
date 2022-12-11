@@ -40,8 +40,8 @@ public class HighScoreMenuViewerTest {
         TextGraphics graphicsMock = Mockito.mock(TextGraphics.class);
         viewer.draw(graphicsMock);
         Mockito.verify(graphicsMock, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#FFC300"));
-        Mockito.verify(graphicsMock, Mockito.atLeast(1)).putString(40, 18, "HighScores");
-        Mockito.verify(graphicsMock, Mockito.atLeast(1)).putString(40, 40, "> Exit");
+        Mockito.verify(graphicsMock, Mockito.atLeast(1)).putString(8, 2, "HighScores");
+        Mockito.verify(graphicsMock, Mockito.atLeast(1)).putString(8, 20, "> Exit");
         Mockito.verify(graphicsMock, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
     }
     @Test

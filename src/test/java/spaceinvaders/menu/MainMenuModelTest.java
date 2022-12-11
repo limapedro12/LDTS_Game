@@ -25,11 +25,12 @@ public class MainMenuModelTest {
     public void addCommandTest(){
         model.clearCommands();
         model.addCommands();
-        assertEquals(model.getCommands().size(), 4);
+        assertEquals(model.getCommands().size(), 5);
         assertEquals(model.getCommands().get(0).getTitle(),"Start Game");
-        assertEquals(model.getCommands().get(1).getTitle(), "HighScores");
-        assertEquals(model.getCommands().get(2).getTitle(),"Options");
-        assertEquals(model.getCommands().get(3).getTitle(), "Exit");
+        assertEquals(model.getCommands().get(1).getTitle(),"Start In Level");
+        assertEquals(model.getCommands().get(2).getTitle(), "HighScores");
+        assertEquals(model.getCommands().get(3).getTitle(),"Options");
+        assertEquals(model.getCommands().get(4).getTitle(), "Exit");
 
     }
 
@@ -38,7 +39,7 @@ public class MainMenuModelTest {
         model.clearCommands();
         model.addCommands();
         model.addContinueCommand();
-        assertEquals(model.getCommands().size(), 5);
+        assertEquals(model.getCommands().size(), 6);
         assertEquals(model.getCommands().get(0).getTitle(), "Continue Game");
         assertEquals(model.getCommands().get(1).getTitle(), "Restart Game");
     }
@@ -49,7 +50,7 @@ public class MainMenuModelTest {
         model.addCommands();
         model.addContinueCommand();
         model.removeContinueCommand();
-        assertEquals(model.getCommands().size(), 4);
+        assertEquals(model.getCommands().size(), 5);
         assertEquals(model.getCommands().get(0).getTitle(), "Start Game");
     }
 
@@ -59,6 +60,8 @@ public class MainMenuModelTest {
         model.addCommands();
         assertEquals(model.getSelectedCommand().getTitle(), "Start Game");
         model.downSelectedCommand();
+        assertEquals(model.getSelectedCommand().getTitle(), "Start In Level");
+        model.downSelectedCommand();
         assertEquals(model.getSelectedCommand().getTitle(), "HighScores");
         model.downSelectedCommand();
         assertEquals(model.getSelectedCommand().getTitle(), "Options");
@@ -72,6 +75,8 @@ public class MainMenuModelTest {
         assertEquals(model.getSelectedCommand().getTitle(), "Options");
         model.upSelectedCommand();
         assertEquals(model.getSelectedCommand().getTitle(), "HighScores");
+        model.upSelectedCommand();
+        assertEquals(model.getSelectedCommand().getTitle(), "Start In Level");
         model.upSelectedCommand();
         assertEquals(model.getSelectedCommand().getTitle(), "Start Game");
     }
@@ -88,7 +93,11 @@ public class MainMenuModelTest {
         model.downSelectedCommand();
         assertEquals(model.getSelectedCommandInt(), 3);
         model.downSelectedCommand();
+        assertEquals(model.getSelectedCommandInt(), 4);
+        model.downSelectedCommand();
         assertEquals(model.getSelectedCommandInt(), 0);
+        model.upSelectedCommand();
+        assertEquals(model.getSelectedCommandInt(), 4);
         model.upSelectedCommand();
         assertEquals(model.getSelectedCommandInt(), 3);
         model.upSelectedCommand();
@@ -106,13 +115,17 @@ public class MainMenuModelTest {
         assertEquals(model.getSelectedCommand().getTitle(), "Start Game");
         assertEquals(model.getSelectedCommandInt(), 0);
         model.downSelectedCommand();
-        assertEquals(model.getSelectedCommand().getTitle(), "HighScores");
+        assertEquals(model.getSelectedCommand().getTitle(), "Start In Level");
         assertEquals(model.getSelectedCommandInt(), 1);
         model.downSelectedCommand();
+        assertEquals(model.getSelectedCommand().getTitle(), "HighScores");
+        assertEquals(model.getSelectedCommandInt(), 2);
+        model.downSelectedCommand();
         assertEquals(model.getSelectedCommand().getTitle(), "Options");
+        assertEquals(model.getSelectedCommandInt(), 3);
         model.downSelectedCommand();
         assertEquals(model.getSelectedCommand().getTitle(), "Exit");
-        assertEquals(model.getSelectedCommandInt(), 3);
+        assertEquals(model.getSelectedCommandInt(), 4);
         model.downSelectedCommand();
         assertEquals(model.getSelectedCommand().getTitle(), "Start Game");
         assertEquals(model.getSelectedCommandInt(), 0);
@@ -132,10 +145,11 @@ public class MainMenuModelTest {
         model.setStartCommand(startCommandMock);
         model.setContinueEnabled(false);
 
-        //model.checkContinue();
+        MainMenuModel.getInstance(gameModelMock);
 
         Mockito.verify(startCommandMock, Mockito.times(1)).setTitle("Continue Game");
-        assertEquals(model.getCommands().size(), 5);
+        assertEquals(model.getCommands().get(1).getTitle(), "Restart Game");
+        assertEquals(model.getCommands().size(), 6);
         assertTrue(model.isContinueEnabled());
     }
     @Test
@@ -147,8 +161,7 @@ public class MainMenuModelTest {
         model.setStartCommand(startCommandMock);
         model.setContinueEnabled(true);
 
-        model.addContinueCommand();
-        //model.checkContinue();
+        MainMenuModel.getInstance(gameModelMock);
 
         Mockito.verify(startCommandMock, Mockito.times(1)).setTitle("Start Game");
         Mockito.verify(startCommandMock, Mockito.times(1)).restartArena();
