@@ -5,6 +5,9 @@ import spaceinvaders.PlayerScore;
 import spaceinvaders.model.menu.ExitToMenuCommand;
 import spaceinvaders.view.ArenaViewer;
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
@@ -97,6 +100,7 @@ public class ArenaModel implements ShotObserverModel {
         checkShot();
         checkCollisions();
         if(isLost()){
+            dieSound();
             new ExitToMenuCommand(gameModel).execute();
         }
     }
@@ -244,5 +248,17 @@ public class ArenaModel implements ShotObserverModel {
             PlayerScore.storeScores(scores);
         }
         return true;
+    }
+
+    private void dieSound() {
+        File f = new File("resources/sound/die.wav");
+
+        try {
+            Clip clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(f));
+            clip.start();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

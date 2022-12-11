@@ -1,13 +1,11 @@
 package spaceinvaders.model;
 
-import com.googlecode.lanterna.TextCharacter;
-import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
 import spaceinvaders.view.ShipViewer;
 
+import javax.sound.sampled.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.*;
 
 public class ShipModel extends ElementModel {
     private List<PositionModel> drawnPositions;
@@ -75,6 +73,7 @@ public class ShipModel extends ElementModel {
     public void fire() {
         ShipShotModel shot = new ShipShotModel(new PositionModel(getX(), upperBound - 1));
         notifyObservers(shot);
+        shotSound();
     }
     public int getLives(){
         return lives;
@@ -107,6 +106,17 @@ public class ShipModel extends ElementModel {
             return leftBound > 0;
         } else {
             return rightBound < 50;
+        }
+    }
+    private void shotSound() {
+        File f = new File("resources/sound/shot.wav");
+
+        try {
+            Clip clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(f));
+            clip.start();
+        } catch (Exception e){
+            e.printStackTrace();
         }
     }
 }
