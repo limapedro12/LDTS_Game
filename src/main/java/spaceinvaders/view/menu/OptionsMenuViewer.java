@@ -18,6 +18,9 @@ public class OptionsMenuViewer implements MenuViewer {
         }
         return instance;
     }
+    public static OptionsMenuViewer getInstance() {
+        return instance;
+    }
 
     public void draw(TextGraphics graphics) {
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
@@ -33,5 +36,8 @@ public class OptionsMenuViewer implements MenuViewer {
                 }
             }
         }
+    }
+    public static void reset() {
+        instance = null;
     }
 }

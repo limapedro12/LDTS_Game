@@ -13,4 +13,11 @@ public class InfoCommand extends Command {
         InfoMenuModel model = InfoMenuModel.getInstance(gameModel);
         gameModel.setState(new MenuStateModel(model, InfoMenuController.getInstance(model)));
     }
+    public GameModel getGameModel(){
+        return gameModel;
+    }
+
+    public void setGameModel(GameModel gameModel){
+        this.gameModel = gameModel;
+    }
 }

@@ -28,7 +28,15 @@ public class HighScoreMenuModel extends MenuModel{
         }
         return instance;
     }
+
+    public static void reset() {
+        instance = null;
+    }
     public Command getExitCommand(){
         return exitCommand;
     }
+    public void setExitCommand(Command exitCommand){
+        this.exitCommand = exitCommand;
+    }
 }
+

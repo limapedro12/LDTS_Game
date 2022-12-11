@@ -2,6 +2,7 @@ package spaceinvaders.model.menu;
 
 import spaceinvaders.model.GameModel;
 import spaceinvaders.view.menu.MainMenuViewer;
+import spaceinvaders.view.menu.MenuViewer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ public class MainMenuModel extends MenuModel {
         addCommands();
         continueEnabled = false;
     }
-    protected void addCommands(){
+    public void addCommands(){
         commands.add(startCommand);
         commands.add(new StartInLevelMenuCommand(gameModel, startCommand));
         commands.add(new HighScoreCommand(gameModel));
@@ -48,6 +49,7 @@ public class MainMenuModel extends MenuModel {
         startCommand.setTitle("Continue Game");
         commands.get(1).setTitle("Restart In Level");
         commands.add(1, new RestartCommand(startCommand));
+        continueEnabled = true;
     }
     public void removeContinueCommand(){
         startCommand.setTitle("Start Game");
@@ -55,6 +57,7 @@ public class MainMenuModel extends MenuModel {
         startCommand.restartArena();
         if(isContinueEnabled())
             commands.remove(1);
+        continueEnabled = false;
     }
     public List<Command> getCommands(){
         return commands;
@@ -87,5 +90,14 @@ public class MainMenuModel extends MenuModel {
     public StartCommand getStartCommand(){
         return startCommand;
     }
-
+    public void clearCommands(){
+        commands.clear();
+    }
+    public void setStartCommand(StartCommand startCommand){
+        this.startCommand = startCommand;
+        commands.set(0, startCommand);
+    }
+    public static void reset(){
+        instance = null;
+    }
 }

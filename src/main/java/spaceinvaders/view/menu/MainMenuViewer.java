@@ -51,4 +51,7 @@ public class MainMenuViewer implements MenuViewer {
             }
         }
     }
+    public static void reset(){
+        instance = null;
+    }
 }

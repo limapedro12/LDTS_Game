@@ -10,4 +10,7 @@ public class RestartCommand extends Command {
         startCommand.restartArena();
         startCommand.execute();
     }
+    public StartCommand getStartCommand(){
+        return startCommand;
+    }
 }

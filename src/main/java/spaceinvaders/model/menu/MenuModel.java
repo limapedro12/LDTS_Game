@@ -7,4 +7,7 @@ public abstract class MenuModel {
     public MenuViewer getViewer(){
         return viewer;
     }
+    public void setViewer(MenuViewer viewer){
+        this.viewer = viewer;
+    }
 }

@@ -24,4 +24,7 @@ public class StartCommand extends Command {
     public void setLevel(int level) {
         arena = new ArenaModel(gameModel, level);
     }
+    public GameModel getGameModel(){
+        return gameModel;
+    }
 }

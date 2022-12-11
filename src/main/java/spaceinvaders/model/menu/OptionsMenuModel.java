@@ -22,7 +22,10 @@ public class OptionsMenuModel extends MenuModel{
     public Command getExitCommand(){
         return exitCommand;
     }
-    protected void addCommands(){
+    public void setExitCommand(Command exitCommand){
+        this.exitCommand = exitCommand;
+    }
+    public void addCommands(){
         commands.add(new ControlsCommand(gameModel));
         commands.add(new InfoCommand(gameModel));
         commands.add(exitCommand);
@@ -51,5 +54,14 @@ public class OptionsMenuModel extends MenuModel{
     }
     public void downSelectedCommand(){
         selectedCommand = (selectedCommand + 1) % commands.size();
+    }
+    public void clearCommands(){
+        commands.clear();
+    }
+    public GameModel getGameModel(){
+        return gameModel;
+    }
+    public static void reset(){
+        instance = null;
     }
 }

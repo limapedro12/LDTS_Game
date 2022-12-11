@@ -16,6 +16,9 @@ public class ControlsMenuViewer implements MenuViewer {
         }
         return instance;
     }
+    public static ControlsMenuViewer getInstance(){
+        return instance;
+    }
 
     public void draw(TextGraphics graphics){
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
@@ -26,5 +29,9 @@ public class ControlsMenuViewer implements MenuViewer {
         graphics.putString(6, 15, "Back: Q or ESC key");
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFC300"));
         graphics.putString(6, 20, "> Exit");
+    }
+
+    public static void reset(){
+        instance = null;
     }
 }

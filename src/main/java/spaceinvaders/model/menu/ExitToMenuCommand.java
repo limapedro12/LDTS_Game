@@ -13,4 +13,10 @@ public class ExitToMenuCommand extends Command {
         MainMenuModel model = MainMenuModel.getInstance(gameModel);
         gameModel.setState(new MenuStateModel(model, MainMenuController.getInstance(model)));
     }
+    public GameModel getGameModel(){
+        return gameModel;
+    }
+    public void setGameModel(GameModel gameModel){
+        this.gameModel = gameModel;
+    }
 }

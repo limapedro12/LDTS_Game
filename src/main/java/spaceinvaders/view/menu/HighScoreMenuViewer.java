@@ -21,6 +21,9 @@ public class HighScoreMenuViewer implements MenuViewer {
         }
         return instance;
     }
+    public static HighScoreMenuViewer getInstance(){
+        return instance;
+    }
 
     public void draw(TextGraphics graphics){
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
@@ -45,5 +48,8 @@ public class HighScoreMenuViewer implements MenuViewer {
         }*/
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFC300"));
         graphics.putString(8, 20, "> Exit");
+    }
+    public static void reset(){
+        instance = null;
     }
 }

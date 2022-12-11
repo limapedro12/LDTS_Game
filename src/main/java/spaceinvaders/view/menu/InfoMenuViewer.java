@@ -16,6 +16,9 @@ public class InfoMenuViewer implements MenuViewer {
         }
         return instance;
     }
+    public static InfoMenuViewer getInstance(){
+        return instance;
+    }
 
     public void draw(TextGraphics graphics){
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
@@ -27,5 +30,9 @@ public class InfoMenuViewer implements MenuViewer {
         graphics.putString(6, 17, "Help us by giving us a good grade!");
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFC300"));
         graphics.putString(6, 20, "> Exit");
+    }
+
+    public static void reset() {
+        instance = null;
     }
 }

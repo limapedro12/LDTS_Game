@@ -41,4 +41,8 @@ public class OptionsMenuController implements Controller {
             model.getExitCommand().execute();
         }
     }
+
+    public static void reset(){
+        instance = null;
+    }
 }
