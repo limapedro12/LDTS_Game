@@ -132,7 +132,6 @@ public class ArenaModel implements ShotObserverModel {
         aliens = new AlienGroupModel(this);
         aliens.addObserver(this);
         startTime = System.currentTimeMillis();
-        youWon = false;
         elapsedTime = 0;
         lastAlienDirection = 0;
         elements.add(aliens);
