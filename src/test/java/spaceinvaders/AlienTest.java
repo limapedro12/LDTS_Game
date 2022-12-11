@@ -16,12 +16,10 @@ import static org.mockito.Mockito.verify;
 
 public class AlienTest {
     private AlienModel alien;
-    private PositionModel position;
 
     @BeforeEach
     public void helper(){
     this.alien = new AlienModel(new PositionModel(20, 9), "&","#FFFFFF");
-    this.position = new PositionModel(20, 9);
     }
 
     @Test
@@ -85,7 +83,12 @@ public void getColor() {
 
     @Test
     public void collideWith() {
-        assertEquals(false, alien.collideWith( new ShotModel(new PositionModel(20, 10), 1, true,'^')));
+        assertEquals(true, alien.collideWith( new ShipShotModel(new PositionModel(20, 9))));
+    }
+
+    @Test
+    public void collideWith2() {
+        assertEquals(false, alien.collideWith( new ShipShotModel(new PositionModel(20, 10))));
     }
 
     @Test

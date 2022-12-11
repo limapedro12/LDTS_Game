@@ -178,31 +178,18 @@ public class ShipTest {
     @Test
     public void collideWith1() {
         ShipModel ship = new ShipModel();
-        ShotModel shot = Mockito.mock(AlienShotModel.class);
-        assertFalse(ship.collideWith(shot));
+        ship.addDrawnPosition(new PositionModel(24,22));
+        assertTrue(ship.collideWith(new AlienShotModel(new PositionModel(24,22),1)));
     }
 
     @Test
     public void collideWith2() {
         ShipModel ship = new ShipModel();
-        AlienShotModel alienShot = Mockito.mock(AlienShotModel.class);
-        Mockito.when(ship.getX()).thenReturn(alienShot.getX() + 1);
-        Mockito.when(ship.getY()).thenReturn(alienShot.getY());
-        Mockito.when(ship.getWidth()).thenReturn(1);
-        Mockito.when(ship.getHeight()).thenReturn(1);
-        assertFalse(ship.collideWith(alienShot));
+        ship.addDrawnPosition(new PositionModel(24,22));
+        assertFalse(ship.collideWith(new AlienShotModel(new PositionModel(24,21),1)));
+
     }
 
-    @Test
-    public void collideWith3() {
-        ShipModel ship = new ShipModel();
-        AlienShotModel alienShot = Mockito.mock(AlienShotModel.class);
-        Mockito.when(ship.getX()).thenReturn(alienShot.getX());
-        Mockito.when(ship.getY()).thenReturn(alienShot.getY() + 1);
-        Mockito.when(ship.getWidth()).thenReturn(1);
-        Mockito.when(ship.getHeight()).thenReturn(1);
-        assertFalse(ship.collideWith(alienShot));
-    }
     @Test
     public void processAKeyTest() {
         ShipModel model = new ShipModel();
