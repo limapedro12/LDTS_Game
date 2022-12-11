@@ -34,7 +34,6 @@ public class MainMenuModel extends MenuModel {
         if(instance == null){
             instance = new MainMenuModel(gameModel);
         }
-        System.out.println(instance.getStartCommand().getArena().isLost());
         if(!instance.getStartCommand().getArena().isLost() && !instance.isContinueEnabled()){
             instance.addContinueCommand();
             instance.setContinueEnabled(true);

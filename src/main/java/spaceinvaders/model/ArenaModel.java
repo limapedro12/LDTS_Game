@@ -77,7 +77,6 @@ public class ArenaModel implements ShotObserverModel {
             moveAliens();
             aliens.fire((float) (0.5 * level));
             targetTime = elapsedTime + (2000 / level);
-            System.out.println(level);
         }
         if(aliens.getAliens().size()==0){
             youWon = true;
@@ -122,7 +121,6 @@ public class ArenaModel implements ShotObserverModel {
     }
     public void incrementLevel() {
         this.level++;
-        System.out.println(this.level);
         ship = new ShipModel();
         ship.addObserver(this);
         elements = new ArrayList<>();
