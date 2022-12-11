@@ -40,6 +40,5 @@ public class StartCommandTest {
     public void executeTest() {
         startCommand.execute();
         Mockito.verify(gameModel, Mockito.times(1)).setState(Mockito.any());
-        Mockito.verify(gameModel, Mockito.times(1)).setHasEnteredArena(true);
     }
 }
