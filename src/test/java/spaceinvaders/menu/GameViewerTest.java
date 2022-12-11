@@ -8,6 +8,7 @@ import org.mockito.Mockito;
 import spaceinvaders.model.GameModel;
 import spaceinvaders.model.RunStateModel;
 import spaceinvaders.view.GameViewer;
+import spaceinvaders.view.RunStateViewer;
 
 import java.io.IOException;
 
@@ -27,9 +28,11 @@ public class GameViewerTest {
     public void drawTest() throws IOException {
         TextGraphics textGraphics = Mockito.mock(TextGraphics.class);
         Mockito.when(screen.newTextGraphics()).thenReturn(textGraphics);
-        gameViewer.draw();
         RunStateModel state = Mockito.mock(RunStateModel.class);
+        RunStateViewer viewer = Mockito.mock(RunStateViewer.class);
+        Mockito.when(state.getViewer()).thenReturn(viewer);
         Mockito.when(gameModel.getState()).thenReturn(state);
-        Mockito.verify(gameModel.getState().getViewer()).draw(textGraphics);
+        gameViewer.draw();
+        Mockito.verify(viewer).draw(textGraphics);
     }
 }
