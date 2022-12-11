@@ -38,8 +38,9 @@ public class StartInLevelMenuController implements Controller {
             level += key.getCharacter();
             model.setLevel(level);
         }
-        if (key.getKeyType() == KeyType.Enter) {
-            new StartInLevelCommand(new StartCommand(model.getGameModel()), Integer.valueOf(level)).execute();
+        if (key.getKeyType() == KeyType.Enter && level != "") {
+            new StartInLevelCommand(model.getStartCommand(), Integer.valueOf(level)).execute();
+            model.resetLevel();
         }
     }
 }

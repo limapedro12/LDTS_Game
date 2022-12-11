@@ -28,6 +28,7 @@ public class ArenaModel implements ShotObserverModel {
     private boolean youWon;
     private long youWonTime;
     private int score = 0;
+    private boolean hasRan = false;
 
     public ArenaModel(GameModel gameModel){
         this.gameModel = gameModel;
@@ -70,6 +71,7 @@ public class ArenaModel implements ShotObserverModel {
     }
 
     public void run() {
+        hasRan = true;
         elapsedTime = System.currentTimeMillis() - startTime;
         if (elapsedTime >= targetTime) {
             moveAliens();
@@ -229,6 +231,7 @@ public class ArenaModel implements ShotObserverModel {
     }
 
     public boolean isLost(){
+        if(!hasRan) return true;
         if(!ship.isAlive()) return checkScore();
         for(AlienModel alien : aliens.getAliens())
             if(alien.getY() == ship.getUpperBound()) return checkScore();

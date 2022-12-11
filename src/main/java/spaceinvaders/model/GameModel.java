@@ -16,8 +16,6 @@ public class GameModel {
     public GameModel() {
         MainMenuModel menu = MainMenuModel.getInstance(this);
         state = new MenuStateModel(menu, MainMenuController.getInstance(menu));
-        hasEnteredArena = false;
-        //state = new ArenaStateModel(arena);
     }
 
     public void run() throws IOException {
@@ -29,12 +27,7 @@ public class GameModel {
     public RunStateModel getState() {
         return state;
     }
-    public boolean getHasEnteredArena(){
-        return hasEnteredArena;
-    }
-    public void setHasEnteredArena(boolean start_or_continue){
-        this.hasEnteredArena = start_or_continue;
-    }
+
     //public ArenaModel getArenaModel() {
 //        return arena;
 //    }

@@ -25,19 +25,20 @@ public class MainMenuModel extends MenuModel {
     }
     protected void addCommands(){
         commands.add(startCommand);
+        commands.add(new StartInLevelMenuCommand(gameModel, startCommand));
         commands.add(new HighScoreCommand(gameModel));
         commands.add(new OptionsCommand(gameModel));
-        commands.add(new StartInLevelMenuCommand(gameModel));
         commands.add(new ExitCommand());
     }
     public static MainMenuModel getInstance(GameModel gameModel){
         if(instance == null){
             instance = new MainMenuModel(gameModel);
         }
-        if(!instance.getStartCommand().getArena().isLost() && instance.getGameModel().getHasEnteredArena() && !instance.isContinueEnabled()){
+        System.out.println(instance.getStartCommand().getArena().isLost());
+        if(!instance.getStartCommand().getArena().isLost() && !instance.isContinueEnabled()){
             instance.addContinueCommand();
             instance.setContinueEnabled(true);
-        } else if(instance.getStartCommand().getArena().isLost()){
+        } else if(instance.isContinueEnabled() && instance.getStartCommand().getArena().isLost()){
             instance.removeContinueCommand();
             instance.setContinueEnabled(false);
         }
@@ -46,10 +47,12 @@ public class MainMenuModel extends MenuModel {
     }
     public void addContinueCommand(){
         startCommand.setTitle("Continue Game");
+        commands.get(1).setTitle("Restart In Level");
         commands.add(1, new RestartCommand(startCommand));
     }
     public void removeContinueCommand(){
         startCommand.setTitle("Start Game");
+        commands.get(2).setTitle("Start In Level");
         startCommand.restartArena();
         if(isContinueEnabled())
             commands.remove(1);

@@ -14,7 +14,6 @@ public class StartCommand extends Command {
     }
     public void execute(){
         gameModel.setState(new ArenaStateModel(arena));
-        gameModel.setHasEnteredArena(true);
     }
     public void restartArena(){
         this.arena = new ArenaModel(gameModel);
