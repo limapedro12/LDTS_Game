@@ -15,7 +15,10 @@ import spaceinvaders.controller.ShipController;
 import spaceinvaders.model.*;
 import spaceinvaders.view.ShipViewer;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 
@@ -36,6 +39,12 @@ public class ShipTest {
     public void getYTest() {
         ShipModel ship = new ShipModel();
         assertEquals(22, ship.getY());
+    }
+    @Test
+    public void setYTest() {
+        ShipModel ship = new ShipModel();
+        ship.setY(10);
+        assertEquals(10, ship.getY());
     }
     @Test
     public void getLeftBoundTest() {
@@ -131,7 +140,7 @@ public class ShipTest {
         assertFalse(ship.canIMove(false));
     }
     @Test
-    public void fireTest() {
+    public void fireTest() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         ShipModel ship = new ShipModel();
         ShotObserverModel observer = Mockito.mock(ShotObserverModel.class);
         ship.addObserver(observer);
@@ -169,13 +178,8 @@ public class ShipTest {
     @Test
     public void collideWith1() {
         ShipModel ship = new ShipModel();
-        AlienShotModel alienShot = Mockito.mock(AlienShotModel.class);
-        ship.collideWith(alienShot);
-        Mockito.when(ship.getX()).thenReturn(alienShot.getX());
-        Mockito.when(ship.getY()).thenReturn(alienShot.getY());
-        Mockito.when(ship.getWidth()).thenReturn(1);
-        Mockito.when(ship.getHeight()).thenReturn(1);
-        assertTrue(ship.collideWith(alienShot));
+        ShotModel shot = Mockito.mock(AlienShotModel.class);
+        assertFalse(ship.collideWith(shot));
     }
 
     @Test
