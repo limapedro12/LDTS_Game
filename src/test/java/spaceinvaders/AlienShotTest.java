@@ -9,14 +9,17 @@ import spaceinvaders.model.AlienShotModel;
 import spaceinvaders.model.ElementModel;
 import spaceinvaders.model.PositionModel;
 import spaceinvaders.model.ShipModel;
+import spaceinvaders.view.AlienShotViewer;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AlienShotTest {
     AlienShotModel alienShot;
+    AlienShotViewer alienShotViewer;
     @BeforeEach
     public void helper() {
         alienShot = new AlienShotModel(new PositionModel(2, 2),1);
+        alienShotViewer = new AlienShotViewer(alienShot);
     }
 
     @Test
@@ -42,4 +45,6 @@ public class AlienShotTest {
     public void getSpeed(){
         assertEquals(1, alienShot.getSpeed());
     }
+
+
 }
