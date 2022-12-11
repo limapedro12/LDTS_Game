@@ -17,6 +17,9 @@ public class ArenaStateModel implements RunStateModel{
     public ArenaStateViewer getViewer(){
         return viewer;
     }
+    public void setViewer(ArenaStateViewer viewer){
+        this.viewer = viewer;
+    }
     public Controller getController(){
         return new ArenaController(model);
     }

@@ -20,4 +20,8 @@ public class ArenaController implements Controller {
         }
         ship.processKey(key);
     }
+
+    public ArenaModel getModel(){
+        return model;
+    }
 }
