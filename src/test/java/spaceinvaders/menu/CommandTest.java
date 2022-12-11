@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CommandTest {
     @Test
-    public void getTirleTest() {
+    public void getTitleTest() {
         Command command = new DummyCommand("test");
         command.setTitle("test2");
         assertEquals(command.getTitle(), "test2");

@@ -42,5 +42,20 @@ public class StartInLevelMenuController implements Controller {
             new StartInLevelCommand(model.getStartCommand(), Integer.valueOf(level)).execute();
             model.resetLevel();
         }
+        if(key.getKeyType() == KeyType.Backspace && level != ""){
+            level = level.substring(0, level.length() - 1);
+            model.setLevel(level);
+        }
+    }
+
+    public String getLevel(){
+        return level;
+    }
+
+    public static void reset() {
+        instance = null;
+    }
+    public void setModel(StartInLevelMenuModel model){
+        this.model = model;
     }
 }

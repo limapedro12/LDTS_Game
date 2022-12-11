@@ -15,4 +15,13 @@ public class StartInLevelMenuCommand extends Command {
         StartInLevelMenuModel model = StartInLevelMenuModel.getInstance(gameModel, startCommand);
         gameModel.setState(new MenuStateModel(model, StartInLevelMenuController.getInstance(model)));
     }
+    public GameModel getGameModel() {
+        return gameModel;
+    }
+    public void setGameModel(GameModel gameModel) {
+        this.gameModel = gameModel;
+    }
+    public StartCommand getStartCommand() {
+        return startCommand;
+    }
 }
