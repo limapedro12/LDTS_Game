@@ -30,34 +30,34 @@ public class ShipTest {
     @Test
     public void getXTest() {
         ShipModel ship = new ShipModel();
-        assertEquals(50, ship.getX());
+        assertEquals(24, ship.getX());
     }
     @Test
     public void getYTest() {
         ShipModel ship = new ShipModel();
-        assertEquals(40, ship.getY());
+        assertEquals(22, ship.getY());
     }
     @Test
     public void getLeftBoundTest() {
         ShipModel ship = new ShipModel();
-        assertEquals(46, ship.getLeftBound());
+        assertEquals(22, ship.getLeftBound());
     }
     @Test
     public void getRightBoundTest() {
         ShipModel ship = new ShipModel();
-        assertEquals(54, ship.getRightBound());
+        assertEquals(26, ship.getRightBound());
     }
 
     @Test
     public void getUpperBoundTest() {
         ShipModel ship = new ShipModel();
-        assertEquals(40, ship.getUpperBound());
+        assertEquals(22, ship.getUpperBound());
     }
 
     @Test
     public void getLowerBoundTest() {
         ShipModel ship = new ShipModel();
-        assertEquals(44, ship.getLowerBound());
+        assertEquals(25, ship.getLowerBound());
     }
 
 
@@ -96,16 +96,12 @@ public class ShipTest {
         TextGraphics graphics = Mockito.mock(TextGraphics.class);
         ship.draw(graphics);
         verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#FFC300"));
-        verify(graphics, Mockito.times(1)).setCharacter(model.getX(), model.getUpperBound(), TextCharacter.fromCharacter('"')[0]);
-        verify(graphics, Mockito.times(1)).setCharacter(model.getX()-1, model.getUpperBound()+1, TextCharacter.fromCharacter(')')[0]);
-        verify(graphics, Mockito.times(1)).setCharacter(model.getX(), model.getUpperBound()+1, TextCharacter.fromCharacter('=')[0]);
-        verify(graphics, Mockito.times(1)).setCharacter(model.getX()+1, model.getUpperBound()+1, TextCharacter.fromCharacter('(')[0]);
-        verify(graphics, Mockito.times(1)).setCharacter(model.getLeftBound(), model.getUpperBound()+2, TextCharacter.fromCharacter('+')[0]);
-        verify(graphics, Mockito.times(1)).setCharacter(model.getRightBound(), model.getUpperBound()+2, TextCharacter.fromCharacter(',')[0]);
+        verify(graphics, Mockito.times(1)).putString(model.getX(), model.getUpperBound(),"\"");
+        verify(graphics, Mockito.times(1)).putString(model.getRightBound(), model.getUpperBound()+1,",");
         for (int i = model.getLeftBound()+1; i <= model.getRightBound()-1; i++)
-            verify(graphics, Mockito.times(1)).setCharacter(i, model.getUpperBound()+2, TextCharacter.fromCharacter('=')[0]);
+            verify(graphics, Mockito.times(1)).putString(i, model.getUpperBound()+1, "=");
         for (int i = model.getLeftBound(); i <= model.getRightBound(); i++)
-            verify(graphics, Mockito.times(1)).setCharacter(i, model.getUpperBound()+3,TextCharacter.fromCharacter('=')[0]);
+            verify(graphics, Mockito.times(1)).putString(i, model.getUpperBound()+2,"=");
 
     }
     @Test
@@ -126,7 +122,7 @@ public class ShipTest {
     }
     @Test
     public void canIMoveTestLeftFalse() {
-        ShipModel ship = new ShipModel(5);
+        ShipModel ship = new ShipModel(-5);
         assertFalse(ship.canIMove(true));
     }
     @Test
@@ -162,12 +158,13 @@ public class ShipTest {
     @Test
     public void getWidthTest() {
         ShipModel ship = new ShipModel();
-        assertEquals(9, ship.getWidth());
+        assertEquals(5,ship.getWidth());
+
     }
     @Test
     public void getHeightTest() {
         ShipModel ship = new ShipModel();
-        assertEquals(5, ship.getHeight());
+        assertEquals(4,ship.getHeight());
     }
     @Test
     public void collideWith1() {
