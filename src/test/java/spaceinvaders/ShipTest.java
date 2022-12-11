@@ -15,7 +15,10 @@ import spaceinvaders.controller.ShipController;
 import spaceinvaders.model.*;
 import spaceinvaders.view.ShipViewer;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 
@@ -131,7 +134,7 @@ public class ShipTest {
         assertFalse(ship.canIMove(false));
     }
     @Test
-    public void fireTest() {
+    public void fireTest() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         ShipModel ship = new ShipModel();
         ShotObserverModel observer = Mockito.mock(ShotObserverModel.class);
         ship.addObserver(observer);
