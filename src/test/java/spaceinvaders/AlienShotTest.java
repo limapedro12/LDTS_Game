@@ -32,38 +32,6 @@ public class AlienShotTest {
         assertEquals(3, alienShot.getPosition().getY());
     }
 
-    @Test
-    public void collideWith1() {
-        ShipModel ship = Mockito.mock(ShipModel.class);
-        ship.collideWith(alienShot);
-        Mockito.when(ship.getX()).thenReturn(alienShot.getX());
-        Mockito.when(ship.getY()).thenReturn(alienShot.getY());
-        Mockito.when(ship.getWidth()).thenReturn(1);
-        Mockito.when(ship.getHeight()).thenReturn(1);
-        assertTrue(ship.collideWith(alienShot));
-    }
-
-    @Test
-    public void collideWith2() {
-        ShipModel ship = Mockito.mock(ShipModel.class);
-        ship.collideWith(alienShot);
-        Mockito.when(ship.getX()).thenReturn(alienShot.getX() + 1);
-        Mockito.when(ship.getY()).thenReturn(alienShot.getY());
-        Mockito.when(ship.getWidth()).thenReturn(1);
-        Mockito.when(ship.getHeight()).thenReturn(1);
-        assertFalse(ship.collideWith(alienShot));
-    }
-
-    @Test
-    public void collideWith3() {
-        ShipModel ship = Mockito.mock(ShipModel.class);
-        ship.collideWith(alienShot);
-        Mockito.when(ship.getX()).thenReturn(alienShot.getX());
-        Mockito.when(ship.getY()).thenReturn(alienShot.getY() + 1);
-        Mockito.when(ship.getWidth()).thenReturn(1);
-        Mockito.when(ship.getHeight()).thenReturn(1);
-        assertFalse(ship.collideWith(alienShot));
-    }
 
     @Test
     public void isAlive(){

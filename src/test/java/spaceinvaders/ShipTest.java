@@ -38,6 +38,12 @@ public class ShipTest {
         assertEquals(22, ship.getY());
     }
     @Test
+    public void setYTest() {
+        ShipModel ship = new ShipModel();
+        ship.setY(10);
+        assertEquals(10, ship.getY());
+    }
+    @Test
     public void getLeftBoundTest() {
         ShipModel ship = new ShipModel();
         assertEquals(22, ship.getLeftBound());
@@ -169,13 +175,8 @@ public class ShipTest {
     @Test
     public void collideWith1() {
         ShipModel ship = new ShipModel();
-        AlienShotModel alienShot = Mockito.mock(AlienShotModel.class);
-        ship.collideWith(alienShot);
-        Mockito.when(ship.getX()).thenReturn(alienShot.getX());
-        Mockito.when(ship.getY()).thenReturn(alienShot.getY());
-        Mockito.when(ship.getWidth()).thenReturn(1);
-        Mockito.when(ship.getHeight()).thenReturn(1);
-        assertTrue(ship.collideWith(alienShot));
+        ShotModel shot = Mockito.mock(AlienShotModel.class);
+        assertFalse(ship.collideWith(shot));
     }
 
     @Test
