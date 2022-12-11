@@ -18,7 +18,7 @@ public class AlienTest {
 
     @BeforeEach
     public void helper(){
-    this.alien = new AlienModel(new PositionModel(20, 9), '&');
+    this.alien = new AlienModel(new PositionModel(20, 9), "&","#FFFFFF");
     this.position = new PositionModel(20, 9);
     }
 

@@ -1,6 +1,7 @@
 package spaceinvaders;
 
 import com.googlecode.lanterna.TextCharacter;
+import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.input.KeyType;
@@ -46,6 +47,20 @@ public class ShipTest {
         ShipModel ship = new ShipModel();
         assertEquals(54, ship.getRightBound());
     }
+
+    @Test
+    public void getUpperBoundTest() {
+        ShipModel ship = new ShipModel();
+        assertEquals(40, ship.getUpperBound());
+    }
+
+    @Test
+    public void getLowerBoundTest() {
+        ShipModel ship = new ShipModel();
+        assertEquals(44, ship.getLowerBound());
+    }
+
+
     @Test
     public void addObserverTest() {
         ShipModel ship = new ShipModel();
@@ -80,16 +95,24 @@ public class ShipTest {
         ShipViewer ship = new ShipViewer(model);
         TextGraphics graphics = Mockito.mock(TextGraphics.class);
         ship.draw(graphics);
+        verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#FFC300"));
+        verify(graphics, Mockito.times(1)).setCharacter(model.getX(), model.getUpperBound(), TextCharacter.fromCharacter('"')[0]);
+        verify(graphics, Mockito.times(1)).setCharacter(model.getX()-1, model.getUpperBound()+1, TextCharacter.fromCharacter(')')[0]);
+        verify(graphics, Mockito.times(1)).setCharacter(model.getX(), model.getUpperBound()+1, TextCharacter.fromCharacter('=')[0]);
+        verify(graphics, Mockito.times(1)).setCharacter(model.getX()+1, model.getUpperBound()+1, TextCharacter.fromCharacter('(')[0]);
+        verify(graphics, Mockito.times(1)).setCharacter(model.getLeftBound(), model.getUpperBound()+2, TextCharacter.fromCharacter('+')[0]);
+        verify(graphics, Mockito.times(1)).setCharacter(model.getRightBound(), model.getUpperBound()+2, TextCharacter.fromCharacter(',')[0]);
+        for (int i = model.getLeftBound()+1; i <= model.getRightBound()-1; i++)
+            verify(graphics, Mockito.times(1)).setCharacter(i, model.getUpperBound()+2, TextCharacter.fromCharacter('=')[0]);
         for (int i = model.getLeftBound(); i <= model.getRightBound(); i++)
-            verify(graphics, Mockito.times(1)).setCharacter(i, 42, TextCharacter.fromCharacter('#')[0]);
-        verify(graphics, Mockito.times(1)).setCharacter(model.getX()-1, 41, TextCharacter.fromCharacter('#')[0]);
-        verify(graphics, Mockito.times(1)).setCharacter(model.getX()+1, 41, TextCharacter.fromCharacter('#')[0]);
-        verify(graphics, Mockito.times(1)).setCharacter(model.getX(), model.getY(), TextCharacter.fromCharacter('+')[0]);
-        for (int i = 43; i >= 39; i--)
-            verify(graphics, Mockito.times(1)).setCharacter(model.getX(), i, TextCharacter.fromCharacter('S')[0]);
-        verify(graphics, Mockito.times(1)).setCharacter(model.getX(), model.getY(), TextCharacter.fromCharacter('U')[0]);
-        verify(graphics, Mockito.times(1)).setCharacter(model.getX()-1, 43, TextCharacter.fromCharacter('S')[0]);
-        verify(graphics, Mockito.times(1)).setCharacter(model.getX()-1, 43, TextCharacter.fromCharacter('S')[0]);
+            verify(graphics, Mockito.times(1)).setCharacter(i, model.getUpperBound()+3,TextCharacter.fromCharacter('=')[0]);
+
+    }
+    @Test
+    public void getModelTest() {
+        ShipModel model = new ShipModel();
+        ShipViewer ship = new ShipViewer(model);
+        assertEquals(model, ship.getModel());
     }
     @Test
     public void canIMoveTestLeftTrue() {
@@ -123,6 +146,18 @@ public class ShipTest {
     public void isAliveTest() {
         ShipModel ship = new ShipModel();
         assertTrue(ship.isAlive());
+    }
+    @Test
+    public void damageTest() {
+        ShipModel ship = new ShipModel();
+        ship.damage();
+        assertEquals(2,ship.getLives());
+    }
+
+    @Test
+    public void getLivesTest() {
+        ShipModel ship = new ShipModel();
+        assertEquals(3,ship.getLives());
     }
     @Test
     public void getWidthTest() {
