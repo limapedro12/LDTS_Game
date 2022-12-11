@@ -73,7 +73,6 @@ public class AlienGroupModel extends ElementModel {
         for (AlienModel alien : aliens) alien.move(direction);
     }
     public void fire(float level) {
-        //for(int i = 0; i < 5; i++)
         if(aliens.size() > 0) {
             int random = ThreadLocalRandom.current().nextInt(0, 2 * aliens.size());
             if (random < aliens.size()) aliens.get(random).fire(level);
