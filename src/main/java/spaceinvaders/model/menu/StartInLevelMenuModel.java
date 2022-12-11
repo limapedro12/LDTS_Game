@@ -21,8 +21,14 @@ public class StartInLevelMenuModel extends MenuModel {
         }
         return instance;
     }
+    public static StartInLevelMenuModel getInstance() {
+        return instance;
+    }
     public Command getExitCommand(){
         return exitCommand;
+    }
+    public void setExitCommand(Command exitCommand){
+        this.exitCommand = exitCommand;
     }
     public void setLevel(String level) {
         this.level = level;
@@ -38,5 +44,8 @@ public class StartInLevelMenuModel extends MenuModel {
     }
     public void resetLevel() {
         this.level = "";
+    }
+    public static void reset() {
+        instance = null;
     }
 }

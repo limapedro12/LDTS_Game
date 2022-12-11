@@ -12,7 +12,9 @@ public class StartInLevelCommand extends Command {
         this.startCommand.setLevel(level);
     }
     public void execute(){
-        //startCommand.restartArena();
         startCommand.execute();
+    }
+    public StartCommand getStartCommand() {
+        return startCommand;
     }
 }

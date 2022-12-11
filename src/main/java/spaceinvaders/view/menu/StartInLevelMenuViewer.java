@@ -16,10 +16,17 @@ public class StartInLevelMenuViewer implements MenuViewer {
         }
         return instance;
     }
+    public static StartInLevelMenuViewer getInstance(){
+        return instance;
+    }
 
     public void draw(TextGraphics graphics){
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         graphics.putString(6, 10,"Insert level: ");
         graphics.putString(6, 14, model.getLevel());
+    }
+
+    public static void reset(){
+        instance = null;
     }
 }

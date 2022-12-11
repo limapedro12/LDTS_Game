@@ -3,39 +3,33 @@ package spaceinvaders.menu;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import spaceinvaders.model.menu.RestartCommand;
+import spaceinvaders.model.menu.StartInLevelCommand;
 import spaceinvaders.model.menu.StartCommand;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-public class RestartCommandTest {
+public class StartInLevelCommandTest {
     StartCommand startCommand;
-    RestartCommand restartCommand;
+    StartInLevelCommand StartInLevelCommand;
     @BeforeEach
     public void helper() {
         startCommand = Mockito.mock(StartCommand.class);
-        restartCommand = new RestartCommand(startCommand);
-    }
-    @Test
-    public void setLevelTest() {
-        Mockito.verify(startCommand, Mockito.times(0)).setLevel(2);
+        StartInLevelCommand = new StartInLevelCommand(startCommand, 2);
     }
 
     @Test
     public void getStartCommandTest() {
-        assertEquals(restartCommand.getStartCommand(), startCommand);
+        assertEquals(StartInLevelCommand.getStartCommand(), startCommand);
     }
 
     @Test
     public void getTitle() {
-        assertEquals(restartCommand.getTitle(), "Restart Game");
+        assertEquals(StartInLevelCommand.getTitle(), "Start Game In Level");
     }
 
     @Test
     public void executeTest() {
-        restartCommand.execute();
-        Mockito.verify(startCommand, Mockito.times(1)).restartArena();
+        StartInLevelCommand.execute();
         Mockito.verify(startCommand, Mockito.times(1)).execute();
     }
 }
