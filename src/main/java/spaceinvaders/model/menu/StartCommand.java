@@ -12,6 +12,7 @@ public class StartCommand extends Command {
         this.arena = new ArenaModel(gameModel);
         this.gameModel = gameModel;
     }
+    @Override
     public void execute(){
         gameModel.setState(new ArenaStateModel(arena));
     }

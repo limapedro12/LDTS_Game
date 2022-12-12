@@ -1,5 +1,6 @@
 package spaceinvaders.model;
 
+import org.testng.annotations.ObjectFactory;
 import spaceinvaders.view.AlienGroupViewer;
 
 import java.util.ArrayList;
@@ -33,14 +34,16 @@ public class AlienGroupModel extends ElementModel {
     public List<AlienModel> getAliens() {
         return aliens;
     }
+    @Override
     public boolean isAlive() {
         return true;
     }
 
+    @Override
     public int getWidth() {
         return 0;
     }
-
+    @Override
     public int getHeight() {
         return 0;
     }
@@ -49,6 +52,7 @@ public class AlienGroupModel extends ElementModel {
     public boolean isTangible() {
         return false;
     }
+    @Override
     public void damage() {}
     @Override
     public boolean canIMove(boolean goingLeft) {
@@ -73,7 +77,6 @@ public class AlienGroupModel extends ElementModel {
         for (AlienModel alien : aliens) alien.move(direction);
     }
     public void fire(float level) {
-        //for(int i = 0; i < 5; i++)
         if(aliens.size() > 0) {
             int random = ThreadLocalRandom.current().nextInt(0, 2 * aliens.size());
             if (random < aliens.size()) aliens.get(random).fire(level);
@@ -83,16 +86,16 @@ public class AlienGroupModel extends ElementModel {
     public boolean collideWith(ShotModel shot) {
         for (AlienModel alien : aliens) {
             if (alien.collideWith(shot)) {
-                if (alien.getSymbol() == "*"){
+                if ("*".equals(alien.getSymbol())){
                     arena.addScore(40);
                 }
-                else if (alien.getSymbol() == "/"){
+                else if ("/".equals(alien.getSymbol())){
                     arena.addScore(30);
                 }
-                else if (alien.getSymbol() == "-"){
+                else if ("-".equals(alien.getSymbol())){
                     arena.addScore(20);
                 }
-                else if (alien.getSymbol() == "."){
+                else if (".".equals(alien.getSymbol())){
                     arena.addScore(10);
                 }
                 alien.damage();

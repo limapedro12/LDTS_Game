@@ -54,4 +54,9 @@ public class PositionModelTest {
         positionModel.setY(3);
         assertEquals(3, positionModel.getY());
     }
+    public void testPositionModel() {
+        PositionModel positionModel = new PositionModel(new PositionModel(1, 2));
+        assertEquals(1, positionModel.getX());
+        assertEquals(2, positionModel.getY());
+    }
 }

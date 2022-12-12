@@ -9,6 +9,7 @@ public class ArenaStateViewer implements RunStateViewer {
         this.arenaViewer = arenaViewer;
     }
 
+    @Override
     public void draw(TextGraphics graphics){
         arenaViewer.draw(graphics);
     }

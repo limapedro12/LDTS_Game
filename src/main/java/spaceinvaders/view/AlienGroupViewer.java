@@ -10,6 +10,7 @@ public class AlienGroupViewer implements ElementViewer {
     public AlienGroupViewer(AlienGroupModel model) {
         this.model = model;
     }
+    @Override
     public void draw(TextGraphics graphics) {
         for (AlienModel alien : model.getAliens()) {
             alien.getViewer().draw(graphics);

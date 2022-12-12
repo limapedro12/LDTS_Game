@@ -11,6 +11,7 @@ public class StartInLevelCommand extends Command {
         this.startCommand = startCommand;
         this.startCommand.setLevel(level);
     }
+    @Override
     public void execute(){
         startCommand.execute();
     }
