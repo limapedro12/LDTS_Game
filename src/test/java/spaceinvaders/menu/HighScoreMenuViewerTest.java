@@ -4,10 +4,14 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import spaceinvaders.model.GameModel;
 import spaceinvaders.model.menu.HighScoreMenuModel;
 import spaceinvaders.view.menu.HighScoreMenuViewer;
+
+import java.io.BufferedReader;
+import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

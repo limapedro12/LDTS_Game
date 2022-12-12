@@ -34,7 +34,7 @@ public class ArenaViewer implements Viewer{
             graphics.putString(22, 13, "Level " + model.getLevel());
         }
     }
-    private void drawLives(TextGraphics graphics) {
+    public void drawLives(TextGraphics graphics) {
         graphics.putString(1, 1, "Lives: ");
         graphics.putString(8,1,"&");
         int lives = model.getShip().getLives();

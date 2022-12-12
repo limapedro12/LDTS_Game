@@ -1,23 +1,17 @@
 package spaceinvaders;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import spaceinvaders.controller.ArenaController;
 import spaceinvaders.model.*;
-import spaceinvaders.model.menu.Command;
-import spaceinvaders.model.menu.ExitToMenuCommand;
 import spaceinvaders.view.ArenaViewer;
-import spaceinvaders.view.ElementViewer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 
-public class ArenaTest {
+public class ArenaModelTest {
     ArenaModel model;
     ArenaViewer viewer;
     ArenaController controller;
@@ -30,7 +24,6 @@ public class ArenaTest {
         model = new ArenaModel(gameModel);
         viewer = new ArenaViewer(model);
         controller = new ArenaController(model);
-
     }
 
 
@@ -61,30 +54,6 @@ public class ArenaTest {
 //        assertEquals(100, model.getAliens().size());
 //        assertEquals(104, model.getElements().size());
 //    }
-    
-    @Test
-    public void draw1(){
-        TextGraphics graphics = Mockito.mock(TextGraphics.class);
-        ElementModel elementModel = Mockito.mock(ElementModel.class);
-        ElementViewer elementViewer = Mockito.mock(ElementViewer.class);
-        Mockito.when(elementModel.getViewer()).thenReturn(elementViewer);
-        model.getElements().add(elementModel);
-        viewer.draw(graphics);
-        Mockito.verify(elementViewer, Mockito.times(1)).draw(graphics);
-        //Mockito.verify(elementModel, Mockito.times(1)).isAlive();
-    }
-
-    @Test
-    public void draw2(){
-        TextGraphics graphics = Mockito.mock(TextGraphics.class);
-        ShotModel shotModel = Mockito.mock(ShotModel.class);
-        ElementViewer elementViewer = Mockito.mock(ElementViewer.class);
-        Mockito.when(shotModel.getViewer()).thenReturn(elementViewer);
-        model.getShots().add(shotModel);
-        viewer.draw(graphics);
-        Mockito.verify(elementViewer, Mockito.times(1)).draw(graphics);
-        //Mockito.verify(shotModel, Mockito.times(1)).update();
-    }
 
     @Test
     public void checkDeadTest(){
@@ -122,40 +91,4 @@ public class ArenaTest {
         model.addScore(10);
         assertEquals(10, model.getScore());
     }
-
-    /*@Test
-    public void processKey1(){
-        controller.processKey(new KeyStroke('a', false, false));
-        assertEquals(49, model.getShip().getX());
-    }*/
-
-    /*@Test
-    public void processKey2(){
-        controller.processKey(new KeyStroke('d', false, false));
-        assertEquals(51, model.getShip().getX());
-    }*/
-
-    /*@Test
-    public void processKey3(){
-        controller.processKey(new KeyStroke(' ', false, false));
-        assertEquals(1, model.getShots().size());
-    }*/
-
-    /*@Test
-    public void processKey4(){
-        controller.processKey(new KeyStroke(KeyType.ArrowLeft));
-        assertEquals(49, model.getShip().getX());
-    }*/
-
-    /*@Test
-    public void processKey5(){
-        controller.processKey(new KeyStroke(KeyType.ArrowRight));
-        assertEquals(51, model.getShip().getX());
-    }*/
-
-    /*@Test
-    public void processKey6(){
-        controller.processKey(new KeyStroke(KeyType.ArrowUp));
-        assertEquals(1, model.getShots().size());
-    }*/
 }
