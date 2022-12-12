@@ -74,6 +74,7 @@ public class ArenaModel implements ShotObserverModel {
         this.exitCommand = exitCommand;
     }
 
+    @Override
     public void update(ShotModel shot) {
         shots.add(shot);
     }

@@ -20,6 +20,7 @@ public class StartInLevelMenuViewer implements MenuViewer {
         return instance;
     }
 
+    @Override
     public void draw(TextGraphics graphics){
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         graphics.putString(6, 10,"Insert level: ");

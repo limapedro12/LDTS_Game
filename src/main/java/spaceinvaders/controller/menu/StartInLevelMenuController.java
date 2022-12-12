@@ -7,6 +7,8 @@ import spaceinvaders.model.menu.StartCommand;
 import spaceinvaders.model.menu.StartInLevelCommand;
 import spaceinvaders.model.menu.StartInLevelMenuModel;
 
+import java.util.Objects;
+
 public class StartInLevelMenuController implements Controller {
     private StartInLevelMenuModel model;
     private static StartInLevelMenuController instance = null;
@@ -38,11 +40,11 @@ public class StartInLevelMenuController implements Controller {
             level += key.getCharacter();
             model.setLevel(level);
         }
-        if (key.getKeyType() == KeyType.Enter && level != "") {
-            new StartInLevelCommand(model.getStartCommand(), Integer.valueOf(level)).execute();
+        if (key.getKeyType() == KeyType.Enter && !"".equals(level)) {
+            new StartInLevelCommand(model.getStartCommand(), Integer.parseInt(level)).execute();
             model.resetLevel();
         }
-        if(key.getKeyType() == KeyType.Backspace && level != ""){
+        if(key.getKeyType() == KeyType.Backspace && !"".equals(level)){
             level = level.substring(0, level.length() - 1);
             model.setLevel(level);
         }

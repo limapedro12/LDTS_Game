@@ -9,6 +9,7 @@ public class ExitToMenuCommand extends Command {
         this.title = "Exit to Menu";
         this.gameModel = gameModel;
     }
+    @Override
     public void execute(){
         MainMenuModel model = MainMenuModel.getInstance(gameModel);
         gameModel.setState(new MenuStateModel(model, MainMenuController.getInstance(model)));
