@@ -8,14 +8,17 @@ import org.mockito.Mockito;
 import spaceinvaders.model.AlienModel;
 import spaceinvaders.model.PositionModel;
 import spaceinvaders.model.ShipShotModel;
+import spaceinvaders.view.ShipShotViewer;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ShipShotTest {
     ShipShotModel shipShot;
+    ShipShotViewer shipShotViewer;
     @BeforeEach
     public void helper() {
         shipShot = new ShipShotModel(new PositionModel(2, 2));
+        shipShotViewer = new ShipShotViewer(shipShot);
     }
 
     @Test
