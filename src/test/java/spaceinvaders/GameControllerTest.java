@@ -1,4 +1,4 @@
-package spaceinvaders.menu;
+package spaceinvaders;
 
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.screen.Screen;

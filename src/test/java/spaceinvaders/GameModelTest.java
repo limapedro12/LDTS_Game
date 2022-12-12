@@ -1,4 +1,4 @@
-package spaceinvaders.menu;
+package spaceinvaders;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
