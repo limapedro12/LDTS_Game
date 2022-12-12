@@ -9,6 +9,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.TreeSet;
 
@@ -32,6 +33,7 @@ public class ArenaModel implements ShotObserverModel {
     private long youWonTime;
     private int score = 0;
     private boolean hasRan = false;
+    private Clip clip = null;
 
     public ArenaModel(GameModel gameModel){
         this.gameModel = gameModel;
@@ -63,10 +65,13 @@ public class ArenaModel implements ShotObserverModel {
     }
     public ArenaModel(GameModel gameModel, int level) {
         this(gameModel);
-        for (int i = 2; i <= level; i++) incrementLevel();
+        for (int i = 1; i < level; i++) incrementLevel();
     }
     public Command getExitCommand(){
         return exitCommand;
+    }
+    public void setExitCommand(Command exitCommand){
+        this.exitCommand = exitCommand;
     }
 
     public void update(ShotModel shot) {
@@ -235,11 +240,11 @@ public class ArenaModel implements ShotObserverModel {
         if(!hasRan) return true;
         if(!ship.isAlive()) return checkScore();
         for(AlienModel alien : aliens.getAliens())
-            if(alien.getY() == ship.getUpperBound()) return checkScore();
+            if(alien.getY() >= ship.getUpperBound()) return checkScore();
         return false;
     }
 
-    private boolean checkScore() {
+    public boolean checkScore() {
         if (score > 0) {
             TreeSet<PlayerScore> scores = PlayerScore.loadScores();
             String name = System.getProperty("user.name");
@@ -249,15 +254,71 @@ public class ArenaModel implements ShotObserverModel {
         return true;
     }
 
-    private void dieSound() {
+    public void dieSound() {
         File f = new File("resources/sound/die.wav");
 
         try {
-            Clip clip = AudioSystem.getClip();
+            if(clip == null) clip = AudioSystem.getClip();
             clip.open(AudioSystem.getAudioInputStream(f));
             clip.start();
         } catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    public boolean getHasRan() {
+        return hasRan;
+    }
+
+    public void setTargetTime(long i) {
+        targetTime = i;
+    }
+
+    public void setAliens(AlienGroupModel alienGroup) {
+        aliens = alienGroup;
+    }
+
+    public void setYouWon(boolean b) {
+        youWon = b;
+    }
+
+    public void setYouWonTime(int i) {
+        youWonTime = i;
+    }
+
+    public void addProtection(ProtectionModel protection) {
+        protections.add(protection);
+    }
+
+    public void setShip(ShipModel ship) {
+        this.ship = ship;
+    }
+
+    public void setLastAlienDirection(int i) {
+        lastAlienDirection = i;
+    }
+
+    public int getLastAlienDirection() {
+        return lastAlienDirection;
+    }
+
+    public List<ProtectionModel> getProtections() {
+        return protections;
+    }
+
+    public void addElement(ElementModel element) {
+        elements.add(element);
+    }
+
+    public void clearElements() {
+        elements.clear();
+    }
+
+    public void setClip(Clip clip) {
+        this.clip = clip;
+    }
+
+    public void setViewer(ArenaViewer viewer) {
+        this.viewer = viewer;
     }
 }
