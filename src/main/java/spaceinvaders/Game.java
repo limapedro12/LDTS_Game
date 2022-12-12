@@ -57,9 +57,12 @@ public class Game {
         screen.startScreen();
         screen.doResizeIfNecessary();
 
-        model = new GameModel();
-        controller = new GameController(model, screen);
-        viewer = new GameViewer(model, screen);
+        if(model == null)
+            model = new GameModel();
+        if(controller == null)
+            controller = new GameController(model, screen);
+        if(viewer == null)
+            viewer = new GameViewer(model, screen);
 
         int FPS = 10;
         int frameTime = 1000 / FPS;
