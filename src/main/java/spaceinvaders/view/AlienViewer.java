@@ -14,6 +14,7 @@ public class AlienViewer implements ElementViewer {
         this.model = model;
     }
 
+    @Override
     public void draw(TextGraphics graphics){
         graphics.setForegroundColor(TextColor.Factory.fromString(model.getColor()));
         graphics.putString(new TerminalPosition(model.getX(), model.getY()), model.getSymbol());

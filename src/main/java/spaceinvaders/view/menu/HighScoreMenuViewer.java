@@ -1,5 +1,6 @@
 package spaceinvaders.view.menu;
 
+import com.google.common.base.Splitter;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import spaceinvaders.PlayerScore;
@@ -8,6 +9,11 @@ import spaceinvaders.model.menu.HighScoreMenuModel;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class HighScoreMenuViewer implements MenuViewer {
     private static HighScoreMenuViewer instance = null;
@@ -25,6 +31,7 @@ public class HighScoreMenuViewer implements MenuViewer {
         return instance;
     }
 
+    @Override
     public void draw(TextGraphics graphics){
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         graphics.putString(8, 2, "HighScores");
@@ -32,11 +39,11 @@ public class HighScoreMenuViewer implements MenuViewer {
         String splitBy = ",";
         try {
             int y = 5;
-            BufferedReader br = new BufferedReader(new FileReader("resources/highscores.csv"));
+            BufferedReader br = Files.newBufferedReader(Paths.get("resources/highscores.csv"), UTF_8);
             while ((line = br.readLine()) != null) {
-                String[] arr = line.split(splitBy);
-                graphics.putString(8, y, arr[0]);
-                graphics.putString(38, y, arr[1]);
+                List<String> arr = Splitter.onPattern(splitBy).splitToList(line);
+                graphics.putString(8, y, arr.get(0));
+                graphics.putString(38, y, arr.get(1));
                y++;
             }
         } catch (IOException e) {

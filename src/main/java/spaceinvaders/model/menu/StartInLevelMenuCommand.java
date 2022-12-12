@@ -11,6 +11,7 @@ public class StartInLevelMenuCommand extends Command {
         this.startCommand = startCommand;
         this.gameModel = gameModel;
     }
+    @Override
     public void execute(){
         StartInLevelMenuModel model = StartInLevelMenuModel.getInstance(gameModel, startCommand);
         gameModel.setState(new MenuStateModel(model, StartInLevelMenuController.getInstance(model)));

@@ -9,6 +9,7 @@ public class InfoCommand extends Command {
         this.title = "Info";
         this.gameModel = gameModel;
     }
+    @Override
     public void execute(){
         InfoMenuModel model = InfoMenuModel.getInstance(gameModel);
         gameModel.setState(new MenuStateModel(model, InfoMenuController.getInstance(model)));

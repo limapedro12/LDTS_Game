@@ -16,8 +16,8 @@ public class MenuStateModel implements RunStateModel {
         this.controller = controller;
         this.viewer = new MenuStateViewer(model.getViewer());
     }
+    @Override
     public void run(){}
-
     @Override
     public RunStateViewer getViewer() {
         return viewer;

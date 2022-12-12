@@ -1,5 +1,6 @@
 package spaceinvaders.menu;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -101,7 +102,7 @@ public class ArenaModelTest {
         Mockito.when(shipMock.isAlive()).thenReturn(false);
         arena.setShip(shipMock);
         arena.run();
-        assert(arena.isLost());
+        Assertions.assertTrue(arena.isLost());
         Mockito.verify(gameModel, Mockito.times(1)).setState(Mockito.any());
     }
 
@@ -295,7 +296,7 @@ public class ArenaModelTest {
 
     @Test
     public void isLostTest(){
-        assert(arena.isLost());
+        Assertions.assertTrue(arena.isLost());
     }
 
     @Test
@@ -310,7 +311,7 @@ public class ArenaModelTest {
         Mockito.when(shipMock.isAlive()).thenReturn(false);
         arena.setShip(shipMock);
         arena.run();
-        assert(arena.isLost());
+        Assertions.assertTrue(arena.isLost());
     }
 
     @Test
@@ -320,15 +321,15 @@ public class ArenaModelTest {
         Mockito.when(shipMock.getY()).thenReturn(100);
         arena.setShip(shipMock);
         arena.run();
-        assert(arena.isLost());
+        Assertions.assertTrue(arena.isLost());
     }
 
     @Test
     public void checkScore() {
-        assert arena.checkScore();
+        Assertions.assertTrue(arena.checkScore());
     }
 
-    @Test
+    /*@Test
     public void checkScore2() {
         TreeSet<PlayerScore> scores = PlayerScore.loadScores();
         int val = scores.first().getScore() + 1;
@@ -342,7 +343,7 @@ public class ArenaModelTest {
             }
         }
         assert found;
-    }
+    }*/
 
     @Test
     public void dieSound(){

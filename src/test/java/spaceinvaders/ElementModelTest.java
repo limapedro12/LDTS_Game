@@ -1,5 +1,6 @@
 package spaceinvaders;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import spaceinvaders.model.*;
@@ -76,7 +77,7 @@ public class ElementModelTest {
         elementModel.clearObservers();
         elementModel.addObserver(shotObserverModel);
         assertEquals(1, elementModel.getObservers().size());
-        assert (elementModel.getObservers().contains(shotObserverModel));
+        Assertions.assertTrue(elementModel.getObservers().contains(shotObserverModel));
     }
 
     @Test
@@ -106,7 +107,7 @@ public class ElementModelTest {
         ShotModel shotModel = Mockito.mock(ShotModel.class);
         Mockito.when(shotModel.getX()).thenReturn(1);
         Mockito.when(shotModel.getY()).thenReturn(2);
-        assert(elementModel.collideWith(shotModel));
+        Assertions.assertTrue(elementModel.collideWith(shotModel));
     }
 
     @Test
@@ -124,7 +125,7 @@ public class ElementModelTest {
         ShotModel shotModel = Mockito.mock(ShotModel.class);
         Mockito.when(shotModel.getX()).thenReturn(2);
         Mockito.when(shotModel.getY()).thenReturn(3);
-        assert(elementModel.collideWith(shotModel));
+        Assertions.assertTrue(elementModel.collideWith(shotModel));
     }
 
     @Test

@@ -5,10 +5,8 @@ import spaceinvaders.view.menu.ControlsMenuViewer;
 
 public class ControlsMenuModel extends MenuModel{
     private static ControlsMenuModel instance = null;
-    private GameModel gameModel;
     private Command exitCommand;
     private ControlsMenuModel(GameModel gameModel){
-        this.gameModel = gameModel;
         this.viewer = ControlsMenuViewer.getInstance(this);
         exitCommand = new OptionsCommand(gameModel);
     }

@@ -19,7 +19,7 @@ public class InfoMenuViewer implements MenuViewer {
     public static InfoMenuViewer getInstance(){
         return instance;
     }
-
+    @Override
     public void draw(TextGraphics graphics){
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         graphics.putString(6, 8, "Info");

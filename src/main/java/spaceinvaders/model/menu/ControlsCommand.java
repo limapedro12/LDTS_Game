@@ -9,6 +9,7 @@ public class ControlsCommand extends Command {
         this.title = "Controls";
         this.gameModel = gameModel;
     }
+    @Override
     public void execute(){
         ControlsMenuModel model = ControlsMenuModel.getInstance(gameModel);
         gameModel.setState(new MenuStateModel(model, ControlsMenuController.getInstance(model)));

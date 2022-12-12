@@ -15,9 +15,11 @@ public class AlienModel extends ElementModel {
         this.color = color;
         this.viewer = new AlienViewer(this);
     }
+    @Override
     public void damage() {
         alive = false;
     }
+    @Override
     public boolean isAlive() {
         return alive;
     }
