@@ -22,6 +22,7 @@ public class MainMenuViewer implements MenuViewer {
     public static MenuViewer getInstance(){
         return instance;
     }
+    @Override
     public void draw(TextGraphics graphics){
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFC300"));
         List<String> spaceInvaders = new ArrayList<>();

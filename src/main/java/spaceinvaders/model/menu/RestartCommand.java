@@ -6,6 +6,7 @@ public class RestartCommand extends Command {
         this.title = "Restart Game";
         this.startCommand = startCommand;
     }
+    @Override
     public void execute(){
         startCommand.restartArena();
         startCommand.execute();

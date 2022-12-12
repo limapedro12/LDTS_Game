@@ -69,6 +69,7 @@ public class ArenaModel implements ShotObserverModel {
         return exitCommand;
     }
 
+    @Override
     public void update(ShotModel shot) {
         shots.add(shot);
     }

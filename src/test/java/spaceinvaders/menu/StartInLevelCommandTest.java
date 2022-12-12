@@ -10,26 +10,26 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StartInLevelCommandTest {
     StartCommand startCommand;
-    StartInLevelCommand StartInLevelCommand;
+    StartInLevelCommand startInLevelCommand;
     @BeforeEach
     public void helper() {
         startCommand = Mockito.mock(StartCommand.class);
-        StartInLevelCommand = new StartInLevelCommand(startCommand, 2);
+        startInLevelCommand = new StartInLevelCommand(startCommand, 2);
     }
 
     @Test
     public void getStartCommandTest() {
-        assertEquals(StartInLevelCommand.getStartCommand(), startCommand);
+        assertEquals(startInLevelCommand.getStartCommand(), startCommand);
     }
 
     @Test
     public void getTitle() {
-        assertEquals(StartInLevelCommand.getTitle(), "Start Game In Level");
+        assertEquals(startInLevelCommand.getTitle(), "Start Game In Level");
     }
 
     @Test
     public void executeTest() {
-        StartInLevelCommand.execute();
+        startInLevelCommand.execute();
         Mockito.verify(startCommand, Mockito.times(1)).execute();
     }
 }

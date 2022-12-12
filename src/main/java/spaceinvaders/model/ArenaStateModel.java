@@ -11,12 +11,15 @@ public class ArenaStateModel implements RunStateModel{
         this.model = model;
         this.viewer = new ArenaStateViewer(model.getViewer());
     }
+    @Override
     public void run(){
         model.run();
     }
+    @Override
     public ArenaStateViewer getViewer(){
         return viewer;
     }
+    @Override
     public Controller getController(){
         return new ArenaController(model);
     }
