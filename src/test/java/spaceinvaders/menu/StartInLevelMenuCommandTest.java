@@ -14,36 +14,36 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StartInLevelMenuCommandTest {
     GameModel gameModel;
-    StartInLevelMenuCommand StartInLevelMenuCommand;
+    StartInLevelMenuCommand startInLevelMenuCommand;
     StartCommand startCommand;
     @BeforeEach
     public void helper() {
         gameModel = Mockito.mock(GameModel.class);
         startCommand = Mockito.mock(StartCommand.class);
-        StartInLevelMenuCommand = new StartInLevelMenuCommand(gameModel, startCommand);
+        startInLevelMenuCommand = new StartInLevelMenuCommand(gameModel, startCommand);
     }
 
     @Test
     public void getGameModelTest() {
-        assertEquals(StartInLevelMenuCommand.getGameModel(), gameModel);
+        assertEquals(startInLevelMenuCommand.getGameModel(), gameModel);
     }
 
     @Test
     public void getTitle() {
-        assertEquals(StartInLevelMenuCommand.getTitle(), "Start In Level");
+        assertEquals(startInLevelMenuCommand.getTitle(), "Start In Level");
     }
 
     @Test
     public void executeTest() {
-        StartInLevelMenuCommand.execute();
+        startInLevelMenuCommand.execute();
         Mockito.verify(gameModel, Mockito.times(1)).setState(Mockito.any());
     }
 
     @Test
     public void executeTest2() {
         GameModel gameModel2 = new GameModel();
-        StartInLevelMenuCommand.setGameModel(gameModel2);
-        StartInLevelMenuCommand.execute();
+        startInLevelMenuCommand.setGameModel(gameModel2);
+        startInLevelMenuCommand.execute();
         MenuStateModel menuStateModel = (MenuStateModel) gameModel2.getState();
         StartInLevelMenuModel model = StartInLevelMenuModel.getInstance(gameModel, startCommand);
         assertEquals(menuStateModel.getModel(), model);
@@ -52,6 +52,6 @@ public class StartInLevelMenuCommandTest {
 
     @Test
     public void getStartCommandTest() {
-        assertEquals(StartInLevelMenuCommand.getStartCommand(), startCommand);
+        assertEquals(startInLevelMenuCommand.getStartCommand(), startCommand);
     }
 }

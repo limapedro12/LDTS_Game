@@ -13,6 +13,7 @@ public class ArenaController implements Controller {
         this.ship = new ShipController(model.getShip());
     }
 
+    @Override
     public void processKey(KeyStroke key) {
         if ((key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') ||
                 key.getKeyType() == KeyType.Escape) {

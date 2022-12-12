@@ -12,7 +12,6 @@ import java.io.PrintWriter;
 
 public class GameModel {
     private RunStateModel state;
-    private boolean hasEnteredArena;
     public GameModel() {
         MainMenuModel menu = MainMenuModel.getInstance(this);
         state = new MenuStateModel(menu, MainMenuController.getInstance(menu));
@@ -27,8 +26,4 @@ public class GameModel {
     public RunStateModel getState() {
         return state;
     }
-
-    //public ArenaModel getArenaModel() {
-//        return arena;
-//    }
 }

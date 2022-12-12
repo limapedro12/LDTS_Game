@@ -16,6 +16,7 @@ public class ArenaViewer implements Viewer{
         this.model = model;
     }
 
+    @Override
     public void draw(TextGraphics graphics) {
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
 
