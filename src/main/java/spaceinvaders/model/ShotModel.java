@@ -19,6 +19,7 @@ public class ShotModel extends ElementModel {
         this.floatY = position.getY();
         this.viewer = new ShotViewer(this);
     }
+    @Override
     public PositionModel getPosition() {
         return position;
     }
@@ -36,6 +37,7 @@ public class ShotModel extends ElementModel {
     }
     static public boolean up = true;
     static public boolean down = false;
+    @Override
     public boolean isAlive() {
         return false;
     }
@@ -45,6 +47,7 @@ public class ShotModel extends ElementModel {
     public char getCharacter() {
         return character;
     }
+    @Override
     public boolean isTangible(){
         return false;
     }

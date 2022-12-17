@@ -1,16 +1,21 @@
 package spaceinvaders;
 
+
+import org.junit.jupiter.api.Test;
 import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+
 import spaceinvaders.model.PositionModel;
 import spaceinvaders.model.ShotModel;
 import spaceinvaders.view.ShotViewer;
 
+
+
 public class ShotViewerTest {
+
     private ShotViewer shotViewer;
     private ShotModel shotModel;
 

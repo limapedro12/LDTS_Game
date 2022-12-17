@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PositionModelTest {
     @Test
+
     public void getX() {
         PositionModel positionModel = new PositionModel(1, 2);
         assertEquals(1, positionModel.getX());
@@ -54,6 +55,7 @@ public class PositionModelTest {
         positionModel.setY(3);
         assertEquals(3, positionModel.getY());
     }
+
     public void testPositionModel() {
         PositionModel positionModel = new PositionModel(new PositionModel(1, 2));
         assertEquals(1, positionModel.getX());

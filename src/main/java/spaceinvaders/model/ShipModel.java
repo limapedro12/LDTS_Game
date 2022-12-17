@@ -31,9 +31,11 @@ public class ShipModel extends ElementModel {
         this.rightBound = x+4;
         this.viewer = new ShipViewer(this);
     }
+    @Override
     public int getX() {
         return position.getX();
     }
+    @Override
     public int getY() {
         return position.getY();
     }
@@ -61,12 +63,15 @@ public class ShipModel extends ElementModel {
     public void setRightBound(int rightBound) {
         this.rightBound = rightBound;
     }
+    @Override
     public int getWidth() {
         return rightBound - leftBound + 1;
     }
+    @Override
     public int getHeight() {
         return lowerBound - upperBound + 1;
     }
+    @Override
     public boolean isAlive() {
         return lives > 0;
     }
@@ -78,6 +83,7 @@ public class ShipModel extends ElementModel {
     public int getLives(){
         return lives;
     }
+    @Override
     public void damage(){
         lives--;
     }

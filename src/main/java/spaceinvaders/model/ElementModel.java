@@ -67,15 +67,18 @@ public abstract class ElementModel implements ShotSubjectModel {
         ShotModel shot = new ShipShotModel(new PositionModel(getX(), getY() - 2));
         notifyObservers(shot);
     }*/
+    @Override
     public void addObserver(ShotObserverModel observer){
         observers.add(observer);
     }
+    @Override
     public void removeObserver(ShotObserverModel observer){
         observers.remove(observer);
     }
     public void clearObservers(){
         observers.clear();
     }
+    @Override
     public void notifyObservers(ShotModel shot){
         for(ShotObserverModel observer : observers){
             observer.update(shot);

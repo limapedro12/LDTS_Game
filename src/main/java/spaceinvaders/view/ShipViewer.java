@@ -10,6 +10,7 @@ public class ShipViewer implements ElementViewer {
     public ShipViewer(ShipModel ship) {
         this.ship = ship;
     }
+    @Override
     public void draw(TextGraphics graphics) {
         ship.resetDrawnPositions();
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFC300"));

@@ -9,7 +9,7 @@ public class MenuStateViewer implements RunStateViewer {
     public MenuStateViewer(MenuViewer menuViewer){
         this.menuViewer = menuViewer;
     }
-
+    @Override
     public void draw(TextGraphics graphics){
         menuViewer.draw(graphics);
     }

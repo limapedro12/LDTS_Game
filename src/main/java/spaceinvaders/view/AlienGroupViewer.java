@@ -16,6 +16,7 @@ public class AlienGroupViewer implements ElementViewer {
             alien.getViewer().draw(graphics);
         }
     }
+    @Override
     public ElementModel getModel() {
         return model;
     }

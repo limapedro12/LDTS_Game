@@ -9,6 +9,7 @@ public class OptionsCommand extends Command {
         this.title = "Options";
         this.gameModel = gameModel;
     }
+    @Override
     public void execute(){
         OptionsMenuModel model = OptionsMenuModel.getInstance(gameModel);
         gameModel.setState(new MenuStateModel(model, OptionsMenuController.getInstance(model)));

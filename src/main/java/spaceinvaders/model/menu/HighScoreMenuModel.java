@@ -15,10 +15,8 @@ import static spaceinvaders.PlayerScore.loadScores;
 
 public class HighScoreMenuModel extends MenuModel{
     private static HighScoreMenuModel instance = null;
-    private GameModel gameModel;
     private Command exitCommand;
     private HighScoreMenuModel(GameModel gameModel){
-        this.gameModel = gameModel;
         this.viewer = HighScoreMenuViewer.getInstance(this);
         exitCommand = new ExitToMenuCommand(gameModel);
     }

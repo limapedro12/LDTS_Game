@@ -9,6 +9,7 @@ public class HighScoreCommand extends Command {
         this.title = "HighScores";
         this.gameModel = gameModel;
     }
+    @Override
     public void execute(){
         HighScoreMenuModel model = HighScoreMenuModel.getInstance(gameModel);
         gameModel.setState(new MenuStateModel(model, HighScoreMenuController.getInstance(model)));
