@@ -89,6 +89,28 @@ The rest didn't need to be refactored.
 - Large Class -> Extract Class
 We extracted the method createAliens from the class ArenaModel to the class AlienGroupModel.
 
+#### KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS
+#### LARGE CLASS
+In the intermediary delivery we hadn't implemented MVC, so we had classes that did more than did the work of three(Model, Controller and Viewer).
+So we extracted a class viewer and a class controller from each class, by extracting to these classes the methods that did this job, then renamed the original class to class model.
+The class `Ship`, `Arena` and `Game` generated a Model, a Viewer and a Controller.
+The class `Element`, `Alien`, `AlienShot`, `ShipShot`, `Shot` and `Protection` only generated a Model and a Viewer.
+The rest didn't need to be refactored.
+
+#### DUPLICATE CODE
+In the class `Ship` we had methods that did the same thing, but with different names, so we removed one of them and changed all the references of the deleted one.
+The methods `decreaseLives` and `damage` did the same thing, so we removed the method `decreaseLives`.
+The method `died` and `isAlive` did almost the same thing, so we removed the method `died` and changed all the references of that method to `!isAlive()`.
+
+#### PULL UP METHOD
+In the subclasses of `Element` we had methods common to almost all of them, so we pulled up the methods to the superclass `Element`.
+This were ...
+
+#### DEAD CODE
+We had various methods and classes that were no longer used, so we deleted them.
+The classes `DummyCommad`, `NullController` and `LifeModel` were only used so the code could compile without errors, so when we finished the game we deleted them.
+The method `getScore` in the class `AlienGroupModel`, .
+
 ------
 
 ### TESTING
