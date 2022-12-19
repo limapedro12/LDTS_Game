@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=windows-1252">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>StartCommand.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package spaceinvaders.model.menu;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import spaceinvaders.model.ArenaModel;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import spaceinvaders.model.ArenaStateModel;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import spaceinvaders.model.GameModel;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public class StartCommand extends Command {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    protected ArenaModel arena;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    protected GameModel gameModel;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    public StartCommand(GameModel gameModel){</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.title = &#34;Start Game&#34;;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.arena = new ArenaModel(gameModel);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.gameModel = gameModel;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_14'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_15'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_16'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public void execute(){</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_17'/>
+17
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_17'>1</a>
+<span>
+
+1. execute : removed call to spaceinvaders/model/GameModel::setState &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        gameModel.setState(new ArenaStateModel(arena));</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_18'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_19'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public void restartArena(){</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_20'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.arena = new ArenaModel(gameModel);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_21'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_22'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public ArenaModel getArena(){</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_23'/>
+23
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_23'>1</a>
+<span>
+
+1. getArena : replaced return value with null for spaceinvaders/model/menu/StartCommand::getArena &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return arena;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_24'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_25'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public void setLevel(int level) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_26'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        arena = new ArenaModel(gameModel, level);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_27'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_28'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public GameModel getGameModel(){</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_29'/>
+29
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_29'>1</a>
+<span>
+
+1. getGameModel : replaced return value with null for spaceinvaders/model/menu/StartCommand::getGameModel &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return gameModel;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_30'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7e83992_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_31'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@7e83992_17'>17</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_17'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>execute<br/><b>Killed by : </b>spaceinvaders.menu.StartCommandTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.StartCommandTest]/[method:executeTest()]</span></span> removed call to spaceinvaders/model/GameModel::setState &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@7e83992_23'>23</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_23'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getArena<br/><b>Killed by : </b>spaceinvaders.GameModelTest.[engine:junit-jupiter]/[class:spaceinvaders.GameModelTest]/[method:getState()]</span></span> replaced return value with null for spaceinvaders/model/menu/StartCommand::getArena &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@7e83992_29'>29</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@7e83992_29'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getGameModel<br/><b>Killed by : </b>spaceinvaders.menu.StartCommandTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.StartCommandTest]/[method:getGameModelTest()]</span></span> replaced return value with null for spaceinvaders/model/menu/StartCommand::getGameModel &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+
+<li class='mutator'>CONDITIONALS_BOUNDARY</li>
+
+<li class='mutator'>EMPTY_RETURNS</li>
+
+<li class='mutator'>FALSE_RETURNS</li>
+
+<li class='mutator'>INCREMENTS</li>
+
+<li class='mutator'>INVERT_NEGS</li>
+
+<li class='mutator'>MATH</li>
+
+<li class='mutator'>NEGATE_CONDITIONALS</li>
+
+<li class='mutator'>NULL_RETURNS</li>
+
+<li class='mutator'>PRIMITIVE_RETURNS</li>
+
+<li class='mutator'>TRUE_RETURNS</li>
+
+<li class='mutator'>VOID_METHOD_CALLS</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>spaceinvaders.menu.StartInLevelMenuCommandTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.StartInLevelMenuCommandTest]/[method:executeTest2()] (2 ms)</li><li>spaceinvaders.menu.MainMenuModelTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.MainMenuModelTest]/[method:addCommandTest()] (2 ms)</li><li>spaceinvaders.ArenaControllerTest.[engine:junit-jupiter]/[class:spaceinvaders.ArenaControllerTest]/[method:processKey7()] (52 ms)</li><li>spaceinvaders.menu.MainMenuViewerTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.MainMenuViewerTest]/[method:resetTest()] (1 ms)</li><li>spaceinvaders.menu.ArenaModelTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.ArenaModelTest]/[method:isLost4()] (10 ms)</li><li>spaceinvaders.menu.MainMenuModelTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.MainMenuModelTest]/[method:removeContinueCommandTest()] (2 ms)</li><li>spaceinvaders.menu.MainMenuModelTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.MainMenuModelTest]/[method:getSelectedCommandTest()] (1 ms)</li><li>spaceinvaders.menu.StartCommandTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.StartCommandTest]/[method:executeTest()] (2 ms)</li><li>spaceinvaders.ArenaControllerTest.[engine:junit-jupiter]/[class:spaceinvaders.ArenaControllerTest]/[method:processKey3()] (192 ms)</li><li>spaceinvaders.ArenaControllerTest.[engine:junit-jupiter]/[class:spaceinvaders.ArenaControllerTest]/[method:processKey1()] (8 ms)</li><li>spaceinvaders.menu.MainMenuViewerTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.MainMenuViewerTest]/[method:draw()] (10 ms)</li><li>spaceinvaders.menu.MainMenuModelTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.MainMenuModelTest]/[method:getGameModelTest()] (1 ms)</li><li>spaceinvaders.menu.ArenaModelTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.ArenaModelTest]/[method:runTest4()] (88 ms)</li><li>spaceinvaders.menu.MainMenuModelTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.MainMenuModelTest]/[method:downSelectedCommandTest()] (1 ms)</li><li>spaceinvaders.menu.OptionsCommandTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.OptionsCommandTest]/[method:executeTest2()] (0 ms)</li><li>spaceinvaders.menu.StartCommandTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.StartCommandTest]/[method:restartArenaTest()] (5 ms)</li><li>spaceinvaders.menu.MainMenuViewerTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.MainMenuViewerTest]/[method:getInstanceTest2()] (1 ms)</li><li>spaceinvaders.menu.MainMenuModelTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.MainMenuModelTest]/[method:checkContinueTest()] (2 ms)</li><li>spaceinvaders.menu.ExitToMenuCommandTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.ExitToMenuCommandTest]/[method:executeTest()] (1 ms)</li><li>spaceinvaders.menu.MainMenuModelTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.MainMenuModelTest]/[method:checkContinueTest2()] (41 ms)</li><li>spaceinvaders.ArenaControllerTest.[engine:junit-jupiter]/[class:spaceinvaders.ArenaControllerTest]/[method:processKey6()] (299 ms)</li><li>spaceinvaders.ArenaControllerTest.[engine:junit-jupiter]/[class:spaceinvaders.ArenaControllerTest]/[method:processKey2()] (1 ms)</li><li>spaceinvaders.menu.HighScoreCommandTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.HighScoreCommandTest]/[method:executeTest2()] (1 ms)</li><li>spaceinvaders.GameModelTest.[engine:junit-jupiter]/[class:spaceinvaders.GameModelTest]/[method:getState()] (1 ms)</li><li>spaceinvaders.menu.StartCommandTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.StartCommandTest]/[method:setLevelTest()] (1 ms)</li><li>spaceinvaders.menu.MainMenuViewerTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.MainMenuViewerTest]/[method:getInstanceTest1()] (1 ms)</li><li>spaceinvaders.menu.ExitToMenuCommandTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.ExitToMenuCommandTest]/[method:executeTest2()] (1 ms)</li><li>spaceinvaders.ArenaControllerTest.[engine:junit-jupiter]/[class:spaceinvaders.ArenaControllerTest]/[method:processKey5()] (2 ms)</li><li>spaceinvaders.menu.MainMenuModelTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.MainMenuModelTest]/[method:clearCommandsTest()] (1 ms)</li><li>spaceinvaders.GameModelTest.[engine:junit-jupiter]/[class:spaceinvaders.GameModelTest]/[method:runTest()] (1 ms)</li><li>spaceinvaders.menu.MenuModelTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.MenuModelTest]/[method:getViewerTest()] (15 ms)</li><li>spaceinvaders.menu.ControlsCommandTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.ControlsCommandTest]/[method:executeTest2()] (5 ms)</li><li>spaceinvaders.ArenaControllerTest.[engine:junit-jupiter]/[class:spaceinvaders.ArenaControllerTest]/[method:processKey8()] (6 ms)</li><li>spaceinvaders.menu.ArenaModelTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.ArenaModelTest]/[method:isLost3()] (7 ms)</li><li>spaceinvaders.menu.MainMenuModelTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.MainMenuModelTest]/[method:setContinueEnabledTest()] (2 ms)</li><li>spaceinvaders.ArenaControllerTest.[engine:junit-jupiter]/[class:spaceinvaders.ArenaControllerTest]/[method:processKey4()] (2 ms)</li><li>spaceinvaders.menu.StartCommandTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.StartCommandTest]/[method:getGameModelTest()] (0 ms)</li><li>spaceinvaders.menu.MainMenuModelTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.MainMenuModelTest]/[method:addContinueCommandTest()] (1 ms)</li><li>spaceinvaders.menu.MainMenuModelTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.MainMenuModelTest]/[method:getSelectedCommandIntTest()] (1 ms)</li><li>spaceinvaders.menu.ArenaModelTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.ArenaModelTest]/[method:runTest5()] (9 ms)</li><li>spaceinvaders.menu.InfoCommandTest.[engine:junit-jupiter]/[class:spaceinvaders.menu.InfoCommandTest]/[method:executeTest2()] (2 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.9.4
+
+</body>
+</html>
