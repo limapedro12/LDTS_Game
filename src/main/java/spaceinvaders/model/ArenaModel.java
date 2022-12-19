@@ -262,6 +262,7 @@ public class ArenaModel implements ShotObserverModel {
             if(clip == null) clip = AudioSystem.getClip();
             clip.open(AudioSystem.getAudioInputStream(f));
             clip.start();
+            clip.close();
         } catch (Exception e){
             e.printStackTrace();
         }
