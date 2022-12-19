@@ -70,24 +70,59 @@ the screen. If they reach it, the player shall lose.
 <p>Fig. 5 - Mockup of the highest scores feature.</p>
 
 ### DESIGN
-
-- **Problem in Context.** - We needed a way to communicate to [arena](../src/main/java/spaceinvaders/Arena.java) that the [ship has fired a shot](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/70c3ae42ed8ec87b2767c2d0a6b8ab4207517a21/src/main/java/spaceinvaders/Ship.java#L93-L95), so [arena](../src/main/java/spaceinvaders/Arena.java) could draw it.
+#### OBSERVATER PATTERN
+- **Problem in Context.** - We needed a way to communicate to [ArenaModel](../src/main/java/spaceinvaders/model/ArenaModel.java) that the [ship has fired a shot](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/70c3ae42ed8ec87b2767c2d0a6b8ab4207517a21/src/main/java/spaceinvaders/Ship.java#L93-L95), so [ArenaViewer](../src/main/java/spaceinvaders/view/ArenaViewer.java) could draw it.
 - **The Pattern** - Observer Pattern
-- **Implementation.** - The [ship](../src/main/java/spaceinvaders/Ship.java) is the subject, so it implements the [ShotSubject](../src/main/java/spaceinvaders/ShotSubject.java) interface, and the [arena](../src/main/java/spaceinvaders/Arena.java) is the observer, so it implements the [ShotObserver](../src/main/java/spaceinvaders/ShotObserver.java) interface. The ShotSubject, and subsequently the [ship](../src/main/java/spaceinvaders/Ship.java), has a [list of observers](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/70c3ae42ed8ec87b2767c2d0a6b8ab4207517a21/src/main/java/spaceinvaders/ShotSubject.java#L6) and whenever it fires a shot, it notifies all the [observers](../src/main/java/spaceinvaders/ShotObserver.java), including [arena](../src/main/java/spaceinvaders/Arena.java). You can see this in the following UML.
-- **Consequences.** - The consequence of this design is that the [ship](../src/main/java/spaceinvaders/Ship.java) doesn't need to know anything about the [arena](../src/main/java/spaceinvaders/Arena.java), and the [arena](../src/main/java/spaceinvaders/Arena.java) doesn't need to know anything about the [ship](../src/main/java/spaceinvaders/Ship.java). This is a good design because it makes the code more modular and easier to understand.
+- **Implementation.** - The [ShipModel](../src/main/java/spaceinvaders/model/ShipModel.java) is the subject, so it implements the [ShotSubjectModel](../src/main/java/spaceinvaders/model/ShotSubjectModel.java) interface, and the [ArenaModel](../src/main/java/spaceinvaders/model/ArenaModel.java) is the observer, so it implements the [ShotObserverModel](../src/main/java/spaceinvaders/model/ShotObserverModel.java) interface. The ShotSubject, and subsequently the [ShipModel](../src/main/java/spaceinvaders/model/ShipModel.java), has a [list of Observers](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/70c3ae42ed8ec87b2767c2d0a6b8ab4207517a21/src/main/java/spaceinvaders/ShotSubject.java#L6) and whenever it fires a shot, it notifies all the [Observers](../src/main/java/spaceinvaders/model/ShotObserverModel.java), including [ArenaModel](../src/main/java/spaceinvaders/model/ArenaModel.java). You can see this in the following UML.
+- **Consequences.** - The consequence of this design is that the [ShipModel](../src/main/java/spaceinvaders/model/ShipModel.java) doesn't need to know anything about the [ArenaModel](../src/main/java/spaceinvaders/ArenaModel.java), and the [ArenaModel](../src/main/java/spaceinvaders/model/ArenaModel.java) doesn't need to know anything about the [ShipModel](../src/main/java/spaceinvaders/model/ShipModel.java). This is a good design because it makes the code more modular and easier to understand.
 
 <img alt="Observer UML" src="../UMLs/Observer.png" height="400" />
 <p>Fig. 6 - Observer Pattern UML</p>
 
+#### COMPOSITE PATTERN
+- **Problem in Context.** - We started by working with the 50 aliens directly from the [ArenaModel](../src/main/java/spaceinvaders/model/ArenaModel.java), but any time we added a new feature it became harder to work with.
+- **The Pattern** - Composite Pattern
+- **Implementation.** - We joined all the aliens into a single element called AlienGroup  (corresponding to the classes [AlienGroupModel](../src/main/java/spaceinvaders/model/AlienGroupModel.java) and [AlienGroupViewer](../src/main/java/spaceinvaders/view/AlienGroupViewer.java)). The class [AlienGroupModel](../src/main/java/spaceinvaders/model/AlienGroupModel.java) extends the class [ElementModel](../src/main/java/spaceinvaders/model/ElementModel.java) and has a list of [Aliens](../src/main/java/spaceinvaders/model/AlienModel.java) that stores all aliens in the game, which in turn also extend the class [ElementModel](../src/main/java/spaceinvaders/model/ElementModel.java).
+- **Consequences.** - It becomes easier to work with the aliens, since we can now work with the AlienGroup, which has all the aliens. This is a good design because it makes the code more modular and easier to understand. In particular, it becomes much easier to draw and add new features to the aliens.
+
+#### STATE PATTERN
+- **Problem in Context.** - We needed to change the state of the [Game](../src/main/java/spaceinvaders/model/GameModel.java), from the [Main Menu](../src/main/java/spaceinvaders/model/menu/MainMenuModel.java) to the game itself or from the main menu to the [other menus](../src/main/java/spaceinvaders/model/menu).
+- **The Pattern** - State Pattern
+- **Implementation.** - The class [GameModel](../src/main/java/spaceinvaders/model/GameModel.java) has a variable [state](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/c0690bfd418efcde9a68d979afc54693e1da76a5/src/main/java/spaceinvaders/model/GameModel.java#L14) of type [RunStateModel](../src/main/java/spaceinvaders/model/RunStateModel.java), which holds the current [state](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/c0690bfd418efcde9a68d979afc54693e1da76a5/src/main/java/spaceinvaders/model/GameModel.java#L14) of the Game. We've also implemented a [MenuStateModel](../src/main/java/spaceinvaders/model/menu/MenuStateModel.java) and an [ArenaStateModel](../src/main/java/spaceinvaders/model/ArenaStateModel.java), both implement the interface [RunStateModel](../src/main/java/spaceinvaders/model/RunStateModel.java) and store a Model, a Controller and a [RunStateViewer](../src/main/java/spaceinvaders/view/RunStateViewer.java) (respectively [MenuStateViewer](../src/main/java/spaceinvaders/view/menu/MenuStateViewer.java) and [ArenaStateViewer](../src/main/java/spaceinvaders/view/ArenaStateViewer.java)), which in turn was a [Viewer](../src/main/java/spaceinvaders/view/Viewer.java). In every frame the game [runs](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/c0690bfd418efcde9a68d979afc54693e1da76a5/src/main/java/spaceinvaders/model/RunStateModel.java#L7), [draws](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/c0690bfd418efcde9a68d979afc54693e1da76a5/src/main/java/spaceinvaders/view/RunStateViewer.java#L6) and [processes keys](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/c0690bfd418efcde9a68d979afc54693e1da76a5/src/main/java/spaceinvaders/controller/Controller.java#L6) through the current [state](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/c0690bfd418efcde9a68d979afc54693e1da76a5/src/main/java/spaceinvaders/model/GameModel.java#L14) stored in the [GameModel](../src/main/java/spaceinvaders/model/GameModel.java).
+- **Consequences.** - As every time we change the [state](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/c0690bfd418efcde9a68d979afc54693e1da76a5/src/main/java/spaceinvaders/model/GameModel.java#L14) of the game, its behavior changes completely, so it becomes much easier to have a different class to handle each state.
+
+
 ### REFACTORING(anotations)
 - Large Class -> Extract Class
-In the intermediary delivery we haven't implemented MVC, so we needed to extract a class viewer and a class controller from each class, then renamed the original class to class model.
+In the intermediary delivery we haven't implemented MVC, so we needed to extract a class viewer and a class controller from each class, then renamed the original class to clas model.
 The class Element, Alien, AlienShot, ShipShot, Shot and Protection generated a Model and a Viewer.
 The class Ship, Arena and Game generated a Model, a Viewer and a Controller.
 The rest didn't need to be refactored.
 
 - Large Class -> Extract Class
 We extracted the method createAliens from the class ArenaModel to the class AlienGroupModel.
+
+#### KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS
+#### LARGE CLASS
+In the intermediary delivery we hadn't implemented MVC, so we had classes that did more than did the work of three(Model, Controller and Viewer).
+So we extracted a class viewer and a class controller from each class, by extracting to these classes the methods that did this job, then renamed the original class to class model.
+The class `Ship`, `Arena` and `Game` generated a Model, a Viewer and a Controller.
+The class `Element`, `Alien`, `AlienShot`, `ShipShot`, `Shot` and `Protection` only generated a Model and a Viewer.
+The rest didn't need to be refactored.
+
+#### DUPLICATE CODE
+In the class `Ship` we had methods that did the same thing, but with different names, so we removed one of them and changed all the references of the deleted one.
+The methods `decreaseLives` and `damage` did the same thing, so we removed the method `decreaseLives`.
+The method `died` and `isAlive` did almost the same thing, so we removed the method `died` and changed all the references of that method to `!isAlive()`.
+
+#### PULL UP METHOD
+In the subclasses of `Element` we had methods common to almost all of them, so we pulled up the methods to the superclass `Element`.
+This were ...
+
+#### DEAD CODE
+We had various methods and classes that were no longer used, so we deleted them.
+The classes `DummyCommad`, `NullController` and `LifeModel` were only used so the code could compile without errors, so when we finished the game we deleted them.
+The method `getScore` in the class `AlienGroupModel`, .
 
 ------
 
