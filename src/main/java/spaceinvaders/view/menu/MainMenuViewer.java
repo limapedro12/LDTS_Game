@@ -26,11 +26,11 @@ public class MainMenuViewer implements MenuViewer {
     public void draw(TextGraphics graphics){
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFC300"));
         List<String> spaceInvaders = new ArrayList<>();
-        spaceInvaders.add(" === ###   #    ###  #### ");
-        spaceInvaders.add("=    #  # # #  #   # #     ");
-        spaceInvaders.add(" ==  ###  # #  #     #### ");
-        spaceInvaders.add("   = #   ##### #   # #     ");
-        spaceInvaders.add("===  #   #   #  ###  #### ");
+        spaceInvaders.add(" === ===   =    ===  ==== ");
+        spaceInvaders.add("=    =  = = =  =   = =     ");
+        spaceInvaders.add(" ==  ===  = =  =     ==== ");
+        spaceInvaders.add("   = =   ===== =   = =     ");
+        spaceInvaders.add("===  =   =   =  ===  ==== ");
         spaceInvaders.add("");
         spaceInvaders.add("### #   # #   #  #   ##    #### ###   ### ");
         spaceInvaders.add(" #  ##  # #   # # #  #  #  #    #  # #    ");
