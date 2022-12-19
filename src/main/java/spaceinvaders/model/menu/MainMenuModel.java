@@ -18,6 +18,7 @@ public class MainMenuModel extends MenuModel {
     protected StartCommand startCommand;
     protected MainMenuModel(GameModel gameModel){
         this.startCommand = new StartCommand(gameModel);
+        startCommand.setTitle("Continue Game");
         this.gameModel = gameModel;
         this.viewer = MainMenuViewer.getInstance(this);
         commands = new ArrayList<>();
@@ -25,7 +26,9 @@ public class MainMenuModel extends MenuModel {
         continueEnabled = false;
     }
     public void addCommands(){
-        commands.add(startCommand);
+        Command s = new RestartCommand(startCommand);
+        s.setTitle("Start Game");
+        commands.add(s);
         commands.add(new StartInLevelMenuCommand(gameModel, startCommand));
         commands.add(new HighScoreCommand(gameModel));
         commands.add(new OptionsCommand(gameModel));
@@ -46,17 +49,17 @@ public class MainMenuModel extends MenuModel {
         return instance;
     }
     public void addContinueCommand(){
-        startCommand.setTitle("Continue Game");
+        commands.get(0).setTitle("Restart Game");
         commands.get(1).setTitle("Restart In Level");
-        commands.add(1, new RestartCommand(startCommand));
+        commands.add(0, startCommand);
         continueEnabled = true;
     }
     public void removeContinueCommand(){
-        startCommand.setTitle("Start Game");
+        commands.get(1).setTitle("Start Game");
         commands.get(2).setTitle("Start In Level");
         startCommand.restartArena();
         if(isContinueEnabled())
-            commands.remove(1);
+            commands.remove(0);
         continueEnabled = false;
     }
     public List<Command> getCommands(){
