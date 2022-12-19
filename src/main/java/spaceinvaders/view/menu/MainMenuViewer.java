@@ -26,19 +26,19 @@ public class MainMenuViewer implements MenuViewer {
     public void draw(TextGraphics graphics){
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFC300"));
         List<String> spaceInvaders = new ArrayList<>();
-        spaceInvaders.add(" #### ####    #     ###  #####");
-        spaceInvaders.add("#     #   #  # #   #   # #    ");
-        spaceInvaders.add(" ###  ####  #   #  #     ##### ");
-        spaceInvaders.add("    # #    ####### #   # #     ");
-        spaceInvaders.add("####  #   #       # ###  ##### ");
+        spaceInvaders.add(" === ###   #    ###  #### ");
+        spaceInvaders.add("=    #  # # #  #   # #     ");
+        spaceInvaders.add(" ==  ###  # #  #     #### ");
+        spaceInvaders.add("   = #   ##### #   # #     ");
+        spaceInvaders.add("===  #   #   #  ###  #### ");
         spaceInvaders.add("");
-        spaceInvaders.add("### #     ##       #  #     ##    ##### ####   #### ");
-        spaceInvaders.add(" #  # #   # #     #  # #    #  #  #     #   # #");
-        spaceInvaders.add(" #  #  #  #  #   #  #   #   #   # ##### ####   ###");
-        spaceInvaders.add(" #  #   # #   # #  #######  #  #  #     # #       #");
-        spaceInvaders.add("### #     #    #  #       # ##    ##### #   # ####");
+        spaceInvaders.add("### #   # #   #  #   ##    #### ###   ### ");
+        spaceInvaders.add(" #  ##  # #   # # #  #  #  #    #  # #    ");
+        spaceInvaders.add(" #  # # #  # #  # #  #   # #### ###   ##  ");
+        spaceInvaders.add(" #  #  ##  # # ##### #  #  #    # #     # ");
+        spaceInvaders.add("### #   #   #  #   # ##    #### #  # ###  ");
         for(int i = 0; i < spaceInvaders.size(); i++){
-            graphics.putString(0, 1 + i, spaceInvaders.get(i));
+            graphics.putString(1, 1 + i, spaceInvaders.get(i));
         }
         for(int i = 0; i < model.getCommands().size(); i++){
             if(model.getCommands().get(i) != null){
