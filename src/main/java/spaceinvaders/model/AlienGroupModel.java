@@ -19,12 +19,13 @@ public class AlienGroupModel extends ElementModel {
     }
 
     private void createAliens() {
-        for (int j = 0; j < 10; j++) {
-            AlienModel a = new AlienModel(new PositionModel(2 + 5 * j, 3), "*", "#08F121");
-            AlienModel b = new AlienModel(new PositionModel(2 + 5 * j, 5), "/", "#0876F1");
-            AlienModel c = new AlienModel(new PositionModel(2 + 5 * j, 7), "-", "#DCFF00");
-            AlienModel d = new AlienModel(new PositionModel(2 + 5 * j, 9), ".", "#FF0000");
-            AlienModel e = new AlienModel(new PositionModel(2 + 5 * j, 11), ".", "#FFFFFF");
+        for (int j = 0; j < 8; j++) {
+            int x = 8 + 5 * j;
+            AlienModel a = new AlienModel(new PositionModel(x, 3), "*", "#08F121");
+            AlienModel b = new AlienModel(new PositionModel(x, 5), "/", "#0876F1");
+            AlienModel c = new AlienModel(new PositionModel(x, 7), "-", "#DCFF00");
+            AlienModel d = new AlienModel(new PositionModel(x, 9), ".", "#FF0000");
+            AlienModel e = new AlienModel(new PositionModel(x, 11), ".", "#FFFFFF");
             aliens.add(a); aliens.add(b); aliens.add(c); aliens.add(d); aliens.add(e);
         }
     }
@@ -78,8 +79,10 @@ public class AlienGroupModel extends ElementModel {
     }
     public void fire(float level) {
         if(aliens.size() > 0) {
-            int random = ThreadLocalRandom.current().nextInt(0, 2 * aliens.size());
-            if (random < aliens.size()) aliens.get(random).fire(level);
+            for(int i = 0; i < 3; i++) {
+                int random = ThreadLocalRandom.current().nextInt(0, 2 * aliens.size());
+                if (random < aliens.size()) aliens.get(random).fire(level);
+            }
         }
     }
     @Override

@@ -13,7 +13,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.TreeSet;
 
-import static java.lang.Math.max;
+import static java.lang.Math.*;
 
 public class ArenaModel implements ShotObserverModel {
     private ArenaViewer viewer;
@@ -84,8 +84,8 @@ public class ArenaModel implements ShotObserverModel {
         elapsedTime = System.currentTimeMillis() - startTime;
         if (elapsedTime >= targetTime) {
             moveAliens();
-            aliens.fire((float) (0.5 * level));
-            targetTime = elapsedTime + (2000 / level);
+            aliens.fire((float) (0.5*level));
+            targetTime = elapsedTime + (3000 / level);
         }
         if(aliens.getAliens().size()==0){
             youWon = true;
@@ -137,7 +137,7 @@ public class ArenaModel implements ShotObserverModel {
         shots = new ArrayList<>();
         aliens = new AlienGroupModel(this);
         aliens.addObserver(this);
-        startTime = System.currentTimeMillis();
+        // startTime = System.currentTimeMillis();
         elapsedTime = 0;
         lastAlienDirection = 0;
         elements.add(aliens);
