@@ -71,26 +71,80 @@ the screen. If they reach it, the player shall lose.
 
 ### DESIGN
 #### OBSERVATER PATTERN
-- **Problem in Context.** - We needed a way to communicate to [ArenaModel](../src/main/java/spaceinvaders/model/ArenaModel.java) that the [ship has fired a shot](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/70c3ae42ed8ec87b2767c2d0a6b8ab4207517a21/src/main/java/spaceinvaders/Ship.java#L93-L95), so [ArenaViewer](../src/main/java/spaceinvaders/view/ArenaViewer.java) could draw it.
-- **The Pattern** - Observer Pattern
-- **Implementation.** - The [ShipModel](../src/main/java/spaceinvaders/model/ShipModel.java) is the subject, so it implements the [ShotSubjectModel](../src/main/java/spaceinvaders/model/ShotSubjectModel.java) interface, and the [ArenaModel](../src/main/java/spaceinvaders/model/ArenaModel.java) is the observer, so it implements the [ShotObserverModel](../src/main/java/spaceinvaders/model/ShotObserverModel.java) interface. The ShotSubject, and subsequently the [ShipModel](../src/main/java/spaceinvaders/model/ShipModel.java), has a [list of Observers](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/70c3ae42ed8ec87b2767c2d0a6b8ab4207517a21/src/main/java/spaceinvaders/ShotSubject.java#L6) and whenever it fires a shot, it notifies all the [Observers](../src/main/java/spaceinvaders/model/ShotObserverModel.java), including [ArenaModel](../src/main/java/spaceinvaders/model/ArenaModel.java). You can see this in the following UML.
-- **Consequences.** - The consequence of this design is that the [ShipModel](../src/main/java/spaceinvaders/model/ShipModel.java) doesn't need to know anything about the [ArenaModel](../src/main/java/spaceinvaders/ArenaModel.java), and the [ArenaModel](../src/main/java/spaceinvaders/model/ArenaModel.java) doesn't need to know anything about the [ShipModel](../src/main/java/spaceinvaders/model/ShipModel.java). This is a good design because it makes the code more modular and easier to understand.
+**Problem in Context** 
+We needed a way to communicate to [ArenaModel](../src/main/java/spaceinvaders/model/ArenaModel.java) that the [element has fired a shot](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/70c3ae42ed8ec87b2767c2d0a6b8ab4207517a21/src/main/java/spaceinvaders/Ship.java#L93-L95), so [ArenaViewer](../src/main/java/spaceinvaders/view/ArenaViewer.java) could draw it.
+
+**The Pattern**
+We have applied the **Observer** pattern. This pattern allows the elements to notify the arena when they have fired a shot. The arena then updates the list of shots and draws them. The [ElementModel](../src/main/java/spaceinvaders/model/ElementModel.java) is the subject, so it implements the [ShotSubjectModel](../src/main/java/spaceinvaders/model/ShotSubjectModel.java) interface, and the [ArenaModel](../src/main/java/spaceinvaders/model/ArenaModel.java) is the observer, so it implements the [ShotObserverModel](../src/main/java/spaceinvaders/model/ShotObserverModel.java) interface. The ShotSubject, and subsequently the [ElementModel](../src/main/java/spaceinvaders/model/ElementModel.java), has a [list of Observers](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/70c3ae42ed8ec87b2767c2d0a6b8ab4207517a21/src/main/java/spaceinvaders/ShotSubject.java#L6) and whenever it fires a shot, it notifies all the [Observers](../src/main/java/spaceinvaders/model/ShotObserverModel.java), including [ArenaModel](../src/main/java/spaceinvaders/model/ArenaModel.java). You can see this in the following UML.
+
+**Implementation**
+The following figure shows how the pattern’s roles were mapped to the application classes.
 
 <img alt="Observer UML" src="../UMLs/Observer.png" height="400" />
 <p>Fig. 6 - Observer Pattern UML</p>
 
+These classes can be found in the following files:
+- [ShotSubjectModel](../src/main/java/spaceinvaders/model/ShotSubjectModel.java)
+- [ElementModel](../src/main/java/spaceinvaders/model/ElementModel.java)
+- [ShotObserverModel](../src/main/java/spaceinvaders/model/ShotObserverModel.java)
+- [ArenaModel](../src/main/java/spaceinvaders/model/ArenaModel.java)
+
+**Consequences** 
+The consequence of this design is that the [ShipModel](../src/main/java/spaceinvaders/model/ShipModel.java) doesn't need to know anything about the [ArenaModel](../src/main/java/spaceinvaders/ArenaModel.java), and the [ArenaModel](../src/main/java/spaceinvaders/model/ArenaModel.java) doesn't need to know anything about the [ShipModel](../src/main/java/spaceinvaders/model/ShipModel.java). This is a good design because it makes the code more modular and easier to understand.
+
+
 #### COMPOSITE PATTERN
-- **Problem in Context.** - We started by working with the 50 aliens directly from the [ArenaModel](../src/main/java/spaceinvaders/model/ArenaModel.java), but any time we added a new feature it became harder to work with.
-- **The Pattern** - Composite Pattern
-- **Implementation.** - We joined all the aliens into a single element called AlienGroup  (corresponding to the classes [AlienGroupModel](../src/main/java/spaceinvaders/model/AlienGroupModel.java) and [AlienGroupViewer](../src/main/java/spaceinvaders/view/AlienGroupViewer.java)). The class [AlienGroupModel](../src/main/java/spaceinvaders/model/AlienGroupModel.java) extends the class [ElementModel](../src/main/java/spaceinvaders/model/ElementModel.java) and has a list of [Aliens](../src/main/java/spaceinvaders/model/AlienModel.java) that stores all aliens in the game, which in turn also extend the class [ElementModel](../src/main/java/spaceinvaders/model/ElementModel.java).
-- **Consequences.** - It becomes easier to work with the aliens, since we can now work with the AlienGroup, which has all the aliens. This is a good design because it makes the code more modular and easier to understand. In particular, it becomes much easier to draw and add new features to the aliens.
+**Problem in Context**
+We started by working with the 50 aliens directly from the [ArenaModel](../src/main/java/spaceinvaders/model/ArenaModel.java), but any time we added a new feature it became harder to work with.
+
+**The Pattern**
+We have applied the **Composite** pattern. This pattern allows us to control all aliens as a single object. So we joined all the aliens into a single element called AlienGroup  (corresponding to the classes [AlienGroupModel](../src/main/java/spaceinvaders/model/AlienGroupModel.java) and [AlienGroupViewer](../src/main/java/spaceinvaders/view/AlienGroupViewer.java)). The class [AlienGroupModel](../src/main/java/spaceinvaders/model/AlienGroupModel.java) extends the class [ElementModel](../src/main/java/spaceinvaders/model/ElementModel.java) and has a list of [Aliens](../src/main/java/spaceinvaders/model/AlienModel.java) that stores all aliens in the game, which in turn also extend the class [ElementModel](../src/main/java/spaceinvaders/model/ElementModel.java).
+
+**Implementation**
+The following figure shows how the pattern’s roles were mapped to the application classes.
+
+<img alt="Composite UML" src="../UMLs/Composite.png" height="400" />
+<p>Fig. 7 - Composite Pattern UML</p>
+
+These classes can be found in the following files:
+- [ElementModel](../src/main/java/spaceinvaders/model/ElementModel.java)
+- [AlienGroupModel](../src/main/java/spaceinvaders/model/AlienGroupModel.java)
+- [AlienModel](../src/main/java/spaceinvaders/model/AlienModel.java)
+
+**Consequences**
+It becomes easier to work with the aliens, since we can now work with the AlienGroup, which has all the aliens. This is a good design because it makes the code more modular and easier to understand. In particular, it becomes much easier to draw and add new features to the aliens.
 
 #### STATE PATTERN
-- **Problem in Context.** - We needed to change the state of the [Game](../src/main/java/spaceinvaders/model/GameModel.java), from the [Main Menu](../src/main/java/spaceinvaders/model/menu/MainMenuModel.java) to the game itself or from the main menu to the [other menus](../src/main/java/spaceinvaders/model/menu).
-- **The Pattern** - State Pattern
-- **Implementation.** - The class [GameModel](../src/main/java/spaceinvaders/model/GameModel.java) has a variable [state](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/c0690bfd418efcde9a68d979afc54693e1da76a5/src/main/java/spaceinvaders/model/GameModel.java#L14) of type [RunStateModel](../src/main/java/spaceinvaders/model/RunStateModel.java), which holds the current [state](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/c0690bfd418efcde9a68d979afc54693e1da76a5/src/main/java/spaceinvaders/model/GameModel.java#L14) of the Game. We've also implemented a [MenuStateModel](../src/main/java/spaceinvaders/model/menu/MenuStateModel.java) and an [ArenaStateModel](../src/main/java/spaceinvaders/model/ArenaStateModel.java), both implement the interface [RunStateModel](../src/main/java/spaceinvaders/model/RunStateModel.java) and store a Model, a Controller and a [RunStateViewer](../src/main/java/spaceinvaders/view/RunStateViewer.java) (respectively [MenuStateViewer](../src/main/java/spaceinvaders/view/menu/MenuStateViewer.java) and [ArenaStateViewer](../src/main/java/spaceinvaders/view/ArenaStateViewer.java)), which in turn was a [Viewer](../src/main/java/spaceinvaders/view/Viewer.java). In every frame the game [runs](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/c0690bfd418efcde9a68d979afc54693e1da76a5/src/main/java/spaceinvaders/model/RunStateModel.java#L7), [draws](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/c0690bfd418efcde9a68d979afc54693e1da76a5/src/main/java/spaceinvaders/view/RunStateViewer.java#L6) and [processes keys](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/c0690bfd418efcde9a68d979afc54693e1da76a5/src/main/java/spaceinvaders/controller/Controller.java#L6) through the current [state](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/c0690bfd418efcde9a68d979afc54693e1da76a5/src/main/java/spaceinvaders/model/GameModel.java#L14) stored in the [GameModel](../src/main/java/spaceinvaders/model/GameModel.java).
-- **Consequences.** - As every time we change the [state](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/c0690bfd418efcde9a68d979afc54693e1da76a5/src/main/java/spaceinvaders/model/GameModel.java#L14) of the game, its behavior changes completely, so it becomes much easier to have a different class to handle each state.
+**Problem in Context**
+We needed to change the state of the [Game](../src/main/java/spaceinvaders/model/GameModel.java), from the [Main Menu](../src/main/java/spaceinvaders/model/menu/MainMenuModel.java) to the game itself or from the main menu to the [other menus](../src/main/java/spaceinvaders/model/menu).
 
+**The Pattern**
+We have applied the **State** pattern. This pattern allows you to represent different [GameModel](../src/main/java/spaceinvaders/model/GameModel.java) states with different subclasses  The class [GameModel](../src/main/java/spaceinvaders/model/GameModel.java) has a variable [state](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/c0690bfd418efcde9a68d979afc54693e1da76a5/src/main/java/spaceinvaders/model/GameModel.java#L14) of type [RunStateModel](../src/main/java/spaceinvaders/model/RunStateModel.java), which holds the current [state](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/c0690bfd418efcde9a68d979afc54693e1da76a5/src/main/java/spaceinvaders/model/GameModel.java#L14) of the Game. We've also implemented a [MenuStateModel](../src/main/java/spaceinvaders/model/menu/MenuStateModel.java) and an [ArenaStateModel](../src/main/java/spaceinvaders/model/ArenaStateModel.java), both implement the interface [RunStateModel](../src/main/java/spaceinvaders/model/RunStateModel.java) and store a Model, a Controller and a [RunStateViewer](../src/main/java/spaceinvaders/view/RunStateViewer.java) (respectively [MenuStateViewer](../src/main/java/spaceinvaders/view/menu/MenuStateViewer.java) and [ArenaStateViewer](../src/main/java/spaceinvaders/view/ArenaStateViewer.java)), which in turn was a [Viewer](../src/main/java/spaceinvaders/view/Viewer.java). In every frame the game [runs](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/c0690bfd418efcde9a68d979afc54693e1da76a5/src/main/java/spaceinvaders/model/RunStateModel.java#L7), [draws](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/c0690bfd418efcde9a68d979afc54693e1da76a5/src/main/java/spaceinvaders/view/RunStateViewer.java#L6) and [processes keys](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/c0690bfd418efcde9a68d979afc54693e1da76a5/src/main/java/spaceinvaders/controller/Controller.java#L6) through the current [state](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/c0690bfd418efcde9a68d979afc54693e1da76a5/src/main/java/spaceinvaders/model/GameModel.java#L14) stored in the [GameModel](../src/main/java/spaceinvaders/model/GameModel.java).
+
+**Implementation**
+The following figure shows how the pattern’s roles were mapped to the application classes.
+
+<img alt="State UML" src="../UMLs/State.png" height="400" />
+<p>Fig. 8 - State Pattern UML</p>
+
+These classes can be found in the following files:
+- [GameModel](../src/main/java/spaceinvaders/model/GameModel.java)
+- [RunStateModel](../src/main/java/spaceinvaders/model/RunStateModel.java)
+- [MenuStateModel](../src/main/java/spaceinvaders/model/menu/MenuStateModel.java)
+- [ArenaStateModel](../src/main/java/spaceinvaders/model/ArenaStateModel.java)
+- [RunStateViewer](../src/main/java/spaceinvaders/view/RunStateViewer.java)
+- [MenuStateViewer](../src/main/java/spaceinvaders/view/menu/MenuStateViewer.java)
+- [ArenaStateViewer](../src/main/java/spaceinvaders/view/ArenaStateViewer.java)
+
+**Consequences** 
+As every time we change the [state](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/c0690bfd418efcde9a68d979afc54693e1da76a5/src/main/java/spaceinvaders/model/GameModel.java#L14) of the game, its behavior changes completely, so it becomes much easier to have a different class to handle each state.
+
+#### SINGLETON PATTERN
+**Problem in Context** 
+All classes related to menus should only be instantiated once, so we needed to make sure that only one instance of each class was created.
+
+**The Pattern**
+We have applied the **Singleton** pattern. This pattern allows us to be sure that only one instance of each class was created. In all the classes related to menus(), we've implemented the Singleton Pattern, so that only one instance of each class is created. This is done by creating a [private static field]() that stores the only instance that should be available, making the [constructor private]() and creating a [static method]() that returns the instance of the class, creating it if it doesn't exist yet. Although we have a method called reset() that resets the instance, we only use it during tests.
 
 ### REFACTORING(anotations)
 - Large Class -> Extract Class
