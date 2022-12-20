@@ -11,12 +11,12 @@ import static java.lang.Math.abs;
 
 public class MainMenuModel extends MenuModel {
     private static MainMenuModel instance = null;
-    protected GameModel gameModel;
-    protected List<Command> commands;
-    protected boolean continueEnabled;
-    protected int selectedCommand = 0;
-    protected StartCommand startCommand;
-    protected MainMenuModel(GameModel gameModel){
+    private GameModel gameModel;
+    private List<Command> commands;
+    private boolean continueEnabled;
+    private int selectedCommand = 0;
+    private StartCommand startCommand;
+    private MainMenuModel(GameModel gameModel){
         this.startCommand = new StartCommand(gameModel);
         startCommand.setTitle("Continue Game");
         this.gameModel = gameModel;
