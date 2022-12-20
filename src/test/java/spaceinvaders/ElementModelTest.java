@@ -6,8 +6,7 @@ import org.mockito.Mockito;
 import spaceinvaders.model.*;
 import spaceinvaders.view.ElementViewer;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ElementModelTest {
 
@@ -58,10 +57,16 @@ public class ElementModelTest {
 
     @Test
     public void canIMove() {
-        ElementModel elementModel = new AlienModel(new PositionModel(-1, 2), "P", "FFFFFF");
-        assertEquals(false, elementModel.canIMove(true));
-        assertEquals(true, elementModel.canIMove(false));
-    }
+            ElementModel elementModel= new AlienModel(new PositionModel(0, 2), "P", "FFFFFF");
+            assertFalse(elementModel.canIMove(true));
+            assertTrue(elementModel.canIMove(false));
+
+            ElementModel elementModel2 = new AlienModel(new PositionModel(49, 2), "P", "FFFFFF");
+            assertFalse(elementModel2.canIMove(false));
+            assertTrue(elementModel2.canIMove(true));
+        }
+
+
 
     @Test
     public void canIMove2() {
@@ -77,7 +82,7 @@ public class ElementModelTest {
         elementModel.clearObservers();
         elementModel.addObserver(shotObserverModel);
         assertEquals(1, elementModel.getObservers().size());
-        Assertions.assertTrue(elementModel.getObservers().contains(shotObserverModel));
+        assertTrue(elementModel.getObservers().contains(shotObserverModel));
     }
 
     @Test
@@ -107,7 +112,7 @@ public class ElementModelTest {
         ShotModel shotModel = Mockito.mock(ShotModel.class);
         Mockito.when(shotModel.getX()).thenReturn(1);
         Mockito.when(shotModel.getY()).thenReturn(2);
-        Assertions.assertTrue(elementModel.collideWith(shotModel));
+        assertTrue(elementModel.collideWith(shotModel));
     }
 
     @Test
@@ -125,7 +130,7 @@ public class ElementModelTest {
         ShotModel shotModel = Mockito.mock(ShotModel.class);
         Mockito.when(shotModel.getX()).thenReturn(2);
         Mockito.when(shotModel.getY()).thenReturn(3);
-        Assertions.assertTrue(elementModel.collideWith(shotModel));
+        assertTrue(elementModel.collideWith(shotModel));
     }
 
     @Test
