@@ -26,10 +26,12 @@ public class StartInLevelMenuModelTest {
         model = StartInLevelMenuModel.getInstance(gameModelMock, startCommand);
     }
 
+    @Test
     public void getInstanceTest1(){
         assertEquals(model, StartInLevelMenuModel.getInstance(gameModelMock, startCommand));
     }
 
+    @Test
     public void getInstanceTest2(){
         assertEquals(model, StartInLevelMenuModel.getInstance());
     }
