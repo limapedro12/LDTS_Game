@@ -49,7 +49,35 @@ public class OptionsMenuViewerTest {
         Mockito.verify(graphicsMock, Mockito.atLeast(1)).setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         Mockito.verify(graphicsMock, Mockito.atLeast(4)).putString(Mockito.anyInt(), Mockito.anyInt(), Mockito.anyString());
         Mockito.verify(graphicsMock, Mockito.atLeast(1)).setForegroundColor(TextColor.Factory.fromString("#FFC300"));
+
+        for (int i = 0; i < model.getCommands().size(); i++) {
+            if (model.getCommands().get(i) != null) {
+                if (i == model.getSelectedCommandInt()) {
+                    Mockito.verify(graphicsMock, Mockito.times(1)).putString(8, 12 + i, "> " + model.getCommands().get(i).getTitle());
+                } else {
+                    Mockito.verify(graphicsMock, Mockito.times(1)).putString(8, 12 + i, model.getCommands().get(i).getTitle());
+                }
+            }
+        }
+
     }
+
+    @Test
+    public void draw2(){
+        TextGraphics graphicsMock = Mockito.mock(TextGraphics.class);
+        model.downSelectedCommand();
+        viewer.draw(graphicsMock);
+        for (int i = 0; i < model.getCommands().size(); i++) {
+            if (model.getCommands().get(i) != null) {
+                if (i == model.getSelectedCommandInt()) {
+                    Mockito.verify(graphicsMock, Mockito.times(1)).putString(8, 12 + i, "> " + model.getCommands().get(i).getTitle());
+                } else {
+                    Mockito.verify(graphicsMock, Mockito.times(1)).putString(8, 12 + i, model.getCommands().get(i).getTitle());
+                }
+            }
+        }
+    }
+
     @Test
     public void resetTest(){
         OptionsMenuViewer.reset();
