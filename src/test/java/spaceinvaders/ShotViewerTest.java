@@ -17,7 +17,7 @@ public class ShotViewerTest {
     private ShotModel shotModel;
 
     @BeforeEach
-    private void helper() {
+    public void helper() {
         this.shotModel = Mockito.mock(ShotModel.class);
         Mockito.when(shotModel.getPosition()).thenReturn(new PositionModel(1, 1));
         Mockito.when(shotModel.getCharacter()).thenReturn(' ');
