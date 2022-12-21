@@ -25,6 +25,10 @@ public class AlienGroupModelTest {
         this.alienGroupModel = new AlienGroupModel(arenaModel);
     }
     @Test
+    public void createAliensTest() {
+        Assertions.assertEquals(50, alienGroupModel.getAliens().size());
+    }
+    @Test
     public void addAlienTest() {
         List<AlienModel> expected = alienGroupModel.getAliens();
         AlienModel mockAlien = Mockito.mock(AlienModel.class);
