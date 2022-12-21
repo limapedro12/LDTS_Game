@@ -7,8 +7,7 @@ import spaceinvaders.view.ShotViewer;
 public class ShotModel extends ElementModel {
     float floatY;
     private float speed;
-    //if true, the shot is going up, if false, the shot is going down
-    private boolean direction;
+    private boolean direction; // true = up, false = down
     private char character;
 
     public ShotModel(PositionModel position, float speed, boolean direction, char character) {

@@ -95,10 +95,6 @@ public class ShipModel extends ElementModel {
             }
         }
         return false;
-//        if (shot.getX() >= leftBound && shot.getX() <= rightBound && shot.getY() >= upperBound && shot.getY() <= lowerBound) {
-//            return true;
-//        }
-//        return false;
     }
     public void addDrawnPosition(PositionModel position) {
         drawnPositions.add(position);

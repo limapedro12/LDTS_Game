@@ -127,7 +127,6 @@ public class ArenaModel implements ShotObserverModel {
                 lastAlienDirection = 0;
             }
         }
-        //targetTime = elapsedTime + (1000/level);
     }
     public void incrementLevel() {
         this.level++;
@@ -137,7 +136,6 @@ public class ArenaModel implements ShotObserverModel {
         shots = new ArrayList<>();
         aliens = new AlienGroupModel(this);
         aliens.addObserver(this);
-        // startTime = System.currentTimeMillis();
         elapsedTime = 0;
         lastAlienDirection = 0;
         elements.add(aliens);
@@ -160,25 +158,6 @@ public class ArenaModel implements ShotObserverModel {
             if(!element.isAlive())
                 dead.add(element);
         elements.removeAll(dead);
-
-        /*
-        if (!ship.isAlive()) {
-
-            PrintWriter pw = null;
-
-            try {
-                File file = new File("Highscores.csv");
-                FileWriter fw = new FileWriter(file, true);
-                pw = new PrintWriter(fw);
-                pw.println(score);
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                if (pw != null) {
-                    pw.close();
-                }
-            }
-        }*/
     }
 
     public void checkShot() {

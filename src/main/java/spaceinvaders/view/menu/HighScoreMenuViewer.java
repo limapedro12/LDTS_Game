@@ -49,10 +49,6 @@ public class HighScoreMenuViewer implements MenuViewer {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        /*
-        for(int i = 0; i < model.getScores().size(); i++){
-            graphics.putString(40, 20 + i, model.getScores().get(i).toString());
-        }*/
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFC300"));
         graphics.putString(8, 20, "> Exit");
     }

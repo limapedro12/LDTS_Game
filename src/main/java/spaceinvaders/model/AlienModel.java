@@ -36,10 +36,5 @@ public class AlienModel extends ElementModel {
     @Override
     public boolean collideWith(ShotModel shot){
         return !(shot instanceof AlienShotModel) && super.collideWith(shot);
-//                isTangible() && (
-//                (position.getX() >= shot.getX() && position.getX() <= shot.getX() + shot.getWidth() - 1 &&
-//                position.getY() >= shot.getY() && position.getY() <= shot.getY() + shot.getHeight() - 1) ||
-//                (shot.getX() >= position.getX() && shot.getX() <= position.getX() + getWidth() - 1 &&
-//                shot.getY() >= position.getY() && shot.getY() <= position.getY() + getHeight() - 1));
     }
 }
