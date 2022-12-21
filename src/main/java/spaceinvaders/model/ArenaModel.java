@@ -106,8 +106,8 @@ public class ArenaModel implements ShotObserverModel {
         checkShot();
         checkCollisions();
         if(isLost()){
-            dieSound();
             new ExitToMenuCommand(gameModel).execute();
+            dieSound();
         }
     }
 
@@ -262,6 +262,7 @@ public class ArenaModel implements ShotObserverModel {
             if(clip == null) clip = AudioSystem.getClip();
             clip.open(AudioSystem.getAudioInputStream(f));
             clip.start();
+            Thread.sleep(1000);
             clip.close();
         } catch (Exception e){
             e.printStackTrace();

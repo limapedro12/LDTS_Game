@@ -5,4 +5,5 @@ build/classes
 build/generated
 build/test-results
 build/tmp
+build/reports/tests
 *.iml
