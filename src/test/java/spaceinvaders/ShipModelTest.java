@@ -116,6 +116,10 @@ public class ShipModelTest {
     public void isAliveTest() {
         ShipModel ship = new ShipModel();
         assertTrue(ship.isAlive());
+        ship.damage();
+        ship.damage();
+        ship.damage();
+        assertFalse(ship.isAlive());
     }
     @Test
     public void damageTest() {
