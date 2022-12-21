@@ -20,7 +20,7 @@ public class AlienGroupModel extends ElementModel {
 
     private void createAliens() {
         for (int j = 0; j < 10; j++) {
-            int x = 2 + 5 * j;
+            int x = 3 + 5 * j;
             AlienModel a = new AlienModel(new PositionModel(x, 3), "*", "#08F121");
             AlienModel b = new AlienModel(new PositionModel(x, 5), "/", "#0876F1");
             AlienModel c = new AlienModel(new PositionModel(x, 7), "-", "#DCFF00");

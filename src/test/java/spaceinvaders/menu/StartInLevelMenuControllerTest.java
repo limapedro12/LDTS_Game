@@ -73,6 +73,26 @@ public class StartInLevelMenuControllerTest {
         Mockito.verify(modelMock, Mockito.times(2)).setLevel("12");
         assertEquals("12", controller.getLevel());
     }
+
+    @Test
+    public void processKeyTestLetter(){
+        Command exitCommandMock = Mockito.mock(Command.class);
+        Mockito.when(modelMock.getExitCommand()).thenReturn(exitCommandMock);
+        controller.processKey(new KeyStroke('a', false, false));
+        assertEquals("", controller.getLevel());
+        Mockito.verify(modelMock, Mockito.times(0)).setLevel("a");
+        controller.processKey(new KeyStroke('9', false, false));
+        Mockito.verify(modelMock, Mockito.times(1)).setLevel("9");
+        controller.processKey(new KeyStroke(KeyType.Backspace));
+        Mockito.verify(modelMock, Mockito.times(1)).setLevel("");
+        controller.processKey(new KeyStroke('-', false, false));
+        assertEquals("", controller.getLevel());
+        Mockito.verify(modelMock, Mockito.times(0)).setLevel("-");
+        controller.processKey(new KeyStroke(' ', false, false));
+        assertEquals("", controller.getLevel());
+        Mockito.verify(modelMock, Mockito.times(0)).setLevel(" ");
+    }
+
     @Test
     public void processKeyTestEnter(){
         StartCommand startCommandMock = Mockito.mock(StartCommand.class);
@@ -84,6 +104,8 @@ public class StartInLevelMenuControllerTest {
         assertEquals("42", controller.getLevel());
         controller.processKey(new KeyStroke(KeyType.Enter));
         assertEquals("", model2.getLevel());
+        Mockito.verify(startCommandMock, Mockito.times(1)).setLevel(42);
+        Mockito.verify(startCommandMock, Mockito.times(1)).execute();
     }
 
     @Test
