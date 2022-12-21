@@ -29,11 +29,11 @@ This project was developed by *João Tomás Teixeira* (*up202108738*@edu.fe.up.p
   - **Exit** - Closes the window and terminates the program.
 
 
-<img alt="start" src="" height="400" />
-<p>Fig.1 - Beginning of the Game</p>
+<img alt="Gameplay" src="../resources/images/SI_gameplay.gif" height="400" />
+<p>Fig.1 - Gameplay</p>
 
-<img alt="middle" src="" height="400" />
-<p>Fig.2 - Middle of the Game</p>
+<img alt="Level 1 -> Level 2" src="" height="400" />
+<p>Fig.2 - Finishing Level 1, starting Level 2</p>
 
 ### DESIGN
 #### OBSERVATER PATTERN
