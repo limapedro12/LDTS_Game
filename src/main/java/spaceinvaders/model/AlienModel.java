@@ -1,7 +1,5 @@
 package spaceinvaders.model;
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TextCharacter;
-import com.googlecode.lanterna.graphics.TextGraphics;
+
 import spaceinvaders.view.AlienViewer;
 
 public class AlienModel extends ElementModel {

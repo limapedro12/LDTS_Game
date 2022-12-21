@@ -5,8 +5,6 @@ import spaceinvaders.model.RunStateModel;
 import spaceinvaders.view.RunStateViewer;
 import spaceinvaders.view.menu.MenuStateViewer;
 
-import java.awt.*;
-
 public class MenuStateModel implements RunStateModel {
     private MenuModel model;
     private Controller controller;

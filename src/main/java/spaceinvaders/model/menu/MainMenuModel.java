@@ -2,12 +2,9 @@ package spaceinvaders.model.menu;
 
 import spaceinvaders.model.GameModel;
 import spaceinvaders.view.menu.MainMenuViewer;
-import spaceinvaders.view.menu.MenuViewer;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static java.lang.Math.abs;
 
 public class MainMenuModel extends MenuModel {
     private static MainMenuModel instance = null;

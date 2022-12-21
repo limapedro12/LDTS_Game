@@ -1,8 +1,9 @@
 package spaceinvaders;
 
-import sun.reflect.generics.tree.Tree;
-
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.TreeSet;
 
 public class PlayerScore implements Comparable<PlayerScore>{

@@ -1,9 +1,10 @@
 package spaceinvaders.view;
 
-import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import spaceinvaders.model.*;
+import spaceinvaders.model.ElementModel;
+import spaceinvaders.model.PositionModel;
+import spaceinvaders.model.ShipModel;
 
 public class ShipViewer implements ElementViewer {
     private ShipModel ship;

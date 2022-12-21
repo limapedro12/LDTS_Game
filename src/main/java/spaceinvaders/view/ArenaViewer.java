@@ -1,13 +1,10 @@
 package spaceinvaders.view;
 
-import com.googlecode.lanterna.SGR;
-import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import spaceinvaders.model.*;
-
-
-import java.awt.*;
+import spaceinvaders.model.ArenaModel;
+import spaceinvaders.model.ElementModel;
+import spaceinvaders.model.ShotModel;
 
 public class ArenaViewer implements Viewer{
     private ArenaModel model;

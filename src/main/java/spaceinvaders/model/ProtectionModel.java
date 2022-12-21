@@ -1,9 +1,5 @@
 package spaceinvaders.model;
 
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextCharacter;
-import com.googlecode.lanterna.graphics.TextGraphics;
 import spaceinvaders.view.ProtectionViewer;
 
 public class ProtectionModel extends ElementModel {

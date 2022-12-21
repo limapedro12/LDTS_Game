@@ -2,10 +2,11 @@ package spaceinvaders.model;
 
 import spaceinvaders.view.ShipViewer;
 
-import javax.sound.sampled.*;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.io.*;
 
 public class ShipModel extends ElementModel {
     private List<PositionModel> drawnPositions;

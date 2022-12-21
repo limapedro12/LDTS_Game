@@ -2,7 +2,7 @@ package spaceinvaders.controller;
 
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
-import spaceinvaders.model.*;
+import spaceinvaders.model.ShipModel;
 
 public class ShipController {
     private ShipModel ship;

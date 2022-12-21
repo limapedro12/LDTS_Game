@@ -1,11 +1,8 @@
 package spaceinvaders.model;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
 import spaceinvaders.view.ElementViewer;
 
 import java.util.HashSet;
-import java.util.List;
-import java.util.TreeSet;
 
 public abstract class ElementModel implements ShotSubjectModel {
     protected PositionModel position;

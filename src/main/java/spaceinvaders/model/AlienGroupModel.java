@@ -1,6 +1,5 @@
 package spaceinvaders.model;
 
-import org.testng.annotations.ObjectFactory;
 import spaceinvaders.view.AlienGroupViewer;
 
 import java.util.ArrayList;

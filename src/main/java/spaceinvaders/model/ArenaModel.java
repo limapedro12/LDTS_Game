@@ -1,7 +1,7 @@
 package spaceinvaders.model;
 
-import spaceinvaders.model.menu.Command;
 import spaceinvaders.PlayerScore;
+import spaceinvaders.model.menu.Command;
 import spaceinvaders.model.menu.ExitToMenuCommand;
 import spaceinvaders.view.ArenaViewer;
 
@@ -9,11 +9,10 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.TreeSet;
 
-import static java.lang.Math.*;
+import static java.lang.Math.max;
 
 public class ArenaModel implements ShotObserverModel {
     private ArenaViewer viewer;

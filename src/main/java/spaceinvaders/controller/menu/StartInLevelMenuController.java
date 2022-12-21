@@ -3,11 +3,8 @@ package spaceinvaders.controller.menu;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import spaceinvaders.controller.Controller;
-import spaceinvaders.model.menu.StartCommand;
 import spaceinvaders.model.menu.StartInLevelCommand;
 import spaceinvaders.model.menu.StartInLevelMenuModel;
-
-import java.util.Objects;
 
 public class StartInLevelMenuController implements Controller {
     private StartInLevelMenuModel model;

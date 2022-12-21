@@ -14,8 +14,8 @@ import spaceinvaders.view.GameViewer;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.*;
-import java.net.URISyntaxException;
+import java.io.File;
+import java.io.IOException;
 
 public class Game {
     static private GameModel model;

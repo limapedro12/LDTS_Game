@@ -1,8 +1,6 @@
 package spaceinvaders.model;
 
 import java.util.HashSet;
-import java.util.List;
-import java.util.TreeSet;
 
 public interface ShotSubjectModel {
     HashSet<ShotObserverModel> observers = new java.util.HashSet<>();

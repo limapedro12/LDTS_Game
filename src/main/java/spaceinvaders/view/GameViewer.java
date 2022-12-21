@@ -1,6 +1,5 @@
 package spaceinvaders.view;
 
-import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
 import spaceinvaders.model.GameModel;
 

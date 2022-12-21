@@ -1,7 +1,5 @@
 package spaceinvaders.model;
 
-import com.googlecode.lanterna.TextCharacter;
-import com.googlecode.lanterna.graphics.TextGraphics;
 import spaceinvaders.view.ShotViewer;
 
 public class ShotModel extends ElementModel {

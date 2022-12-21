@@ -2,7 +2,7 @@ package spaceinvaders.view;
 
 import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import spaceinvaders.model.*;
+import spaceinvaders.model.ShotModel;
 
 public class ShotViewer implements ElementViewer {
     ShotModel model;
