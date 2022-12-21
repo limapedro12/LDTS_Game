@@ -80,17 +80,17 @@ public class StartInLevelMenuControllerTest {
         Mockito.when(modelMock.getExitCommand()).thenReturn(exitCommandMock);
         controller.processKey(new KeyStroke('a', false, false));
         assertEquals("", controller.getLevel());
-        Mockito.verify(modelMock, Mockito.times(0)).setLevel("a");
+        Mockito.verify(modelMock, Mockito.never()).setLevel("a");
         controller.processKey(new KeyStroke('9', false, false));
         Mockito.verify(modelMock, Mockito.times(1)).setLevel("9");
         controller.processKey(new KeyStroke(KeyType.Backspace));
         Mockito.verify(modelMock, Mockito.times(1)).setLevel("");
         controller.processKey(new KeyStroke('-', false, false));
         assertEquals("", controller.getLevel());
-        Mockito.verify(modelMock, Mockito.times(0)).setLevel("-");
+        Mockito.verify(modelMock, Mockito.never()).setLevel("-");
         controller.processKey(new KeyStroke(' ', false, false));
         assertEquals("", controller.getLevel());
-        Mockito.verify(modelMock, Mockito.times(0)).setLevel(" ");
+        Mockito.verify(modelMock, Mockito.never()).setLevel(" ");
     }
 
     @Test
