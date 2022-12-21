@@ -40,6 +40,11 @@ public class HighScoreMenuViewerTest {
     }
 
     @Test
+    public void getInstanceTest3(){
+        assertEquals(viewer, HighScoreMenuViewer.getInstance());
+    }
+
+    @Test
     public void draw(){
         TextGraphics graphicsMock = Mockito.mock(TextGraphics.class);
         viewer.draw(graphicsMock);

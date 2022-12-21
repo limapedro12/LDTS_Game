@@ -36,6 +36,11 @@ public class InfoMenuViewerTest {
     }
 
     @Test
+    public void getInstanceTest3(){
+        assertEquals(viewer, InfoMenuViewer.getInstance());
+    }
+
+    @Test
     public void draw(){
         TextGraphics graphicsMock = Mockito.mock(TextGraphics.class);
         viewer.draw(graphicsMock);

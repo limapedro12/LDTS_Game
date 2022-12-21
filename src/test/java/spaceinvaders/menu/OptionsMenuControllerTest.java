@@ -36,6 +36,11 @@ public class OptionsMenuControllerTest {
     }
 
     @Test
+    public void getInstanceTest3(){
+        assertEquals(controller, OptionsMenuController.getInstance());
+    }
+
+    @Test
     public void processKeyTestArrowUp(){
         controller.processKey(new KeyStroke(KeyType.ArrowUp));
         Mockito.verify(modelMock, Mockito.times(1)).upSelectedCommand();

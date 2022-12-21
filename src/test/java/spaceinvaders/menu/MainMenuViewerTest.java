@@ -38,6 +38,11 @@ public class MainMenuViewerTest {
     }
 
     @Test
+    public void getInstanceTest3(){
+        assertEquals(viewer, MainMenuViewer.getInstance());
+    }
+
+    @Test
     public void draw(){
         TextGraphics graphicsMock = Mockito.mock(TextGraphics.class);
         viewer.draw(graphicsMock);
