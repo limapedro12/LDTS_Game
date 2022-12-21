@@ -35,25 +35,11 @@ public class ArenaModelTest {
         assertEquals(1, model.getShots().size());
     }
 
-    /*@Test
-    public void moveAliensTest(){
-        model.moveAliens();
-        assertEquals(9, model.getAliens().get(0).getPosition().getY());
-    }*/
-
     @Test
     public void incrementLevelTest(){
         model.incrementLevel();
         assertEquals(2,model.getLevel());
     }
-    
-//    @Test
-//    public void createAliens(){
-//        assertEquals(50, model.getAliens().size());
-//        model.createAliens();
-//        assertEquals(100, model.getAliens().size());
-//        assertEquals(104, model.getElements().size());
-//    }
 
     @Test
     public void checkDeadTest(){

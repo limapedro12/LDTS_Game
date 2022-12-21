@@ -329,22 +329,6 @@ public class ArenaModelTest {
         Assertions.assertTrue(arena.checkScore());
     }
 
-    /*@Test
-    public void checkScore2() {
-        TreeSet<PlayerScore> scores = PlayerScore.loadScores();
-        int val = scores.first().getScore() + 1;
-        arena.addScore(val);
-        assert arena.checkScore();
-        TreeSet<PlayerScore> scores2 = PlayerScore.loadScores();
-        boolean found = false;
-        for (PlayerScore score : scores2) {
-            if (score.getScore() == val) {
-                found = true;
-            }
-        }
-        assert found;
-    }*/
-
     @Test
     public void dieSound(){
         arena.dieSound();

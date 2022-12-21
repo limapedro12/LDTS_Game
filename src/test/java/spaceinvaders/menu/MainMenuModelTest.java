@@ -147,9 +147,6 @@ public class MainMenuModelTest {
 
         MainMenuModel.getInstance(gameModelMock);
 
-//        assertEquals(model.getCommands().get(0).getTitle(), "Continue Game");
-//        assertEquals(model.getCommands().get(1).getTitle(), "Restart Game");
-//        assertEquals(model.getCommands().get(2).getTitle(), "Restart In Level");
         assertEquals(model.getCommands().size(), 6);
         assertTrue(model.isContinueEnabled());
     }
