@@ -147,8 +147,9 @@ public class MainMenuModelTest {
 
         MainMenuModel.getInstance(gameModelMock);
 
-        Mockito.verify(startCommandMock, Mockito.times(1)).setTitle("Continue Game");
-        assertEquals(model.getCommands().get(1).getTitle(), "Restart Game");
+//        assertEquals(model.getCommands().get(0).getTitle(), "Continue Game");
+//        assertEquals(model.getCommands().get(1).getTitle(), "Restart Game");
+//        assertEquals(model.getCommands().get(2).getTitle(), "Restart In Level");
         assertEquals(model.getCommands().size(), 6);
         assertTrue(model.isContinueEnabled());
     }
@@ -163,7 +164,8 @@ public class MainMenuModelTest {
 
         MainMenuModel.getInstance(gameModelMock);
 
-        Mockito.verify(startCommandMock, Mockito.times(1)).setTitle("Start Game");
+        assertEquals(model.getCommands().get(0).getTitle(), "Start Game");
+        assertEquals(model.getCommands().get(1).getTitle(), "Start In Level");
         Mockito.verify(startCommandMock, Mockito.times(1)).restartArena();
         assertEquals(model.getCommands().size(), 4);
         assertFalse(model.isContinueEnabled());
