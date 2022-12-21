@@ -5,7 +5,6 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import spaceinvaders.controller.ArenaController;
 import spaceinvaders.model.*;
 import spaceinvaders.view.ArenaViewer;
 import spaceinvaders.view.ElementViewer;

@@ -5,7 +5,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import spaceinvaders.controller.ArenaController;
-import spaceinvaders.model.*;
+import spaceinvaders.model.ArenaModel;
+import spaceinvaders.model.ElementModel;
+import spaceinvaders.model.GameModel;
+import spaceinvaders.model.ShotModel;
 import spaceinvaders.view.ArenaViewer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

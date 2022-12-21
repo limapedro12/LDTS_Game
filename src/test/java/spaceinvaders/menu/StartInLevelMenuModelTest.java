@@ -3,13 +3,10 @@ package spaceinvaders.menu;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import spaceinvaders.controller.menu.StartInLevelMenuController;
 import spaceinvaders.model.GameModel;
-import spaceinvaders.model.menu.*;
-import spaceinvaders.view.menu.StartInLevelMenuViewer;
-
-import java.util.ArrayList;
-import java.util.List;
+import spaceinvaders.model.menu.Command;
+import spaceinvaders.model.menu.StartCommand;
+import spaceinvaders.model.menu.StartInLevelMenuModel;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

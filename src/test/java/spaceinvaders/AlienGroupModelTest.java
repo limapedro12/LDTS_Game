@@ -1,20 +1,14 @@
 package spaceinvaders;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import spaceinvaders.model.AlienGroupModel;
 import spaceinvaders.model.AlienModel;
 import spaceinvaders.model.ArenaModel;
-import spaceinvaders.model.ShotModel;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 
 public class AlienGroupModelTest {
     private ArenaModel arenaModel;

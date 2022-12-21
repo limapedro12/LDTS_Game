@@ -6,7 +6,6 @@ import spaceinvaders.model.GameModel;
 import spaceinvaders.model.menu.Command;
 import spaceinvaders.model.menu.InfoCommand;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CommandTest {

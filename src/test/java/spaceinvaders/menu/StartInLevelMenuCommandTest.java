@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import spaceinvaders.controller.menu.StartInLevelMenuController;
 import spaceinvaders.model.GameModel;
+import spaceinvaders.model.menu.MenuStateModel;
 import spaceinvaders.model.menu.StartCommand;
 import spaceinvaders.model.menu.StartInLevelMenuCommand;
 import spaceinvaders.model.menu.StartInLevelMenuModel;
-import spaceinvaders.model.menu.MenuStateModel;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
