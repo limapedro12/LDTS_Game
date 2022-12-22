@@ -475,7 +475,11 @@ public class ArenaModelTest {
     @Test
     public void checkScoreTest(){
         TreeSet<PlayerScore> scores = PlayerScore.loadScores();
-        int lowestScore = scores.last().getScore();
+        int lowestScore;
+        if(!scores.isEmpty())
+            lowestScore = scores.last().getScore();
+        else
+            lowestScore = 0;
         System.out.println(lowestScore);
         arena.addScore(lowestScore + 1);
         scores.add(new PlayerScore(System.getProperty("user.name"), lowestScore + 1));

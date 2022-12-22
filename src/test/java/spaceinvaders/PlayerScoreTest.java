@@ -35,23 +35,45 @@ public class PlayerScoreTest {
     @Test
     public void testLoadScores() throws IOException {
         TreeSet<PlayerScore> scores = PlayerScore.loadScores();
+        if(scores.isEmpty()){
+            scores.add(new PlayerScore(System.getProperty("user.name"), 1));
+            PlayerScore.storeScores(scores);
+            scores = PlayerScore.loadScores();
+        }
         BufferedReader br = Files.newBufferedReader(Paths.get("resources/highscores.csv"), UTF_8);
         String line = br.readLine();
         List<String> arr = Splitter.onPattern(",").splitToList(line);
         assertEquals(Integer.parseInt(arr.get(1)), scores.first().getScore());
     }
 
+    @Test
     public void testStoreScores()  {
         TreeSet<PlayerScore> t = PlayerScore.loadScores();
+        boolean changed = false;
+        if(t.contains(new PlayerScore("player1", 100))){
+            t.remove(new PlayerScore("player1", 100));
+            changed = true;
+        }
+        if(t.contains(new PlayerScore("player2", 200))){
+            t.remove(new PlayerScore("player2", 200));
+            changed = true;
+        }
+        if(t.contains(new PlayerScore("player3", 300))){
+            t.remove(new PlayerScore("player3", 300));
+            changed = true;
+        }
+        if(changed){
+            PlayerScore.storeScores(t);
+            t = PlayerScore.loadScores();
+        }
         int r = t.size();
-        TreeSet<PlayerScore> scores = new TreeSet<>();
-        scores.add(new PlayerScore("player1", 100));
-        scores.add(new PlayerScore("player2", 200));
-        scores.add(new PlayerScore("player3", 300));
-        PlayerScore.storeScores(scores);
+        t.add(new PlayerScore("player1", 100));
+        t.add(new PlayerScore("player2", 200));
+        t.add(new PlayerScore("player3", 300));
+        PlayerScore.storeScores(t);
         TreeSet<PlayerScore> scores2 = PlayerScore.loadScores();
         int result = scores2.size();
-        assertEquals(3+r, result);
+        assertEquals(r+3, result);
         TreeSet<PlayerScore> clean = new TreeSet<>();
         PlayerScore.storeScores(clean);
 
