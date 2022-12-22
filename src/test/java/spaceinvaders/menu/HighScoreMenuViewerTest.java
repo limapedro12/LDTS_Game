@@ -73,6 +73,38 @@ public class HighScoreMenuViewerTest {
         Mockito.verify(graphicsMock, Mockito.atLeast(1)).putString(8, 20, "> Exit");
         Mockito.verify(graphicsMock, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
     }
+
+    @Test
+    public void draw2(){
+        TextGraphics graphicsMock = Mockito.mock(TextGraphics.class);
+        viewer.setPath("resources/test_highscores.csv");
+        viewer.draw(graphicsMock);
+        Mockito.verify(graphicsMock, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#FFC300"));
+        Mockito.verify(graphicsMock, Mockito.atLeast(1)).putString(8, 2, "HighScores");
+
+        Mockito.verify(graphicsMock).putString(8, 5, "Twix");
+        Mockito.verify(graphicsMock).putString(38, 5, "230");
+
+        Mockito.verify(graphicsMock).putString(8, 6, "KinderBueno");
+        Mockito.verify(graphicsMock).putString(38, 6, "345");
+
+        Mockito.verify(graphicsMock).putString(8, 7, "KinderSurprise");
+        Mockito.verify(graphicsMock).putString(38, 7, "230");
+
+        Mockito.verify(graphicsMock).putString(8, 8, "Maltesers");
+        Mockito.verify(graphicsMock).putString(38, 8, "890");
+
+        Mockito.verify(graphicsMock).putString(8, 9, "Mars");
+        Mockito.verify(graphicsMock).putString(38, 9, "230");
+
+        Mockito.verify(graphicsMock).putString(8, 10, "Milka");
+        Mockito.verify(graphicsMock).putString(38, 10, "1000");
+
+        Mockito.verify(graphicsMock, Mockito.atLeast(1)).putString(8, 20, "> Exit");
+        Mockito.verify(graphicsMock, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
+    }
+
+
     @Test
     public void resetTest(){
         HighScoreMenuViewer.reset();
