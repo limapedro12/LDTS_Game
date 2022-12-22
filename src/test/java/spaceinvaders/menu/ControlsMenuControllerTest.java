@@ -36,6 +36,11 @@ public class ControlsMenuControllerTest {
     }
 
     @Test
+    public void getInstanceTest3(){
+        assertEquals(controller, ControlsMenuController.getInstance());
+    }
+
+    @Test
     public void processKeyQ(){
         Command exitCommandMock = Mockito.mock(Command.class);
         Mockito.when(modelMock.getExitCommand()).thenReturn(exitCommandMock);

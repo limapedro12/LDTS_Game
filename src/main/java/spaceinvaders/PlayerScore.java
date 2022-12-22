@@ -53,4 +53,18 @@ public class PlayerScore implements Comparable<PlayerScore>{
             }
         }
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) return false;
+        if (obj == this) return true;
+        if (!(obj instanceof PlayerScore)) return false;
+        PlayerScore playerScore = (PlayerScore) obj;
+        return playerScore.player.equals(this.player) && playerScore.score == this.score;
+    }
+
+    @Override
+    public int hashCode() {
+        return player.hashCode() + score;
+    }
 }

@@ -15,6 +15,7 @@ public class StartInLevelCommandTest {
     public void helper() {
         startCommand = Mockito.mock(StartCommand.class);
         startInLevelCommand = new StartInLevelCommand(startCommand, 2);
+        Mockito.verify(startCommand, Mockito.times(1)).setLevel(2);
     }
 
     @Test

@@ -81,8 +81,10 @@ public abstract class ElementModel implements ShotSubjectModel {
         return observers;
     }
     public boolean collideWith(ShotModel shot){
-        return isTangible() && (
-                (position.getX() >= shot.getX() && position.getX() <= shot.getX() + shot.getWidth() - 1 && position.getY() >= shot.getY() && position.getY() <= shot.getY() + shot.getHeight() - 1) ||
-                (shot.getX() >= position.getX() && shot.getX() <= position.getX() + getWidth() - 1 && shot.getY() >= position.getY() && shot.getY() <= position.getY() + getHeight() - 1));
+        return isTangible() &&
+                (shot.getX() >= position.getX() &&
+                shot.getX() <= position.getX() + getWidth() - 1 &&
+                shot.getY() >= position.getY() &&
+                shot.getY() <= position.getY() + getHeight() - 1);
     }
 }

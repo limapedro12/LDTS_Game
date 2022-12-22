@@ -56,22 +56,38 @@ public class ElementModelTest {
 
     @Test
     public void canIMove() {
-            ElementModel elementModel= new AlienModel(new PositionModel(0, 2), "P", "FFFFFF");
-            assertFalse(elementModel.canIMove(true));
-            assertTrue(elementModel.canIMove(false));
-
-            ElementModel elementModel2 = new AlienModel(new PositionModel(49, 2), "P", "FFFFFF");
-            assertFalse(elementModel2.canIMove(false));
-            assertTrue(elementModel2.canIMove(true));
-        }
-
-
+        ElementModel elementModel= new AlienModel(new PositionModel(0, 2), "P", "FFFFFF");
+        assertFalse(elementModel.canIMove(true));
+        assertTrue(elementModel.canIMove(false));
+    }
 
     @Test
     public void canIMove2() {
+        ElementModel elementModel= new AlienModel(new PositionModel(-10, 2), "P", "FFFFFF");
+        assertFalse(elementModel.canIMove(true));
+        assertTrue(elementModel.canIMove(false));
+    }
+
+
+    @Test
+    public void canIMove3() {
+        ElementModel elementModel2 = new AlienModel(new PositionModel(49, 2), "P", "FFFFFF");
+        assertFalse(elementModel2.canIMove(false));
+        assertTrue(elementModel2.canIMove(true));
+    }
+
+    @Test
+    public void canIMove4() {
         ElementModel elementModel = new AlienModel(new PositionModel(100, 2), "P", "FFFFFF");
-        assertEquals(true, elementModel.canIMove(true));
-        assertEquals(false, elementModel.canIMove(false));
+        assertTrue(elementModel.canIMove(true));
+        assertFalse(elementModel.canIMove(false));
+    }
+
+    @Test
+    public void canIMove5() {
+        ElementModel elementModel = new AlienModel(new PositionModel(20, 2), "P", "FFFFFF");
+        assertTrue(elementModel.canIMove(true));
+        assertTrue(elementModel.canIMove(false));
     }
 
     @Test
@@ -125,11 +141,56 @@ public class ElementModelTest {
 
     @Test
     public void collideWith3(){
+        ElementModel elementModel = new AlienModel(new PositionModel(1, 2), "P", "FFFFFF");
+        ShotModel shotModel = Mockito.mock(ShotModel.class);
+        Mockito.when(shotModel.getX()).thenReturn(0);
+        Mockito.when(shotModel.getY()).thenReturn(1);
+        assertFalse(elementModel.collideWith(shotModel));
+    }
+
+    @Test
+    public void collideWith4(){
         ElementModel elementModel = new ProtectionModel(new PositionModel(1, 2), 3);
         ShotModel shotModel = Mockito.mock(ShotModel.class);
         Mockito.when(shotModel.getX()).thenReturn(2);
         Mockito.when(shotModel.getY()).thenReturn(3);
         assertTrue(elementModel.collideWith(shotModel));
+    }
+
+    @Test
+    public void collideWith5(){
+        ElementModel elementModel = new ProtectionModel(new PositionModel(1, 2), 3);
+        ShotModel shotModel = Mockito.mock(ShotModel.class);
+        Mockito.when(shotModel.getX()).thenReturn(4);
+        Mockito.when(shotModel.getY()).thenReturn(3);
+        assertTrue(elementModel.collideWith(shotModel));
+    }
+
+    @Test
+    public void collideWith6(){
+        ElementModel elementModel = new AlienModel(new PositionModel(1, 2), "P", "FFFFFF");
+        ShotModel shotModel = Mockito.mock(ShotModel.class);
+        Mockito.when(shotModel.getX()).thenReturn(0);
+        Mockito.when(shotModel.getY()).thenReturn(0);
+        assertFalse(elementModel.collideWith(shotModel));
+    }
+
+    @Test
+    public void collideWith7(){
+        for(int i = 0; i < 7; i++){
+            for(int j = 0; j < 7; j++){
+                ElementModel elementModel = new ProtectionModel(new PositionModel(1, 2), 3);
+                ShotModel shotModel = Mockito.mock(ShotModel.class);
+                Mockito.when(shotModel.getX()).thenReturn(i);
+                Mockito.when(shotModel.getY()).thenReturn(j);
+                if(i >= 1 && i <= 4 && j >= 2 && j <= 3){
+                    System.out.println(shotModel.getX() + " " + shotModel.getY());
+                    assertTrue(elementModel.collideWith(shotModel));
+                } else {
+                    assertFalse(elementModel.collideWith(shotModel));
+                }
+            }
+        }
     }
 
     @Test

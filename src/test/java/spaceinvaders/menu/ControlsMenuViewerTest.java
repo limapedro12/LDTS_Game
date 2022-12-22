@@ -36,6 +36,11 @@ public class ControlsMenuViewerTest {
     }
 
     @Test
+    public void getInstanceTest3(){
+        assertEquals(viewer, ControlsMenuViewer.getInstance());
+    }
+
+    @Test
     public void draw(){
         TextGraphics graphicsMock = Mockito.mock(TextGraphics.class);
         viewer.draw(graphicsMock);

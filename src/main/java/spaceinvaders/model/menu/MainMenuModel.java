@@ -37,10 +37,8 @@ public class MainMenuModel extends MenuModel {
         }
         if(!instance.getStartCommand().getArena().isLost() && !instance.isContinueEnabled()){
             instance.addContinueCommand();
-            instance.setContinueEnabled(true);
         } else if(instance.isContinueEnabled() && instance.getStartCommand().getArena().isLost()){
             instance.removeContinueCommand();
-            instance.setContinueEnabled(false);
         }
 
         return instance;
@@ -95,7 +93,6 @@ public class MainMenuModel extends MenuModel {
     }
     public void setStartCommand(StartCommand startCommand){
         this.startCommand = startCommand;
-        commands.set(0, startCommand);
     }
     public static void reset(){
         instance = null;

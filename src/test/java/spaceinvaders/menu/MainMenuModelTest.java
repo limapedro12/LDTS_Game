@@ -146,6 +146,10 @@ public class MainMenuModelTest {
 
         MainMenuModel.getInstance(gameModelMock);
 
+        assertEquals(model.getCommands().get(0), startCommandMock);
+        assertEquals(model.getCommands().get(1).getTitle(), "Restart Game");
+        assertEquals(model.getCommands().get(2).getTitle(), "Restart In Level");
+
         assertEquals(model.getCommands().size(), 6);
         assertTrue(model.isContinueEnabled());
     }
@@ -166,6 +170,7 @@ public class MainMenuModelTest {
         assertEquals(model.getCommands().size(), 4);
         assertFalse(model.isContinueEnabled());
     }
+
     @Test
     public void setContinueEnabledTest(){
         model.setContinueEnabled(true);
@@ -178,5 +183,10 @@ public class MainMenuModelTest {
     public void clearCommandsTest(){
         model.clearCommands();
         assertEquals(model.getCommands().size(), 0);
+    }
+
+    @Test
+    public void getStartCommandTest(){
+        assertEquals(model.getStartCommand().getTitle(), "Continue Game");
     }
 }

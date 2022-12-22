@@ -3,10 +3,6 @@ package spaceinvaders;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.TreeSet;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -50,4 +46,40 @@ public class PlayerScoreTest {
         PlayerScore.storeScores(clean);
 
     }
+
+    @Test
+    public void hashCodeTest() {
+        int expected = 0;
+        PlayerScore playerScore = new PlayerScore("", 0);
+        Assertions.assertEquals(expected, playerScore.hashCode());
+    }
+
+    @Test
+    public void equalsTest() {
+        PlayerScore playerScoreA = new PlayerScore("A", 5);
+        PlayerScore playerScoreB = new PlayerScore("A", 5);
+        Assertions.assertEquals(playerScoreA, playerScoreB);
+    }
+
+    @Test
+    public void equalsTest2() {
+        PlayerScore playerScoreA = new PlayerScore("A", 5);
+        PlayerScore playerScoreB = new PlayerScore("B", 5);
+        Assertions.assertFalse(playerScoreA.equals(playerScoreB));
+    }
+
+    @Test
+    public void equalsTest3() {
+        PlayerScore playerScoreA = new PlayerScore("A", 5);
+        PlayerScore playerScoreB = new PlayerScore("A", 3);
+        Assertions.assertFalse(playerScoreA.equals(playerScoreB));
+    }
+
+    @Test
+    public void hashCodeTest2() {
+        int expected = "player".hashCode() + 5;
+        PlayerScore playerScore = new PlayerScore("player", 5);
+        Assertions.assertEquals(expected, playerScore.hashCode());
+    }
+
 }

@@ -22,6 +22,17 @@ public class StartInLevelMenuModelTest {
         startCommand = Mockito.mock(StartCommand.class);
         model = StartInLevelMenuModel.getInstance(gameModelMock, startCommand);
     }
+
+    @Test
+    public void getInstanceTest1(){
+        assertEquals(model, StartInLevelMenuModel.getInstance(gameModelMock, startCommand));
+    }
+
+    @Test
+    public void getInstanceTest2(){
+        assertEquals(model, StartInLevelMenuModel.getInstance());
+    }
+
     @Test
     public void getExitCommandTest(){
         Command exitCommand = Mockito.mock(Command.class);
