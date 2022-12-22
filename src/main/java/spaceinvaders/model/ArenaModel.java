@@ -41,7 +41,6 @@ public class ArenaModel implements ShotObserverModel {
         this.exitCommand = new ExitToMenuCommand(gameModel);
         viewer = new ArenaViewer(this);
         ship = new ShipModel();
-        ship.addObserver(this);
         elements = new ArrayList<>();
         shots = new ArrayList<>();
         aliens = new AlienGroupModel(this);
@@ -132,11 +131,9 @@ public class ArenaModel implements ShotObserverModel {
     public void incrementLevel() {
         this.level++;
         ship = new ShipModel();
-        ship.addObserver(this);
         elements = new ArrayList<>();
         shots = new ArrayList<>();
         aliens = new AlienGroupModel(this);
-        aliens.addObserver(this);
         elapsedTime = 0;
         lastAlienDirection = 0;
         elements.add(aliens);

@@ -35,6 +35,13 @@ public class ArenaModelTest {
     }
 
     @Test
+    public void addedObservers2(){
+        arena.incrementLevel();
+        assert(arena.getShip().getObservers().contains(arena));
+        assert(arena.getAlienGroup().getObservers().contains(arena));
+    }
+
+    @Test
     public void getLevelTest() {
         arena.getLevel();
         assertEquals(arena.getLevel(), 1);
@@ -110,10 +117,14 @@ public class ArenaModelTest {
         ShipModel shipMock = Mockito.mock(ShipModel.class);
         Mockito.when(shipMock.isAlive()).thenReturn(false);
         arena.setShip(shipMock);
+        Clip clipMock = Mockito.mock(Clip.class);
+        arena.setClip(clipMock);
         arena.run();
         Assertions.assertTrue(arena.isLost());
         Mockito.verify(gameModel, Mockito.times(1)).setState(Mockito.any());
-        dieSound();
+        Mockito.verify(clipMock, Mockito.times(1)).open(Mockito.any());
+        Mockito.verify(clipMock, Mockito.times(1)).start();
+        Mockito.verify(clipMock, Mockito.times(1)).close();
     }
 
     @Test
@@ -137,6 +148,31 @@ public class ArenaModelTest {
         arena.run();
         Assertions.assertTrue(arena.isLost());
         Mockito.verify(gameModel, Mockito.times(1)).setState(Mockito.any());
+    }
+
+    @Test
+    public void runTestsCheckDead(){
+        ElementModel elementMock = Mockito.mock(ElementModel.class);
+        Mockito.when(elementMock.isAlive()).thenReturn(false);
+        int sizeBeforeElement = arena.getElements().size();
+        arena.setAliens(Mockito.mock(AlienGroupModel.class));
+        arena.addElement(elementMock);
+        assertEquals(arena.getElements().size(), sizeBeforeElement + 1);
+        arena.run();
+        assertEquals(arena.getElements().size(), sizeBeforeElement);
+
+    }
+
+    @Test
+    public void runTestsCheckShot(){
+        ShotModel shotMock = Mockito.mock(ShotModel.class);
+        Mockito.when(shotMock.getX()).thenReturn(-5);
+        Mockito.when(shotMock.getY()).thenReturn(10);
+        arena.setAliens(Mockito.mock(AlienGroupModel.class));
+        arena.update(shotMock);
+        assertEquals(arena.getShots().size(), 1);
+        arena.run();
+        assertEquals(arena.getShots().size(), 0);
     }
 
     @Test
@@ -302,6 +338,114 @@ public class ArenaModelTest {
         assertEquals(arena.getShots().size(), 1);
         arena.checkShot();
         assertEquals(arena.getShots().size(), 1);
+    }
+
+    @Test
+    public void runTestsCheckShot6(){
+        ShotModel shotMock = Mockito.mock(ShotModel.class);
+        Mockito.when(shotMock.getX()).thenReturn(0);
+        Mockito.when(shotMock.getY()).thenReturn(10);
+        arena.setAliens(Mockito.mock(AlienGroupModel.class));
+        arena.update(shotMock);
+        assertEquals(arena.getShots().size(), 1);
+        arena.checkShot();
+        assertEquals(arena.getShots().size(), 1);
+    }
+
+    @Test
+    public void runTestsCheckShot7(){
+        ShotModel shotMock = Mockito.mock(ShotModel.class);
+        Mockito.when(shotMock.getX()).thenReturn(-1);
+        Mockito.when(shotMock.getY()).thenReturn(10);
+        arena.setAliens(Mockito.mock(AlienGroupModel.class));
+        arena.update(shotMock);
+        assertEquals(arena.getShots().size(), 1);
+        arena.checkShot();
+        assertEquals(arena.getShots().size(), 0);
+    }
+
+    @Test
+    public void runTestsCheckShot8(){
+        ShotModel shotMock = Mockito.mock(ShotModel.class);
+        Mockito.when(shotMock.getX()).thenReturn(50);
+        Mockito.when(shotMock.getY()).thenReturn(10);
+        arena.setAliens(Mockito.mock(AlienGroupModel.class));
+        arena.update(shotMock);
+        assertEquals(arena.getShots().size(), 1);
+        arena.checkShot();
+        assertEquals(arena.getShots().size(), 1);
+    }
+
+    @Test
+    public void runTestsCheckShot9(){
+        ShotModel shotMock = Mockito.mock(ShotModel.class);
+        Mockito.when(shotMock.getX()).thenReturn(51);
+        Mockito.when(shotMock.getY()).thenReturn(10);
+        arena.setAliens(Mockito.mock(AlienGroupModel.class));
+        arena.update(shotMock);
+        assertEquals(arena.getShots().size(), 1);
+        arena.checkShot();
+        assertEquals(arena.getShots().size(), 1);
+    }
+
+    @Test
+    public void runTestsCheckShot14(){
+        ShotModel shotMock = Mockito.mock(ShotModel.class);
+        Mockito.when(shotMock.getX()).thenReturn(52);
+        Mockito.when(shotMock.getY()).thenReturn(10);
+        arena.setAliens(Mockito.mock(AlienGroupModel.class));
+        arena.update(shotMock);
+        assertEquals(arena.getShots().size(), 1);
+        arena.checkShot();
+        assertEquals(arena.getShots().size(), 0);
+    }
+
+    @Test
+    public void runTestsCheckShot10(){
+        ShotModel shotMock = Mockito.mock(ShotModel.class);
+        Mockito.when(shotMock.getX()).thenReturn(10);
+        Mockito.when(shotMock.getY()).thenReturn(0);
+        arena.setAliens(Mockito.mock(AlienGroupModel.class));
+        arena.update(shotMock);
+        assertEquals(arena.getShots().size(), 1);
+        arena.checkShot();
+        assertEquals(arena.getShots().size(), 1);
+    }
+
+    @Test
+    public void runTestsCheckShot11(){
+        ShotModel shotMock = Mockito.mock(ShotModel.class);
+        Mockito.when(shotMock.getX()).thenReturn(10);
+        Mockito.when(shotMock.getY()).thenReturn(-1);
+        arena.setAliens(Mockito.mock(AlienGroupModel.class));
+        arena.update(shotMock);
+        assertEquals(arena.getShots().size(), 1);
+        arena.checkShot();
+        assertEquals(arena.getShots().size(), 0);
+    }
+
+    @Test
+    public void runTestsCheckShot12(){
+        ShotModel shotMock = Mockito.mock(ShotModel.class);
+        Mockito.when(shotMock.getX()).thenReturn(10);
+        Mockito.when(shotMock.getY()).thenReturn(26);
+        arena.setAliens(Mockito.mock(AlienGroupModel.class));
+        arena.update(shotMock);
+        assertEquals(arena.getShots().size(), 1);
+        arena.checkShot();
+        assertEquals(arena.getShots().size(), 1);
+    }
+
+    @Test
+    public void runTestsCheckShot13(){
+        ShotModel shotMock = Mockito.mock(ShotModel.class);
+        Mockito.when(shotMock.getX()).thenReturn(10);
+        Mockito.when(shotMock.getY()).thenReturn(27);
+        arena.setAliens(Mockito.mock(AlienGroupModel.class));
+        arena.update(shotMock);
+        assertEquals(arena.getShots().size(), 1);
+        arena.checkShot();
+        assertEquals(arena.getShots().size(), 0);
     }
 
     @Test
@@ -480,10 +624,17 @@ public class ArenaModelTest {
             lowestScore = scores.last().getScore();
         else
             lowestScore = 0;
-        System.out.println(lowestScore);
         arena.addScore(lowestScore + 1);
         scores.add(new PlayerScore(System.getProperty("user.name"), lowestScore + 1));
-        PlayerScore.storeScores(scores);
+        assertTrue(arena.checkScore());
+
+        assertEquals(scores, PlayerScore.loadScores());
+    }
+
+    @Test
+    public void checkScoreTest2(){
+        TreeSet<PlayerScore> scores = PlayerScore.loadScores();
+        arena.addScore(0);
         assertTrue(arena.checkScore());
 
         assertEquals(scores, PlayerScore.loadScores());
