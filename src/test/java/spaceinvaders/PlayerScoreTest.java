@@ -1,10 +1,17 @@
 package spaceinvaders;
 
+import com.google.common.base.Splitter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.TreeSet;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PlayerScoreTest {
@@ -26,9 +33,12 @@ public class PlayerScoreTest {
         assertEquals(expected, playerScoreA.compareTo(playerScoreB));
     }
     @Test
-    public void testLoadScores() {
+    public void testLoadScores() throws IOException {
         TreeSet<PlayerScore> scores = PlayerScore.loadScores();
-        assertEquals(880, scores.first().getScore());
+        BufferedReader br = Files.newBufferedReader(Paths.get("resources/highscores.csv"), UTF_8);
+        String line = br.readLine();
+        List<String> arr = Splitter.onPattern(",").splitToList(line);
+        assertEquals(Integer.parseInt(arr.get(1)), scores.first().getScore());
     }
 
     public void testStoreScores()  {
@@ -73,6 +83,25 @@ public class PlayerScoreTest {
         PlayerScore playerScoreA = new PlayerScore("A", 5);
         PlayerScore playerScoreB = new PlayerScore("A", 3);
         Assertions.assertFalse(playerScoreA.equals(playerScoreB));
+    }
+
+    @Test
+    public void equalsTest4() {
+        PlayerScore playerScoreA = new PlayerScore("A", 5);
+        Assertions.assertFalse(playerScoreA.equals(null));
+    }
+
+    @Test
+    public void equalsTest5() {
+        PlayerScore playerScoreA = new PlayerScore("A", 5);
+        Assertions.assertTrue(playerScoreA.equals(playerScoreA));
+    }
+
+    @Test
+    public void equalsTest6() {
+        PlayerScore playerScoreA = new PlayerScore("A", 5);
+        String sTest = "Amarelo";
+        Assertions.assertFalse(playerScoreA.equals(sTest));
     }
 
     @Test
