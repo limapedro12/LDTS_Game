@@ -39,6 +39,8 @@ This project was developed by *João Tomás Teixeira* (*up202108738*@edu.fe.up.p
 
 Our implementation followed the MVC architectural pattern, represented in the UML diagram below:
 
+<i>(For better reading, the 'zoomable' UML diagram can be found [here]())</i>
+
 <img src="" height="400" />
 <p>Fig. 3 - Main UML diagram</p>
 
@@ -55,7 +57,7 @@ We have applied the **Observer** pattern. This pattern allows elements to notify
 
 The following figure shows how the pattern’s roles were mapped to the application classes.
 
-<img src="" height="400" />
+<img src="../resources/images/UMLs/observer.png" height="700" />
 <p>Fig. 4 - Observer Pattern UML</p>
 
 These classes can be found in the following files:
