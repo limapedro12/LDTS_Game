@@ -7,8 +7,8 @@ The aliens attempt to destroy the player's cannon by firing projectiles.
 
 This project was developed by *João Tomás Teixeira* (*up202108738*@edu.fe.up.pt), *Pedro Lima* (*up202108806*@edu.fe.up.pt) and *Pedro Januário* (*up202108768*@edu.fe.up.pt) for LDTS 2022/23.
 
-<img alt="start" src="https://i.ibb.co/Zf0KwrD/Start.png" height="400" />
-<p>Fig.1 - Beginning of the Game</p>
+<img src="resources/images/SI_gameplay.gif" height="240"/>
+<p>Fig.1 - Gameplay</p>
 
-<img alt="middle" src="https://i.ibb.co/NSJTJXf/Middle.png" height="400" />
-<p>Fig.2 - Middle of the Game</p>
+<img src="" height="240" />
+<p>Fig.2 - Finishing Level 1, starting Level 2</p>
