@@ -29,14 +29,20 @@ This project was developed by *João Tomás Teixeira* (*up202108738*@edu.fe.up.p
   - **Exit** - Closes the window and terminates the program.
 
 
-<img alt="Gameplay" src="../resources/images/SI_gameplay.gif" height="400" />
+<img src="../resources/images/SI_gameplay.gif" height="400" />
 <p>Fig.1 - Gameplay</p>
 
-<img alt="Level 1 -> Level 2" src="" height="400" />
+<img src="" height="400" />
 <p>Fig.2 - Finishing Level 1, starting Level 2</p>
 
 ### DESIGN
-#### OBSERVATER PATTERN
+
+Our implementation followed the MVC architectural pattern, represented in the UML diagram below:
+
+<img src="" height="400" />
+<p>Fig. 3 - Main UML diagram</p>
+
+#### OBSERVER PATTERN
 **Problem in Context** 
 
 We needed a way to communicate to [ArenaModel](../src/main/java/spaceinvaders/model/ArenaModel.java) that the [element has fired a shot](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/70c3ae42ed8ec87b2767c2d0a6b8ab4207517a21/src/main/java/spaceinvaders/Ship.java#L93-L95), so [ArenaViewer](../src/main/java/spaceinvaders/view/ArenaViewer.java) could draw it.
@@ -49,8 +55,8 @@ We have applied the **Observer** pattern. This pattern allows elements to notify
 
 The following figure shows how the pattern’s roles were mapped to the application classes.
 
-<img alt="Observer UML" src="../resources/UMLs/Observer.png" height="400" />
-<p>Fig. 3 - Observer Pattern UML</p>
+<img src="" height="400" />
+<p>Fig. 4 - Observer Pattern UML</p>
 
 These classes can be found in the following files:
 - [ShotSubjectModel](../src/main/java/spaceinvaders/model/ShotSubjectModel.java)
@@ -76,8 +82,8 @@ We have applied the **Composite** pattern. This pattern allows us to control all
 
 The following figure shows how the pattern’s roles were mapped to the application classes.
 
-<img alt="Composite UML" src="../resources/UMLs/Composite.png" height="400" />
-<p>Fig. 4 - Composite Pattern UML</p>
+<img src="" height="400" />
+<p>Fig. 5 - Composite Pattern UML</p>
 
 These classes can be found in the following files:
 - [ElementModel](../src/main/java/spaceinvaders/model/ElementModel.java)
@@ -101,8 +107,8 @@ We have applied the **State** pattern. This pattern allows you to represent diff
 
 The following figure shows how the pattern’s roles were mapped to the application classes.
 
-<img alt="State UML" src="../resources/UMLs/State.png" height="400" />
-<p>Fig. 8 - State Pattern UML</p>
+<img src="" height="400" />
+<p>Fig. 6 - State Pattern UML</p>
 
 These classes can be found in the following files:
 - [GameModel](../src/main/java/spaceinvaders/model/GameModel.java)
@@ -130,8 +136,8 @@ We have applied the **Singleton** pattern. This pattern allows us to be sure tha
 
 The following figure shows how the pattern’s roles were mapped to the application classes.
 
-<img alt="Singleton UML" src="../resources/UMLs/Singleton.png" height="400" />
-<p>Fig. 9 - Singleton Pattern UML</p>
+<img src="" height="400" />
+<p>Fig. 7 - Singleton Pattern UML</p>
 
 These classes can be found in the following files:
 - [MainMenuModel](../src/main/java/spaceinvaders/model/menu/MainMenuModel.java)
@@ -167,8 +173,8 @@ We have applied the **Command** pattern. This pattern allows us to isolate the a
 
 The following figure shows how the pattern’s roles were mapped to the application classes.
 
-<img alt="Command UML" src="../resources/UMLs/Command.png" height="400" />
-<p>Fig. 10 - Command Pattern UML</p>
+<img src="" height="400" />
+<p>Fig. 8 - Command Pattern UML</p>
 
 These classes can be found in the following files:
 - [Command](../src/main/java/spaceinvaders/model/menu/Command.java)
@@ -201,7 +207,7 @@ We extracted the method createAliens from the class ArenaModel to the class Alie
 
 #### KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS
 #### LARGE CLASS
-In the intermediary delivery we hadn't implemented MVC, so we had classes that did more than did the work of three(Model, Controller and Viewer).
+In the intermediary delivery we hadn't implemented MVC, so we had classes that did more than did the work of three (Model, Controller and Viewer).
 So we extracted a class viewer and a class controller from each class, by extracting to these classes the methods that did this job, then renamed the original class to class model.
 The class `Ship`, `Arena` and `Game` generated a Model, a Viewer and a Controller.
 The class `Element`, `Alien`, `AlienShot`, `ShipShot`, `Shot` and `Protection` only generated a Model and a Viewer.
@@ -221,21 +227,33 @@ We had various methods and classes that were no longer used, so we deleted them.
 The classes `DummyCommad`, `NullController` and `LifeModel` were only used so the code could compile without errors, so when we finished the game we deleted them.
 The method `getScore` in the class `AlienGroupModel`, .
 
-------
-
 ### TESTING
+#### TEST COVERAGE REPORT
 
-![Coverage Report](../resources/UMLs/Coverage_report.png)
-<p>Fig. 7 - Coverage Report</p>
+<img src="" height="400">
+<p>Fig. 9 - Test Coverage Report</p>
 
-P I T E S T!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#### PITEST REPORT
+[Here](../build/reports/pitest) you can find our pitest report.
+
+### BETTER CODE HUB ANALYSIS
+
+<img src='https://bettercodehub.com/edge/badge/pedroojanuu/spaceinvaders?branch=master'>
+
+<i>Note: The name of the repository in the analysis appears as `pedroojanuu/spaceinvaders`
+because Better Code Hub cannot have access to the original repository, 
+since none of us is its owner. We cloned it into `pedroojanuu/spaceinvaders`
+(you can check it, since it's a public repository) to run the analysis. 
+Because of that, a `.bettercodehub.yml` file will not be found in the
+delivered repository.</i>
+
+E X P L I C A Ç Ã O!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+<img src="../resources/images/Better_Code_Hub.jpg" height="600">
+<p>Fig. 10 - Better Code Hub Score</p>
 
 ### SELF-EVALUATION
 
 - João Tomás Teixeira: 
 - Pedro Lima: 
 - Pedro Januário: 
-
-### UML DIAGRAM
-
-![UML Geral](../resources/UMLs/project-l01gr06.png)
