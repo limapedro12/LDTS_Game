@@ -15,9 +15,20 @@ import static org.mockito.Mockito.verify;
 
 public class ShipModelTest {
     @Test
+    public void ShipModelTest() {
+        ShipModel underTest = new ShipModel(10);
+
+        assertEquals(10, underTest.getPosition().getX());
+        assertEquals(22, underTest.getPosition().getY());
+        assertEquals(6, underTest.getLeftBound());
+        assertEquals(14, underTest.getRightBound());
+
+    }
+    @Test
     public void getXTest() {
         ShipModel ship = new ShipModel();
         assertEquals(24, ship.getX());
+
     }
     @Test
     public void getYTest() {
