@@ -248,7 +248,7 @@ public class ArenaModel implements ShotObserverModel {
             Thread.sleep(1000);
             clip.close();
         } catch (Exception e){
-            e.printStackTrace();
+            throw new RuntimeException();
         }
     }
 

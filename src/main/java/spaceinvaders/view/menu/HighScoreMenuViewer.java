@@ -45,7 +45,7 @@ public class HighScoreMenuViewer implements MenuViewer {
                y++;
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         }
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFC300"));
         graphics.putString(8, 20, "> Exit");

@@ -1,10 +1,16 @@
 package spaceinvaders;
 
+import com.google.common.base.Splitter;
+
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.TreeSet;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class PlayerScore implements Comparable<PlayerScore>{
     private String player;
@@ -17,6 +23,7 @@ public class PlayerScore implements Comparable<PlayerScore>{
     public int getScore() {
         return score;
     }
+    @Override
     public int compareTo(PlayerScore playerScore) {
         return playerScore.score - this.score;
     }
@@ -25,14 +32,14 @@ public class PlayerScore implements Comparable<PlayerScore>{
         String line = "";
         String splitBy = ",";
         try {
-            BufferedReader br = new BufferedReader(new FileReader("resources/highscores.csv"));
+            BufferedReader br = Files.newBufferedReader(Paths.get("resources/highscores.csv"), UTF_8);
             while ((line = br.readLine()) != null) {
-                String[] arr = line.split(splitBy);
-                PlayerScore playerScore = new PlayerScore(arr[0], Integer.parseInt(arr[1]));
+                List<String> arr = Splitter.onPattern(splitBy).splitToList(line);
+                PlayerScore playerScore = new PlayerScore(arr.get(0), Integer.parseInt(arr.get(1)));
                 r.add(playerScore);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         }
         return r;
     }
@@ -40,13 +47,13 @@ public class PlayerScore implements Comparable<PlayerScore>{
         while (scores.size() > 10) scores.pollLast();
         PrintWriter writer = null;
         try {
-            writer = new PrintWriter("resources/highscores.csv");
+            writer = new PrintWriter("resources/highscores.csv", UTF_8.name());
             writer.print("");
             for (PlayerScore score : scores) {
                 writer.print(score.player + "," +  score.score + "\n");
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         } finally {
             if (writer != null) {
                 writer.close();

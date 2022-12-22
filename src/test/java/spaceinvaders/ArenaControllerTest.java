@@ -16,7 +16,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ArenaControllerTest {
     private ArenaModel model;
-    private ArenaViewer viewer;
     private ArenaController controller;
 
     @BeforeEach

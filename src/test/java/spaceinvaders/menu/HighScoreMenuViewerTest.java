@@ -67,7 +67,7 @@ public class HighScoreMenuViewerTest {
                 y++;
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         }
 
         Mockito.verify(graphicsMock, Mockito.atLeast(1)).putString(8, 20, "> Exit");
