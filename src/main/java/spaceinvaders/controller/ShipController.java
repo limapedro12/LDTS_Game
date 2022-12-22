@@ -46,6 +46,7 @@ public class ShipController {
                     break;
                 case ArrowUp:
                     ship.fire(); break;
+                default: break;
             }
         }
     }
