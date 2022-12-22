@@ -39,9 +39,9 @@ This project was developed by *João Tomás Teixeira* (*up202108738*@edu.fe.up.p
 
 Our implementation followed the MVC architectural pattern, represented in the UML diagram below:
 
-<i>(For better reading, the 'zoomable' UML diagram can be found [here]())</i>
+<i>(For better reading, the 'zoomable' UML diagram can be found [here](../resources/images/UMLs/main.png))</i>
 
-<img src="" height="400" />
+<img src="../resources/images/UMLs/main.png" height="400" />
 <p>Fig. 3 - Main UML diagram</p>
 
 #### OBSERVER PATTERN
