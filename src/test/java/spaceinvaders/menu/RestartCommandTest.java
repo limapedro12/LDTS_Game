@@ -7,7 +7,6 @@ import spaceinvaders.model.menu.RestartCommand;
 import spaceinvaders.model.menu.StartCommand;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class RestartCommandTest {
     StartCommand startCommand;

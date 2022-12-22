@@ -8,13 +8,10 @@ import spaceinvaders.model.*;
 import spaceinvaders.model.menu.Command;
 import spaceinvaders.view.ArenaViewer;
 
-import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;

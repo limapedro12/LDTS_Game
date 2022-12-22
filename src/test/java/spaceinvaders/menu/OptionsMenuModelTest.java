@@ -3,7 +3,6 @@ package spaceinvaders.menu;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import spaceinvaders.model.ArenaModel;
 import spaceinvaders.model.GameModel;
 import spaceinvaders.model.menu.Command;
 import spaceinvaders.model.menu.OptionsMenuModel;

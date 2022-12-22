@@ -4,16 +4,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import spaceinvaders.controller.menu.OptionsMenuController;
-import spaceinvaders.controller.menu.OptionsMenuController;
-import spaceinvaders.model.ArenaModel;
 import spaceinvaders.model.GameModel;
 import spaceinvaders.model.menu.OptionsMenuModel;
 import spaceinvaders.model.menu.MenuStateModel;
 import spaceinvaders.model.menu.OptionsCommand;
-import spaceinvaders.model.menu.OptionsMenuModel;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class OptionsCommandTest {
     GameModel gameModel;

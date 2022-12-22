@@ -10,8 +10,6 @@ import spaceinvaders.controller.GameController;
 import spaceinvaders.controller.RunStateController;
 import spaceinvaders.model.GameModel;
 import spaceinvaders.model.RunStateModel;
-import spaceinvaders.view.GameViewer;
-import spaceinvaders.view.RunStateViewer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
