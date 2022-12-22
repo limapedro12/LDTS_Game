@@ -84,7 +84,7 @@ We have applied the **Composite** pattern. This pattern allows us to control all
 
 The following figure shows how the pattern’s roles were mapped to the application classes.
 
-<img src="" height="400" />
+<img src="../resources/images/UMLs/composite.png" height="400" />
 <p>Fig. 5 - Composite Pattern UML</p>
 
 These classes can be found in the following files:
@@ -109,7 +109,7 @@ We have applied the **State** pattern. This pattern allows you to represent diff
 
 The following figure shows how the pattern’s roles were mapped to the application classes.
 
-<img src="" height="400" />
+<img src="../resources/images/UMLs/state.png" height="400" />
 <p>Fig. 6 - State Pattern UML</p>
 
 These classes can be found in the following files:
@@ -123,7 +123,7 @@ These classes can be found in the following files:
 
 **Consequences** 
 
-As every time we change the [state](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/c0690bfd418efcde9a68d979afc54693e1da76a5/src/main/java/spaceinvaders/model/GameModel.java#L14) of the game, its behavior changes completely, so it becomes much easier to have a different class to handle each state.
+Every time we change the [state](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/c0690bfd418efcde9a68d979afc54693e1da76a5/src/main/java/spaceinvaders/model/GameModel.java#L14) of the game, its behavior changes completely, so it becomes much easier to have a different class to handle each state.
 
 #### SINGLETON PATTERN
 **Problem in Context** 
@@ -138,7 +138,7 @@ We have applied the **Singleton** pattern. This pattern allows us to be sure tha
 
 The following figure shows how the pattern’s roles were mapped to the application classes.
 
-<img src="" height="400" />
+<img src="../resources/images/UMLs/singleton.png" height="400" />
 <p>Fig. 7 - Singleton Pattern UML</p>
 
 These classes can be found in the following files:
@@ -175,7 +175,7 @@ We have applied the **Command** pattern. This pattern allows us to isolate the a
 
 The following figure shows how the pattern’s roles were mapped to the application classes.
 
-<img src="" height="400" />
+<img src="../resources/images/UMLs/command.png" height="400" />
 <p>Fig. 8 - Command Pattern UML</p>
 
 These classes can be found in the following files:
