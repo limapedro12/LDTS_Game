@@ -35,6 +35,8 @@ public class ArenaModel implements ShotObserverModel {
     private boolean hasRan = false;
     private Clip clip = null;
 
+    private TreeSet<PlayerScore> scores;
+
     public ArenaModel(GameModel gameModel){
         this.gameModel = gameModel;
         this.exitCommand = new ExitToMenuCommand(gameModel);
@@ -215,6 +217,9 @@ public class ArenaModel implements ShotObserverModel {
     public List<AlienModel> getAliens() {
         return aliens.getAliens();
     }
+    public AlienGroupModel getAlienGroup() {
+        return aliens;
+    }
 
     public ShipModel getShip() {
         return ship;
@@ -247,7 +252,7 @@ public class ArenaModel implements ShotObserverModel {
 
     public boolean checkScore() {
         if (score > 0) {
-            TreeSet<PlayerScore> scores = PlayerScore.loadScores();
+            scores = PlayerScore.loadScores();
             String name = System.getProperty("user.name");
             scores.add(new PlayerScore(name, score));
             PlayerScore.storeScores(scores);
