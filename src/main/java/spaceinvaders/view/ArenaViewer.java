@@ -30,6 +30,11 @@ public class ArenaViewer implements Viewer{
 
         if(model.getYouWon()) {
             graphics.putString(22, 13, "Level " + model.getLevel());
+            try {
+                Thread.sleep(500);
+            } catch (Exception e) {
+                throw new RuntimeException();
+            }
         }
     }
     public void drawLives(TextGraphics graphics) {
