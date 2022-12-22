@@ -61,9 +61,13 @@ public class AlienGroupModelTest {
     }
     @Test
     public void move1Test() {
+        AlienModel first = alienGroupModel.getAliens().get(0);
+        int expected2 = first.getX()+1;
         int expected = alienGroupModel.getX()+1;
         alienGroupModel.move(1);
         Assertions.assertEquals(expected, alienGroupModel.getX());
+        Assertions.assertEquals(expected2, alienGroupModel.getAliens().get(0).getX());
+
     }
     @Test
     public void move2Test() {
@@ -71,6 +75,7 @@ public class AlienGroupModelTest {
         alienGroupModel.move(2);
         Assertions.assertEquals(expected, alienGroupModel.getY());
     }
+
     @Test
     public void damageTest() {
 
