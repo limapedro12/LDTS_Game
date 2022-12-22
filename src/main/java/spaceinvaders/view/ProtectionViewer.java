@@ -21,7 +21,7 @@ public class ProtectionViewer implements ElementViewer {
         drawNumber(graphics);
     }
 
-    private void drawNumber(TextGraphics graphics) {
+    public void drawNumber(TextGraphics graphics) {
         int firstDigitLife = model.getLife() / 10;
         int secondDigitLife = model.getLife() % 10;
         graphics.setCharacter(model.getX() + model.getWidth()/2 - 1,model.getY() + 1, TextCharacter.fromCharacter((char) ((char) firstDigitLife + '0'))[0]);
