@@ -18,12 +18,7 @@ public class HighScoreMenuModelTest {
         HighScoreMenuModel.reset();
         model = HighScoreMenuModel.getInstance(gameModelMock);
     }
-//    @Test
-//    public void getScoreTest(){
-//        List<Integer> scores = new ArrayList<>();
-//        model.setScores(scores);
-//        assertEquals(scores, model.getScores());
-//    }
+
     @Test
     public void getExitCommandTest(){
         StartCommand startCommand = new StartCommand(gameModelMock);

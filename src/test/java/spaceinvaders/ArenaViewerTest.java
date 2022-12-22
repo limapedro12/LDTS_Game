@@ -32,7 +32,6 @@ public class ArenaViewerTest {
         model.getElements().add(elementModel);
         viewer.draw(graphics);
         Mockito.verify(elementViewer, Mockito.times(1)).draw(graphics);
-        //Mockito.verify(elementModel, Mockito.times(1)).isAlive();
     }
 
     @Test
@@ -44,7 +43,6 @@ public class ArenaViewerTest {
         model.getShots().add(shotModel);
         viewer.draw(graphics);
         Mockito.verify(elementViewer, Mockito.times(1)).draw(graphics);
-        //Mockito.verify(shotModel, Mockito.times(1)).update();
     }
 
     @Test

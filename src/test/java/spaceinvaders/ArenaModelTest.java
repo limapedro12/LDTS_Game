@@ -482,7 +482,7 @@ public class ArenaModelTest {
         PlayerScore.storeScores(scores);
         assertTrue(arena.checkScore());
 
-        //assertEquals(scores, PlayerScore.loadScores());
+        assertEquals(scores, PlayerScore.loadScores());
     }
 
     @Test
