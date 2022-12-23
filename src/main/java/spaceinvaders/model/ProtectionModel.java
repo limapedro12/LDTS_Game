@@ -20,6 +20,7 @@ public class ProtectionModel extends ElementModel {
     public int getHeight() { return height; }
 
     public int getLife() { return life; }
+    @Override
     public ProtectionViewer getViewer() { return (ProtectionViewer) viewer; }
 
     @Override
