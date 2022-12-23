@@ -16,8 +16,10 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 public class HighScoreMenuViewer implements MenuViewer {
     private static HighScoreMenuViewer instance = null;
     private HighScoreMenuModel model;
+    String path;
     private HighScoreMenuViewer(HighScoreMenuModel model){
         this.model = model;
+        this.path = "resources/highscores.csv";
     }
     public static HighScoreMenuViewer getInstance(HighScoreMenuModel model){
         if(instance == null){
@@ -37,12 +39,12 @@ public class HighScoreMenuViewer implements MenuViewer {
         String splitBy = ",";
         try {
             int y = 5;
-            BufferedReader br = Files.newBufferedReader(Paths.get("resources/highscores.csv"), UTF_8);
+            BufferedReader br = Files.newBufferedReader(Paths.get(path), UTF_8);
             while ((line = br.readLine()) != null) {
                 List<String> arr = Splitter.onPattern(splitBy).splitToList(line);
                 graphics.putString(8, y, arr.get(0));
                 graphics.putString(38, y, arr.get(1));
-               y++;
+                y++;
             }
         } catch (IOException e) {
             throw new RuntimeException();
@@ -52,5 +54,8 @@ public class HighScoreMenuViewer implements MenuViewer {
     }
     public static void reset(){
         instance = null;
+    }
+    public void setPath(String path){
+        this.path = path;
     }
 }

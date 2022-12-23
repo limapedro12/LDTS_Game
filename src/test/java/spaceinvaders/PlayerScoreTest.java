@@ -1,10 +1,17 @@
 package spaceinvaders;
 
+import com.google.common.base.Splitter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.TreeSet;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PlayerScoreTest {
@@ -29,25 +36,55 @@ public class PlayerScoreTest {
     public void testLoadScores() {
         TreeSet<PlayerScore> old = PlayerScore.loadScores();
         TreeSet<PlayerScore> expected = new TreeSet<>();
-        expected.add(new PlayerScore("",880));
+        expected.add(new PlayerScore("", 880));
         PlayerScore.storeScores(expected);
 
         assertEquals(expected, PlayerScore.loadScores());
 
         PlayerScore.storeScores(old);
     }
+    @Test
+    public void testLoadScores2() throws IOException {
+        TreeSet<PlayerScore> scores = PlayerScore.loadScores();
+        if(scores.isEmpty()){
+            scores.add(new PlayerScore(System.getProperty("user.name"), 1));
+            PlayerScore.storeScores(scores);
+            scores = PlayerScore.loadScores();
+        }
+        BufferedReader br = Files.newBufferedReader(Paths.get("resources/highscores.csv"), UTF_8);
+        String line = br.readLine();
+        List<String> arr = Splitter.onPattern(",").splitToList(line);
+        assertEquals(Integer.parseInt(arr.get(1)), scores.first().getScore());
+    }
 
+    @Test
     public void testStoreScores()  {
         TreeSet<PlayerScore> t = PlayerScore.loadScores();
+        boolean changed = false;
+        if(t.contains(new PlayerScore("player1", 100))){
+            t.remove(new PlayerScore("player1", 100));
+            changed = true;
+        }
+        if(t.contains(new PlayerScore("player2", 200))){
+            t.remove(new PlayerScore("player2", 200));
+            changed = true;
+        }
+        if(t.contains(new PlayerScore("player3", 300))){
+            t.remove(new PlayerScore("player3", 300));
+            changed = true;
+        }
+        if(changed){
+            PlayerScore.storeScores(t);
+            t = PlayerScore.loadScores();
+        }
         int r = t.size();
-        TreeSet<PlayerScore> scores = new TreeSet<>();
-        scores.add(new PlayerScore("player1", 100));
-        scores.add(new PlayerScore("player2", 200));
-        scores.add(new PlayerScore("player3", 300));
-        PlayerScore.storeScores(scores);
+        t.add(new PlayerScore("player1", 100));
+        t.add(new PlayerScore("player2", 200));
+        t.add(new PlayerScore("player3", 300));
+        PlayerScore.storeScores(t);
         TreeSet<PlayerScore> scores2 = PlayerScore.loadScores();
         int result = scores2.size();
-        assertEquals(3+r, result);
+        assertEquals(r+3, result);
         TreeSet<PlayerScore> clean = new TreeSet<>();
         PlayerScore.storeScores(clean);
 
@@ -79,6 +116,25 @@ public class PlayerScoreTest {
         PlayerScore playerScoreA = new PlayerScore("A", 5);
         PlayerScore playerScoreB = new PlayerScore("A", 3);
         Assertions.assertFalse(playerScoreA.equals(playerScoreB));
+    }
+
+    @Test
+    public void equalsTest4() {
+        PlayerScore playerScoreA = new PlayerScore("A", 5);
+        Assertions.assertFalse(playerScoreA.equals(null));
+    }
+
+    @Test
+    public void equalsTest5() {
+        PlayerScore playerScoreA = new PlayerScore("A", 5);
+        Assertions.assertTrue(playerScoreA.equals(playerScoreA));
+    }
+
+    @Test
+    public void equalsTest6() {
+        PlayerScore playerScoreA = new PlayerScore("A", 5);
+        String sTest = "Amarelo";
+        Assertions.assertFalse(playerScoreA.equals(sTest));
     }
 
     @Test

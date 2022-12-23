@@ -15,6 +15,8 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 public class PlayerScore implements Comparable<PlayerScore>{
     private String player;
     private int score;
+    private static String path = "resources/highscores.csv";
+
     public PlayerScore(String player, int score) {
         super();
         this.player = player;
@@ -32,7 +34,7 @@ public class PlayerScore implements Comparable<PlayerScore>{
         String line = "";
         String splitBy = ",";
         try {
-            BufferedReader br = Files.newBufferedReader(Paths.get("resources/highscores.csv"), UTF_8);
+            BufferedReader br = Files.newBufferedReader(Paths.get(path), UTF_8);
             while ((line = br.readLine()) != null) {
                 List<String> arr = Splitter.onPattern(splitBy).splitToList(line);
                 PlayerScore playerScore = new PlayerScore(arr.get(0), Integer.parseInt(arr.get(1)));
@@ -47,8 +49,7 @@ public class PlayerScore implements Comparable<PlayerScore>{
         while (scores.size() > 10) scores.pollLast();
         PrintWriter writer = null;
         try {
-            writer = new PrintWriter("resources/highscores.csv", UTF_8.name());
-            writer.print("");
+            writer = new PrintWriter(path);writer.print("");
             for (PlayerScore score : scores) {
                 writer.print(score.player + "," +  score.score + "\n");
             }
@@ -73,5 +74,9 @@ public class PlayerScore implements Comparable<PlayerScore>{
     @Override
     public int hashCode() {
         return player.hashCode() + score;
+    }
+
+    public static void setPath(String newPath) {
+        path = newPath;
     }
 }
