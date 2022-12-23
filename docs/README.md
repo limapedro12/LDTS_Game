@@ -241,6 +241,8 @@ is to, respectively, represent and change the model's data and the `Model` is th
 ### TESTING
 #### TEST COVERAGE REPORT
 
+We could not test the Game class since any test to this class starts the whole game and goes through a `while(true)`, making it much complex to test.
+
 <img src="../resources/images/coverage.png" height="1500">
 <p>Fig. 9 - Test Coverage Report</p>
 
@@ -248,6 +250,8 @@ is to, respectively, represent and change the model's data and the `Model` is th
 [Here](../build/reports/pitest/202212231529) you can find our pitest report.
 
 ### BETTER CODE HUB ANALYSIS
+
+<img src="../resources/images/badge.png">
 
 <i>Note: The name of the repository in the analysis appears as `pedroojanuu/spaceinvaders`
 because Better Code Hub cannot have access to the original repository, 
@@ -258,13 +262,18 @@ delivered repository.</i>
 
 As it can be seen, our code does not comply with the 'Separate Concerns in 
 Modules' nor with the 'Couple Architecture Components Loosely'. This is due to
-the fact that we implemented an MVC architecture.
+the fact that we implemented an MVC architecture: the Model classes are very promiscuous since all data to be represented
+/manipulated are centered in Model, e.g.: everytime we draw an element, we need to access its Model in order to retrieve
+the data necessary to do so. 
+Elements do not have a 'main' class that contains a Model, a Viewer and a Controller, 
+instead an instance of a Viewer and of a Controller are stored in each Model, making it the 'center' of the element it 
+represents.
 
 <img src="../resources/images/Better_Code_Hub.jpg" height="600">
 <p>Fig. 10 - Better Code Hub Score</p>
 
 ### SELF-EVALUATION
 
-- João Tomás Teixeira: 
-- Pedro Lima: 
-- Pedro Januário: 
+- João Tomás Teixeira: 33.3%
+- Pedro Lima: 33.4%
+- Pedro Januário: 33.3%
