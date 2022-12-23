@@ -98,6 +98,19 @@ public class ArenaModelTest {
     }
 
     @Test
+    public void runTest1_2() {
+        arena.setTargetTime(0);
+        AlienGroupModel alienGroupMock = Mockito.mock(AlienGroupModel.class);
+        List<AlienModel> alienList = new ArrayList<>();
+        alienList.add(new AlienModel(new PositionModel(0, 0), "P", "FFFFFF"));
+        Mockito.when(alienGroupMock.getAliens()).thenReturn(alienList);
+        arena.setAliens(alienGroupMock);
+        arena.run();
+        assertEquals(arena.getHasRan(), true);
+        Mockito.verify(alienGroupMock, Mockito.atLeast(1)).move(Mockito.anyInt());
+    }
+
+    @Test
     public void runTest2() {
         List aliens = new ArrayList();
         AlienGroupModel alienGroupMock = Mockito.mock(AlienGroupModel.class);
