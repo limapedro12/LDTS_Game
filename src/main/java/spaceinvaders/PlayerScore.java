@@ -9,6 +9,8 @@ import java.util.TreeSet;
 public class PlayerScore implements Comparable<PlayerScore>{
     private String player;
     private int score;
+    private static String path = "resources/highscores.csv";
+
     public PlayerScore(String player, int score) {
         super();
         this.player = player;
@@ -25,7 +27,7 @@ public class PlayerScore implements Comparable<PlayerScore>{
         String line = "";
         String splitBy = ",";
         try {
-            BufferedReader br = new BufferedReader(new FileReader("resources/highscores.csv"));
+            BufferedReader br = new BufferedReader(new FileReader(path));
             while ((line = br.readLine()) != null) {
                 String[] arr = line.split(splitBy);
                 PlayerScore playerScore = new PlayerScore(arr[0], Integer.parseInt(arr[1]));
@@ -40,7 +42,7 @@ public class PlayerScore implements Comparable<PlayerScore>{
         while (scores.size() > 10) scores.pollLast();
         PrintWriter writer = null;
         try {
-            writer = new PrintWriter("resources/highscores.csv");
+            writer = new PrintWriter(path);
             writer.print("");
             for (PlayerScore score : scores) {
                 writer.print(score.player + "," +  score.score + "\n");
@@ -66,5 +68,9 @@ public class PlayerScore implements Comparable<PlayerScore>{
     @Override
     public int hashCode() {
         return player.hashCode() + score;
+    }
+
+    public static void setPath(String newPath) {
+        path = newPath;
     }
 }

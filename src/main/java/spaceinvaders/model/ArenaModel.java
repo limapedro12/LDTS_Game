@@ -304,4 +304,12 @@ public class ArenaModel implements ShotObserverModel {
     public void setViewer(ArenaViewer viewer) {
         this.viewer = viewer;
     }
+
+    public long getTargetTime() {
+        return targetTime;
+    }
+
+    public long getElapsedTime() {
+        return elapsedTime;
+    }
 }

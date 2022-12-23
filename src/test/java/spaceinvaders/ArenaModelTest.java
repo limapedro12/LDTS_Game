@@ -11,7 +11,9 @@ import spaceinvaders.view.ArenaViewer;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
@@ -80,6 +82,22 @@ public class ArenaModelTest {
     }
 
     @Test
+    public void runTest1() {
+        arena.incrementLevel();
+        arena.setTargetTime(0);
+        AlienGroupModel alienGroupMock = Mockito.mock(AlienGroupModel.class);
+        List<AlienModel> alienList = new ArrayList<>();
+        alienList.add(new AlienModel(new PositionModel(0, 0), "P", "FFFFFF"));
+        Mockito.when(alienGroupMock.getAliens()).thenReturn(alienList);
+        arena.setAliens(alienGroupMock);
+        arena.run();
+        assertEquals(arena.getHasRan(), true);
+        Mockito.verify(alienGroupMock, Mockito.times(1)).fire(1);
+        assertEquals(arena.getTargetTime(), arena.getElapsedTime() + 1500);
+        assert(arena.getElapsedTime() < System.currentTimeMillis());
+    }
+
+    @Test
     public void runTest2() {
         List aliens = new ArrayList();
         AlienGroupModel alienGroupMock = Mockito.mock(AlienGroupModel.class);
@@ -113,7 +131,7 @@ public class ArenaModelTest {
     }
 
     @Test
-    public void runTest5() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+    public void runTest5() throws LineUnavailableException, IOException {
         ShipModel shipMock = Mockito.mock(ShipModel.class);
         Mockito.when(shipMock.isAlive()).thenReturn(false);
         arena.setShip(shipMock);
@@ -130,9 +148,24 @@ public class ArenaModelTest {
     @Test
     public void runTest6() {
         ProtectionModel protectionMock = Mockito.mock(ProtectionModel.class);
+        Mockito.when(protectionMock.getY()).thenReturn(19);
         arena.addProtection(protectionMock);
         List aliens = new ArrayList();
-        aliens.add(new AlienModel(new PositionModel(0, 19), "P", "FFFFFF"));
+        aliens.add(new AlienModel(new PositionModel(10, 19), "P", "FFFFFF"));
+        AlienGroupModel alienGroupMock = Mockito.mock(AlienGroupModel.class);
+        Mockito.when(alienGroupMock.getAliens()).thenReturn(aliens);
+        arena.setAliens(alienGroupMock);
+        arena.run();
+        Mockito.verify(protectionMock, Mockito.times(1)).kill();
+    }
+
+    @Test
+    public void runTest6_2() {
+        ProtectionModel protectionMock = Mockito.mock(ProtectionModel.class);
+        Mockito.when(protectionMock.getY()).thenReturn(19);
+        arena.addProtection(protectionMock);
+        List aliens = new ArrayList();
+        aliens.add(new AlienModel(new PositionModel(10, 25), "P", "FFFFFF"));
         AlienGroupModel alienGroupMock = Mockito.mock(AlienGroupModel.class);
         Mockito.when(alienGroupMock.getAliens()).thenReturn(aliens);
         arena.setAliens(alienGroupMock);
@@ -502,13 +535,29 @@ public class ArenaModelTest {
     }
 
     @Test
-    public void isLost3() {
+    public void isLost3() throws FileNotFoundException {
+        arena.run();
         ShipModel shipMock = Mockito.mock(ShipModel.class);
         Mockito.when(shipMock.isAlive()).thenReturn(false);
         arena.setShip(shipMock);
-        arena.run();
+        arena.setAliens(Mockito.mock(AlienGroupModel.class));
+
+        PlayerScore.setPath("resources/test_highscores.csv");
+        PrintWriter writer = new PrintWriter("resources/test_highscores.csv");
+        writer.print("");
+
+        TreeSet<PlayerScore> scores = PlayerScore.loadScores();
+
+        arena.addScore(42);
+        scores.add(new PlayerScore(System.getProperty("user.name"), 42));
+        while (scores.size() > 10) scores.pollLast();
+
         Assertions.assertTrue(arena.isLost());
-        checkScoreTest();
+        assertEquals(scores, PlayerScore.loadScores());
+
+        assertEquals(scores, PlayerScore.loadScores());
+
+        PlayerScore.setPath("resources/highscores.csv");
     }
 
     @Test
@@ -517,7 +566,9 @@ public class ArenaModelTest {
         Mockito.when(shipMock.isAlive()).thenReturn(true);
         Mockito.when(shipMock.getY()).thenReturn(100);
         arena.setShip(shipMock);
+
         arena.run();
+
         Assertions.assertTrue(arena.isLost());
     }
 
@@ -528,9 +579,24 @@ public class ArenaModelTest {
         Mockito.when(shipMock.getY()).thenReturn(100);
         arena.setShip(shipMock);
         arena.getAliens().add(new AlienModel(new PositionModel(0, 120), "P", "FFFFFF"));
+
         arena.run();
+
         Assertions.assertTrue(arena.isLost());
-        checkScoreTest();
+    }
+
+    @Test
+    public void isLost6() {
+        ShipModel shipMock = Mockito.mock(ShipModel.class);
+        Mockito.when(shipMock.isAlive()).thenReturn(true);
+        Mockito.when(shipMock.getUpperBound()).thenReturn(1000);
+        arena.setShip(shipMock);
+        arena.getAliens().clear();
+        arena.getAliens().add(new AlienModel(new PositionModel(10, 1000), "P", "FFFFFF"));
+
+        arena.run();
+
+        Assertions.assertTrue(arena.isLost());
     }
 
     @Test
@@ -617,27 +683,51 @@ public class ArenaModelTest {
     }
 
     @Test
-    public void checkScoreTest(){
+    public void checkScoreTest() throws FileNotFoundException {
+        PlayerScore.setPath("resources/test_highscores.csv");
+        PrintWriter writer = new PrintWriter("resources/test_highscores.csv");
+        writer.print("");
+
         TreeSet<PlayerScore> scores = PlayerScore.loadScores();
-        int lowestScore;
-        if(!scores.isEmpty())
-            lowestScore = scores.last().getScore();
-        else
-            lowestScore = 0;
-        arena.addScore(lowestScore + 1);
-        scores.add(new PlayerScore(System.getProperty("user.name"), lowestScore + 1));
+
+        arena.addScore(42);
+        scores.add(new PlayerScore(System.getProperty("user.name"), 42));
+        while (scores.size() > 10) scores.pollLast();
         assertTrue(arena.checkScore());
 
         assertEquals(scores, PlayerScore.loadScores());
+
+        PlayerScore.setPath("resources/highscores.csv");
     }
 
     @Test
-    public void checkScoreTest2(){
+    public void checkScoreTest2() throws FileNotFoundException {
+        PlayerScore.setPath("resources/test_highscores.csv");
+        PrintWriter writer = new PrintWriter("resources/test_highscores.csv");
+        writer.print("");
+
         TreeSet<PlayerScore> scores = PlayerScore.loadScores();
         arena.addScore(0);
         assertTrue(arena.checkScore());
 
         assertEquals(scores, PlayerScore.loadScores());
+
+        PlayerScore.setPath("resources/highscores.csv");
+    }
+
+    @Test
+    public void checkScoreTest3() throws FileNotFoundException {
+        PlayerScore.setPath("resources/test_highscores.csv");
+        PrintWriter writer = new PrintWriter("resources/test_highscores.csv");
+        writer.print("");
+
+        TreeSet<PlayerScore> scores = PlayerScore.loadScores();
+        arena.addScore(-1);
+        assertTrue(arena.checkScore());
+
+        assertEquals(scores, PlayerScore.loadScores());
+
+        PlayerScore.setPath("resources/highscores.csv");
     }
 
     @Test
