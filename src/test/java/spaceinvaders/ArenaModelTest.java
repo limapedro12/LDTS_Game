@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
 
+import static com.google.common.base.Charsets.UTF_8;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 
@@ -39,8 +40,8 @@ public class ArenaModelTest {
     @Test
     public void addedObservers2(){
         arena.incrementLevel();
-        assert(arena.getShip().getObservers().contains(arena));
-        assert(arena.getAlienGroup().getObservers().contains(arena));
+        assertTrue(arena.getShip().getObservers().contains(arena));
+        assertTrue(arena.getAlienGroup().getObservers().contains(arena));
     }
 
     @Test
@@ -94,7 +95,7 @@ public class ArenaModelTest {
         assertEquals(arena.getHasRan(), true);
         Mockito.verify(alienGroupMock, Mockito.times(1)).fire(1);
         assertEquals(arena.getTargetTime(), arena.getElapsedTime() + 1500);
-        assert(arena.getElapsedTime() < System.currentTimeMillis());
+        assertTrue(arena.getElapsedTime() < System.currentTimeMillis());
     }
 
     @Test
@@ -556,8 +557,12 @@ public class ArenaModelTest {
         arena.setAliens(Mockito.mock(AlienGroupModel.class));
 
         PlayerScore.setPath("resources/test_highscores.csv");
-        PrintWriter writer = new PrintWriter("resources/test_highscores.csv");
-        writer.print("");
+        try {
+            PrintWriter writer = new PrintWriter("resources/test_highscores.csv", UTF_8.name());
+            writer.print("");
+        } catch (Exception e) {
+            throw new RuntimeException();
+        }
 
         TreeSet<PlayerScore> scores = PlayerScore.loadScores();
 

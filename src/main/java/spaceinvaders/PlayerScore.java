@@ -49,7 +49,7 @@ public class PlayerScore implements Comparable<PlayerScore>{
         while (scores.size() > 10) scores.pollLast();
         PrintWriter writer = null;
         try {
-            writer = new PrintWriter(path);writer.print("");
+            writer = new PrintWriter(path, UTF_8.name());writer.print("");
             for (PlayerScore score : scores) {
                 writer.print(score.player + "," +  score.score + "\n");
             }

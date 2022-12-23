@@ -132,13 +132,15 @@ All classes related to menus should only be instantiated once, so we needed to m
 
 **The Pattern**
 
-We have applied the **Singleton** pattern. This pattern allows us to be sure that only one instance of each class was created. In all the classes related to menus ([MainMenuModel](../src/main/java/spaceinvaders/model/menu/MainMenuModel.java), [MainMenuViewer](../src/main/java/spaceinvaders/view/menu/MainMenuViewer.java), [MainMenuController](../src/main/java/spaceinvaders/controller/menu/MainMenuController.java), [HighScoreMenuModel](../src/main/java/spaceinvaders/model/menu/HighScoreMenuModel.java), [HighScoreMenuViewer](../src/main/java/spaceinvaders/view/menu/HighScoreMenuViewer.java), [HighScoreMenuController](../src/main/java/spaceinvaders/controller/menu/HighScoreMenuController.java), [OptionsMenuModel](../src/main/java/spaceinvaders/model/menu/OptionsMenuModel.java), [OptionsMenuViewer](../src/main/java/spaceinvaders/view/menu/OptionsMenuViewer.java), [OptionsMenuController](../src/main/java/spaceinvaders/controller/menu/OptionsMenuController.java), [ControlsMenuModel](../src/main/java/spaceinvaders/model/menu/ControlsMenuModel.java), [ControlsMenuViewer](../src/main/java/spaceinvaders/view/menu/ControlsMenuViewer.java), [ControlsMenuController](../src/main/java/spaceinvaders/controller/menu/ControlsMenuController.java), [InfoMenuModel](../src/main/java/spaceinvaders/model/menu/InfoMenuModel.java), [InfoMenuViewer](../src/main/java/spaceinvaders/view/menu/InfoMenuViewer.java), [InfoMenuController](../src/main/java/spaceinvaders/controller/menu/InfoMenuController.java)), we've implemented the Singleton Pattern, so that only one instance of each class is created. This is done by creating a [private static field](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/f59e76f344fa1d9ee2b423b777acd42671483a9b/src/main/java/spaceinvaders/model/menu/MainMenuModel.java#L13) that stores the only instance that should be available, making the [constructor](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/f59e76f344fa1d9ee2b423b777acd42671483a9b/src/main/java/spaceinvaders/model/menu/MainMenuModel.java#L19-L27) private and creating a [static method](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/f59e76f344fa1d9ee2b423b777acd42671483a9b/src/main/java/spaceinvaders/model/menu/MainMenuModel.java#L37-L50) that returns the instance of the class, instantiating it if it doesn't exist yet. Although we have a method called reset() that resets the instance, we only use it during tests.
+We have applied the **Singleton** pattern. This pattern allows us to be sure that only one instance of each class was created. In all the classes related to menus ([MainMenuModel](../src/main/java/spaceinvaders/model/menu/MainMenuModel.java), [MainMenuViewer](../src/main/java/spaceinvaders/view/menu/MainMenuViewer.java), [MainMenuController](../src/main/java/spaceinvaders/controller/menu/MainMenuController.java), [HighScoreMenuModel](../src/main/java/spaceinvaders/model/menu/HighScoreMenuModel.java), [HighScoreMenuViewer](../src/main/java/spaceinvaders/view/menu/HighScoreMenuViewer.java), [HighScoreMenuController](../src/main/java/spaceinvaders/controller/menu/HighScoreMenuController.java), [OptionsMenuModel](../src/main/java/spaceinvaders/model/menu/OptionsMenuModel.java), [OptionsMenuViewer](../src/main/java/spaceinvaders/view/menu/OptionsMenuViewer.java), [OptionsMenuController](../src/main/java/spaceinvaders/controller/menu/OptionsMenuController.java), [ControlsMenuModel](../src/main/java/spaceinvaders/model/menu/ControlsMenuModel.java), [ControlsMenuViewer](../src/main/java/spaceinvaders/view/menu/ControlsMenuViewer.java), [ControlsMenuController](../src/main/java/spaceinvaders/controller/menu/ControlsMenuController.java), [InfoMenuModel](../src/main/java/spaceinvaders/model/menu/InfoMenuModel.java), [InfoMenuViewer](../src/main/java/spaceinvaders/view/menu/InfoMenuViewer.java), [InfoMenuController](../src/main/java/spaceinvaders/controller/menu/InfoMenuController.java), 
+[StartInLevelMenuModel](../src/main/java/spaceinvaders/model/menu/StartInLevelMenuModel.java), [StartInLevelMenuViewer](../src/main/java/spaceinvaders/view/menu/StartInLevelMenuViewer.java), 
+[StartInLevelMenuController](../src/main/java/spaceinvaders/controller/menu/StartInLevelMenuController.java)), we've implemented the Singleton Pattern, so that only one instance of each class is created. This is done by creating a [private static field](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/f59e76f344fa1d9ee2b423b777acd42671483a9b/src/main/java/spaceinvaders/model/menu/MainMenuModel.java#L13) that stores the only instance that should be available, making the [constructor](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/f59e76f344fa1d9ee2b423b777acd42671483a9b/src/main/java/spaceinvaders/model/menu/MainMenuModel.java#L19-L27) private and creating a [static method](https://github.com/FEUP-LDTS-2022/project-l01gr06/blob/f59e76f344fa1d9ee2b423b777acd42671483a9b/src/main/java/spaceinvaders/model/menu/MainMenuModel.java#L37-L50) that returns the instance of the class, instantiating it if it doesn't exist yet. Although we have a method called reset() that resets the instance, we only use it during tests.
 
 **Implementation**
 
 The following figure shows how the pattern’s roles were mapped to the application classes.
 
-<img src="../resources/images/UMLs/singleton.png" height="400" />
+<img src="../resources/images/UMLs/singleton.png" height="1000" />
 <p>Fig. 7 - Singleton Pattern UML</p>
 
 These classes can be found in the following files:
@@ -157,6 +159,9 @@ These classes can be found in the following files:
 - [InfoMenuModel](../src/main/java/spaceinvaders/model/menu/InfoMenuModel.java)
 - [InfoMenuViewer](../src/main/java/spaceinvaders/view/menu/InfoMenuViewer.java)
 - [InfoMenuController](../src/main/java/spaceinvaders/controller/menu/InfoMenuController.java)
+- [StartInLevelMenuModel](../src/main/java/spaceinvaders/model/menu/StartInLevelMenuModel.java)
+- [StartInLevelMenuViewer](../src/main/java/spaceinvaders/view/menu/StartInLevelMenuViewer.java)
+- [StartInLevelMenuController](../src/main/java/spaceinvaders/controller/menu/StartInLevelMenuController.java)
 
 **Consequences**
 
@@ -221,9 +226,13 @@ We had various methods and classes that were no longer used, so we deleted them.
 The classes `DummyCommad`, `NullController` and `LifeModel` were only used so the code could compile without errors, so when we finished the game we deleted them.
 The method `getScore` in the class `AlienGroupModel` was also deleted.
 
-### KNOWN CODE SMELLS
+### KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS
 #### REFUSED BEQUEST
 Due to being subclasses of `ElementModel`, the `ProtectionModel` and `ShotModel` classes inherit `fire()` and `canIMove()` methods. However, they do not use them.
+The same also happens with `damage()` in `ShotModel` and `AlienGroupModel`.
+
+This could be solved by having an abstract subclass of `ElementModel` to represent elements that can fire, another one to represent elements that can be damaged
+and a third one to represent elements that can do both.
 
 #### FEATURE ENVY
 Due to the use of the MVC architectural pattern, the `Viewer` and `Controller` classes access their respective `Model`'s data a lot, since their function
@@ -232,15 +241,13 @@ is to, respectively, represent and change the model's data and the `Model` is th
 ### TESTING
 #### TEST COVERAGE REPORT
 
-<img src="" height="400">
+<img src="../resources/images/coverage.png" height="1500">
 <p>Fig. 9 - Test Coverage Report</p>
 
 #### PITEST REPORT
-[Here](../build/reports/pitest) you can find our pitest report.
+[Here](../build/reports/pitest/202212231529) you can find our pitest report.
 
 ### BETTER CODE HUB ANALYSIS
-
-<img src='https://bettercodehub.com/edge/badge/pedroojanuu/spaceinvaders?branch=master'>
 
 <i>Note: The name of the repository in the analysis appears as `pedroojanuu/spaceinvaders`
 because Better Code Hub cannot have access to the original repository, 
