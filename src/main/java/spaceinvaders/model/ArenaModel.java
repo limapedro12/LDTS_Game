@@ -134,7 +134,6 @@ public class ArenaModel implements ShotObserverModel {
         elements = new ArrayList<>();
         shots = new ArrayList<>();
         aliens = new AlienGroupModel(this);
-        elapsedTime = 0;
         lastAlienDirection = 0;
         elements.add(aliens);
         elements.add(ship);
