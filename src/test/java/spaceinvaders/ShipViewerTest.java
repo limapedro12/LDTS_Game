@@ -18,13 +18,15 @@ public class ShipViewerTest {
         TextGraphics graphics = Mockito.mock(TextGraphics.class);
         ship.draw(graphics);
         assertEquals(10, model.getDrawnPositions().size());
-        verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#FFC300"));
-        verify(graphics, Mockito.times(1)).putString(model.getX(), model.getUpperBound(),"\"");
-        verify(graphics, Mockito.times(1)).putString(model.getRightBound(), model.getUpperBound()+1,",");
+        ship.draw(graphics);
+        assertEquals(10, model.getDrawnPositions().size());
+        verify(graphics, Mockito.times(2)).setForegroundColor(TextColor.Factory.fromString("#FFC300"));
+        verify(graphics, Mockito.times(2)).putString(model.getX(), model.getUpperBound(),"\"");
+        verify(graphics, Mockito.times(2)).putString(model.getRightBound(), model.getUpperBound()+1,",");
         for (int i = model.getLeftBound()+1; i <= model.getRightBound()-1; i++)
-            verify(graphics, Mockito.times(1)).putString(i, model.getUpperBound()+1, "=");
+            verify(graphics, Mockito.times(2)).putString(i, model.getUpperBound()+1, "=");
         for (int i = model.getLeftBound(); i <= model.getRightBound(); i++)
-            verify(graphics, Mockito.times(1)).putString(i, model.getUpperBound()+2,"=");
+            verify(graphics, Mockito.times(2)).putString(i, model.getUpperBound()+2,"=");
 
     }
     @Test
