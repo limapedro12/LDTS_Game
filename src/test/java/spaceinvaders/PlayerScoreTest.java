@@ -27,8 +27,14 @@ public class PlayerScoreTest {
     }
     @Test
     public void testLoadScores() {
-        TreeSet<PlayerScore> scores = PlayerScore.loadScores();
-        assertEquals(880, scores.first().getScore());
+        TreeSet<PlayerScore> old = PlayerScore.loadScores();
+        TreeSet<PlayerScore> expected = new TreeSet<>();
+        expected.add(new PlayerScore("",880));
+        PlayerScore.storeScores(expected);
+
+        assertEquals(expected, PlayerScore.loadScores());
+
+        PlayerScore.storeScores(old);
     }
 
     public void testStoreScores()  {
