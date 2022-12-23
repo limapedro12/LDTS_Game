@@ -6,6 +6,7 @@ import com.googlecode.lanterna.screen.Screen;
 import spaceinvaders.model.GameModel;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class GameController {
     private Screen screen;
@@ -21,7 +22,7 @@ public class GameController {
 
     public void processKey() throws IOException {
         KeyStroke key = screen.pollInput();
-        while(key != null && lastKey != null && key.getKeyType() == lastKey.getKeyType() && key.getCharacter() == lastKey.getCharacter())
+        while(key != null && lastKey != null && key.getKeyType() == lastKey.getKeyType() && Objects.equals(key.getCharacter(), lastKey.getCharacter()))
             key = screen.pollInput();
         lastKey = key;
         if (key == null) return;

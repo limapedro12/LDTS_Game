@@ -30,8 +30,8 @@ public class ArenaModelTest {
 
     @Test
     public void addedObservers(){
-        assert(arena.getShip().getObservers().contains(arena));
-        assert(arena.getAlienGroup().getObservers().contains(arena));
+        assertTrue(arena.getShip().getObservers().contains(arena));
+        assertTrue(arena.getAlienGroup().getObservers().contains(arena));
     }
 
     @Test

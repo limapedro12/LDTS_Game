@@ -124,7 +124,7 @@ public class ShipModel extends ElementModel {
             clip.open(AudioSystem.getAudioInputStream(f));
             clip.start();
         } catch (Exception e){
-            e.printStackTrace();
+            throw new RuntimeException();
         }
     }
 }

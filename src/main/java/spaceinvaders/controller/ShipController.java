@@ -27,6 +27,7 @@ public class ShipController {
                 case ' ':
                     ship.fire();
                     break;
+                default: break;
             }
         } else {
             KeyType keyType = key.getKeyType();
@@ -45,6 +46,7 @@ public class ShipController {
                     break;
                 case ArrowUp:
                     ship.fire(); break;
+                default: break;
             }
         }
     }
