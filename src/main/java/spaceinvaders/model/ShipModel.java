@@ -103,6 +103,11 @@ public class ShipModel extends ElementModel {
     public void resetDrawnPositions() {
         drawnPositions = new ArrayList<>();
     }
+
+    public List<PositionModel> getDrawnPositions() {
+        return drawnPositions;
+    }
+
     @Override
     public boolean canIMove(boolean goingLeft) {
         if (goingLeft) {

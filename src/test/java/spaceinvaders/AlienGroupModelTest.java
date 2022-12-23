@@ -46,6 +46,8 @@ public class AlienGroupModelTest {
     public void canIMoveTest() {
         Assertions.assertTrue(alienGroupModel.canIMove(false));
         Assertions.assertTrue(alienGroupModel.canIMove(true));
+        Assertions.assertTrue(alienGroupModel.getAliens().get(0).canIMove(false));
+        Assertions.assertTrue(alienGroupModel.getAliens().get(0).canIMove(true));
     }
     @Test
     public void move0Test() {
@@ -72,6 +74,8 @@ public class AlienGroupModelTest {
 
     @Test
     public void damageTest() {
+        alienGroupModel.damage();
+        Assertions.assertTrue(true);
 
     }
     @Test

@@ -31,6 +31,7 @@ public class ArenaViewerTest {
         Mockito.when(elementModel.getViewer()).thenReturn(elementViewer);
         model.getElements().add(elementModel);
         viewer.draw(graphics);
+        drawLives1();
         Mockito.verify(elementViewer, Mockito.times(1)).draw(graphics);
     }
 
@@ -42,6 +43,7 @@ public class ArenaViewerTest {
         Mockito.when(shotModel.getViewer()).thenReturn(elementViewer);
         model.getShots().add(shotModel);
         viewer.draw(graphics);
+        drawLives2();
         Mockito.verify(elementViewer, Mockito.times(1)).draw(graphics);
     }
 
@@ -57,6 +59,7 @@ public class ArenaViewerTest {
         Mockito.when(arenaModel.getShip()).thenReturn(ship);
         Mockito.when(ship.getLives()).thenReturn(1);
         viewer.draw(graphics);
+       drawLives3();
         Mockito.verify(graphics, Mockito.atLeast(3)).setForegroundColor(any(TextColor.class));
         Mockito.verify(graphics, Mockito.atLeast(2)).putString(any(Integer.class), any(Integer.class), any(String.class));
     }

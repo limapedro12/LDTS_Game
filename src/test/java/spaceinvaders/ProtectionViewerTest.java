@@ -29,7 +29,13 @@ public class ProtectionViewerTest {
         Mockito.verify(graphics, Mockito.times(1)).drawRectangle(new TerminalPosition(2 + 1, 2 + 2 - 1), new TerminalSize(4-2, 1), TextCharacter.fromCharacter(' ')[0]);
     }
 
-
+    @Test
+    public void drawNumber() {
+        TextGraphics graphics = Mockito.mock(TextGraphics.class);
+        protection.getViewer().drawNumber(graphics);
+        Mockito.verify(graphics, Mockito.times(1)).setCharacter(2 + 4/2 - 1, 2 + 1, TextCharacter.fromCharacter((char) ((char) 2 / 10 + '0'))[0]);
+        Mockito.verify(graphics, Mockito.times(1)).setCharacter(2 + 4/2, 2 + 1, TextCharacter.fromCharacter((char) ((char) 2 % 10 + '0'))[0]);
+    }
     @Test
     public void getModelTest() {
         assertEquals(protection, protection.getViewer().getModel());

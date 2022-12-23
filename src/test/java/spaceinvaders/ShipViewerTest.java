@@ -17,6 +17,7 @@ public class ShipViewerTest {
         ShipViewer ship = new ShipViewer(model);
         TextGraphics graphics = Mockito.mock(TextGraphics.class);
         ship.draw(graphics);
+        assertEquals(10, model.getDrawnPositions().size());
         verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#FFC300"));
         verify(graphics, Mockito.times(1)).putString(model.getX(), model.getUpperBound(),"\"");
         verify(graphics, Mockito.times(1)).putString(model.getRightBound(), model.getUpperBound()+1,",");
