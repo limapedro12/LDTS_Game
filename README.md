@@ -10,5 +10,5 @@ This project was developed by *João Tomás Teixeira* (*up202108738*@edu.fe.up.p
 <img src="resources/images/SI_gameplay.gif" height="240"/>
 <p>Fig.1 - Gameplay</p>
 
-<img src="" height="240" />
+<img src="resources/images/SI_level.gif" height="240" />
 <p>Fig.2 - Finishing Level 1, starting Level 2</p>
