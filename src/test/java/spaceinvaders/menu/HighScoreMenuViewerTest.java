@@ -77,7 +77,7 @@ public class HighScoreMenuViewerTest {
     @Test
     public void draw2(){
         TextGraphics graphicsMock = Mockito.mock(TextGraphics.class);
-        viewer.setPath("resources/test_highscores.csv");
+        viewer.setPath("resources/test_highscores2.csv");
         viewer.draw(graphicsMock);
         Mockito.verify(graphicsMock, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#FFC300"));
         Mockito.verify(graphicsMock, Mockito.atLeast(1)).putString(8, 2, "HighScores");
